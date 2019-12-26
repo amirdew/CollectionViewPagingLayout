@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FruitsViewController" customModule="CollectionViewPagingLayout" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="iRJ-D1-6oH" id="oym-sx-sR2"/>
+                <outlet property="collectionView" destination="04v-PX-LF3" id="RKB-xB-Wtu"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Km3-JY-eOh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRJ-D1-6oH">
+                    <rect key="frame" x="32" y="63" width="23" height="20"/>
+                    <color key="backgroundColor" name="ButtonTint"/>
+                    <color key="tintColor" name="ButtonBackTint"/>
+                    <inset key="contentEdgeInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
+                    <state key="normal" image="arrow.left.square.fill" catalog="system">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="default" weight="semibold"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackTouched" destination="-1" eventType="touchUpInside" id="NPw-qn-rsD"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04v-PX-LF3">
+                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="glI-Tl-uyc">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iRJ-D1-6oH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="07Q-Pw-NbP"/>
+                <constraint firstAttribute="trailing" secondItem="04v-PX-LF3" secondAttribute="trailing" id="4Qi-YU-Pcy"/>
+                <constraint firstItem="04v-PX-LF3" firstAttribute="top" secondItem="iRJ-D1-6oH" secondAttribute="bottom" constant="25" id="8hd-3k-zuv"/>
+                <constraint firstAttribute="bottom" secondItem="04v-PX-LF3" secondAttribute="bottom" id="Cbm-GI-mYo"/>
+                <constraint firstItem="iRJ-D1-6oH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="pID-cy-ly6"/>
+                <constraint firstItem="04v-PX-LF3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="z85-JT-x7W"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.left.square.fill" catalog="system" width="64" height="56"/>
+        <namedColor name="ButtonBackTint">
+            <color red="0.81176470588235294" green="0.88235294117647056" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ButtonTint">
+            <color red="0.30980392156862746" green="0.52156862745098043" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

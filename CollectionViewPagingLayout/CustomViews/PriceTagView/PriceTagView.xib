@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PriceTagView" customModule="CollectionViewPagingLayout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="104" height="57"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-ph-LLK">
+                    <rect key="frame" x="0.0" y="0.0" width="104" height="57"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2N-xm-8in">
+                            <rect key="frame" x="20" y="6" width="64" height="26.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="per unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzX-kO-DVx">
+                            <rect key="frame" x="20" y="25.5" width="58.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="rzX-kO-DVx" secondAttribute="bottom" constant="11" id="0d4-5L-W6Q"/>
+                        <constraint firstItem="y2N-xm-8in" firstAttribute="top" secondItem="CTZ-ph-LLK" secondAttribute="top" constant="6" id="NV8-cy-Wvi"/>
+                        <constraint firstAttribute="trailing" secondItem="y2N-xm-8in" secondAttribute="trailing" priority="900" constant="20" id="THo-1L-GZ7"/>
+                        <constraint firstItem="rzX-kO-DVx" firstAttribute="leading" secondItem="y2N-xm-8in" secondAttribute="leading" id="hVT-Kv-huY"/>
+                        <constraint firstItem="rzX-kO-DVx" firstAttribute="top" secondItem="y2N-xm-8in" secondAttribute="bottom" constant="-7" id="mtS-EJ-QMT"/>
+                        <constraint firstItem="y2N-xm-8in" firstAttribute="leading" secondItem="CTZ-ph-LLK" secondAttribute="leading" constant="20" id="p1C-XY-Y2r"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rzX-kO-DVx" secondAttribute="trailing" constant="20" id="v2q-Y7-mvE"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="CTZ-ph-LLK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QXD-KO-NMf"/>
+                <constraint firstItem="CTZ-ph-LLK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ryn-Gm-Hux"/>
+                <constraint firstAttribute="trailing" secondItem="CTZ-ph-LLK" secondAttribute="trailing" id="wkD-Z7-KVK"/>
+                <constraint firstAttribute="bottom" secondItem="CTZ-ph-LLK" secondAttribute="bottom" id="zhy-aY-rmI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="priceLabel" destination="y2N-xm-8in" id="7ai-i3-afl"/>
+                <outlet property="priceTypeLabel" destination="rzX-kO-DVx" id="FQA-R3-lNI"/>
+            </connections>
+            <point key="canvasLocation" x="-79.710144927536234" y="63.950892857142854"/>
+        </view>
+    </objects>
+</document>
