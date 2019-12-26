@@ -10,9 +10,9 @@
 
 
 ## About
-A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells 
-by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to change the cell view.
-You can see the usage by looking into the example source code.
+A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
+by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to change the cell view.  
+You can see the usage by looking into the example source code.  
 More examples will be added.
 
 ## Add to your project
@@ -31,6 +31,10 @@ Just add all the files under `Lib` directory to your project
 
 
 ## Limitations
+You need to specify the number of visible cells since this layout gives you the flexibility to show the next and previous cells.   
+By default, the layout loads all of the cells in the collection view frame and that means it keeps all of them in memory.
+You can specify the number of cells that you need to show at the time by considering your design.
+
 
 ## License
 
