@@ -29,6 +29,9 @@
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="default" weight="semibold"/>
                     </state>
+                    <connections>
+                        <action selector="onBackTouched" destination="-1" eventType="touchUpInside" id="NPw-qn-rsD"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04v-PX-LF3">
                     <rect key="frame" x="0.0" y="108" width="414" height="788"/>

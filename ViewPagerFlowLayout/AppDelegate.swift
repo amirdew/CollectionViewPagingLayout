@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        let vc = FruitsViewController.instantiate(viewModel: FruitsViewModel())
-        navigationController.setViewControllers([vc], animated: false)
+        navigationController.setViewControllers([MainViewController.instantiate()], animated: false)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
         return true

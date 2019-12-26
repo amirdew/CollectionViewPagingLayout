@@ -31,10 +31,18 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    // MARK: Event listener
+    
+    @IBAction private func onBackTouched() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     // MARK: Private functions
     
     private func configureViews() {
         view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
+        view.clipsToBounds = true
         configureCollectionView()
     }
     

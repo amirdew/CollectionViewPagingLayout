@@ -22,6 +22,8 @@
 		AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */; };
 		AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */; };
 		AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */; };
+		AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0523B4E2B2006441DE /* MainViewController.swift */; };
+		AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7C1E0723B4E2C0006441DE /* MainViewController.xib */; };
 		ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A72B23B42240006A46A3 /* PriceTagView.swift */; };
 		ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A72D23B42247006A46A3 /* PriceTagView.xib */; };
 		ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */; };
@@ -46,6 +48,8 @@
 		AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitCellViewModel.swift; sourceTree = "<group>"; };
 		AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		AB7C1E0523B4E2B2006441DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AB7C1E0723B4E2C0006441DE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		ABA1A72B23B42240006A46A3 /* PriceTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTagView.swift; sourceTree = "<group>"; };
 		ABA1A72D23B42247006A46A3 /* PriceTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTagView.xib; sourceTree = "<group>"; };
 		ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControllerView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		AB500A5223B152170056BE37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				AB7C1E0423B4E292006441DE /* Main */,
 				AB500A4823B13B9D0056BE37 /* Fruits */,
 			);
 			path = Modules;
@@ -150,6 +155,15 @@
 				AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		AB7C1E0423B4E292006441DE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AB7C1E0523B4E2B2006441DE /* MainViewController.swift */,
+				AB7C1E0723B4E2C0006441DE /* MainViewController.xib */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		ABA1A72A23B4222E006A46A3 /* PriceTagView */ = {
@@ -232,6 +246,7 @@
 				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
+				AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */,
 				ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */,
 				ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */,
 			);
@@ -251,6 +266,7 @@
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
 				AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
+				AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */,
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
