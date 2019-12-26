@@ -39,6 +39,7 @@ class PriceTagView: UIView, NibBased {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = "USD"
+        formatter.locale = .init(identifier: "US")
 
         let formattedPrice = formatter.string(from: NSNumber(value: price)) ?? ""
         let dotIndex = formattedPrice.range(of: ".")!.upperBound
