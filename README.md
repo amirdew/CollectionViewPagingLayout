@@ -10,8 +10,25 @@
 
 
 ## About
+A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells 
+by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to change the cell view.
+You can see the usage by looking into the example source code.
+More examples will be added.
+
+## Add to your project
+
+#### Cocoapods
+CollectionViewPagingLayout is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "CollectionViewPagingLayout"
+```
+#### Manually
+Just add all the files under `Lib` directory to your project
 
 ## How to use
+
 
 ## Limitations
 
