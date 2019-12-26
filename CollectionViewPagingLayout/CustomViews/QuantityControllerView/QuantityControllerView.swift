@@ -80,6 +80,7 @@ class QuantityControllerView: UIView, NibBased {
             animation.fromValue = CATransform3DIdentity
             animation.toValue = newTransform
         }
+        container.layer.transform = animation.toValue as! CATransform3D
         container.layer.add(animation, forKey: nil)
         CATransaction.commit()
     }
