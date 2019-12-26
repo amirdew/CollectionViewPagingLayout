@@ -17,7 +17,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Properties
     
-    var numberOfVisibleItems: Int?
+    public var numberOfVisibleItems: Int?
     
     weak var delegate: CollectionViewPagingLayoutDelegate?
     
@@ -37,7 +37,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Life cycle
     
-    override init() {
+    public override init() {
         currentPage = 0
         super.init()
     }
