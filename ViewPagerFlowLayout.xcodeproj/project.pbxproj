@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E03AE23B25CE70087F904 /* PageControlView.swift */; };
 		AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A3223B104E20056BE37 /* AppDelegate.swift */; };
 		AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB500A3B23B104E60056BE37 /* Assets.xcassets */; };
 		AB500A3F23B104E60056BE37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */; };
@@ -20,9 +21,15 @@
 		AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */; };
 		AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */; };
 		AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */; };
+		AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */; };
+		ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A72B23B42240006A46A3 /* PriceTagView.swift */; };
+		ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A72D23B42247006A46A3 /* PriceTagView.xib */; };
+		ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */; };
+		ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB1E03AE23B25CE70087F904 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
 		AB500A2F23B104E20056BE37 /* ViewPagerFlowLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewPagerFlowLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB500A3223B104E20056BE37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB500A3B23B104E60056BE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +45,11 @@
 		AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitCellViewModel.swift; sourceTree = "<group>"; };
 		AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		ABA1A72B23B42240006A46A3 /* PriceTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTagView.swift; sourceTree = "<group>"; };
+		ABA1A72D23B42247006A46A3 /* PriceTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTagView.xib; sourceTree = "<group>"; };
+		ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControllerView.swift; sourceTree = "<group>"; };
+		ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityControllerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1E03AD23B25CD30087F904 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A72F23B4225C006A46A3 /* QuantityControllerView */,
+				ABA1A72A23B4222E006A46A3 /* PriceTagView */,
+				AB1E03AE23B25CE70087F904 /* PageControlView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		AB500A2623B104E20056BE37 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +92,7 @@
 		AB500A3123B104E20056BE37 /* ViewPagerFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
+				AB1E03AD23B25CD30087F904 /* CustomViews */,
 				AB500A5223B152170056BE37 /* Modules */,
 				AB500A5123B152130056BE37 /* Models */,
 				AB500A5323B152400056BE37 /* Utilities */,
@@ -114,6 +137,7 @@
 			children = (
 				AB500A4D23B13C5C0056BE37 /* NibBased.swift */,
 				AB500A5423B152500056BE37 /* ViewModelBased.swift */,
+				AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -126,6 +150,24 @@
 				AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABA1A72A23B4222E006A46A3 /* PriceTagView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A72B23B42240006A46A3 /* PriceTagView.swift */,
+				ABA1A72D23B42247006A46A3 /* PriceTagView.xib */,
+			);
+			path = PriceTagView;
+			sourceTree = "<group>";
+		};
+		ABA1A72F23B4225C006A46A3 /* QuantityControllerView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */,
+				ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */,
+			);
+			path = QuantityControllerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +232,8 @@
 				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
+				ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */,
+				ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,12 +245,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB500A4723B1061D0056BE37 /* ViewPagerFlowLayout.swift in Sources */,
+				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
+				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
+				AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
+				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
 				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
 				AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */,
 			);
@@ -354,7 +402,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.ViewPagerFlowLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -372,7 +420,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.ViewPagerFlowLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

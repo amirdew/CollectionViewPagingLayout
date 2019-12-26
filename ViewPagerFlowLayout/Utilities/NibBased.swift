@@ -23,7 +23,19 @@ extension NibBased {
     // MARK: Static parameters
 
     static var nibName: String {
-        return String(describing: self)
+        String(describing: self)
+    }
+
+}
+
+extension NibBased where Self: UIView {
+
+    // MARK: Static functions
+
+    static func instantiate(owner: Any? = nil) -> Self {
+        let nib = UINib(nibName: nibName, bundle: nil)
+        let items = nib.instantiate(withOwner: owner, options: nil)
+        return items.first! as! Self
     }
 
 }
@@ -34,7 +46,7 @@ extension NibBased where Self: UIViewController {
     // MARK: Static functions
 
     static func instantiate() -> Self {
-        return Self.init(nibName: self.nibName, bundle: Bundle(for: self))
+        Self.init(nibName: self.nibName, bundle: Bundle(for: self))
     }
 
 }
@@ -45,11 +57,11 @@ extension NibBased where Self: UICollectionViewCell {
     // MARK: Static properties
 
     static var nib: UINib {
-        return UINib(nibName: String(describing: self), bundle: nil)
+        UINib(nibName: String(describing: self), bundle: nil)
     }
 
     static var reuseIdentifier: String {
-        return String(describing: self)
+        String(describing: self)
     }
 
 }
@@ -64,7 +76,7 @@ extension UICollectionView {
     }
     
     func dequeueReusableCell<T: UICollectionViewCell & NibBased>(for indexPath: IndexPath) -> T {
-        return dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+        dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
 
 }

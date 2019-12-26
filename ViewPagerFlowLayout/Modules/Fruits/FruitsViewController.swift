@@ -34,6 +34,7 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
     // MARK: Private functions
     
     private func configureViews() {
+        view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         configureCollectionView()
     }
     
@@ -43,8 +44,11 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.dataSource = self
         collectionView.delegate = self
         let layout = ViewPagerFlowLayout()
-        layout.delegate = self
+        layout.numberOfVisibleItems = 6
         collectionView.collectionViewLayout = layout
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.clipsToBounds = false
+        collectionView.backgroundColor = .clear
     }
     
 }
@@ -60,23 +64,14 @@ extension FruitsViewController: UICollectionViewDelegateFlowLayout {
 extension FruitsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.items.count
+        viewModel.itemViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = viewModel.items[indexPath.row]
+        let itemViewModel = viewModel.itemViewModels[indexPath.row]
         let cell: FruitsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.viewModel = FruitCellViewModel(fruit: item)
+        cell.viewModel = itemViewModel
         return cell
     }
 
-}
-
-
-extension FruitsViewController: ViewPagerFlowLayoutDelegate {
-    
-    func onCurrentPageChanged(layout: ViewPagerFlowLayout, currentPage: Int) {
-        
-    }
-    
 }

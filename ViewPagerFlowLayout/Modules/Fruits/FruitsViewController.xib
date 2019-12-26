@@ -21,17 +21,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRJ-D1-6oH">
-                    <rect key="frame" x="32" y="63" width="28.5" height="25.5"/>
+                    <rect key="frame" x="32" y="63" width="23" height="20"/>
                     <color key="backgroundColor" name="ButtonTint"/>
                     <color key="tintColor" name="ButtonBackTint"/>
                     <inset key="contentEdgeInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
                     <state key="normal" image="arrow.left.square.fill" catalog="system">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="33" scale="default" weight="semibold"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="default" weight="semibold"/>
                     </state>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="04v-PX-LF3">
-                    <rect key="frame" x="0.0" y="194" width="414" height="702"/>
+                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="glI-Tl-uyc">
                         <size key="itemSize" width="50" height="50"/>
@@ -45,9 +45,9 @@
             <constraints>
                 <constraint firstItem="iRJ-D1-6oH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="07Q-Pw-NbP"/>
                 <constraint firstAttribute="trailing" secondItem="04v-PX-LF3" secondAttribute="trailing" id="4Qi-YU-Pcy"/>
+                <constraint firstItem="04v-PX-LF3" firstAttribute="top" secondItem="iRJ-D1-6oH" secondAttribute="bottom" constant="25" id="8hd-3k-zuv"/>
                 <constraint firstAttribute="bottom" secondItem="04v-PX-LF3" secondAttribute="bottom" id="Cbm-GI-mYo"/>
                 <constraint firstItem="iRJ-D1-6oH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="pID-cy-ly6"/>
-                <constraint firstItem="04v-PX-LF3" firstAttribute="top" secondItem="iRJ-D1-6oH" secondAttribute="bottom" constant="105.5" id="tlp-PW-Yki"/>
                 <constraint firstItem="04v-PX-LF3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="z85-JT-x7W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

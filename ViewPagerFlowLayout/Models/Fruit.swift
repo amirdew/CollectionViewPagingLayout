@@ -13,6 +13,7 @@ struct Fruit {
     
     // MARK: Properties
     
+    let pageTitle: String
     let title: String
     let description: String
     let isVegan: Bool
@@ -28,5 +29,14 @@ extension Fruit {
     enum PriceType {
         case unit
         case kilogram
+        
+        var localizedDescription: String {
+            switch self {
+            case .unit:
+                return "per unit"
+            case .kilogram:
+                return "per Kg"
+            }
+        }
     }
 }

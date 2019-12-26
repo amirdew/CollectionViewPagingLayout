@@ -11,12 +11,12 @@ import UIKit
 protocol TransformableView {
     
     /*
-     Sends a double value based on the position of the cell
+     Sends a float value based on the position of the cell
      if the cell is in the center of CollectionView it sends 0
      
      - Parameter progress: the interpolated progress for the cell view
      **/
-    func transform(progress: Double)
+    func transform(progress: CGFloat)
     
 }
 
@@ -26,15 +26,15 @@ protocol ViewPagerFlowLayoutDelegate: class {
 }
 
 
-class ViewPagerFlowLayout: UICollectionViewFlowLayout {
+class ViewPagerFlowLayout: UICollectionViewLayout {
     
     // MARK: Properties
+    
+    var numberOfVisibleItems: Int?
     
     weak var delegate: ViewPagerFlowLayoutDelegate?
     
     private(set) var currentPage: Int
-    
-    private var collectionViewSize: CGSize?
     
     private var visibleRect: CGRect {
         guard let collectionView = collectionView else {
@@ -43,14 +43,16 @@ class ViewPagerFlowLayout: UICollectionViewFlowLayout {
         return CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
     }
     
+    private var numberOfItems: Int {
+        collectionView?.numberOfItems(inSection: 0) ?? 0
+    }
+    
     
     // MARK: Life cycle
     
     override init() {
         currentPage = 0
         super.init()
-        scrollDirection = .horizontal
-        minimumLineSpacing = 0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,46 +66,39 @@ class ViewPagerFlowLayout: UICollectionViewFlowLayout {
         return true
     }
     
+    override var collectionViewContentSize: CGSize {
+        CGSize(width: CGFloat(numberOfItems) * visibleRect.width, height: visibleRect.height)
+    }
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard var attributesArray = super.layoutAttributesForElements(in: rect) else {
-                return super.layoutAttributesForElements(in: rect)
+        var attributesArray: [UICollectionViewLayoutAttributes] = []
+        for row in 0..<numberOfItems {
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: row, section: 0))
+            let progress = CGFloat(row) - (visibleRect.minX / visibleRect.width)
+            if let numberOfVisibleItems = numberOfVisibleItems, abs(progress) >= CGFloat(numberOfVisibleItems) - 1 {
+                attributes.frame = .init(origin: .init(x: -2 * visibleRect.width, y: 0), size: visibleRect.size)
+            } else {
+                let cell = collectionView?.cellForItem(at: attributes.indexPath)
+                if cell == nil || cell is TransformableView {
+                    attributes.frame = visibleRect
+                    (cell as? TransformableView)?.transform(progress: progress)
+                } else {
+                    attributes.frame = .init(origin: .init(x: CGFloat(row) * visibleRect.width, y: 0), size: visibleRect.size)
+                }
+            }
+            attributes.zIndex = Int(-abs(round(progress)))
+            attributesArray.append(attributes)
         }
-        attributesArray = attributesArray.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }
-        
-        for attributes in attributesArray {
-            let distanceFromCenter = visibleRect.midX - attributes.center.x
-            let absDistanceFromCenter = abs(distanceFromCenter)
-            attributes.transform = CGAffineTransform(translationX: distanceFromCenter, y: 0)
-            let alpha = 1 - absDistanceFromCenter/(visibleRect.width * 2)
-            //attributes.alpha = alpha
-        }
-        
-        updateCurrentPageIfNeeded()
-        updateTransformableCells()
-        
         return attributesArray
+    }
+    
+    override func invalidateLayout() {
+        super.invalidateLayout()
+        updateCurrentPageIfNeeded()
     }
     
     
     // MARK: Private functions
-    
-    private func getInterpolatedProgressForItem(indexPath: IndexPath) -> Double {
-        guard let attributes = self.layoutAttributesForItem(at: indexPath) else {
-            return 0
-        }
-        let distanceFromCenter = visibleRect.midX - attributes.center.x
-        return Double(-distanceFromCenter/(visibleRect.width))
-    }
-    
-    private func updateTransformableCells() {
-        collectionView?.visibleCells.forEach {
-            guard let indexPath = collectionView?.indexPath(for: $0) else {
-                return
-            }
-            let progress = getInterpolatedProgressForItem(indexPath: indexPath)
-            ($0 as? TransformableView)?.transform(progress: progress)
-        }
-    }
     
     private func updateCurrentPageIfNeeded() {
         var currentPage: Int = 0
