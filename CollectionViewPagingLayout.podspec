@@ -11,10 +11,11 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/amirdew/CollectionViewPagingLayout'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Amir Khorsandi' => 'khorsandi@me.com' }
-  s.source           = { :git => 'https://github.com/amirdew/CollectionViewPagingLayout.git', :tag => s.version.to_s } 
+  s.source           = { :git => 'https://github.com/amirdew/CollectionViewPagingLayout.git', :tag => "#{s.version}" } 
 
+  s.swift_versions = ['5.0', '5.1']
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'CollectionViewPagingLayout/Lib/**/*'
+  s.source_files = 'CollectionViewPagingLayout/Lib'
 
 end
