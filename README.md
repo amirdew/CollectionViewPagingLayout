@@ -28,12 +28,54 @@ pod "CollectionViewPagingLayout"
 Just add all the files under `Lib` directory to your project
 
 ## How to use
+- make sure you imported the library if you use cocoapods
+```swift
+import CollectionViewPagingLayout
+```
+- Set the layout for collection view:
+(in most cases you want a paging effect so make sure you enable it)
+```swift
+let layout = CollectionViewPagingLayout()
+collectionView.collectionViewLayout = layout
+collectionView.isPagingEnabled = true // enabling paging effect
+```
+
+- Here you can set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time   
+```swift
+layout.numberOfVisibleItems = ...
+```
+- Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms
+> `progress` is a float value that represents current position of the cell.   
+> When it's `0` means the current position of the cell is exactly in the center of your collection view.   
+> the value could be negative or positive and that represents the distance to the center of your collection view.   
+> for instance `1` means the distance between the center of the cell and the center of your collection view is equal to your collection view width.
+
+```swift
+extension MyCollectionViewCell: TransformableView {
+    func transform(progress: CGFloat) {
+      ...
+    }
+}
+```
+
+you can start with a simple transform like this:
+```swift
+extension MyCollectionViewCell: TransformableView {
+    func transform(progress: CGFloat) {
+        let transform = CGAffineTransform(translationX: bounds.width/2 * progress, y: 0)
+        let alpha = 1 - abs(progress)
+
+        contentView.subviews.forEach { $0.transform = transform }
+        contentView.alpha = alpha
+    }
+}
+```
 
 
 ## Limitations
 You need to specify the number of visible cells since this layout gives you the flexibility to show the next and previous cells.   
 By default, the layout loads all of the cells in the collection view frame and that means it keeps all of them in memory.
-You can specify the number of cells that you need to show at the time by considering your design.
+You can specify the number of cells that you need to show at a time by considering your design.
 
 
 ## License
