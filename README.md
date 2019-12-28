@@ -7,7 +7,7 @@
 ## Preview
 <p float="left">
 <img width="375" src="https://amir.app/CollectionViewPagingLayout/preview.gif"></img>
-<img width="375" src="https://amir.app/CollectionViewPagingLayout/PreviewGallery.gif"></img>
+<img width="375" src="https://amir.app/CollectionViewPagingLayout/pgallery.gif"></img>
 </p>
 
 ## About
