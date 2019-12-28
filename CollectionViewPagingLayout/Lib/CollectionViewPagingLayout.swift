@@ -21,6 +21,12 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     weak var delegate: CollectionViewPagingLayoutDelegate?
     
+    override public var collectionViewContentSize: CGSize {
+        let safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
+        let safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
+        return CGSize(width: CGFloat(numberOfItems) * visibleRect.width - safeAreaLeftRight, height: visibleRect.height - safeAreaTopBottom)
+    }
+    
     private(set) var currentPage: Int
     
     private var visibleRect: CGRect {
@@ -46,15 +52,28 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         fatalError("not available")
     }
     
+    // MARK: Public functions
+    
+    public func setCurrentPage(_ page: Int, animated: Bool = true) {
+        var offset = visibleRect.width * CGFloat(page)
+        offset = max(0, offset)
+        offset = min(collectionViewContentSize.width - visibleRect.width, offset)
+        collectionView?.setContentOffset(.init(x: offset, y: 0), animated: animated)
+    }
+    
+    public func goToNextPage(animated: Bool = true) {
+        setCurrentPage(currentPage + 1, animated: animated)
+    }
+    
+    public func goToPrevPage(animated: Bool = true) {
+        setCurrentPage(currentPage - 1, animated: animated)
+    }
+    
     
     // MARK: UICollectionViewFlowLayout
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
-    }
-    
-    override public var collectionViewContentSize: CGSize {
-        CGSize(width: CGFloat(numberOfItems) * visibleRect.width, height: visibleRect.height)
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -63,7 +82,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: row, section: 0))
             let progress = CGFloat(row) - (visibleRect.minX / visibleRect.width)
             if let numberOfVisibleItems = numberOfVisibleItems, abs(progress) >= CGFloat(numberOfVisibleItems) - 1 {
-                attributes.frame = .init(origin: .init(x: -2 * visibleRect.width, y: 0), size: visibleRect.size)
+                attributes.isHidden = true
             } else {
                 let cell = collectionView?.cellForItem(at: attributes.indexPath)
                 if cell == nil || cell is TransformableView {
