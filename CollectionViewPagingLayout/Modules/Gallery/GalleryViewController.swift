@@ -1,19 +1,25 @@
 //
-//  FruitsViewController.swift
+//  GalleryViewController.swift
 //  CollectionViewPagingLayout
 //
-//  Created by Amir Khorsandi on 12/23/19.
+//  Created by Amir Khorsandi on 12/27/19.
 //  Copyright © 2019 Amir Khorsandi. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class FruitsViewController: UIViewController, NibBased, ViewModelBased {
+class GalleryViewController: UIViewController, NibBased, ViewModelBased {
     
     // MARK: Properties
     
-    var viewModel: FruitsViewModel!
+    var viewModel: GalleryViewModel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
+    private let layout = CollectionViewPagingLayout()
     
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -31,27 +37,35 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    
     // MARK: Event listener
     
     @IBAction private func onBackTouched() {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction private func onNextTouched() {
+        layout.goToNextPage()
+    }
+    
+    @IBAction private func onPreviousTouched() {
+        layout.goToPrevPage()
+    }
+    
     
     // MARK: Private functions
     
     private func configureViews() {
-        view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
+        view.backgroundColor = .black
         view.clipsToBounds = true
         configureCollectionView()
     }
     
     private func configureCollectionView() {
-        collectionView.register(FruitsCollectionViewCell.self)
+        collectionView.register(PhotoCollectionViewCell.self)
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
-        let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 6
+        layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
@@ -60,7 +74,7 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
     
 }
 
-extension FruitsViewController: UICollectionViewDataSource {
+extension GalleryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.itemViewModels.count
@@ -68,9 +82,10 @@ extension FruitsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemViewModel = viewModel.itemViewModels[indexPath.row]
-        let cell: FruitsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.viewModel = itemViewModel
         return cell
     }
 
 }
+

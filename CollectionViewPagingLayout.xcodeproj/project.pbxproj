@@ -29,6 +29,13 @@
 		ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A72D23B42247006A46A3 /* PriceTagView.xib */; };
 		ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */; };
 		ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */; };
+		ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */; };
+		ABC242C523B6822A00DBD4D6 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */; };
+		ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */; };
+		ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */; };
+		ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242CB23B6831400DBD4D6 /* Photo.swift */; };
+		ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */; };
+		ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +63,13 @@
 		ABA1A72D23B42247006A46A3 /* PriceTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTagView.xib; sourceTree = "<group>"; };
 		ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControllerView.swift; sourceTree = "<group>"; };
 		ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityControllerView.xib; sourceTree = "<group>"; };
+		ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
+		ABC242CB23B6831400DBD4D6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				AB500A5723B154210056BE37 /* Fruit.swift */,
+				ABC242CB23B6831400DBD4D6 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +150,7 @@
 			children = (
 				AB7C1E0423B4E292006441DE /* Main */,
 				AB500A4823B13B9D0056BE37 /* Fruits */,
+				ABC242C123B681F800DBD4D6 /* Gallery */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -193,6 +209,27 @@
 				ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */,
 			);
 			path = QuantityControllerView;
+			sourceTree = "<group>";
+		};
+		ABC242C123B681F800DBD4D6 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				ABC242C823B682D400DBD4D6 /* Cell */,
+				ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */,
+				ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */,
+				ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		ABC242C823B682D400DBD4D6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */,
+				ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */,
+				ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB500A3F23B104E60056BE37 /* LaunchScreen.storyboard in Resources */,
+				ABC242C523B6822A00DBD4D6 /* GalleryViewController.xib in Resources */,
 				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
+				ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */,
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
 				AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */,
@@ -271,14 +310,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB500A4723B1061D0056BE37 /* CollectionViewPagingLayout.swift in Sources */,
+				ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
 				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
+				ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */,
 				AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
+				ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */,
+				ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */,
 				AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */,
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
+				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,

@@ -21,4 +21,11 @@ class MainViewController: UIViewController, NibBased {
         )
     }
     
+    @IBAction private func galleryButtonTouched() {
+        navigationController?.pushViewController(
+            GalleryViewController.instantiate(viewModel: GalleryViewModel()),
+            animated: true
+        )
+    }
+    
 }

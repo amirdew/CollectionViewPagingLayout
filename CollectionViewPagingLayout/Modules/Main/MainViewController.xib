@@ -30,10 +30,10 @@ Paging Layout</string>
                     <rect key="frame" x="138.66666666666666" y="98.666666666666657" width="98" height="103.00000000000001"/>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="66" scale="large"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="C3E-e0-yVc">
-                    <rect key="frame" x="37" y="433.66666666666669" width="301" height="37"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C3E-e0-yVc">
+                    <rect key="frame" x="37" y="411" width="301" height="82"/>
                     <subviews>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edG-KY-sBy">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVv-Ll-hDx">
                             <rect key="frame" x="0.0" y="0.0" width="78" height="37"/>
                             <color key="backgroundColor" name="ButtonBackTint"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -46,13 +46,29 @@ Paging Layout</string>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="fruitsButtonTouched" destination="-1" eventType="touchUpInside" id="PSO-TI-Bb4"/>
+                                <action selector="fruitsButtonTouched" destination="-1" eventType="touchUpInside" id="psf-Be-j9b"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edG-KY-sBy">
+                            <rect key="frame" x="0.0" y="45" width="89" height="37"/>
+                            <color key="backgroundColor" name="ButtonBackTint"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="tintColor" name="ButtonTint"/>
+                            <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                            <state key="normal" title="Gallery"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="galleryButtonTouched" destination="-1" eventType="touchUpInside" id="BSY-J2-hRc"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Examples:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3x-WA-T3S">
-                    <rect key="frame" x="36.999999999999993" y="397.33333333333331" width="78.333333333333314" height="20.333333333333314"/>
+                    <rect key="frame" x="36.999999999999993" y="374.66666666666669" width="78.333333333333314" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
