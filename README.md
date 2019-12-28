@@ -5,9 +5,10 @@
 [![Platform](https://img.shields.io/cocoapods/p/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 
 ## Preview
-
+<p float="left">
 <img width="375" src="https://amir.app/CollectionViewPagingLayout/preview.gif"></img>
-
+<img width="375" src="https://amir.app/CollectionViewPagingLayout/PreviewGallery.gif"></img>
+</p>
 
 ## About
 A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
