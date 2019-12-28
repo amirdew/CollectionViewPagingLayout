@@ -22,8 +22,12 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     weak var delegate: CollectionViewPagingLayoutDelegate?
     
     override public var collectionViewContentSize: CGSize {
-        let safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
-        let safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
+        var safeAreaLeftRight: CGFloat = 0
+        var safeAreaTopBottom: CGFloat = 0
+        if #available(iOS 11, *) {
+            safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
+            safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
+        }
         return CGSize(width: CGFloat(numberOfItems) * visibleRect.width - safeAreaLeftRight, height: visibleRect.height - safeAreaTopBottom)
     }
     
