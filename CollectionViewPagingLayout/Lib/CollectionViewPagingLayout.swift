@@ -12,12 +12,13 @@ public protocol CollectionViewPagingLayoutDelegate: class {
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
 }
 
-
 public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Properties
     
     public var numberOfVisibleItems: Int?
+    
+    public var scrollDirection: UICollectionView.ScrollDirection = .horizontal
     
     weak var delegate: CollectionViewPagingLayoutDelegate?
     
@@ -28,7 +29,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
             safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
         }
-        return CGSize(width: CGFloat(numberOfItems) * visibleRect.width - safeAreaLeftRight, height: visibleRect.height - safeAreaTopBottom)
+        if scrollDirection == .horizontal {
+            return CGSize(width: CGFloat(numberOfItems) * visibleRect.width, height: visibleRect.height - safeAreaTopBottom)
+        } else {
+             return CGSize(width: visibleRect.width - safeAreaLeftRight, height: CGFloat(numberOfItems) * visibleRect.height)
+        }
     }
     
     private(set) var currentPage: Int
@@ -59,10 +64,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     // MARK: Public functions
     
     public func setCurrentPage(_ page: Int, animated: Bool = true) {
-        var offset = visibleRect.width * CGFloat(page)
+        var offset = (scrollDirection == .horizontal ? visibleRect.width : visibleRect.height) * CGFloat(page)
         offset = max(0, offset)
-        offset = min(collectionViewContentSize.width - visibleRect.width, offset)
-        collectionView?.setContentOffset(.init(x: offset, y: 0), animated: animated)
+        offset = scrollDirection == .horizontal ? min(collectionViewContentSize.width - visibleRect.width, offset) : min(collectionViewContentSize.height - visibleRect.height, offset)
+        collectionView?.setContentOffset(scrollDirection == .horizontal ? .init(x: offset, y: 0) : .init(x: 0, y: offset),
+                                         animated: animated)
     }
     
     public func goToNextPage(animated: Bool = true) {
@@ -84,7 +90,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         var attributesArray: [UICollectionViewLayoutAttributes] = []
         for row in 0..<numberOfItems {
             let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: row, section: 0))
-            let progress = CGFloat(row) - (visibleRect.minX / visibleRect.width)
+            let progress = CGFloat(row) - (scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height))
+            var zIndex = Int(-abs(round(progress)))
             if let numberOfVisibleItems = numberOfVisibleItems, abs(progress) >= CGFloat(numberOfVisibleItems) - 1 {
                 attributes.isHidden = true
             } else {
@@ -92,11 +99,12 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
                 if cell == nil || cell is TransformableView {
                     attributes.frame = visibleRect
                     (cell as? TransformableView)?.transform(progress: progress)
+                    zIndex = (cell as? TransformableView)?.zPosition(progress: progress) ?? zIndex
                 } else {
                     attributes.frame = .init(origin: .init(x: CGFloat(row) * visibleRect.width, y: 0), size: visibleRect.size)
                 }
             }
-            attributes.zIndex = Int(-abs(round(progress)))
+            attributes.zIndex = zIndex
             attributesArray.append(attributes)
         }
         return attributesArray
@@ -113,9 +121,9 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     private func updateCurrentPageIfNeeded() {
         var currentPage: Int = 0
         if let collectionView = collectionView {
-            let pageWidth = collectionView.frame.width
-            let contentOffset = collectionView.contentOffset.x + collectionView.contentInset.left
-            currentPage = Int(round(contentOffset / pageWidth))
+            let pageSize = scrollDirection == .horizontal ? collectionView.frame.width : collectionView.frame.height
+            let contentOffset = scrollDirection == .horizontal ? (collectionView.contentOffset.x + collectionView.contentInset.left) : (collectionView.contentOffset.y + collectionView.contentInset.top)
+            currentPage = Int(round(contentOffset / pageSize))
         }
         if currentPage != self.currentPage {
             self.currentPage = currentPage

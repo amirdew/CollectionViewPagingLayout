@@ -13,11 +13,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     
     // MARK: Properties
     
-    var viewModel: GalleryViewModel!
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
+    var viewModel: CardsViewModel!
     
     private let layout = CollectionViewPagingLayout()
     
@@ -56,25 +52,26 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     // MARK: Private functions
     
     private func configureViews() {
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
         view.clipsToBounds = true
         configureCollectionView()
     }
     
     private func configureCollectionView() {
-        collectionView.register(PhotoCollectionViewCell.self)
+        collectionView.register(CardCollectionViewCell.self)
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         layout.numberOfVisibleItems = 10
+        layout.scrollDirection = .vertical
         collectionView.collectionViewLayout = layout
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
     }
     
 }
 
-extension GalleryViewController: UICollectionViewDataSource {
+extension CardsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.itemViewModels.count
@@ -82,7 +79,7 @@ extension GalleryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemViewModel = viewModel.itemViewModels[indexPath.row]
-        let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: CardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.viewModel = itemViewModel
         return cell
     }

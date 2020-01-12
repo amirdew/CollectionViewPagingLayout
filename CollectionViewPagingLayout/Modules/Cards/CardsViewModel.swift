@@ -12,7 +12,7 @@ class CardsViewModel {
     
     // MARK: Properties
     
-    var itemViewModels: [PhotoCellViewModel] = []
+    var itemViewModels: [CardCellViewModel] = []
     
     private let photos: [Photo] = [
         Photo(imageName: "galleryImage07", title: "Oksana", authorName: "Dmitry Simakovichr"),
@@ -29,8 +29,8 @@ class CardsViewModel {
     // MARK: Lifecycle
     
     init() {
-        itemViewModels = photos.map {
-            PhotoCellViewModel(imageName: $0.imageName, title: $0.title, subtitle: "by " + $0.authorName)
+        itemViewModels = photos.map { 
+            CardCellViewModel(title: $0.title)
         }
     }
 }

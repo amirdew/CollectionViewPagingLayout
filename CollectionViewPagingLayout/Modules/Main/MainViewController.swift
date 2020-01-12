@@ -28,4 +28,11 @@ class MainViewController: UIViewController, NibBased {
         )
     }
     
+    @IBAction private func cardsButtonTouched() {
+        navigationController?.pushViewController(
+            CardsViewController.instantiate(viewModel: CardsViewModel()),
+            animated: true
+        )
+    }
+    
 }
