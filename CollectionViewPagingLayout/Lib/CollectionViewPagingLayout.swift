@@ -88,9 +88,18 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributesArray: [UICollectionViewLayoutAttributes] = []
-        for row in 0..<numberOfItems {
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: row, section: 0))
-            let progress = CGFloat(row) - (scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height))
+        var numberOfAttributes = min(numberOfItems, numberOfVisibleItems ?? numberOfItems)
+        numberOfAttributes = max(numberOfAttributes, 3)
+        if numberOfAttributes % 2 == 0 {
+            numberOfAttributes += 1
+        }
+        
+        let currentIndex = Int(round(scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height)))
+        let startIndex = max(0, currentIndex - (numberOfAttributes - 1)/2)
+        
+        for index in startIndex..<startIndex + numberOfAttributes {
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: index, section: 0))
+            let progress = CGFloat(index) - (scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height))
             var zIndex = Int(-abs(round(progress)))
             if let numberOfVisibleItems = numberOfVisibleItems, abs(progress) >= CGFloat(numberOfVisibleItems) - 1 {
                 attributes.isHidden = true
@@ -101,7 +110,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
                     (cell as? TransformableView)?.transform(progress: progress)
                     zIndex = (cell as? TransformableView)?.zPosition(progress: progress) ?? zIndex
                 } else {
-                    attributes.frame = .init(origin: .init(x: CGFloat(row) * visibleRect.width, y: 0), size: visibleRect.size)
+                    attributes.frame = .init(origin: .init(x: CGFloat(index) * visibleRect.width, y: 0), size: visibleRect.size)
                 }
             }
             attributes.zIndex = zIndex

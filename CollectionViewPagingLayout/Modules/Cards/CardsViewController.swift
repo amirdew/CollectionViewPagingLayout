@@ -11,6 +11,14 @@ import UIKit
 
 class CardsViewController: UIViewController, NibBased, ViewModelBased {
     
+    // MARK: Constants
+    
+    private struct Constants {
+        
+        static let collectionViewMaxItems = 100000
+    }
+    
+    
     // MARK: Properties
     
     var viewModel: CardsViewModel!
@@ -67,6 +75,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
+        collectionView.scrollToItem(at: .init(row: Constants.collectionViewMaxItems/2, section: 0), at: .centeredVertically, animated: false)
     }
     
 }
@@ -74,11 +83,12 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
 extension CardsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.itemViewModels.count
+        Constants.collectionViewMaxItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemViewModel = viewModel.itemViewModels[indexPath.row]
+        let index = indexPath.row % viewModel.itemViewModels.count
+        let itemViewModel = viewModel.itemViewModels[index]
         let cell: CardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.viewModel = itemViewModel
         return cell
