@@ -9,5 +9,9 @@
 import Foundation
 
 struct CardCellViewModel: Equatable {
-    let title: String
+    
+    let card: Card
+    var imageName: String {
+        card.imageName
+    }
 }

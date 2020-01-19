@@ -17,33 +17,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaF-xs-3HB">
-                        <rect key="frame" x="63" y="156.5" width="381" height="240"/>
+                        <rect key="frame" x="93.5" y="176" width="320" height="201"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbb-wG-6A0">
-                                <rect key="frame" x="169.5" y="109.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-vI-zCB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="201"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Pbb-wG-6A0" firstAttribute="centerY" secondItem="oaF-xs-3HB" secondAttribute="centerY" id="AF8-W6-wFh"/>
-                            <constraint firstItem="Pbb-wG-6A0" firstAttribute="centerX" secondItem="oaF-xs-3HB" secondAttribute="centerX" id="cAk-ny-VUa"/>
+                            <constraint firstAttribute="trailing" secondItem="Ic9-vI-zCB" secondAttribute="trailing" id="04I-Bz-rK4"/>
+                            <constraint firstAttribute="bottom" secondItem="Ic9-vI-zCB" secondAttribute="bottom" id="YVi-cE-U69"/>
+                            <constraint firstItem="Ic9-vI-zCB" firstAttribute="top" secondItem="oaF-xs-3HB" secondAttribute="top" id="Z1U-sW-wxj"/>
+                            <constraint firstItem="Ic9-vI-zCB" firstAttribute="leading" secondItem="oaF-xs-3HB" secondAttribute="leading" id="Zel-RP-NjI"/>
                             <constraint firstAttribute="width" secondItem="oaF-xs-3HB" secondAttribute="height" multiplier="8560:5390" id="f6r-nc-NOq"/>
+                            <constraint firstAttribute="width" constant="320" id="vP8-eE-I14"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oaF-xs-3HB" firstAttribute="centerY" secondItem="yaN-sz-1z1" secondAttribute="centerY" id="KzU-iO-lv4"/>
-                    <constraint firstItem="oaF-xs-3HB" firstAttribute="width" secondItem="yaN-sz-1z1" secondAttribute="width" multiplier="0.751479" id="g9i-0n-Dtv"/>
                     <constraint firstItem="oaF-xs-3HB" firstAttribute="centerX" secondItem="yaN-sz-1z1" secondAttribute="centerX" id="tk0-VP-Kwb"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="488" height="406"/>
             <connections>
                 <outlet property="backgroundContainerView" destination="oaF-xs-3HB" id="xcX-ae-soM"/>
-                <outlet property="titleLabel" destination="Pbb-wG-6A0" id="YwE-Ii-hzp"/>
+                <outlet property="imageView" destination="Ic9-vI-zCB" id="qmD-SB-8Bz"/>
             </connections>
             <point key="canvasLocation" x="306.52173913043481" y="130.91517857142856"/>
         </collectionViewCell>

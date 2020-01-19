@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
 		AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */; };
 		AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */; };
 		AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsViewController.xib; sourceTree = "<group>"; };
 		AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				AB500A5723B154210056BE37 /* Fruit.swift */,
 				ABC242CB23B6831400DBD4D6 /* Photo.swift */,
+				2925CDDE23D4D21F00243F5F /* Card.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				AB500A4723B1061D0056BE37 /* CollectionViewPagingLayout.swift in Sources */,
 				ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */,
+				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
 				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
 				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,

@@ -15,13 +15,17 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     
     private struct Constants {
         
-        static let collectionViewMaxItems = 100000
+        static let infiniteNumberOfItems = 100000
     }
     
     
     // MARK: Properties
     
     var viewModel: CardsViewModel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
     private let layout = CollectionViewPagingLayout()
     
@@ -36,9 +40,17 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         configureViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        layout.setCurrentPage(Constants.infiniteNumberOfItems/2, animated: false)
+        UIView.animate(withDuration: 0.25) {
+            self.collectionView.alpha = 1
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.collectionViewLayout.invalidateLayout()
+        layout.invalidateLayout()
     }
     
     
@@ -60,7 +72,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     // MARK: Private functions
     
     private func configureViews() {
-        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.05882352941, green: 0.06274509804, blue: 0.1137254902, alpha: 1)
         view.clipsToBounds = true
         configureCollectionView()
     }
@@ -69,13 +81,13 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.register(CardCollectionViewCell.self)
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
-        layout.numberOfVisibleItems = 10
+        layout.numberOfVisibleItems = 7
         layout.scrollDirection = .vertical
         collectionView.collectionViewLayout = layout
         collectionView.showsVerticalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
-        collectionView.scrollToItem(at: .init(row: Constants.collectionViewMaxItems/2, section: 0), at: .centeredVertically, animated: false)
+        collectionView.alpha = 0
     }
     
 }
@@ -83,7 +95,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
 extension CardsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Constants.collectionViewMaxItems
+        Constants.infiniteNumberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

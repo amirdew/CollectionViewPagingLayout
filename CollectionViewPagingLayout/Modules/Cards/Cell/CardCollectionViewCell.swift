@@ -19,7 +19,7 @@ class CardCollectionViewCell: UICollectionViewCell, NibBased {
         }
     }
     
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var backgroundContainerView: UIView!
     
     
@@ -37,19 +37,20 @@ class CardCollectionViewCell: UICollectionViewCell, NibBased {
         contentView.clipsToBounds = false
         backgroundColor = .clear
         
-        backgroundContainerView.backgroundColor = .white
-        backgroundContainerView.layer.cornerRadius = 6
+        backgroundContainerView.backgroundColor = .clear
+        backgroundContainerView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 20
         backgroundContainerView.layer.shadowColor = UIColor.black.cgColor
-        backgroundContainerView.layer.shadowOpacity = 0.1
+        backgroundContainerView.layer.shadowOpacity = 0.6
         backgroundContainerView.layer.shadowOffset = .init(width: 0, height: 2)
-        backgroundContainerView.layer.shadowRadius = 20
+        backgroundContainerView.layer.shadowRadius = 10
     }
     
     private func updateViews() {
         guard let viewModel = viewModel else {
             return
         }
-        titleLabel.text = viewModel.title
+        imageView.image = UIImage(named: viewModel.imageName)
     }
 
 }
@@ -60,16 +61,16 @@ extension CardCollectionViewCell: TransformableView {
     func transform(progress: CGFloat) {
         
         var alpha = 1 + progress
-        var y = progress * 10
+        var y = progress * 13
         var angle: CGFloat = 0
         var scale: CGFloat = 1 - progress * 0.05
         
         if progress > 3 {
             alpha = 1 - progress + 3
-            y = 3 * 10
+            y = 3 * 13
         }
         
-        let offset: CGFloat = 220
+        let offset: CGFloat = 240
         
         if progress < 0, progress >= -0.5 {
             alpha = 1
