@@ -61,6 +61,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         fatalError("not available")
     }
     
+    
     // MARK: Public functions
     
     public func setCurrentPage(_ page: Int, animated: Bool = true) {

@@ -59,7 +59,6 @@ class CardCollectionViewCell: UICollectionViewCell, NibBased {
 extension CardCollectionViewCell: TransformableView {
     
     func transform(progress: CGFloat) {
-        
         var alpha = 1 + progress
         var y = progress * 13
         var angle: CGFloat = 0
@@ -74,19 +73,23 @@ extension CardCollectionViewCell: TransformableView {
         
         if progress < 0, progress >= -0.5 {
             alpha = 1
-            y = progress * (offset / 0.5)
-            angle = progress * ((-.pi * 0.08) / 0.5)
-        } else if progress < -0.5, progress >= -1 {
+            let lProgress = -logProgress(min: 0, max: -0.5, progress: progress)
+            y = lProgress * offset
+            angle = lProgress * (-.pi * 0.08)
+        } else if progress < -0.5, progress > -1 {
             alpha = 1
-            y = -offset - (progress + 0.5) * (CGFloat(offset + 30) / 0.5)
-            angle = CGFloat(.pi * 0.08) - CGFloat((progress + 0.5) * CGFloat((-.pi * 0.08) / 0.5))
+            let lProgress = logProgress(min: -0.5, max: -1.0, progress: progress, reverse: true)
+            y = -offset + lProgress * (CGFloat(offset + 30))
+            angle = CGFloat(.pi * 0.08) - lProgress * CGFloat(.pi * 0.08)
         }
         
         if progress < -0.5 {
             scale = 1 + 0.5 * 0.05 + ((progress + 0.5)  * 0.35)
         }
-        
-        var adjustScale = (abs(round(progress) - progress)) * 0.2
+
+        let adjustScaleProgress = abs(round(progress) - progress)
+        let adjustScaleLogProgress = logProgress(min: 0, max: 0.5, progress: adjustScaleProgress)
+        var adjustScale = adjustScaleLogProgress * 0.1
         if progress < 0, progress >= -1.0 {
             adjustScale *= -1
         }
@@ -103,6 +106,20 @@ extension CardCollectionViewCell: TransformableView {
             return -10
         }
         return Int(-abs(round(progress)))
+    }
+    
+    
+    // MARK: Private functions
+    
+    private func logProgress(min: CGFloat, max: CGFloat, progress: CGFloat, reverse: Bool = false) -> CGFloat {
+        let logValue = (abs(progress - min) / abs(max - min)) * 99
+        let value: CGFloat
+        if reverse {
+            value = 1 - log10(1 + (99 - logValue)) / 2
+        } else {
+            value = log10(1 + logValue) / 2
+        }
+        return value
     }
     
 }

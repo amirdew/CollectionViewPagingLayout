@@ -88,6 +88,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
         collectionView.alpha = 0
+        collectionView.scrollsToTop = false
     }
     
 }
