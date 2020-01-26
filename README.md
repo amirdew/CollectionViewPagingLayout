@@ -6,9 +6,10 @@
 
 ## Preview
 <p float="left">
-<img width="375" src="https://amir.app/CollectionViewPagingLayout/preview.gif"></img>
-<img width="375" src="https://amir.app/CollectionViewPagingLayout/pgallery.gif"></img>
+<img width="375" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="375" src="https://amir.app/git/gallery_preview.gif"></img>
 </p>
+<img width="800" src="https://amir.app/git/card_stack_preview.gif"></img>
 
 ## About
 A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
