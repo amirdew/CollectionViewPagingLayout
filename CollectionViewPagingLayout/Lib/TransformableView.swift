@@ -17,7 +17,7 @@ public protocol TransformableView {
     /// - Parameter progress: the interpolated progress for the cell view
     func transform(progress: CGFloat)
     
-    /// Optional function for providing the Z index(position) of cell view
+    /// Optional function for providing the Z index(position) of the cell view
     /// As defined as an extension the default value of zIndex is Int(-abs(round(progress)))
     ///
     /// - Parameter progress: the interpolated progress for the cell view
