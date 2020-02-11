@@ -133,7 +133,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         if let collectionView = collectionView {
             let pageSize = scrollDirection == .horizontal ? collectionView.frame.width : collectionView.frame.height
             let contentOffset = scrollDirection == .horizontal ? (collectionView.contentOffset.x + collectionView.contentInset.left) : (collectionView.contentOffset.y + collectionView.contentInset.top)
-            currentPage = Int(round(contentOffset / pageSize))
+            if pageSize > 0 {
+                currentPage = Int(round(contentOffset / pageSize))
+            } else {
+                currentPage = 0
+            }
         }
         if currentPage != self.currentPage {
             self.currentPage = currentPage
