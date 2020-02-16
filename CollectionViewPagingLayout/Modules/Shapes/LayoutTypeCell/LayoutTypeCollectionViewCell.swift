@@ -46,7 +46,7 @@ class LayoutTypeCollectionViewCell: UICollectionViewCell, NibBased {
     private func updateViews() {
         titleLabel.text = viewModel?.title
         subtitleLabel.text = viewModel?.subtitle
-        imageView.image = viewModel.let { UIImage(systemName: $0.iconName) }
+        imageView.image = (viewModel?.iconName).let { UIImage(systemName: $0) }
     }
     
 }

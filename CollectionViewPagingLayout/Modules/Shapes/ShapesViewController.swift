@@ -48,7 +48,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func configureCollectionView() {
-        collectionView.register(ScaleShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleLinearShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleEaseInShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleEaseOutShapeCollectionViewCell.self)
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
@@ -65,12 +67,26 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         layoutTypeCollectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 5
+        layout.delegate = self
         layoutTypeCollectionView.collectionViewLayout = layout
         layoutTypeCollectionView.showsHorizontalScrollIndicator = false
         layoutTypeCollectionView.clipsToBounds = false
         layoutTypeCollectionView.backgroundColor = .clear
     }
     
+    private func getShapeCell(collectionView: UICollectionView, for indexPath: IndexPath) -> BaseShapeCollectionViewCell {
+
+        switch viewModel.selectedLayoutMode {
+        case .scaleLinear:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleLinearShapeCollectionViewCell
+        
+        case .scaleEaseIn:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseInShapeCollectionViewCell
+            
+        case .scaleEaseOut:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseOutShapeCollectionViewCell
+        }
+    }
 }
 
 extension ShapesViewController: UICollectionViewDataSource {
@@ -96,7 +112,7 @@ extension ShapesViewController: UICollectionViewDataSource {
         
         if collectionView == self.collectionView {
             let itemViewModel = viewModel.shapeViewModels[indexPath.row]
-            let cell: ScaleShapeCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            let cell = getShapeCell(collectionView: collectionView, for: indexPath)
             cell.viewModel = itemViewModel
             return cell
         }
@@ -104,4 +120,18 @@ extension ShapesViewController: UICollectionViewDataSource {
         fatalError("unknown collection view")
     }
     
+}
+
+
+extension ShapesViewController: CollectionViewPagingLayoutDelegate {
+    
+    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
+
+        self.viewModel.selectedLayoutMode = self.viewModel.layoutTypeViewModels[currentPage].layout
+        self.collectionView.reloadData()
+        
+        collectionView.performBatchUpdates({
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
+    }
 }

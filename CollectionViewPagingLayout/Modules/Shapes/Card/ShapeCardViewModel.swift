@@ -1,14 +1,14 @@
 //
-//  ShapeCellViewModel.swift
+//  ShapeCardViewModel.swift
 //  CollectionViewPagingLayout
 //
-//  Created by Amir on 15/02/2020.
+//  Created by Amir Khorsandi on 2/16/20.
 //  Copyright © 2020 Amir Khorsandi. All rights reserved.
 //
 
 import UIKit
 
-struct ShapeCellViewModel {
+struct ShapeCardViewModel {
     
     // MARK: Properties
     
@@ -16,4 +16,3 @@ struct ShapeCellViewModel {
     let title: String
     let colors: [UIColor]
 }
-

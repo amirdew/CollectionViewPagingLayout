@@ -12,31 +12,54 @@ class ShapesViewModel {
     
     // MARK: Properties
     
+    var selectedLayoutMode: ShapesLayoutMode = .scaleLinear {
+        didSet {
+            refreshShapeViewModels()
+        }
+    }
+    
     let layoutTypeViewModels: [LayoutTypeCellViewModel] = [
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Center"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Left"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Right"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Center"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Left"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Right"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Center"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Left"),
-        .init(iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Right"),
+        .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
+        .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
+        .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
+    ]
+    
+    var shapeViewModels: [ShapeCardViewModel] = []
+    
+    private let shapes: [Shape] = [
+        .init(name: "Hexagon", iconName: "hexagon.fill"),
+        .init(name: "Rectangle", iconName: "rectangle.fill"),
+        .init(name: "Shield", iconName: "shield.fill"),
+        .init(name: "App", iconName: "app.fill"),
+        .init(name: "Triangle", iconName: "triangle.fill"),
+        .init(name: "Circle", iconName: "circle.fill"),
+        .init(name: "Square", iconName: "square.fill"),
+        .init(name: "Capsule", iconName: "capsule.fill")
     ]
     
     
-    let shapeViewModels: [ShapeCellViewModel] = [
-        .init(iconName: "hexagon.fill",
-              title: "Hexagon",
-              colors: [UIColor(red: 253/255, green: 110/255, blue: 106/255, alpha: 1), UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]),
-        .init(iconName: "shield.fill",
-              title: "Shield",
-              colors: [UIColor(red: 253/255, green: 110/255, blue: 106/255, alpha: 1), UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]),
-        .init(iconName: "app.fill",
-              title: "App",
-              colors: [UIColor(red: 253/255, green: 110/255, blue: 106/255, alpha: 1), UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)]),
-        .init(iconName: "triangle.fill",
-              title: "Triangle",
-              colors: [UIColor(red: 253/255, green: 110/255, blue: 106/255, alpha: 1), UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)])
-    ]
+    // MARK: Lifecycle
+    
+    init() {
+        refreshShapeViewModels()
+    }
+    
+    
+    // MARK: Private properties
+    
+    private func refreshShapeViewModels() {
+        let colors: [UIColor]
+        switch selectedLayoutMode {
+        case .scaleLinear:
+            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
+        case .scaleEaseIn:
+            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
+        case .scaleEaseOut:
+            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
+        }
+        shapeViewModels = shapes.map {
+            ShapeCardViewModel(iconName: $0.iconName, title: $0.name, colors: colors)
+        }
+    }
+    
 }

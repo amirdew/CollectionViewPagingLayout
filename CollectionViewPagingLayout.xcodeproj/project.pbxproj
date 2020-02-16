@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
-		2997D9CE23F7065600C6E78B /* StackTransformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2997D9CD23F7065600C6E78B /* StackTransformView.swift */; };
 		29D9F94023F7F58E00656A67 /* ScaleTransformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F93F23F7F58E00656A67 /* ScaleTransformView.swift */; };
 		29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94223F7F98800656A67 /* ShapesViewController.swift */; };
 		29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94423F7F99400656A67 /* ShapesViewModel.swift */; };
@@ -18,10 +17,8 @@
 		29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94D23F7FDA600656A67 /* LayoutTypeCellViewModel.swift */; };
 		29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94F23F806C400656A67 /* Optional+Let.swift */; };
 		29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */; };
-		29D9F95523F8687100656A67 /* ShapeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95423F8687100656A67 /* ShapeCellViewModel.swift */; };
-		29D9F95723F8689100656A67 /* ScaleShapeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29D9F95623F8689100656A67 /* ScaleShapeCollectionViewCell.xib */; };
 		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
-		29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */; };
+		29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */; };
 		AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */; };
 		AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */; };
 		AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */; };
@@ -46,6 +43,13 @@
 		AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0523B4E2B2006441DE /* MainViewController.swift */; };
 		AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7C1E0723B4E2C0006441DE /* MainViewController.xib */; };
 		AB7C1E0B23B4F224006441DE /* TransformableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0A23B4F224006441DE /* TransformableView.swift */; };
+		ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */; };
+		ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0223F93CDB004A9C18 /* Shape.swift */; };
+		ABA0DA0523F9763F004A9C18 /* TransformCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0423F9763F004A9C18 /* TransformCurve.swift */; };
+		ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */; };
+		ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */; };
+		ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */; };
+		ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */; };
 		ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A72B23B42240006A46A3 /* PriceTagView.swift */; };
 		ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A72D23B42247006A46A3 /* PriceTagView.xib */; };
 		ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */; };
@@ -61,7 +65,6 @@
 
 /* Begin PBXFileReference section */
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		2997D9CD23F7065600C6E78B /* StackTransformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackTransformView.swift; sourceTree = "<group>"; };
 		29D9F93F23F7F58E00656A67 /* ScaleTransformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleTransformView.swift; sourceTree = "<group>"; };
 		29D9F94223F7F98800656A67 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		29D9F94423F7F99400656A67 /* ShapesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewModel.swift; sourceTree = "<group>"; };
@@ -71,10 +74,8 @@
 		29D9F94D23F7FDA600656A67 /* LayoutTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTypeCellViewModel.swift; sourceTree = "<group>"; };
 		29D9F94F23F806C400656A67 /* Optional+Let.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Let.swift"; sourceTree = "<group>"; };
 		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
-		29D9F95423F8687100656A67 /* ShapeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCellViewModel.swift; sourceTree = "<group>"; };
-		29D9F95623F8689100656A67 /* ScaleShapeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScaleShapeCollectionViewCell.xib; sourceTree = "<group>"; };
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleShapeCollectionViewCells.swift; sourceTree = "<group>"; };
 		AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsViewController.xib; sourceTree = "<group>"; };
 		AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +102,13 @@
 		AB7C1E0523B4E2B2006441DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AB7C1E0723B4E2C0006441DE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		AB7C1E0A23B4F224006441DE /* TransformableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformableView.swift; sourceTree = "<group>"; };
+		ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesLayoutMode.swift; sourceTree = "<group>"; };
+		ABA0DA0223F93CDB004A9C18 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		ABA0DA0423F9763F004A9C18 /* TransformCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformCurve.swift; sourceTree = "<group>"; };
+		ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCardView.swift; sourceTree = "<group>"; };
+		ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCardView.xib; sourceTree = "<group>"; };
+		ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCardViewModel.swift; sourceTree = "<group>"; };
+		ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utilities.swift"; sourceTree = "<group>"; };
 		ABA1A72B23B42240006A46A3 /* PriceTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTagView.swift; sourceTree = "<group>"; };
 		ABA1A72D23B42247006A46A3 /* PriceTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTagView.xib; sourceTree = "<group>"; };
 		ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControllerView.swift; sourceTree = "<group>"; };
@@ -128,6 +136,7 @@
 		29D9F94123F7F92000656A67 /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				ABA0DA0623F98B53004A9C18 /* Card */,
 				29D9F95123F8683B00656A67 /* ShapeCell */,
 				29D9F94823F7FC2D00656A67 /* LayoutTypeCell */,
 				29D9F94223F7F98800656A67 /* ShapesViewController.swift */,
@@ -150,10 +159,8 @@
 		29D9F95123F8683B00656A67 /* ShapeCell */ = {
 			isa = PBXGroup;
 			children = (
-				29D9F95423F8687100656A67 /* ShapeCellViewModel.swift */,
+				29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */,
 				29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */,
-				29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */,
-				29D9F95623F8689100656A67 /* ScaleShapeCollectionViewCell.xib */,
 			);
 			path = ShapeCell;
 			sourceTree = "<group>";
@@ -239,6 +246,8 @@
 				AB500A5723B154210056BE37 /* Fruit.swift */,
 				ABC242CB23B6831400DBD4D6 /* Photo.swift */,
 				2925CDDE23D4D21F00243F5F /* Card.swift */,
+				ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */,
+				ABA0DA0223F93CDB004A9C18 /* Shape.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				AB500A4D23B13C5C0056BE37 /* NibBased.swift */,
+				ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */,
 				AB500A5423B152500056BE37 /* ViewModelBased.swift */,
 				AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */,
 				29D9F94F23F806C400656A67 /* Optional+Let.swift */,
@@ -290,10 +300,20 @@
 			children = (
 				AB500A4623B1061D0056BE37 /* CollectionViewPagingLayout.swift */,
 				AB7C1E0A23B4F224006441DE /* TransformableView.swift */,
-				2997D9CD23F7065600C6E78B /* StackTransformView.swift */,
 				29D9F93F23F7F58E00656A67 /* ScaleTransformView.swift */,
+				ABA0DA0423F9763F004A9C18 /* TransformCurve.swift */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		ABA0DA0623F98B53004A9C18 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */,
+				ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */,
+				ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 		ABA1A72A23B4222E006A46A3 /* PriceTagView */ = {
@@ -395,12 +415,12 @@
 			files = (
 				29D9F94A23F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib in Resources */,
 				AB500A3F23B104E60056BE37 /* LaunchScreen.storyboard in Resources */,
-				29D9F95723F8689100656A67 /* ScaleShapeCollectionViewCell.xib in Resources */,
 				ABC242C523B6822A00DBD4D6 /* GalleryViewController.xib in Resources */,
 				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
 				AB1BBA9F23CA7BE3004E5C3B /* CardsViewController.xib in Resources */,
 				29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */,
 				ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */,
+				ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */,
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
 				AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */,
@@ -421,27 +441,32 @@
 				ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */,
 				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
-				29D9F95523F8687100656A67 /* ShapeCellViewModel.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
+				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
+				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
 				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
 				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				29D9F94023F7F58E00656A67 /* ScaleTransformView.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
 				ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */,
+				ABA0DA0523F9763F004A9C18 /* TransformCurve.swift in Sources */,
 				AB1BBAA023CA7BE6004E5C3B /* CardsViewModel.swift in Sources */,
 				AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
 				ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */,
 				AB1BBA9E23CA7BD9004E5C3B /* CardsViewController.swift in Sources */,
+				ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */,
 				ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */,
 				AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */,
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
 				29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */,
-				29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */,
+				29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */,
+				ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */,
 				29D9F94C23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift in Sources */,
 				AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */,
 				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,
+				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
@@ -449,7 +474,6 @@
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
 				AB7C1E0B23B4F224006441DE /* TransformableView.swift in Sources */,
-				2997D9CE23F7065600C6E78B /* StackTransformView.swift in Sources */,
 				29D9F95923F874E900656A67 /* GradientView.swift in Sources */,
 				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
 				AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */,

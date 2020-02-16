@@ -10,6 +10,7 @@ struct LayoutTypeCellViewModel {
     
     // MARK: Properties
     
+    let layout: ShapesLayoutMode
     let iconName: String
     let title: String
     let subtitle: String

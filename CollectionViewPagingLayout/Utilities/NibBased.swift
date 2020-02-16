@@ -60,10 +60,6 @@ extension NibBased where Self: UICollectionViewCell {
         UINib(nibName: String(describing: self), bundle: nil)
     }
 
-    static var reuseIdentifier: String {
-        String(describing: self)
-    }
-
 }
 
 

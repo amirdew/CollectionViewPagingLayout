@@ -8,24 +8,28 @@
 
 import UIKit
 
-class BaseShapeCollectionViewCell: UICollectionViewCell, NibBased {
+class BaseShapeCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     
-    var viewModel: ShapeCellViewModel? {
+    var viewModel: ShapeCardViewModel? {
         didSet {
             updateViews()
         }
     }
     
-    @IBOutlet private weak var gradientView: GradientView!
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
+    private(set) var shapeCardView: ShapeCardView!
     
     
-    // MARK: UICollectionViewCell
+    // MARK: Lifecycle
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         setupViews()
     }
     
@@ -33,18 +37,15 @@ class BaseShapeCollectionViewCell: UICollectionViewCell, NibBased {
     // MARK: Private functions
     
     private func setupViews() {
-        titleLabel.font = .systemFont(ofSize: 36, weight: .light)
-        gradientView.set(startPoint: .zero, endPoint: CGPoint(x: 1, y: 1))
-        gradientView.layer.borderColor = UIColor.white.cgColor
-        gradientView.layer.borderWidth = 5
+        shapeCardView = ShapeCardView.instantiate()
+        contentView.fill(with: shapeCardView,
+                         edges: UIEdgeInsets(top: 50, left: 50, bottom: -60, right: -50))
         clipsToBounds = false
         contentView.clipsToBounds = false
     }
     
     private func updateViews() {
-        titleLabel.text = viewModel?.title
-        imageView.image = viewModel.let { UIImage(systemName: $0.iconName) }
-        gradientView.set(colors: viewModel?.colors ?? [])
+        shapeCardView.viewModel = viewModel
     }
     
 }

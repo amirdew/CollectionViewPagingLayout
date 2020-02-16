@@ -9,7 +9,6 @@
 import Foundation
 
 extension Optional {
-    
     func `let`<T>(_ transform: (Wrapped) -> T?) -> T? {
         if case .some(let value) = self {
             return transform(value)
