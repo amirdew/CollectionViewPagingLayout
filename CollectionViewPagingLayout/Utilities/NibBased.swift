@@ -71,8 +71,9 @@ extension UICollectionView {
 
     // MARK: Public functions
 
-    func register<T: UICollectionViewCell & NibBased>(_ cellType: T.Type) {
-        register(T.nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+    func register<T: UICollectionViewCell & NibBased>(_ cellType: T.Type, nibName: String? = nil) {
+        let nib = nibName.let { UINib(nibName: $0, bundle: nil) } ?? T.nib
+        register(nib, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
     func dequeueReusableCell<T: UICollectionViewCell & NibBased>(for indexPath: IndexPath) -> T {

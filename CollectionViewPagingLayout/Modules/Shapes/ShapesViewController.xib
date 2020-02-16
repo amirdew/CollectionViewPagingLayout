@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShapesViewController" customModule="CollectionViewPagingLayout" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="KcB-fn-Ojq" id="b1G-Kq-Mrc"/>
+                <outlet property="layoutTypeCollectionView" destination="Lb2-15-Dq3" id="0FZ-em-Sll"/>
+                <outlet property="view" destination="iN0-l3-epB" id="2vU-63-62s"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p26-Ln-ASY">
+                    <rect key="frame" x="32" y="63" width="23" height="20"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                    <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="contentEdgeInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
+                    <state key="normal" image="arrow.left.square.fill" catalog="system">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="default" weight="semibold"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackTouched" destination="-1" eventType="touchUpInside" id="sdX-Zl-eKA"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KcB-fn-Ojq">
+                    <rect key="frame" x="0.0" y="93" width="414" height="571"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RPr-la-QPH">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Lb2-15-Dq3">
+                    <rect key="frame" x="0.0" y="664" width="414" height="232"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Oc9-yA-d02">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KcB-fn-Ojq" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BC1-4Z-Rtd"/>
+                <constraint firstItem="Lb2-15-Dq3" firstAttribute="top" secondItem="KcB-fn-Ojq" secondAttribute="bottom" id="FOb-g3-yTi"/>
+                <constraint firstItem="Lb2-15-Dq3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Fdi-4x-9h8"/>
+                <constraint firstItem="p26-Ln-ASY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="Kcq-6Z-Niw"/>
+                <constraint firstItem="KcB-fn-Ojq" firstAttribute="top" secondItem="p26-Ln-ASY" secondAttribute="bottom" constant="10" id="O7M-pd-eXi"/>
+                <constraint firstItem="Lb2-15-Dq3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="R7O-fU-Gmo"/>
+                <constraint firstAttribute="bottom" secondItem="Lb2-15-Dq3" secondAttribute="bottom" id="WX7-I4-6KC"/>
+                <constraint firstItem="KcB-fn-Ojq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eq6-iY-n0D"/>
+                <constraint firstItem="p26-Ln-ASY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="rlv-DQ-Q8w"/>
+                <constraint firstItem="KcB-fn-Ojq" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.637" id="tZ6-4E-M86"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.left.square.fill" catalog="system" width="64" height="56"/>
+    </resources>
+</document>

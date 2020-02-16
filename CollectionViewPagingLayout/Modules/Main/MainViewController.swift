@@ -14,6 +14,13 @@ class MainViewController: UIViewController, NibBased {
     
     // MARK: Event listeners
     
+    @IBAction private func shapesButtonTouched() {
+        navigationController?.pushViewController(
+            ShapesViewController.instantiate(viewModel: ShapesViewModel()),
+            animated: true
+        )
+    }
+    
     @IBAction private func fruitsButtonTouched() {
         navigationController?.pushViewController(
             FruitsViewController.instantiate(viewModel: FruitsViewModel()),

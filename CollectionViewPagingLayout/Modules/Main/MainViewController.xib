@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,10 +31,26 @@ Paging Layout</string>
                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="66" scale="large"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C3E-e0-yVc">
-                    <rect key="frame" x="37" y="388.66666666666669" width="301" height="127.00000000000006"/>
+                    <rect key="frame" x="37" y="366" width="301" height="172"/>
                     <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DZ-fR-cgR">
+                            <rect key="frame" x="0.0" y="0.0" width="91" height="37"/>
+                            <color key="backgroundColor" name="ButtonBackTint"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="tintColor" name="ButtonTint"/>
+                            <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                            <state key="normal" title="Shapes"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="shapesButtonTouched" destination="-1" eventType="touchUpInside" id="dc0-r7-CE6"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVv-Ll-hDx">
-                            <rect key="frame" x="0.0" y="0.0" width="78" height="37"/>
+                            <rect key="frame" x="0.0" y="45" width="78" height="37"/>
                             <color key="backgroundColor" name="ButtonBackTint"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="tintColor" name="ButtonTint"/>
@@ -50,7 +66,7 @@ Paging Layout</string>
                             </connections>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edG-KY-sBy">
-                            <rect key="frame" x="0.0" y="45" width="89" height="37"/>
+                            <rect key="frame" x="0.0" y="90" width="89" height="37"/>
                             <color key="backgroundColor" name="ButtonBackTint"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="tintColor" name="ButtonTint"/>
@@ -66,7 +82,7 @@ Paging Layout</string>
                             </connections>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0w-RV-iHN" userLabel="Cards">
-                            <rect key="frame" x="0.0" y="90" width="79" height="37"/>
+                            <rect key="frame" x="0.0" y="135" width="79" height="37"/>
                             <color key="backgroundColor" name="ButtonBackTint"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="tintColor" name="ButtonTint"/>
@@ -84,7 +100,7 @@ Paging Layout</string>
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Examples:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3x-WA-T3S">
-                    <rect key="frame" x="36.999999999999993" y="352.33333333333331" width="78.333333333333314" height="20.333333333333314"/>
+                    <rect key="frame" x="36.999999999999993" y="329.66666666666669" width="78.333333333333314" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
