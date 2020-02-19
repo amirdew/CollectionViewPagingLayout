@@ -17,16 +17,26 @@ public protocol ScaleTransformView: TransformableView {
 }
 
 
+public extension ScaleTransformView {
+    
+    func extendTransform(progress: CGFloat) {}
+}
+
+
 public extension ScaleTransformView where Self: UICollectionViewCell {
+    
+    var scalableView: UIView {
+        contentView.subviews.first ?? contentView
+    }
+}
+
+
+public extension ScaleTransformView {
     
     // MARK: Properties
     
     var options: ScaleTransformViewOptions {
         .init()
-    }
-    
-    var scalableView: UIView {
-        contentView.subviews.first ?? contentView
     }
     
     
@@ -40,8 +50,6 @@ public extension ScaleTransformView where Self: UICollectionViewCell {
         // extending transform in custom implementation
         extendTransform(progress: progress)
     }
-    
-    func extendTransform(progress: CGFloat) {}
     
     
     // MARK: Private functions
@@ -89,27 +97,4 @@ public extension ScaleTransformView where Self: UICollectionViewCell {
         scalableView.transform = transform
     }
     
-}
-
-
-public struct ScaleTransformViewOptions {
-    
-    // MARK: Properties
-    
-    var cornerRadius: CGFloat = 50
-    var minScale: CGFloat = 0.75
-    var translationRatio: CGPoint = .init(x: 0.93, y: 0.36)
-    var keepVerticalSpacingEqual: Bool = true
-    var keepHorizontalSpacingEqual: Bool = true
-    var shadowEnabled: Bool = true
-    var scaleCurve: TransformCurve = .linear
-    var translationCurve: TransformCurve = .linear
-    var shadowColor: UIColor = .black
-    var shadowOpacity: Float = 0.6
-    var shadowRadiusMin: CGFloat = 2
-    var shadowRadiusMax: CGFloat = 13
-    var shadowOffsetMin: CGSize = .init(width: 0, height: 2)
-    var shadowOffsetMax: CGSize = .init(width: 0, height: 6)
-    var shadowOpacityMin: Float = 0.1
-    var shadowOpacityMax: Float = 0.1
 }
