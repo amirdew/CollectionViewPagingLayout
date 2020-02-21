@@ -28,6 +28,7 @@ public protocol TransformableView {
 
 extension TransformableView {
     
+    /// Defining the default value of zIndex
     func zPosition(progress: CGFloat) -> Int {
         Int(-abs(round(progress)))
     }

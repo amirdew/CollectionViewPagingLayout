@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Curve function type for transforming
 public enum TransformCurve {
     case linear
     case easeIn
@@ -16,7 +17,12 @@ public enum TransformCurve {
 
 
 public extension TransformCurve {
-    
+
+    /// Converting linear progress between min and max to curve progress between 0 and 1
+    ///
+    /// - Parameter min: the minimum possible value
+    /// - Parameter max: the maximum possible value
+    /// - Parameter progress: the current value/progress between min and max
     func computeProgress(min: CGFloat, max: CGFloat, progress: CGFloat) -> CGFloat {
         switch self {
         case .linear:

@@ -8,23 +8,32 @@
 
 import UIKit
 
+/// A protocol for adding scale transformation to `TransformableView`
 public protocol ScaleTransformView: TransformableView {
     
+    /// Options for controlling scale see `ScaleTransformViewOptions.swift`
     var options: ScaleTransformViewOptions { get }
+    
+    /// The view to apply scale effect on
     var scalableView: UIView { get }
     
+    /// If you wish to extend this protocol and add more transforming to it
+    /// you can implement this method and do whatever you want
     func extendTransform(progress: CGFloat)
 }
 
 
 public extension ScaleTransformView {
     
+    /// An empty default implementation for extendTransform
     func extendTransform(progress: CGFloat) {}
 }
 
 
 public extension ScaleTransformView where Self: UICollectionViewCell {
     
+    /// Default `scalableView` for `UICollectionViewCell` is the first subview of
+    /// `contentView` or the content view itself if there is no subview
     var scalableView: UIView {
         contentView.subviews.first ?? contentView
     }
