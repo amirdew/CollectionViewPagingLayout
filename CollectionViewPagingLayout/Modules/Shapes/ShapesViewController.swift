@@ -51,6 +51,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.registerClass(ScaleLinearShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseInShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseOutShapeCollectionViewCell.self)
+        
+        collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
+        
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
@@ -75,16 +78,19 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func getShapeCell(collectionView: UICollectionView, for indexPath: IndexPath) -> BaseShapeCollectionViewCell {
-
+        
         switch viewModel.selectedLayoutMode {
         case .scaleLinear:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleLinearShapeCollectionViewCell
-        
+            
         case .scaleEaseIn:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseInShapeCollectionViewCell
             
         case .scaleEaseOut:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseOutShapeCollectionViewCell
+            
+        case .stackDefault:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultStackShapeCollectionViewCell
         }
     }
 }
@@ -126,7 +132,6 @@ extension ShapesViewController: UICollectionViewDataSource {
 extension ShapesViewController: CollectionViewPagingLayoutDelegate {
     
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
-
         self.viewModel.selectedLayoutMode = self.viewModel.layoutTypeViewModels[currentPage].layout
         self.collectionView.reloadData()
         

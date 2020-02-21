@@ -11,7 +11,7 @@ import UIKit
 /// A protocol for adding scale transformation to `TransformableView`
 public protocol ScaleTransformView: TransformableView {
     
-    /// Options for controlling scale see `ScaleTransformViewOptions.swift`
+    /// Options for controlling scale effect, see `ScaleTransformViewOptions.swift`
     var options: ScaleTransformViewOptions { get }
     
     /// The view to apply scale effect on
@@ -25,7 +25,7 @@ public protocol ScaleTransformView: TransformableView {
 
 public extension ScaleTransformView {
     
-    /// An empty default implementation for extendTransform
+    /// An empty default implementation for extendTransform to make it optional
     func extendTransform(progress: CGFloat) {}
 }
 
@@ -56,7 +56,6 @@ public extension ScaleTransformView {
         scalableView.layer.cornerRadius = options.cornerRadius
         applyScaleAndTranslation(progress: progress)
         
-        // extending transform in custom implementation
         extendTransform(progress: progress)
     }
     

@@ -22,6 +22,8 @@ class ShapesViewModel {
         .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
         .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
         .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
+        
+        .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
     ]
     
     var shapeViewModels: [ShapeCardViewModel] = []
@@ -50,11 +52,9 @@ class ShapesViewModel {
     private func refreshShapeViewModels() {
         let colors: [UIColor]
         switch selectedLayoutMode {
-        case .scaleLinear:
+        case .scaleLinear, .scaleEaseIn, .scaleEaseOut:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
-        case .scaleEaseIn:
-            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
-        case .scaleEaseOut:
+        case .stackDefault:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         }
         shapeViewModels = shapes.map {

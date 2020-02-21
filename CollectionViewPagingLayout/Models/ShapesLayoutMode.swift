@@ -10,4 +10,6 @@ enum ShapesLayoutMode {
     case scaleLinear
     case scaleEaseIn
     case scaleEaseOut
+    
+    case stackDefault
 }
