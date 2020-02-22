@@ -26,7 +26,7 @@ public extension TransformCurve {
     func computeProgress(min: CGFloat, max: CGFloat, progress: CGFloat) -> CGFloat {
         switch self {
         case .linear:
-            return progress
+            return abs(progress - min) / abs(max - min)
         case .easeIn, .easeOut:
             let logValue = (abs(progress - min) / abs(max - min)) * 9
             let value: CGFloat
