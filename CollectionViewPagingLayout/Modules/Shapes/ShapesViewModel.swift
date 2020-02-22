@@ -12,7 +12,7 @@ class ShapesViewModel {
     
     // MARK: Properties
     
-    var selectedLayoutMode: ShapesLayoutMode = .scaleLinear {
+    var selectedLayoutMode: ShapesLayoutMode = .stackDefault {
         didSet {
             refreshShapeViewModels()
         }

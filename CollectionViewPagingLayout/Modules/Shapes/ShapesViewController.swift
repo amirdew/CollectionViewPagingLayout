@@ -57,7 +57,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 3
+        layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false

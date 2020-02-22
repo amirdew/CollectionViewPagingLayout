@@ -61,37 +61,41 @@ public extension StackTransformView {
     // MARK: Private functions
     
     private func applyShadow(progress: CGFloat) {
-        var transform = CGAffineTransform.identity
-        var xAdjustment: CGFloat = 0
-        var yAdjustment: CGFloat = 0
-//        let scaleProgress = options.scaleCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
-        var scale = 1 + abs(progress) * 0.3
-        //scale = max(scale, options.minScale)
-//
-//        if options.keepHorizontalSpacingEqual {
-//            xAdjustment = ((1 - scale) * scalableView.bounds.width) / 2
-//            if progress > 0 {
-//                xAdjustment *= -1
-//            }
-//        }
-//
-//        if options.keepVerticalSpacingEqual {
-//            yAdjustment = ((1 - scale) * scalableView.bounds.height) / 2
-//        }
-//
-//        let translateProgress = options.translationCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
-//        let translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
-        let translateY = cardView.bounds.height * 0.4
-        transform = transform
-            .translatedBy(x: 0, y: translateY)
-            .scaledBy(x: scale, y: scale)
-        cardView.transform = transform
     }
     
     private func applyScale(progress: CGFloat) {
-        
+        var transform = CGAffineTransform.identity
+        var xAdjustment: CGFloat = 0
+        var yAdjustment: CGFloat = 0
+        //        let scaleProgress = options.scaleCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
+        var scale = 1 - progress * 0.1
+        scale = min(scale, 1)
+        //scale = max(scale, options.minScale)
+        //
+        //        if options.keepHorizontalSpacingEqual {
+        //            xAdjustment = ((1 - scale) * scalableView.bounds.width) / 2
+        //            if progress > 0 {
+        //                xAdjustment *= -1
+        //            }
+        //        }
+        //
+        //        if options.keepVerticalSpacingEqual {
+        //            yAdjustment = ((1 - scale) * cardView.bounds.height) / 2
+        //        }
+        //
+        //        let translateProgress = options.translationCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
+        let translateX = -max(0, -progress) * cardView.bounds.width * 1
+        let translateY = cardView.bounds.height * -0.09 * max(0, progress)
+        transform = transform
+            .translatedBy(x: translateX, y: translateY - yAdjustment)
+            .scaledBy(x: scale, y: scale)
+        cardView.transform = transform
+        cardView.alpha = TransformCurve.linear.computeProgress(min: -1, max: -0.8, progress: min(progress, -0.8))
     }
     
+    func zPosition(progress: CGFloat) -> Int {
+        -Int(round(progress))
+    }
 }
 
 
