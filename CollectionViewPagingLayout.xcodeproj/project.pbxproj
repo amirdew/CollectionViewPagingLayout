@@ -43,6 +43,8 @@
 		AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */; };
 		AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */; };
 		AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */; };
+		AB5A83BA24012585009DD312 /* CGFloat+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A83B924012585009DD312 /* CGFloat+Interpolate.swift */; };
+		AB5A83BD240126CD009DD312 /* CGFloat+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5A83BC240126CD009DD312 /* CGFloat+Range.swift */; };
 		AB7C1E0323B42BB8006441DE /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */; };
 		AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0523B4E2B2006441DE /* MainViewController.swift */; };
 		AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7C1E0723B4E2C0006441DE /* MainViewController.xib */; };
@@ -106,6 +108,8 @@
 		AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitCellViewModel.swift; sourceTree = "<group>"; };
 		AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB5A83B924012585009DD312 /* CGFloat+Interpolate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Interpolate.swift"; sourceTree = "<group>"; };
+		AB5A83BC240126CD009DD312 /* CGFloat+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Range.swift"; sourceTree = "<group>"; };
 		AB7C1E0223B42BB8006441DE /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		AB7C1E0523B4E2B2006441DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AB7C1E0723B4E2C0006441DE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -313,6 +317,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		AB5A83BB240126B9009DD312 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB5A83B924012585009DD312 /* CGFloat+Interpolate.swift */,
+				AB5A83BC240126CD009DD312 /* CGFloat+Range.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		AB7C1E0423B4E292006441DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +338,7 @@
 		AB7C1E0923B4F118006441DE /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				AB5A83BB240126B9009DD312 /* Utilities */,
 				2912246323FFF103001B603A /* Stack */,
 				296636C623FD5C5E00FFC4CF /* Scale */,
 				AB500A4623B1061D0056BE37 /* CollectionViewPagingLayout.swift */,
@@ -491,11 +505,13 @@
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
 				29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */,
 				29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */,
+				AB5A83BA24012585009DD312 /* CGFloat+Interpolate.swift in Sources */,
 				ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */,
 				2912246523FFF228001B603A /* StackTransformView.swift in Sources */,
 				29D9F94C23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift in Sources */,
 				AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */,
 				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,
+				AB5A83BD240126CD009DD312 /* CGFloat+Range.swift in Sources */,
 				291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */,
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,

@@ -49,11 +49,10 @@ public extension ScaleTransformView {
     }
     
     
-    // MARK: Public functions
+    // MARK: TransformableView
     
     func transform(progress: CGFloat) {
-        applyShadow(progress: progress)
-        scalableView.layer.cornerRadius = options.cornerRadius
+        applyStyle(progress: progress)
         applyScaleAndTranslation(progress: progress)
         
         extendTransform(progress: progress)
@@ -62,7 +61,7 @@ public extension ScaleTransformView {
     
     // MARK: Private functions
     
-    private func applyShadow(progress: CGFloat) {
+    private func applyStyle(progress: CGFloat) {
         guard options.shadowEnabled else {
             return
         }
@@ -75,13 +74,15 @@ public extension ScaleTransformView {
         layer.shadowOffset = offset
         layer.shadowRadius = max(options.shadowRadiusMin, (1 - abs(progress)) * options.shadowRadiusMax)
         layer.shadowOpacity = max(options.shadowOpacityMin, (1 - abs(Float(progress))) * options.shadowOpacityMax)
+        
+        scalableView.layer.cornerRadius = options.cornerRadius
     }
     
     private func applyScaleAndTranslation(progress: CGFloat) {
         var transform = CGAffineTransform.identity
         var xAdjustment: CGFloat = 0
         var yAdjustment: CGFloat = 0
-        let scaleProgress = options.scaleCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
+        let scaleProgress = options.scaleCurve.computeFromLinear(progress: abs(progress))
         var scale = 1 - abs(scaleProgress) * (1 - options.minScale)
         scale = max(scale, options.minScale)
         
@@ -96,7 +97,7 @@ public extension ScaleTransformView {
             yAdjustment = ((1 - scale) * scalableView.bounds.height) / 2
         }
         
-        let translateProgress = options.translationCurve.computeProgress(min: 0, max: 1, progress: abs(progress))
+        let translateProgress = options.translationCurve.computeFromLinear(progress: abs(progress))
         let translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
         let translateY = scalableView.bounds.height * options.translationRatio.y * abs(translateProgress) - yAdjustment
         transform = transform

@@ -31,14 +31,14 @@ public struct ScaleTransformViewOptions {
     /// Like `keepHorizontalSpacingEqual` but for horizontal spacing
     var keepHorizontalSpacingEqual: Bool = true
     
-    /// Set this flag to `false` if you don't want any shadow for `scalableView`
-    var shadowEnabled: Bool = true
-    
     /// The curve function for scaling
     var scaleCurve: TransformCurve = .linear
     
     /// The curve function for translating
     var translationCurve: TransformCurve = .linear
+    
+    /// Set this flag to `false` if you don't want any shadow for `scalableView`
+    var shadowEnabled: Bool = true
     
     /// The shadow color that be applied on `scalableView`
     var shadowColor: UIColor = .black
