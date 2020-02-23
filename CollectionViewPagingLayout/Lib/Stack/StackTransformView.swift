@@ -17,6 +17,9 @@ public protocol StackTransformView: TransformableView {
     /// The view to apply scale effect on
     var cardView: UIView { get }
     
+    /// The view to apply blur effect on
+    var blurViewHost: UIView { get }
+    
     /// If you wish to extend this protocol and add more transforming to it
     /// you can implement this method and do whatever you want
     func extendTransform(progress: CGFloat)
@@ -27,6 +30,12 @@ public extension StackTransformView {
     
     /// An empty default implementation for extendTransform to make it optional
     func extendTransform(progress: CGFloat) {}
+    
+    /// The default value is the super view of `cardView`
+    var blurViewHost: UIView {
+        cardView.superview ?? cardView
+    }
+    
 }
 
 
@@ -60,6 +69,9 @@ public extension StackTransformView {
         applyScale(progress: progress)
         applyAlpha(progress: progress)
         applyRotation(progress: progress)
+        if #available(iOS 10, *) {
+            applyBlurEffect(progress: progress)
+        }
         
         extendTransform(progress: progress)
     }
@@ -97,38 +109,34 @@ public extension StackTransformView {
         let translateX: CGFloat
         let translateY: CGFloat
         
+        let stackProgress = progress.interpolate(in: .init(0, CGFloat(options.maxStackSize)))
+        let perspectiveProgress  = TransformCurve.easeOut.computeFromLinear(progress: stackProgress) * options.perspectiveRatio
+        
         switch options.stackPosition {
         case .top, .bottom:
-            translateX = -max(0, -progress) * cardView.bounds.width * options.dropOffsetRatio.width
-            translateY = cardView.bounds.height * options.spacingFactor * -progress * (options.stackPosition == .bottom ? -1:1)
+            translateX = 0
+            translateY = cardView.bounds.height * options.spacingFactor * -max(progress, 0) * (options.stackPosition == .bottom ? -1 : 1)
             yAdjustment = ((scale - 1) * cardView.bounds.height) / 2 // make y equal for all cards
-
-            let stackProgress = progress.interpolate(in: .init(0, CGFloat(options.maxStackSize)))
-            let perspectiveProgress  = TransformCurve.easeOut.computeFromLinear(progress: stackProgress)
-            yAdjustment += perspectiveProgress * cardView.bounds.height * options.perspectiveRatio
+            yAdjustment += perspectiveProgress * cardView.bounds.height
             
-            if progress < 0 {
-                yAdjustment += translateY * options.dropOffsetRatio.height
-            }
             if options.stackPosition == .bottom {
                 yAdjustment *= -1
             }
         case .right, .left:
-            translateY = -max(0, -progress) * cardView.bounds.height * options.dropOffsetRatio.height
-            translateX = cardView.bounds.width * options.spacingFactor * -progress * (options.stackPosition == .right ? -1:1)
+            translateX = cardView.bounds.width * options.spacingFactor * -max(progress, 0) * (options.stackPosition == .right ? -1 : 1)
+            translateY = 0
             xAdjustment = ((scale - 1) * cardView.bounds.width) / 2 // make x equal for all cards
-
-            let stackProgress = progress.interpolate(in: .init(0, CGFloat(options.maxStackSize)))
-            let perspectiveProgress  = TransformCurve.easeOut.computeFromLinear(progress: stackProgress)
-            xAdjustment += perspectiveProgress * cardView.bounds.width * options.perspectiveRatio
+            xAdjustment += perspectiveProgress * cardView.bounds.width
             
-            if progress < 0 {
-                xAdjustment += translateX * options.dropOffsetRatio.width
-            }
             if options.stackPosition == .right {
                 xAdjustment *= -1
             }
         }
+        if progress < 0 {
+            xAdjustment -= cardView.bounds.width * options.popOffsetRatio.width * progress
+            yAdjustment -= cardView.bounds.height * options.popOffsetRatio.height * progress
+        }
+        
         transform = transform
             .translatedBy(x: translateX + xAdjustment, y: translateY + yAdjustment)
             .scaledBy(x: scale, y: scale)
@@ -159,11 +167,27 @@ public extension StackTransformView {
             return
         }
         
-        var angle = -abs(progress).interpolate(out: .init(0, abs(options.dropAngle)))
-        if options.dropAngle < 0 {
+        var angle = -abs(progress).interpolate(out: .init(0, abs(options.popAngle)))
+        if options.popAngle < 0 {
             angle *= -1
         }
         cardView.transform = cardView.transform.rotated(by: angle)
+    }
+    
+    @available(iOS 10.0, *)
+    private func applyBlurEffect(progress: CGFloat) {
+        guard options.maxBlurEffectRadius > 0, options.blurEffectEnabled else {
+            return
+        }
+        let blurView: BlurEffectView
+        if let view = blurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
+            blurView = view
+        } else {
+            blurView = BlurEffectView(effect: UIBlurEffect(style: .light))
+            blurViewHost.fill(with: blurView)
+        }
+        let radius = max(progress, 0).interpolate(in: .init(0, CGFloat(options.maxStackSize)))
+        blurView.setBlurRadius(radius: radius * options.maxBlurEffectRadius)
     }
     
 }
@@ -201,13 +225,17 @@ public struct StackTransformViewOptions {
     
     var shadowRadius: CGFloat = 10
     
-    var dropAngle: CGFloat = .pi/7
+    var popAngle: CGFloat = .pi/7
     
-    var dropOffsetRatio: CGSize = .init(width: 1.3, height: 2.2)
+    var popOffsetRatio: CGSize = .init(width: -1.3, height: 0.3)
     
     var stackPosition: Position = .top
     
     var reverse: Bool = false
+    
+    var blurEffectEnabled: Bool = true
+    
+    var maxBlurEffectRadius: CGFloat = 0.1
 }
 
 
