@@ -55,7 +55,8 @@ class ShapesViewModel {
         case .scaleLinear, .scaleEaseIn, .scaleEaseOut:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         case .stackDefault:
-            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
+            colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]
+            
         }
         shapeViewModels = shapes.map {
             ShapeCardViewModel(iconName: $0.iconName, title: $0.name, colors: colors)

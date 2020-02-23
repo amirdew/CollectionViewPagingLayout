@@ -63,4 +63,13 @@ public struct ScaleTransformViewOptions {
     
     /// The shadow opacity that be applied on `scalableView` when scale is maximum
     var shadowOpacityMax: Float = 0.1
+    
+    /// Enabling the blur effect for side views
+    var blurEffectEnabled: Bool = false
+    
+    /// The maximum blur radius for side views between 0 and 1
+    var maxBlurEffectRadius: CGFloat = 0.4
+    
+    /// Blur effect style in case you enable it
+    var blurEffectStyle: UIBlurEffect.Style = .light
 }

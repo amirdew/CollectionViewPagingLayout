@@ -17,6 +17,9 @@ public protocol ScaleTransformView: TransformableView {
     /// The view to apply scale effect on
     var scalableView: UIView { get }
     
+    /// The view to apply blur effect on
+    var blurViewHost: UIView { get }
+    
     /// If you wish to extend this protocol and add more transforming to it
     /// you can implement this method and do whatever you want
     func extendTransform(progress: CGFloat)
@@ -27,6 +30,11 @@ public extension ScaleTransformView {
     
     /// An empty default implementation for extendTransform to make it optional
     func extendTransform(progress: CGFloat) {}
+    
+    /// The default value is the super view of `scalableView`
+    var blurViewHost: UIView {
+        scalableView.superview ?? scalableView
+    }
 }
 
 
@@ -54,6 +62,10 @@ public extension ScaleTransformView {
     func transform(progress: CGFloat) {
         applyStyle(progress: progress)
         applyScaleAndTranslation(progress: progress)
+        
+        if #available(iOS 10, *) {
+            applyBlurEffect(progress: progress)
+        }
         
         extendTransform(progress: progress)
     }
@@ -104,6 +116,23 @@ public extension ScaleTransformView {
             .translatedBy(x: translateX, y: translateY)
             .scaledBy(x: scale, y: scale)
         scalableView.transform = transform
+    }
+    
+    @available(iOS 10.0, *)
+    private func applyBlurEffect(progress: CGFloat) {
+        guard options.maxBlurEffectRadius > 0, options.blurEffectEnabled else {
+            return
+        }
+        let blurView: BlurEffectView
+        if let view = blurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
+            blurView = view
+        } else {
+            blurView = BlurEffectView(effect: UIBlurEffect(style: options.blurEffectStyle))
+            blurViewHost.fill(with: blurView)
+        }
+        let radius = abs(progress).interpolate(in: .init(0.4, 1))
+        blurView.setBlurRadius(radius: radius * options.maxBlurEffectRadius)
+        blurView.transform = CGAffineTransform.identity.translatedBy(x: scalableView.transform.tx, y: scalableView.transform.ty)
     }
     
 }

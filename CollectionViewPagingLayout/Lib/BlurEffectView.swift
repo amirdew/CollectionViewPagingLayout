@@ -27,6 +27,13 @@ public class BlurEffectView: UIVisualEffectView {
         animator?.stopAnimation(true)
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        if animator?.state != .active {
+            self.effect = nil
+        }
+    }
+    
     
     // MARK: Public functions
     
@@ -40,7 +47,7 @@ public class BlurEffectView: UIVisualEffectView {
             return
         }
         if animator == nil ||
-            animator?.state == .stopped ||
+            animator?.state != .active ||
             animator?.fractionComplete == 1 ||
             animator?.fractionComplete == 0 {
             
