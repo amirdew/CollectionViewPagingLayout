@@ -38,6 +38,8 @@ public struct StackTransformViewOptions {
     
     var shadowOffset: CGSize = .zero
     
+    var stackRotateAngel: CGFloat = .pi/15
+    
     var shadowRadius: CGFloat = 10
     
     var popAngle: CGFloat = .pi/7

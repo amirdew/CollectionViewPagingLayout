@@ -162,15 +162,23 @@ public extension StackTransformView {
     }
     
     private func applyRotation(progress: CGFloat) {
-        guard progress <= 0 else {
-            cardView.transform = cardView.transform.rotated(by: 0)
-            return
+        var angle: CGFloat = 0
+        if progress <= 0 {
+            angle = -abs(progress).interpolate(out: .init(0, abs(options.popAngle)))
+            if options.popAngle < 0 {
+                angle *= -1
+            }
+        } else {
+            let floatAmount = abs(progress - CGFloat(Int(progress)))
+            angle = -floatAmount * options.stackRotateAngel * 2 + options.stackRotateAngel
+            if Int(progress) % 2 == 0 {
+                angle *= -1
+            }
+            if progress < 1 {
+                angle += (1 - progress).interpolate(out: .init(0, options.stackRotateAngel))
+            }
         }
         
-        var angle = -abs(progress).interpolate(out: .init(0, abs(options.popAngle)))
-        if options.popAngle < 0 {
-            angle *= -1
-        }
         cardView.transform = cardView.transform.rotated(by: angle)
     }
     
