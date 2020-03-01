@@ -51,10 +51,11 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.registerClass(ScaleLinearShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseInShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseOutShapeCollectionViewCell.self)
+        collectionView.registerClass(ScalePerspectiveShapeCollectionViewCell.self)
         
         collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
         
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = false
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 10
@@ -80,6 +81,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     private func getShapeCell(collectionView: UICollectionView, for indexPath: IndexPath) -> BaseShapeCollectionViewCell {
         
         switch viewModel.selectedLayoutMode {
+        case .scalePerspective:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScalePerspectiveShapeCollectionViewCell
+            
         case .scaleLinear:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleLinearShapeCollectionViewCell
             

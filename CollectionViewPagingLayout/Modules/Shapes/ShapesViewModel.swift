@@ -12,13 +12,14 @@ class ShapesViewModel {
     
     // MARK: Properties
     
-    var selectedLayoutMode: ShapesLayoutMode = .stackDefault {
+    var selectedLayoutMode: ShapesLayoutMode = .scalePerspective {
         didSet {
             refreshShapeViewModels()
         }
     }
     
     let layoutTypeViewModels: [LayoutTypeCellViewModel] = [
+        .init(layout: .scalePerspective, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Perspective"),
         .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
         .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
         .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
@@ -52,7 +53,7 @@ class ShapesViewModel {
     private func refreshShapeViewModels() {
         let colors: [UIColor]
         switch selectedLayoutMode {
-        case .scaleLinear, .scaleEaseIn, .scaleEaseOut:
+        case .scalePerspective, .scaleLinear, .scaleEaseIn, .scaleEaseOut:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         case .stackDefault:
             colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]

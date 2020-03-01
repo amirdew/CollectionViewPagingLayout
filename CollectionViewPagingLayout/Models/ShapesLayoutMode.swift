@@ -7,6 +7,7 @@
 //
 
 enum ShapesLayoutMode {
+    case scalePerspective
     case scaleLinear
     case scaleEaseIn
     case scaleEaseOut

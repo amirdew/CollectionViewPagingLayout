@@ -39,7 +39,7 @@ class BaseShapeCollectionViewCell: UICollectionViewCell {
     private func setupViews() {
         shapeCardView = ShapeCardView.instantiate()
         contentView.fill(with: shapeCardView,
-                         edges: UIEdgeInsets(top: 50, left: 50, bottom: -60, right: -50))
+                         edges: UIEdgeInsets(top: 70, left: 70, bottom: -70, right: -70))
         clipsToBounds = false
         contentView.clipsToBounds = false
     }

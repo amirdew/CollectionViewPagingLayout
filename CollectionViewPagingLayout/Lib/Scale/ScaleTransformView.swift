@@ -62,6 +62,7 @@ public extension ScaleTransformView {
     func transform(progress: CGFloat) {
         applyStyle(progress: progress)
         applyScaleAndTranslation(progress: progress)
+        applyCATransform3D(progress: progress)
         
         if #available(iOS 10, *) {
             applyBlurEffect(progress: progress)
@@ -110,12 +111,51 @@ public extension ScaleTransformView {
         }
         
         let translateProgress = options.translationCurve.computeFromLinear(progress: abs(progress))
-        let translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
-        let translateY = scalableView.bounds.height * options.translationRatio.y * abs(translateProgress) - yAdjustment
+        var translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
+        var translateY = scalableView.bounds.height * options.translationRatio.y * abs(translateProgress) - yAdjustment
+        if options.minTranslationRatio.x >= 0 {
+            translateX = max(translateX, scalableView.bounds.width * options.minTranslationRatio.x)
+        }
+        if options.minTranslationRatio.y >= 0 {
+            translateY = max(translateY, scalableView.bounds.height * options.minTranslationRatio.y)
+        }
+        if options.maxTranslationRatio.x >= 0 {
+            translateX = min(translateX, scalableView.bounds.width * options.maxTranslationRatio.x)
+        }
+        if options.maxTranslationRatio.y >= 0 {
+            translateY = min(translateY, scalableView.bounds.height * options.maxTranslationRatio.y)
+        }
         transform = transform
             .translatedBy(x: translateX, y: translateY)
             .scaledBy(x: scale, y: scale)
         scalableView.transform = transform
+    }
+    
+    private func applyCATransform3D(progress: CGFloat) {
+        var transform = CATransform3DMakeAffineTransform(scalableView.transform)
+        
+        if let options = self.options.rotation3d {
+            var angle = options.angle * progress
+            angle = max(angle, options.minAngle)
+            angle = min(angle, options.maxAngle)
+            transform.m34 = options.m34;
+            transform = CATransform3DRotate(transform, angle, options.x, options.y, options.z)
+        }
+        
+        if let options = self.options.translation3d {
+            var x = options.translateRatios.0 * progress
+            var y = options.translateRatios.1 * abs(progress)
+            var z = options.translateRatios.2 * abs(progress)
+            x = max(x, options.minTranslates.0)
+            x = min(x, options.maxTranslates.0)
+            y = max(y, options.minTranslates.1)
+            y = min(y, options.maxTranslates.1)
+            z = max(z, options.minTranslates.2)
+            z = min(z, options.maxTranslates.2)
+            transform = CATransform3DTranslate(transform,  x, y, z)
+        }
+        
+        scalableView.layer.transform = transform
     }
     
     @available(iOS 10.0, *)
