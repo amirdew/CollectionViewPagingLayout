@@ -62,7 +62,8 @@ class ScalePerspectiveShapeCollectionViewCell: BaseShapeCollectionViewCell, Scal
         keepHorizontalSpacingEqual: true,
         scaleCurve: .linear,
         translationCurve: .linear,
-        rotation3d: .init(angle: .pi/12, minAngle: -.pi/2, maxAngle: .pi/2, x: 0, y: 1, z: 0, m34: -0.0015),
-        translation3d: .init(translateRatios: (100, 0, -600), minTranslates: (-1000000, 0, -100000), maxTranslates: (1000000, 0, -400))
+        shadowEnabled: false,
+        rotation3d: .init(angle: .pi/10, minAngle: -.pi/2, maxAngle: .pi/10, x: 0, y: 1, z: 0, m34: -0.004),
+        translation3d: .init(translateRatios: (-60, 0, -70), minTranslates: (-1000000, 0, -100000), maxTranslates: (1000000, 0, 0))
     )
 }

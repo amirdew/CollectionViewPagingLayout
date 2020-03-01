@@ -55,7 +55,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         
         collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
         
-        collectionView.isPagingEnabled = false
+        collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 10

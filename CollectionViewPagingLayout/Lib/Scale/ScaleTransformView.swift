@@ -75,6 +75,8 @@ public extension ScaleTransformView {
     // MARK: Private functions
     
     private func applyStyle(progress: CGFloat) {
+        scalableView.layer.cornerRadius = options.cornerRadius
+        
         guard options.shadowEnabled else {
             return
         }
@@ -87,8 +89,6 @@ public extension ScaleTransformView {
         layer.shadowOffset = offset
         layer.shadowRadius = max(options.shadowRadiusMin, (1 - abs(progress)) * options.shadowRadiusMax)
         layer.shadowOpacity = max(options.shadowOpacityMin, (1 - abs(Float(progress))) * options.shadowOpacityMax)
-        
-        scalableView.layer.cornerRadius = options.cornerRadius
     }
     
     private func applyScaleAndTranslation(progress: CGFloat) {
