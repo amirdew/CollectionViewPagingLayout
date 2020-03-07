@@ -56,14 +56,14 @@ class ScalePerspectiveShapeCollectionViewCell: BaseShapeCollectionViewCell, Scal
     var options = ScaleTransformViewOptions(
         cornerRadius: 30,
         minScale: 1,
-        translationRatio: CGPoint(x: 1.36, y: 0.2),
-        maxTranslationRatio: CGPoint(x: 15, y: 0),
+        translationRatio: CGPoint(x: 0.0, y: 0.0),
+        maxTranslationRatio: CGPoint(x: 0, y: 0),
         keepVerticalSpacingEqual: true,
         keepHorizontalSpacingEqual: true,
         scaleCurve: .linear,
         translationCurve: .linear,
         shadowEnabled: false,
-        rotation3d: .init(angle: .pi/10, minAngle: -.pi/2, maxAngle: .pi/10, x: 0, y: 1, z: 0, m34: -0.004),
+        rotation3d: .init(angle: .pi/10, minAngle: -.pi/2, maxAngle: .pi/2, x: 0, y: 1, z: 0, m34: -0.001),
         translation3d: .init(translateRatios: (-60, 0, -70), minTranslates: (-1000000, 0, -100000), maxTranslates: (1000000, 0, 0))
     )
 }
