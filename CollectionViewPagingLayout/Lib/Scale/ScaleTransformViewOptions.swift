@@ -20,7 +20,14 @@ public struct ScaleTransformViewOptions {
     /// The minimum scale factor for side views
     var minScale: CGFloat = 0.75
     
-    /// The amount of translate for side views, calculates by `scalableView` size
+    /// The maximum scale factor for side views
+    var maxScale: CGFloat = 1
+    
+    /// Ratio for computing scale for each item
+    /// Scale = 1 - progress * `scaleRatio`
+    var scaleRatio: CGFloat = 0.25
+    
+    /// Ratio for the amount of translate for side views, calculates by `scalableView` size
     /// for instance, if translationRatio.x = 0.5 and scalableView.width = 100 then
     /// translateX = 50 for the right view and translateX = -50 for the left view
     var translationRatio: CGPoint = .init(x: 0.93, y: 0.36)
@@ -122,5 +129,8 @@ extension ScaleTransformViewOptions {
         
         /// `CATransform3D.m34`, read more: https://stackoverflow.com/questions/3881446/meaning-of-m34-of-catransform3d
         var m34: CGFloat
+        
+        /// `CALayer.isDoubleSided`, read more: https://developer.apple.com/documentation/quartzcore/calayer/1410924-isdoublesided
+        var isDoubleSided: Bool = false
     }
 }
