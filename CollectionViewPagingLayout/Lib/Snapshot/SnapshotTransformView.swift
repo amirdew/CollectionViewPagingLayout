@@ -14,7 +14,7 @@ public protocol SnapshotTransformView: TransformableView {
     var targetView: UIView { get }
     
     /// The identifier for snapshot, it won't make a new snapshot if
-    /// there is a cashed snapshot for this identifier
+    /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
     
     /// If you wish to extend this protocol and add more transforming to it
