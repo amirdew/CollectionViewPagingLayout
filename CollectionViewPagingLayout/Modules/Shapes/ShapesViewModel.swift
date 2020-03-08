@@ -12,7 +12,7 @@ class ShapesViewModel {
     
     // MARK: Properties
     
-    var selectedLayoutMode: ShapesLayoutMode = .scalePerspective {
+    var selectedLayoutMode: ShapesLayoutMode = .snapshotDefault {
         didSet {
             refreshShapeViewModels()
         }
@@ -25,6 +25,8 @@ class ShapesViewModel {
         .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
         
         .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
+        
+        .init(layout: .snapshotDefault, iconName: "rectangle.stack.fill", title: "Snapshot", subtitle: "Default"),
     ]
     
     var shapeViewModels: [ShapeCardViewModel] = []
@@ -57,6 +59,8 @@ class ShapesViewModel {
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         case .stackDefault:
             colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]
+        case .snapshotDefault:
+            colors = [#colorLiteral(red: 0.9176470588, green: 1, blue: 0, alpha: 1), #colorLiteral(red: 0.3137254902, green: 0.8, blue: 1, alpha: 1)]
             
         }
         shapeViewModels = shapes.map {

@@ -13,4 +13,6 @@ enum ShapesLayoutMode {
     case scaleEaseOut
     
     case stackDefault
+    
+    case snapshotDefault
 }

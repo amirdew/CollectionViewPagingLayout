@@ -55,10 +55,12 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         
         collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
         
+        collectionView.registerClass(DefaultSnapshotShapeCollectionViewCell.self)
+        
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 10
+        layout.numberOfVisibleItems = 5
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
@@ -95,6 +97,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             
         case .stackDefault:
             return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultStackShapeCollectionViewCell
+                
+        case .snapshotDefault:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultSnapshotShapeCollectionViewCell
         }
     }
 }

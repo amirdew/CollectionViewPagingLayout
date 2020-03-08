@@ -20,4 +20,20 @@ extension UIView {
             NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: edges.bottom)
         ])
     }
+    
+    func center(to view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        superview?.addConstraints([
+            NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
+        ])
+    }
+    
+    func equalSize(to view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        superview?.addConstraints([
+            NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0)
+        ])
+    }
 }

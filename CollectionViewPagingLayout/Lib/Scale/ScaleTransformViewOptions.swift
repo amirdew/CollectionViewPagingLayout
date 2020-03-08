@@ -95,7 +95,7 @@ public struct ScaleTransformViewOptions {
 }
 
 
-extension ScaleTransformViewOptions {
+public extension ScaleTransformViewOptions {
     
     struct Translation3dOptions {
         

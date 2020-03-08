@@ -58,7 +58,7 @@ public struct StackTransformViewOptions {
 }
 
 
-extension StackTransformViewOptions {
+public extension StackTransformViewOptions {
     enum Position {
         case top
         case right
