@@ -65,7 +65,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     
-    // MARK: UICollectionViewFlowLayout
+    // MARK: UICollectionViewLayout
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         true
