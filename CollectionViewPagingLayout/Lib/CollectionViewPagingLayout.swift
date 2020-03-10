@@ -12,6 +12,7 @@ public protocol CollectionViewPagingLayoutDelegate: class {
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
 }
 
+
 public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Properties
@@ -20,23 +21,22 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     public var scrollDirection: UICollectionView.ScrollDirection = .horizontal
     
-    weak var delegate: CollectionViewPagingLayoutDelegate?
+    public weak var delegate: CollectionViewPagingLayoutDelegate?
     
     override public var collectionViewContentSize: CGSize {
-        var safeAreaLeftRight: CGFloat = 0
-        var safeAreaTopBottom: CGFloat = 0
-        if #available(iOS 11, *) {
-            safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
-            safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
-        }
-        if scrollDirection == .horizontal {
-            return CGSize(width: CGFloat(numberOfItems) * visibleRect.width, height: visibleRect.height - safeAreaTopBottom)
-        } else {
-             return CGSize(width: visibleRect.width - safeAreaLeftRight, height: CGFloat(numberOfItems) * visibleRect.height)
-        }
+        getContentSize()
     }
     
-    private(set) var currentPage: Int
+    private var currentScrollOffset: CGFloat {
+        let visibleRect = self.visibleRect
+        return scrollDirection == .horizontal ? (visibleRect.minX / max(visibleRect.width, 1)) : (visibleRect.minY / max(visibleRect.height, 1))
+    }
+    
+    private(set) var currentPage: Int = 0 {
+        didSet {
+            delegate?.onCurrentPageChanged(layout: self, currentPage: currentPage)
+        }
+    }
     
     private var visibleRect: CGRect {
         guard let collectionView = collectionView else {
@@ -50,72 +50,68 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     
-    // MARK: Life cycle
-    
-    public override init() {
-        currentPage = 0
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("not available")
-    }
-    
-    
     // MARK: Public functions
     
     public func setCurrentPage(_ page: Int, animated: Bool = true) {
-        var offset = (scrollDirection == .horizontal ? visibleRect.width : visibleRect.height) * CGFloat(page)
-        offset = max(0, offset)
-        offset = scrollDirection == .horizontal ? min(collectionViewContentSize.width - visibleRect.width, offset) : min(collectionViewContentSize.height - visibleRect.height, offset)
-        collectionView?.setContentOffset(scrollDirection == .horizontal ? .init(x: offset, y: 0) : .init(x: 0, y: offset),
-                                         animated: animated)
+        safelySetCurrentPage(page, animated: animated)
     }
     
     public func goToNextPage(animated: Bool = true) {
         setCurrentPage(currentPage + 1, animated: animated)
     }
     
-    public func goToPrevPage(animated: Bool = true) {
+    public func goToPreviousPage(animated: Bool = true) {
         setCurrentPage(currentPage - 1, animated: animated)
     }
     
     
-    // MARK: UICollectionViewFlowLayout
+    // MARK: UICollectionViewLayout
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
+        true
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var attributesArray: [UICollectionViewLayoutAttributes] = []
-        var numberOfAttributes = min(numberOfItems, numberOfVisibleItems ?? numberOfItems)
-        numberOfAttributes = max(numberOfAttributes, 3)
-        if numberOfAttributes % 2 == 0 {
-            numberOfAttributes += 1
-        }
-        
-        let currentIndex = Int(round(scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height)))
-        let startIndex = max(0, currentIndex - (numberOfAttributes - 1)/2)
-        
-        for index in startIndex..<startIndex + numberOfAttributes {
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: .init(row: index, section: 0))
-            let progress = CGFloat(index) - (scrollDirection == .horizontal ? (visibleRect.minX / visibleRect.width) : (visibleRect.minY / visibleRect.height))
-            var zIndex = Int(-abs(round(progress)))
-            if let numberOfVisibleItems = numberOfVisibleItems, abs(progress) >= CGFloat(numberOfVisibleItems) - 1 {
-                attributes.isHidden = true
+        let currentScrollOffset = self.currentScrollOffset
+        let attributesCount = numberOfVisibleItems ?? numberOfItems
+        let visibleRangeMid = attributesCount / 2
+        let currentPageIndex = Int(round(currentScrollOffset))
+        var initialStartIndex = currentPageIndex - visibleRangeMid
+        var initialEndIndex = currentPageIndex + visibleRangeMid
+        if attributesCount % 2 != 0 {
+            if currentPageIndex < visibleRangeMid {
+                initialStartIndex -= 1
             } else {
-                let cell = collectionView?.cellForItem(at: attributes.indexPath)
-                if cell == nil || cell is TransformableView {
-                    attributes.frame = visibleRect
-                    (cell as? TransformableView)?.transform(progress: progress)
-                    zIndex = (cell as? TransformableView)?.zPosition(progress: progress) ?? zIndex
-                } else {
-                    attributes.frame = .init(origin: .init(x: CGFloat(index) * visibleRect.width, y: 0), size: visibleRect.size)
-                }
+                initialEndIndex += 1
             }
-            attributes.zIndex = zIndex
-            attributesArray.append(attributes)
+        }
+        let startIndexOutOfBounds = max(0, -initialStartIndex)
+        let endIndexOutOfBounds = max(0, initialEndIndex - numberOfItems)
+        let startIndex = max(0, initialStartIndex - endIndexOutOfBounds)
+        let endIndex = min(numberOfItems, initialEndIndex + startIndexOutOfBounds)
+        
+        var attributesArray: [UICollectionViewLayoutAttributes] = []
+        for index in startIndex..<endIndex {
+            let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
+            let pageIndex = CGFloat(index)
+            let progress = pageIndex - currentScrollOffset
+            var zIndex = Int(-abs(round(progress)))
+            
+            let cell = collectionView?.cellForItem(at: cellAttributes.indexPath)
+            
+            if let cell = cell as? TransformableView {
+                cell.transform(progress: progress)
+                zIndex = cell.zPosition(progress: progress)
+            }
+            
+            if cell == nil || cell is TransformableView {
+                cellAttributes.frame = visibleRect
+            } else {
+                cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0), size: visibleRect.size)
+            }
+            
+            cellAttributes.zIndex = zIndex
+            attributesArray.append(cellAttributes)
         }
         return attributesArray
     }
@@ -133,16 +129,35 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         if let collectionView = collectionView {
             let pageSize = scrollDirection == .horizontal ? collectionView.frame.width : collectionView.frame.height
             let contentOffset = scrollDirection == .horizontal ? (collectionView.contentOffset.x + collectionView.contentInset.left) : (collectionView.contentOffset.y + collectionView.contentInset.top)
-            if pageSize > 0 {
-                currentPage = Int(round(contentOffset / pageSize))
-            } else {
-                currentPage = 0
-            }
+            currentPage = Int(round(contentOffset / pageSize))
         }
         if currentPage != self.currentPage {
             self.currentPage = currentPage
-            self.delegate?.onCurrentPageChanged(layout: self, currentPage: currentPage)
         }
     }
     
+    private func getContentSize() -> CGSize {
+        var safeAreaLeftRight: CGFloat = 0
+        var safeAreaTopBottom: CGFloat = 0
+        if #available(iOS 11, *) {
+            safeAreaLeftRight = (collectionView?.safeAreaInsets.left ?? 0) + (collectionView?.safeAreaInsets.right ?? 0)
+            safeAreaTopBottom = (collectionView?.safeAreaInsets.top ?? 0) + (collectionView?.safeAreaInsets.bottom ?? 0)
+        }
+        if scrollDirection == .horizontal {
+            return CGSize(width: CGFloat(numberOfItems) * visibleRect.width, height: visibleRect.height - safeAreaTopBottom)
+        } else {
+             return CGSize(width: visibleRect.width - safeAreaLeftRight, height: CGFloat(numberOfItems) * visibleRect.height)
+        }
+    }
+    
+    private func safelySetCurrentPage(_ page: Int, animated: Bool) {
+        let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
+        let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
+        let maxPossibleOffset = contentSize - pageSize
+        var offset = pageSize * CGFloat(page)
+        offset = max(0, offset)
+        offset = min(offset, maxPossibleOffset)
+        let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
+        collectionView?.setContentOffset(contentOffset, animated: animated)
+    }
 }

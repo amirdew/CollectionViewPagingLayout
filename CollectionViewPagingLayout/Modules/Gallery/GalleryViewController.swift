@@ -49,7 +49,7 @@ class GalleryViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     @IBAction private func onPreviousTouched() {
-        layout.goToPrevPage()
+        layout.goToPreviousPage()
     }
     
     
