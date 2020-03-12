@@ -1,11 +1,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "CollectionViewPagingLayout"
-  s.version          = "0.0.5"
-  s.summary          = "Simple layout for making pagings with UICollectionView."
+  s.version          = "0.0.6"
+  s.summary          = "Simple layout for making paging effects with UICollectionView."
  
   s.description      = <<-DESC
-                          a custom UICollectionViewLayout for making a paging effect with custom transforms
+                          A custom UICollectionViewLayout for making a paging effect with custom transforms
                        DESC
 
   s.homepage         = "https://github.com/amirdew/CollectionViewPagingLayout"
