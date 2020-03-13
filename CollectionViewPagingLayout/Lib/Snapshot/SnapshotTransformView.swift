@@ -10,6 +10,9 @@ import UIKit
 
 public protocol SnapshotTransformView: TransformableView {
     
+    /// Options for controlling the effects, see `SnapshotTransformViewOptions.swift`
+    var options: SnapshotTransformViewOptions { get }
+    
     /// The view to apply the effect on
     var targetView: UIView { get }
     
@@ -19,14 +22,14 @@ public protocol SnapshotTransformView: TransformableView {
     
     /// If you wish to extend this protocol and add more transforming to it
     /// you can implement this method and do whatever you want
-    func extendTransform(progress: CGFloat)
+    func extendTransform(snapshot: SnapshotContainerView, progress: CGFloat)
 }
 
 
 public extension SnapshotTransformView {
     
     /// An empty default implementation for extendTransform to make it optional
-    func extendTransform(progress: CGFloat) {}
+    func extendTransform(snapshot: SnapshotContainerView, progress: CGFloat) {}
     
 }
 
@@ -38,7 +41,7 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
     var targetView: UIView {
         contentView.subviews.first ?? contentView
     }
-
+    
     /// Default `identifier` for `UICollectionViewCell` is it's index
     /// if you have the same content with different indexes (like infinite list)
     /// you should override this and provide a content-based identifier
@@ -61,10 +64,9 @@ public extension SnapshotTransformView {
     
     // MARK: Properties
     
-//    var options: StackTransformViewOptions {
-//        .init()
-//    }
-    
+    var options: SnapshotTransformViewOptions {
+        .init()
+    }
     
     // MARK: TransformableView
     
@@ -83,14 +85,14 @@ public extension SnapshotTransformView {
         }
         snapshot.transform(progress: progress)
         
-        extendTransform(progress: progress)
+        extendTransform(snapshot: snapshot, progress: progress)
     }
     
     // MARK: Private functions
     
     private func findSnapshot() -> SnapshotContainerView? {
         let snapshot = targetView.superview?.subviews.first(where: { $0 is SnapshotContainerView }) as? SnapshotContainerView
-        if let snapshot = snapshot, snapshot.identifier != identifier {
+        if let snapshot = snapshot, (snapshot.identifier != identifier || snapshot.snapshotSize != targetView.bounds.size) {
             snapshot.removeFromSuperview()
             return nil
         }
@@ -98,7 +100,7 @@ public extension SnapshotTransformView {
     }
     
     private func makeSnapshot() -> SnapshotContainerView? {
-        guard let view = SnapshotContainerView(targetView: targetView, pieceSize: .init(width: 60, height: targetView.frame.height / 8), identifier: identifier) else {
+        guard let view = SnapshotContainerView(targetView: targetView, pieceSizeRatio: options.pieceSizeRatio, identifier: identifier) else {
             return nil
         }
         targetView.superview?.insertSubview(view, aboveSubview: targetView)
@@ -106,33 +108,46 @@ public extension SnapshotTransformView {
         targetView.center(to: view)
         return view
     }
-   
+    
 }
 
 
 private extension SnapshotContainerView {
     
-//    func transform(progress: CGFloat) {
-//        let scale = 1 - abs(progress) * 0.2
-//        transform = CGAffineTransform.identity.translatedBy(x: progress * frame.width * 1.3, y: 0).scaledBy(x: scale, y: scale)
-//        let pieceScale = 1 - abs(progress) * 1
-//        snapshots.forEach {
-//            $0.transform = CGAffineTransform.identity.scaledBy(x: pieceScale, y: pieceScale)
-//            $0.layer.cornerRadius = abs(progress) * min($0.frame.height, $0.frame.width)
-//            $0.layer.masksToBounds = true
-//        }
-//    }
+    //    func transform(progress: CGFloat) {
+    //        let scale = 1 - abs(progress) * 0.2
+    //        transform = CGAffineTransform.identity.translatedBy(x: progress * frame.width * 1.3, y: 0).scaledBy(x: scale, y: scale)
+    //        let pieceScale = 1 - abs(progress) * 1
+    //        snapshots.forEach {
+    //            $0.transform = CGAffineTransform.identity.scaledBy(x: pieceScale, y: pieceScale)
+    //            $0.layer.cornerRadius = abs(progress) * min($0.frame.height, $0.frame.width)
+    //            $0.layer.masksToBounds = true
+    //        }
+    //    }
     
     
     func transform(progress: CGFloat) {
         let scale = 1 - abs(progress) * 0.2
-        transform = CGAffineTransform.identity.translatedBy(x: progress * frame.width * 1.3, y: 0).scaledBy(x: scale, y: scale)
+        transform = CGAffineTransform.identity.translatedBy(x: progress * frame.width * 1.8, y: 0).scaledBy(x: scale, y: scale)
         
         let pieceScale = 1 - abs(progress) * 1
-        snapshots.forEach {
-            $0.transform = CGAffineTransform.identity.scaledBy(x: pieceScale, y: pieceScale)
-            $0.layer.cornerRadius = abs(progress) * min($0.frame.height, $0.frame.width)
-            $0.layer.masksToBounds = true
+        snapshots.enumerated().forEach { index, view in
+            let column = CGFloat(index % 5)
+            var factor: CGFloat = 0
+            if column > 2 { factor = 1 }
+            if column < 2 { factor = -1 }
+            if column < 1 { factor = -2 }
+            if column > 3 { factor = 2 }
+            view.transform = CGAffineTransform.identity.translatedBy(x: 70 * abs(progress) * factor, y: 0).scaledBy(x: pieceScale, y: pieceScale)
+            view.layer.cornerRadius = abs(progress) * min(view.frame.height, view.frame.width)
+            view.layer.masksToBounds = true
         }
     }
+}
+
+
+
+public struct SnapshotTransformViewOptions {
+    
+    var pieceSizeRatio: CGSize = .init(width: 1.0/5.0, height: 1.0/8.0)
 }

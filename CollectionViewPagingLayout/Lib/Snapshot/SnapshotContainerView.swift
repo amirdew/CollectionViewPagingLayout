@@ -14,17 +14,21 @@ public class SnapshotContainerView: UIView {
     
     let snapshots: [UIView]
     let identifier: String
+    let snapshotSize: CGSize
     
+    private let targetView: UIView
     
     // MARK: Lifecycle
     
-    init?(targetView: UIView, pieceSize: CGSize, identifier: String) {
+    init?(targetView: UIView, pieceSizeRatio: CGSize, identifier: String) {
         var snapshots: [UIView] = []
-        
+        guard pieceSizeRatio.width > 0, pieceSizeRatio.height > 0 else {
+            return nil
+        }
         var x: CGFloat = 0
         var y: CGFloat = 0
-        var width = pieceSize.width
-        var height = pieceSize.height
+        var width = pieceSizeRatio.width * targetView.frame.width
+        var height = pieceSizeRatio.height * targetView.frame.height
         if width > targetView.frame.width {
             width = targetView.frame.width
         }
@@ -51,8 +55,10 @@ public class SnapshotContainerView: UIView {
         if snapshots.isEmpty {
             return nil
         }
+        self.targetView = targetView
         self.identifier = identifier
         self.snapshots = snapshots
+        snapshotSize = targetView.bounds.size
         super.init(frame: targetView.frame)
         snapshots.forEach {
             self.addSubview($0)
