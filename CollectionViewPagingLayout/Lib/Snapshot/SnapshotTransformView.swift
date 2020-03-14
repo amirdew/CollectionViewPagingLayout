@@ -20,7 +20,7 @@ public protocol SnapshotTransformView: TransformableView {
     /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
     
-    /// If you wish to extend this protocol and add more transforming to it
+    /// If you wish to extend this protocol and add more transformations to it
     /// you can implement this method and do whatever you want
     func extendTransform(snapshot: SnapshotContainerView, progress: CGFloat)
 }
@@ -83,7 +83,7 @@ public extension SnapshotTransformView {
             // hide the original view, we apply transform on the snapshot
             targetView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -UIScreen.main.bounds.height)
         }
-        snapshot.transform(progress: progress)
+        snapshot.transform(progress: progress, options: options)
         
         extendTransform(snapshot: snapshot, progress: progress)
     }
@@ -126,13 +126,17 @@ private extension SnapshotContainerView {
     //    }
     
     
-    func transform(progress: CGFloat) {
-        let scale = 1 - abs(progress) * 0.2
-        transform = CGAffineTransform.identity.translatedBy(x: progress * frame.width * 1.8, y: 0).scaledBy(x: scale, y: scale)
+    func transform(progress: CGFloat, options: SnapshotTransformViewOptions) {
+        let scale = 1 - abs(progress) * options.containerScaleRatio
+        transform = CGAffineTransform.identity
+            .translatedBy(x: progress * frame.width * options.containerTranslationRatio.x,
+                          y: progress * frame.height * options.containerTranslationRatio.y)
+            .scaledBy(x: scale, y: scale)
         
-        let pieceScale = 1 - abs(progress) * 1
+        let pieceScale = 1 - abs(progress) * options.pieceScaleRatio
         snapshots.enumerated().forEach { index, view in
-            let column = CGFloat(index % 5)
+            let column = Int(index % Int(1.0 / options.pieceSizeRatio.width))
+            let row = Int((index + 1) / Int(1.0 / options.pieceSizeRatio.width))
             var factor: CGFloat = 0
             if column > 2 { factor = 1 }
             if column < 2 { factor = -1 }
@@ -149,5 +153,31 @@ private extension SnapshotContainerView {
 
 public struct SnapshotTransformViewOptions {
     
+    /// Ratio for computing the size of each piece in the snapshot
+    /// width = view.width * `pieceSizeRatio.width`
     var pieceSizeRatio: CGSize = .init(width: 1.0/5.0, height: 1.0/8.0)
+    
+    /// Ratio for computing scale of each piece in the snapshot
+    /// Scale = 1 - abs(progress) * `pieceScaleRatio`
+    var pieceScaleRatio: CGFloat = 1
+    
+    /// Ratio for computing scale for the snapshot container
+    /// Scale = 1 - abs(progress) * `scaleRatio`
+    var containerScaleRatio: CGFloat = 0.25
+    
+    /// Ratio for the amount of translate for container view, calculates by `targetView` size
+    /// for instance, if containerTranslationRatio.x = 0.5 and targetView.width = 100 then
+    /// translateX = 50 for the right view and translateX = -50 for the left view
+    var containerTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
+    
+    var piecesRowTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
+    
+    var piecesColumnTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
+}
+
+
+public enum piecesOption {
+    case rowColumn(CGFloat, CGFloat)
+    case custom([CGFloat])
+    case oddEven(CGFloat, CGFloat)
 }
