@@ -133,17 +133,24 @@ private extension SnapshotContainerView {
                           y: progress * frame.height * options.containerTranslationRatio.y)
             .scaledBy(x: scale, y: scale)
         
-        let pieceScale = 1 - abs(progress) * options.pieceScaleRatio
+        let rowCount = Int(1.0 / options.pieceSizeRatio.height)
+        let columnCount = Int(1.0 / options.pieceSizeRatio.width)
         snapshots.enumerated().forEach { index, view in
-            let column = Int(index % Int(1.0 / options.pieceSizeRatio.width))
-            let row = Int((index + 1) / Int(1.0 / options.pieceSizeRatio.width))
-            var factor: CGFloat = 0
-            if column > 2 { factor = 1 }
-            if column < 2 { factor = -1 }
-            if column < 1 { factor = -2 }
-            if column > 3 { factor = 2 }
-            view.transform = CGAffineTransform.identity.translatedBy(x: 70 * abs(progress) * factor, y: 0).scaledBy(x: pieceScale, y: pieceScale)
-            view.layer.cornerRadius = abs(progress) * min(view.frame.height, view.frame.width)
+            let position = SnapshotTransformViewOptions.PiecePosition(
+                index: index,
+                row: Int(index / columnCount),
+                column: Int(index % columnCount),
+                rowCount: rowCount,
+                columnCount: columnCount
+            )
+
+            let pieceScale = abs(progress) * options.piecesScaleRatio.getRatio(position: position)
+            let pieceTransform = options.piecesTranslationRatio.getRatio(position: position) * abs(progress)
+            
+            view.transform = CGAffineTransform.identity
+                .translatedBy(x: pieceTransform.x, y: pieceTransform.y)
+                .scaledBy(x: 1 - pieceScale.width, y: 1 - pieceScale.height)
+            view.layer.cornerRadius = options.piecesCornerRadiusRatio.getRatio(position: position) * abs(progress) * min(view.frame.height, view.frame.width)
             view.layer.masksToBounds = true
         }
     }
@@ -157,9 +164,13 @@ public struct SnapshotTransformViewOptions {
     /// width = view.width * `pieceSizeRatio.width`
     var pieceSizeRatio: CGSize = .init(width: 1.0/5.0, height: 1.0/8.0)
     
+    var piecesCornerRadiusRatio: PiecesValue<CGFloat> = .static(0)
+    
+    var piecesTranslationRatio: PiecesValue<CGPoint> = .rowOddEven(.init(x: 70, y: 0), .init(x: -70, y: 0))
+    
     /// Ratio for computing scale of each piece in the snapshot
-    /// Scale = 1 - abs(progress) * `pieceScaleRatio`
-    var pieceScaleRatio: CGFloat = 1
+    /// Scale = 1 - abs(progress) * `piecesScaleRatio`
+    var piecesScaleRatio: PiecesValue<CGSize> = .static(.init(width: 0, height: 1))
     
     /// Ratio for computing scale for the snapshot container
     /// Scale = 1 - abs(progress) * `scaleRatio`
@@ -170,14 +181,141 @@ public struct SnapshotTransformViewOptions {
     /// translateX = 50 for the right view and translateX = -50 for the left view
     var containerTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
     
-    var piecesRowTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
-    
-    var piecesColumnTranslationRatio: CGPoint = .init(x: 1.8, y: 0)
 }
 
 
-public enum piecesOption {
-    case rowColumn(CGFloat, CGFloat)
-    case custom([CGFloat])
-    case oddEven(CGFloat, CGFloat)
+public extension SnapshotTransformViewOptions {
+    
+    struct PiecePosition {
+        let index: Int
+        let row: Int
+        let column: Int
+        let rowCount: Int
+        let columnCount: Int
+    }
+
+    
+    enum PiecesValue<Type: MultipliableToCGFloat & MultipliableToSelf> {
+        
+        // MARK: Cases
+        
+        case columnBased(Type, reversed: Bool = false)
+        case rowBased(Type, reversed: Bool = false)
+        case columnOddEven(Type, Type, increasing: Bool = false)
+        case rowOddEven(Type, Type, increasing: Bool = false)
+        case columnBasedMirror(Type, reversed: Bool = false)
+        case rowBasedMirror(Type, reversed: Bool = false)
+        case indexBasedCustom([Type])
+        case rowBasedCustom([Type])
+        case columnBasedCustom([Type])
+        case `static`(Type)
+        case aggregated([PiecesValue<Type>])
+        
+        // MARK: Public functions
+        
+        func getRatio(position: PiecePosition) -> Type {
+            switch self {
+            case .columnBased(let ratio, let reversed):
+                if reversed {
+                    return ratio * CGFloat(position.columnCount - position.column - 1)
+                } else {
+                    return ratio * CGFloat(position.column)
+                }
+            case .rowBased(let ratio, let reversed):
+                if reversed {
+                    return ratio * CGFloat(position.rowCount - position.row - 1)
+                } else {
+                    return ratio * CGFloat(position.row)
+                }
+                
+            case .columnOddEven(let oddRatio, let evenRatio, let increasing):
+                return (position.column % 2 == 0 ? evenRatio : oddRatio) * (increasing ? CGFloat(position.column) : 1)
+            case .rowOddEven(let oddRatio, let evenRatio, let increasing):
+                return (position.row % 2 == 0 ? evenRatio : oddRatio) * (increasing ? CGFloat(position.row) : 1)
+            case .indexBasedCustom(let ratios):
+                return ratios[position.index % ratios.count]
+            case .rowBasedCustom(let ratios):
+                return ratios[position.row % ratios.count]
+            case .columnBasedCustom(let ratios):
+                return ratios[position.column % ratios.count]
+            case .static(let ratio):
+                return ratio
+            case .columnBasedMirror(let ratio, let reversed):
+                let middle = Int(position.columnCount / 2)
+                if position.columnCount % 2 == 1, position.column == middle {
+                    return ratio * 0;
+                }
+                var colIndex = position.column
+                if colIndex >= middle {
+                    colIndex -= middle
+                } else {
+                    colIndex = middle - colIndex
+                }
+                if reversed {
+                    colIndex = middle - colIndex
+                }
+                return ratio * CGFloat(colIndex) * (position.column > middle ? 1 : -1)
+            case .rowBasedMirror(let ratio, let reversed):
+                let middle = Int(position.rowCount / 2)
+                if position.rowCount % 2 == 1, position.row == middle {
+                    return ratio * 0;
+                }
+                var rowIndex = position.row
+                if rowIndex >= middle {
+                    rowIndex -= middle
+                } else {
+                    rowIndex = middle - rowIndex
+                }
+                if reversed {
+                    rowIndex = middle - rowIndex
+                }
+                return ratio * (rowIndex > middle ? 1 : -1)
+
+                case .aggregated(let values):
+                    guard !values.isEmpty else {
+                        fatalError("aggregate array is empty")
+                    }
+                    let result = values.map {
+                        $0.getRatio(position: position)
+                    }
+                    return result.dropFirst().reduce(result.first!, *)
+            }
+        }
+        
+    }
+}
+
+public protocol MultipliableToCGFloat {
+    static func * (rhs: Self, lhs: CGFloat) -> Self
+    static func * (rhs: CGFloat, lhs: Self) -> Self
+}
+
+public protocol MultipliableToSelf {
+    static func * (rhs: Self, lhs: Self) -> Self
+}
+
+extension CGFloat: MultipliableToCGFloat, MultipliableToSelf {}
+
+extension CGPoint: MultipliableToCGFloat, MultipliableToSelf {
+    public static func * (rhs: CGFloat, lhs: CGPoint) -> CGPoint {
+        lhs * rhs
+    }
+    public static func * (rhs: CGPoint, lhs: CGFloat) -> CGPoint {
+        CGPoint(x: rhs.x * lhs, y: rhs.y * lhs)
+    }
+    public static func * (rhs: CGPoint, lhs: CGPoint) -> CGPoint {
+        CGPoint(x: rhs.x * lhs.x, y: rhs.y * lhs.y)
+    }
+}
+
+extension CGSize: MultipliableToCGFloat, MultipliableToSelf {
+    public static func * (rhs: CGFloat, lhs: CGSize) -> CGSize {
+        lhs * rhs
+    }
+    public static func * (rhs: CGSize, lhs: CGFloat) -> CGSize {
+        CGSize(width: rhs.width * lhs, height: rhs.height * lhs)
+    }
+    public static func * (rhs: CGSize, lhs: CGSize) -> CGSize {
+        CGSize(width: rhs.width * lhs.width, height: rhs.height * lhs.height)
+    }
 }
