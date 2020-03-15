@@ -13,13 +13,17 @@ public struct StackTransformViewOptions {
     
     // MARK: Properties
     
-    /// the corner radius that be applied on `cardView`
+    /// The corner radius that be applied on `cardView`
     var cornerRadius: CGFloat = 20
     
+    /// The scale factor for computing scale of each card, the scale for the top card is 1
+    /// and the scale for the card just below top card is (1 - scaleFactor) and so on
     var scaleFactor: CGFloat = 0.15
     
+    /// The maximum number of visible card in the stack
     var maxStackSize: Int = 4
     
+    /// 
     var spacingFactor: CGFloat = 0.1
     
     var opacityReduceFactor: CGFloat = 0.0

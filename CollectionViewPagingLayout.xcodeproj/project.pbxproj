@@ -27,6 +27,8 @@
 		29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */; };
 		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
 		29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */; };
+		29EDAA47241E776500832753 /* SnapshotTransformViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDAA46241E776500832753 /* SnapshotTransformViewOptions.swift */; };
+		29EDAA49241E77F100832753 /* Multipliable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDAA48241E77F100832753 /* Multipliable.swift */; };
 		AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */; };
 		AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */; };
 		AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */; };
@@ -94,6 +96,8 @@
 		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		29EDAA46241E776500832753 /* SnapshotTransformViewOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTransformViewOptions.swift; sourceTree = "<group>"; };
+		29EDAA48241E77F100832753 /* Multipliable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipliable.swift; sourceTree = "<group>"; };
 		AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsViewController.xib; sourceTree = "<group>"; };
 		AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			children = (
 				29B815AE2414113400F1C824 /* SnapshotTransformView.swift */,
 				29B815B22414166200F1C824 /* SnapshotContainerView.swift */,
+				29EDAA46241E776500832753 /* SnapshotTransformViewOptions.swift */,
 			);
 			path = Snapshot;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 			children = (
 				AB5A83B924012585009DD312 /* CGFloat+Interpolate.swift */,
 				AB5A83BC240126CD009DD312 /* CGFloat+Range.swift */,
+				29EDAA48241E77F100832753 /* Multipliable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -504,6 +510,7 @@
 				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
 				2912246723FFF26B001B603A /* StackTransformViewOptions.swift in Sources */,
+				29EDAA49241E77F100832753 /* Multipliable.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
 				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
 				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
@@ -534,6 +541,7 @@
 				AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */,
 				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,
 				AB5A83BD240126CD009DD312 /* CGFloat+Range.swift in Sources */,
+				29EDAA47241E776500832753 /* SnapshotTransformViewOptions.swift in Sources */,
 				291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */,
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
