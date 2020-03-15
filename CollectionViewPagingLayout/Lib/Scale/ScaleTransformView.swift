@@ -114,17 +114,13 @@ public extension ScaleTransformView {
         let translateProgress = options.translationCurve.computeFromLinear(progress: abs(progress))
         var translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
         var translateY = scalableView.bounds.height * options.translationRatio.y * abs(translateProgress) - yAdjustment
-        if options.minTranslationRatio.x >= 0 {
-            translateX = max(translateX, scalableView.bounds.width * options.minTranslationRatio.x)
+        if let min = options.minTranslationRatio {
+            translateX = max(translateX, scalableView.bounds.width * min.x)
+            translateY = max(translateY, scalableView.bounds.height * min.y)
         }
-        if options.minTranslationRatio.y >= 0 {
-            translateY = max(translateY, scalableView.bounds.height * options.minTranslationRatio.y)
-        }
-        if options.maxTranslationRatio.x >= 0 {
-            translateX = min(translateX, scalableView.bounds.width * options.maxTranslationRatio.x)
-        }
-        if options.maxTranslationRatio.y >= 0 {
-            translateY = min(translateY, scalableView.bounds.height * options.maxTranslationRatio.y)
+        if let max = options.maxTranslationRatio {
+            translateX = min(translateX, scalableView.bounds.width * max.x)
+            translateY = min(translateY, scalableView.bounds.height * max.y)
         }
         transform = transform
             .translatedBy(x: translateX, y: translateY)

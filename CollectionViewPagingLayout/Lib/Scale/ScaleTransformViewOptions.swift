@@ -33,10 +33,10 @@ public struct ScaleTransformViewOptions {
     var translationRatio: CGPoint = .init(x: 0.93, y: 0.36)
     
     /// The minimum amount of translate for side views, calculates like `translationRatio`
-    var minTranslationRatio: CGPoint = .init(x: -5, y: -5)
+    var minTranslationRatio: CGPoint? = .init(x: -5, y: -5)
     
     /// The maximum amount of translate for side views, calculates like `translationRatio`
-    var maxTranslationRatio: CGPoint = .init(x: 5, y: 5)
+    var maxTranslationRatio: CGPoint? = .init(x: 5, y: 5)
     
     /// Since it applies scale on views the spacing between views wouldn't be equal
     /// by default, if this flag is enabled it will keep spacing between items equally
