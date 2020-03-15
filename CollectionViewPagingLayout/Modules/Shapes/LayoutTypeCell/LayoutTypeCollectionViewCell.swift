@@ -41,6 +41,7 @@ class LayoutTypeCollectionViewCell: UICollectionViewCell, NibBased {
         imageView.tintColor = .gray
         clipsToBounds = false
         contentView.clipsToBounds = false
+        circleView.layer.cornerRadius = 50
     }
     
     private func updateViews() {

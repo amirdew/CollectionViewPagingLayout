@@ -14,9 +14,6 @@ public struct ScaleTransformViewOptions {
     
     // MARK: Properties
     
-    /// the corner radius that be applied on `scalableView`
-    var cornerRadius: CGFloat = 50
-    
     /// The minimum scale factor for side views
     var minScale: CGFloat = 0.75
     

@@ -71,7 +71,6 @@ public extension SnapshotTransformView {
     // MARK: TransformableView
     
     func transform(progress: CGFloat) {
-        targetView.layer.cornerRadius = 30
         guard let snapshot = findSnapshot() ?? makeSnapshot() else {
             return
         }

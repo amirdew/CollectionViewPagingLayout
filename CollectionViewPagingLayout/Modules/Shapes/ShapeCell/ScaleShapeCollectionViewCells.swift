@@ -11,7 +11,6 @@ import UIKit
 class ScaleLinearShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
     var options = ScaleTransformViewOptions(
-        cornerRadius: 30,
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -27,7 +26,6 @@ class ScaleLinearShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTran
 class ScaleEaseInShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
     var options = ScaleTransformViewOptions(
-        cornerRadius: 30,
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -42,7 +40,6 @@ class ScaleEaseInShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTran
 class ScaleEaseOutShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
     var options = ScaleTransformViewOptions(
-        cornerRadius: 30,
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -57,7 +54,6 @@ class ScaleEaseOutShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTra
 class ScalePerspectiveShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
     var options = ScaleTransformViewOptions(
-        cornerRadius: 30,
         minScale: 1.2,
         maxScale: 1.2,
         scaleRatio: 0,

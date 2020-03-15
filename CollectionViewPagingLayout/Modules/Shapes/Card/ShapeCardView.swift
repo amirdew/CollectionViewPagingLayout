@@ -36,6 +36,7 @@ class ShapeCardView: GradientView, NibBased {
         set(startPoint: .zero, endPoint: CGPoint(x: 1, y: 1))
         layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 5
+        layer.cornerRadius = 30
     }
     
     private func updateViews() {

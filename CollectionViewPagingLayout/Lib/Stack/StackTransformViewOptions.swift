@@ -13,9 +13,6 @@ public struct StackTransformViewOptions {
     
     // MARK: Properties
     
-    /// The corner radius that be applied on `cardView`
-    var cornerRadius: CGFloat = 20
-    
     /// The scale factor for computing scale of each card, the scale for the top card is 1
     /// and the scale for the card just below top card is (1 - scaleFactor) and so on
     var scaleFactor: CGFloat = 0.15
