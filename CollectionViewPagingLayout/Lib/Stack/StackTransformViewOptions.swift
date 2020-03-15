@@ -8,10 +8,7 @@
 
 import UIKit
 
-/// Options for `StackTransformView`
 public struct StackTransformViewOptions {
-    
-    // MARK: Properties
     
     /// The scale factor for computing scale of each card, the scale for the top card is 1
     /// and the scale for the card just below top card is (1 - scaleFactor) and so on

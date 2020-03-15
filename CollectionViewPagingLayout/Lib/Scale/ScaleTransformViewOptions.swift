@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-/// Options for `ScaleTransformView`
 public struct ScaleTransformViewOptions {
-    
-    // MARK: Properties
     
     /// The minimum scale factor for side views
     var minScale: CGFloat = 0.75
