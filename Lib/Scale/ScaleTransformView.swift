@@ -75,8 +75,6 @@ public extension ScaleTransformView {
     // MARK: Private functions
     
     private func applyStyle(progress: CGFloat) {
-        scalableView.layer.cornerRadius = options.cornerRadius
-        
         guard options.shadowEnabled else {
             return
         }

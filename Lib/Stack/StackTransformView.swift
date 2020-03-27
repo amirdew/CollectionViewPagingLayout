@@ -88,8 +88,6 @@ public extension StackTransformView {
     // MARK: Private functions
     
     private func applyStyle(progress: CGFloat) {
-        cardView.layer.cornerRadius = options.cornerRadius
-        
         guard options.shadowEnabled else {
             return
         }
