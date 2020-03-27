@@ -75,7 +75,6 @@
 		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleShapeCollectionViewCells.swift; sourceTree = "<group>"; };
-		3D393A356B2562108A8C4C0E /* Pods-CollectionViewPagingLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewPagingLayout.debug.xcconfig"; path = "Target Support Files/Pods-CollectionViewPagingLayout/Pods-CollectionViewPagingLayout.debug.xcconfig"; sourceTree = "<group>"; };
 		444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.release.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
 		89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.debug.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.debug.xcconfig"; sourceTree = "<group>"; };
 		A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingLayoutSamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +118,6 @@
 		ABC242CB23B6831400DBD4D6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
-		DFFD713AFBA9423FB0E5FAEE /* Pods-CollectionViewPagingLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewPagingLayout.release.xcconfig"; path = "Target Support Files/Pods-CollectionViewPagingLayout/Pods-CollectionViewPagingLayout.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +177,6 @@
 		4D87DB0F34A1E0FEF9A22214 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3D393A356B2562108A8C4C0E /* Pods-CollectionViewPagingLayout.debug.xcconfig */,
-				DFFD713AFBA9423FB0E5FAEE /* Pods-CollectionViewPagingLayout.release.xcconfig */,
 				89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */,
 				444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */,
 			);
