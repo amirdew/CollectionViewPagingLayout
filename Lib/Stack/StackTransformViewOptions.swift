@@ -12,9 +12,6 @@ public struct StackTransformViewOptions {
     
     // MARK: Properties
     
-    /// The corner radius that be applied on `cardView`
-    public var cornerRadius: CGFloat
-    
     /// The scale factor for computing scale of each card, the scale for the top card is 1
     /// and the scale for the card just below top card is (1 - scaleFactor) and so on
     public var scaleFactor: CGFloat
@@ -63,7 +60,6 @@ public struct StackTransformViewOptions {
     // MARK: Lifecycle
     
     public init(
-        cornerRadius: CGFloat = 20,
         scaleFactor: CGFloat = 0.15,
         maxStackSize: Int = 4,
         spacingFactor: CGFloat = 0.1,
@@ -85,7 +81,6 @@ public struct StackTransformViewOptions {
         maxBlurEffectRadius: CGFloat = 0.1,
         blurEffectStyle: UIBlurEffect.Style = .light
     ) {
-        self.cornerRadius = cornerRadius
         self.scaleFactor = scaleFactor
         self.maxStackSize = maxStackSize
         self.spacingFactor = spacingFactor

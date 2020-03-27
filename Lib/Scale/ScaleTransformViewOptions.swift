@@ -13,9 +13,6 @@ public class ScaleTransformViewOptions {
     
     // MARK: Properties
     
-    /// the corner radius that be applied on `scalableView`
-    public var cornerRadius: CGFloat
-    
     /// The minimum scale factor for side views
     public var minScale: CGFloat
     
@@ -96,7 +93,6 @@ public class ScaleTransformViewOptions {
     // MARK: Lifecycle
     
     public init(
-        cornerRadius: CGFloat = 50,
         minScale: CGFloat = 0.75,
         maxScale: CGFloat = 1,
         scaleRatio: CGFloat = 0.25,
@@ -122,7 +118,6 @@ public class ScaleTransformViewOptions {
         rotation3d: Rotation3dOptions? = nil,
         translation3d: Translation3dOptions? = nil
     ) {
-        self.cornerRadius = cornerRadius
         self.minScale = minScale
         self.maxScale = maxScale
         self.scaleRatio = scaleRatio
