@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f6ab7024-5e3a-4d29-9cd2-3631dbd5ad97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/CollectionViewPagingLayout.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionViewPagingLayout.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Scale/ScaleTransformView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Stack/Scale/ScaleTransformView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Scale/ScaleTransformViewOptions.swift" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Stack/Scale/ScaleTransformViewOptions.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Snapshot/SnapshotTransformView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/CollectionViewPagingLayout/Lib/Snapshot/SnapshotTransformView.swift" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1Z512JDIBqFKUZRx9GeTwhVN01B" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6ab7024-5e3a-4d29-9cd2-3631dbd5ad97" name="Default Changelist" comment="" />
+      <created>1584113933118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584113933118</updated>
+    </task>
+    <servers />
+  </component>
+</project>

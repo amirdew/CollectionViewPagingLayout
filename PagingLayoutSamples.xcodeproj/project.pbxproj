@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291224682400352F001B603A /* StackShapeCollectionViewCells.swift */; };
+		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
+		29B815B12414132100F1C824 /* SnapshotShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */; };
+		29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94223F7F98800656A67 /* ShapesViewController.swift */; };
+		29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94423F7F99400656A67 /* ShapesViewModel.swift */; };
+		29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29D9F94623F7F9B700656A67 /* ShapesViewController.xib */; };
+		29D9F94A23F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29D9F94923F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib */; };
+		29D9F94C23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94B23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift */; };
+		29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94D23F7FDA600656A67 /* LayoutTypeCellViewModel.swift */; };
+		29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94F23F806C400656A67 /* Optional+Let.swift */; };
+		29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */; };
+		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
+		29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */; };
+		55923226155A0B6E5A55C691 /* Pods_PagingLayoutSamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */; };
+		AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */; };
+		AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */; };
+		AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */; };
+		AB1BBA9E23CA7BD9004E5C3B /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */; };
+		AB1BBA9F23CA7BE3004E5C3B /* CardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */; };
+		AB1BBAA023CA7BE6004E5C3B /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */; };
+		AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1E03AE23B25CE70087F904 /* PageControlView.swift */; };
+		AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A3223B104E20056BE37 /* AppDelegate.swift */; };
+		AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB500A3B23B104E60056BE37 /* Assets.xcassets */; };
+		AB500A3F23B104E60056BE37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */; };
+		AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A4923B13BBD0056BE37 /* FruitsViewController.swift */; };
+		AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A4B23B13BC90056BE37 /* FruitsViewController.xib */; };
+		AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A4D23B13C5C0056BE37 /* NibBased.swift */; };
+		AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A4F23B151780056BE37 /* FruitsViewModel.swift */; };
+		AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5423B152500056BE37 /* ViewModelBased.swift */; };
+		AB500A5823B154210056BE37 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5723B154210056BE37 /* Fruit.swift */; };
+		AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */; };
+		AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */; };
+		AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */; };
+		AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0523B4E2B2006441DE /* MainViewController.swift */; };
+		AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7C1E0723B4E2C0006441DE /* MainViewController.xib */; };
+		ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */; };
+		ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0223F93CDB004A9C18 /* Shape.swift */; };
+		ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */; };
+		ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */; };
+		ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */; };
+		ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */; };
+		ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A72B23B42240006A46A3 /* PriceTagView.swift */; };
+		ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A72D23B42247006A46A3 /* PriceTagView.xib */; };
+		ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */; };
+		ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */; };
+		ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */; };
+		ABC242C523B6822A00DBD4D6 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */; };
+		ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */; };
+		ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */; };
+		ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242CB23B6831400DBD4D6 /* Photo.swift */; };
+		ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */; };
+		ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		291224682400352F001B603A /* StackShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		29D9F94223F7F98800656A67 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
+		29D9F94423F7F99400656A67 /* ShapesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewModel.swift; sourceTree = "<group>"; };
+		29D9F94623F7F9B700656A67 /* ShapesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapesViewController.xib; sourceTree = "<group>"; };
+		29D9F94923F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		29D9F94B23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		29D9F94D23F7FDA600656A67 /* LayoutTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTypeCellViewModel.swift; sourceTree = "<group>"; };
+		29D9F94F23F806C400656A67 /* Optional+Let.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Let.swift"; sourceTree = "<group>"; };
+		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
+		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		3D393A356B2562108A8C4C0E /* Pods-CollectionViewPagingLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewPagingLayout.debug.xcconfig"; path = "Target Support Files/Pods-CollectionViewPagingLayout/Pods-CollectionViewPagingLayout.debug.xcconfig"; sourceTree = "<group>"; };
+		444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.release.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
+		89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.debug.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.debug.xcconfig"; sourceTree = "<group>"; };
+		A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingLayoutSamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsViewController.xib; sourceTree = "<group>"; };
+		AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
+		AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
+		AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
+		AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB1E03AE23B25CE70087F904 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
+		AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingLayoutSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB500A3223B104E20056BE37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB500A3B23B104E60056BE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB500A3E23B104E60056BE37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB500A4023B104E60056BE37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB500A4923B13BBD0056BE37 /* FruitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewController.swift; sourceTree = "<group>"; };
+		AB500A4B23B13BC90056BE37 /* FruitsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsViewController.xib; sourceTree = "<group>"; };
+		AB500A4D23B13C5C0056BE37 /* NibBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibBased.swift; sourceTree = "<group>"; };
+		AB500A4F23B151780056BE37 /* FruitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewModel.swift; sourceTree = "<group>"; };
+		AB500A5423B152500056BE37 /* ViewModelBased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBased.swift; sourceTree = "<group>"; };
+		AB500A5723B154210056BE37 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitCellViewModel.swift; sourceTree = "<group>"; };
+		AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB7C1E0523B4E2B2006441DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AB7C1E0723B4E2C0006441DE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesLayoutMode.swift; sourceTree = "<group>"; };
+		ABA0DA0223F93CDB004A9C18 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCardView.swift; sourceTree = "<group>"; };
+		ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCardView.xib; sourceTree = "<group>"; };
+		ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCardViewModel.swift; sourceTree = "<group>"; };
+		ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utilities.swift"; sourceTree = "<group>"; };
+		ABA1A72B23B42240006A46A3 /* PriceTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTagView.swift; sourceTree = "<group>"; };
+		ABA1A72D23B42247006A46A3 /* PriceTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTagView.xib; sourceTree = "<group>"; };
+		ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityControllerView.swift; sourceTree = "<group>"; };
+		ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityControllerView.xib; sourceTree = "<group>"; };
+		ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
+		ABC242CB23B6831400DBD4D6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		DFFD713AFBA9423FB0E5FAEE /* Pods-CollectionViewPagingLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewPagingLayout.release.xcconfig"; path = "Target Support Files/Pods-CollectionViewPagingLayout/Pods-CollectionViewPagingLayout.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB500A2C23B104E20056BE37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55923226155A0B6E5A55C691 /* Pods_PagingLayoutSamples.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05F53E609F3F8B841D87E931 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29D9F94123F7F92000656A67 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				ABA0DA0623F98B53004A9C18 /* Card */,
+				29D9F95123F8683B00656A67 /* ShapeCell */,
+				29D9F94823F7FC2D00656A67 /* LayoutTypeCell */,
+				29D9F94223F7F98800656A67 /* ShapesViewController.swift */,
+				29D9F94423F7F99400656A67 /* ShapesViewModel.swift */,
+				29D9F94623F7F9B700656A67 /* ShapesViewController.xib */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		29D9F94823F7FC2D00656A67 /* LayoutTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				29D9F94B23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift */,
+				29D9F94D23F7FDA600656A67 /* LayoutTypeCellViewModel.swift */,
+				29D9F94923F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib */,
+			);
+			path = LayoutTypeCell;
+			sourceTree = "<group>";
+		};
+		29D9F95123F8683B00656A67 /* ShapeCell */ = {
+			isa = PBXGroup;
+			children = (
+				29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */,
+				29D9F95A23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift */,
+				291224682400352F001B603A /* StackShapeCollectionViewCells.swift */,
+				29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */,
+			);
+			path = ShapeCell;
+			sourceTree = "<group>";
+		};
+		4D87DB0F34A1E0FEF9A22214 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D393A356B2562108A8C4C0E /* Pods-CollectionViewPagingLayout.debug.xcconfig */,
+				DFFD713AFBA9423FB0E5FAEE /* Pods-CollectionViewPagingLayout.release.xcconfig */,
+				89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */,
+				444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB1BBA8B23C935BF004E5C3B /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				AB1BBA9123CA5143004E5C3B /* Cell */,
+				AB1BBA8D23C935D3004E5C3B /* CardsViewController.swift */,
+				AB1BBA8C23C935D3004E5C3B /* CardsViewController.xib */,
+				AB1BBA8E23C935D3004E5C3B /* CardsViewModel.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		AB1BBA9123CA5143004E5C3B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB1BBA9823CA5178004E5C3B /* CardCellViewModel.swift */,
+				AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */,
+				AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AB1E03AD23B25CD30087F904 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A72F23B4225C006A46A3 /* QuantityControllerView */,
+				ABA1A72A23B4222E006A46A3 /* PriceTagView */,
+				AB1E03AE23B25CE70087F904 /* PageControlView.swift */,
+				29D9F95823F874E900656A67 /* GradientView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		AB500A2623B104E20056BE37 = {
+			isa = PBXGroup;
+			children = (
+				AB500A3123B104E20056BE37 /* PagingLayoutSamples */,
+				AB500A3023B104E20056BE37 /* Products */,
+				4D87DB0F34A1E0FEF9A22214 /* Pods */,
+				05F53E609F3F8B841D87E931 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AB500A3023B104E20056BE37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB500A3123B104E20056BE37 /* PagingLayoutSamples */ = {
+			isa = PBXGroup;
+			children = (
+				AB1E03AD23B25CD30087F904 /* CustomViews */,
+				AB500A5223B152170056BE37 /* Modules */,
+				AB500A5123B152130056BE37 /* Models */,
+				AB500A5323B152400056BE37 /* Utilities */,
+				AB500A3223B104E20056BE37 /* AppDelegate.swift */,
+				AB500A3B23B104E60056BE37 /* Assets.xcassets */,
+				AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */,
+				AB500A4023B104E60056BE37 /* Info.plist */,
+			);
+			path = PagingLayoutSamples;
+			sourceTree = "<group>";
+		};
+		AB500A4823B13B9D0056BE37 /* Fruits */ = {
+			isa = PBXGroup;
+			children = (
+				AB500A5923B1544A0056BE37 /* Cell */,
+				AB500A4923B13BBD0056BE37 /* FruitsViewController.swift */,
+				AB500A4B23B13BC90056BE37 /* FruitsViewController.xib */,
+				AB500A4F23B151780056BE37 /* FruitsViewModel.swift */,
+			);
+			path = Fruits;
+			sourceTree = "<group>";
+		};
+		AB500A5123B152130056BE37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB500A5723B154210056BE37 /* Fruit.swift */,
+				ABC242CB23B6831400DBD4D6 /* Photo.swift */,
+				2925CDDE23D4D21F00243F5F /* Card.swift */,
+				ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */,
+				ABA0DA0223F93CDB004A9C18 /* Shape.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB500A5223B152170056BE37 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				AB7C1E0423B4E292006441DE /* Main */,
+				29D9F94123F7F92000656A67 /* Shapes */,
+				AB500A4823B13B9D0056BE37 /* Fruits */,
+				AB1BBA8B23C935BF004E5C3B /* Cards */,
+				ABC242C123B681F800DBD4D6 /* Gallery */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		AB500A5323B152400056BE37 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB500A4D23B13C5C0056BE37 /* NibBased.swift */,
+				ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */,
+				AB500A5423B152500056BE37 /* ViewModelBased.swift */,
+				29D9F94F23F806C400656A67 /* Optional+Let.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AB500A5923B1544A0056BE37 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB500A5A23B154640056BE37 /* FruitsCollectionViewCell.swift */,
+				AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */,
+				AB500A5C23B1547C0056BE37 /* FruitCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AB7C1E0423B4E292006441DE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AB7C1E0523B4E2B2006441DE /* MainViewController.swift */,
+				AB7C1E0723B4E2C0006441DE /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ABA0DA0623F98B53004A9C18 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */,
+				ABA0DA0B23F98C78004A9C18 /* ShapeCardViewModel.swift */,
+				ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		ABA1A72A23B4222E006A46A3 /* PriceTagView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A72B23B42240006A46A3 /* PriceTagView.swift */,
+				ABA1A72D23B42247006A46A3 /* PriceTagView.xib */,
+			);
+			path = PriceTagView;
+			sourceTree = "<group>";
+		};
+		ABA1A72F23B4225C006A46A3 /* QuantityControllerView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA1A73023B422B2006A46A3 /* QuantityControllerView.swift */,
+				ABA1A73223B422B9006A46A3 /* QuantityControllerView.xib */,
+			);
+			path = QuantityControllerView;
+			sourceTree = "<group>";
+		};
+		ABC242C123B681F800DBD4D6 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				ABC242C823B682D400DBD4D6 /* Cell */,
+				ABC242C223B6822200DBD4D6 /* GalleryViewController.swift */,
+				ABC242C423B6822A00DBD4D6 /* GalleryViewController.xib */,
+				ABC242C623B6823600DBD4D6 /* GalleryViewModel.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		ABC242C823B682D400DBD4D6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABC242C923B682DD00DBD4D6 /* PhotoCellViewModel.swift */,
+				ABC242CD23B6860700DBD4D6 /* PhotoCollectionViewCell.swift */,
+				ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB500A2E23B104E20056BE37 /* PagingLayoutSamples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB500A4323B104E60056BE37 /* Build configuration list for PBXNativeTarget "PagingLayoutSamples" */;
+			buildPhases = (
+				6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */,
+				AB500A2B23B104E20056BE37 /* Sources */,
+				AB500A2C23B104E20056BE37 /* Frameworks */,
+				AB500A2D23B104E20056BE37 /* Resources */,
+				16CABBE36A64D6ED31E82309 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PagingLayoutSamples;
+			productName = CollectionViewPagingLayout;
+			productReference = AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB500A2723B104E20056BE37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Amir Khorsandi";
+				TargetAttributes = {
+					AB500A2E23B104E20056BE37 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = AB500A2A23B104E20056BE37 /* Build configuration list for PBXProject "PagingLayoutSamples" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB500A2623B104E20056BE37;
+			productRefGroup = AB500A3023B104E20056BE37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB500A2E23B104E20056BE37 /* PagingLayoutSamples */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB500A2D23B104E20056BE37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29D9F94A23F7FC4800656A67 /* LayoutTypeCollectionViewCell.xib in Resources */,
+				AB500A3F23B104E60056BE37 /* LaunchScreen.storyboard in Resources */,
+				ABC242C523B6822A00DBD4D6 /* GalleryViewController.xib in Resources */,
+				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
+				AB1BBA9F23CA7BE3004E5C3B /* CardsViewController.xib in Resources */,
+				29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */,
+				ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */,
+				ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */,
+				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
+				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
+				AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */,
+				AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */,
+				ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */,
+				ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16CABBE36A64D6ED31E82309 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PagingLayoutSamples-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB500A2B23B104E20056BE37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */,
+				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
+				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
+				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
+				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
+				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
+				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
+				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,
+				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
+				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
+				ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */,
+				AB1BBAA023CA7BE6004E5C3B /* CardsViewModel.swift in Sources */,
+				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
+				ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */,
+				AB1BBA9E23CA7BD9004E5C3B /* CardsViewController.swift in Sources */,
+				ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */,
+				ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */,
+				AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */,
+				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
+				29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */,
+				29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */,
+				ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */,
+				29D9F94C23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift in Sources */,
+				AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */,
+				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,
+				291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */,
+				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
+				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
+				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
+				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
+				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
+				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
+				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
+				29B815B12414132100F1C824 /* SnapshotShapeCollectionViewCells.swift in Sources */,
+				29D9F95923F874E900656A67 /* GradientView.swift in Sources */,
+				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
+				AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB500A3E23B104E60056BE37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB500A4123B104E60056BE37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB500A4223B104E60056BE37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB500A4423B104E60056BE37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.amir.PagingLayoutSamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AB500A4523B104E60056BE37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.amir.PagingLayoutSamples;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB500A2A23B104E20056BE37 /* Build configuration list for PBXProject "PagingLayoutSamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB500A4123B104E60056BE37 /* Debug */,
+				AB500A4223B104E60056BE37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB500A4323B104E60056BE37 /* Build configuration list for PBXNativeTarget "PagingLayoutSamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB500A4423B104E60056BE37 /* Debug */,
+				AB500A4523B104E60056BE37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB500A2723B104E20056BE37 /* Project object */;
+}

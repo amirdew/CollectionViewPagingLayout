@@ -1,0 +1,34 @@
+//
+//  SnapshotTransformViewOptions.PiecePosition.swift
+//  CollectionViewPagingLayout
+//
+//  Created by Amir on 27/03/2020.
+//
+
+import UIKit
+
+public extension SnapshotTransformViewOptions {
+    
+    class PiecePosition {
+        
+        // MARK: Properties
+        
+        let index: Int
+        let row: Int
+        let column: Int
+        let rowCount: Int
+        let columnCount: Int
+        
+        
+        // MARK: Lifecycle
+        
+        internal init(index: Int, row: Int, column: Int, rowCount: Int, columnCount: Int) {
+            self.index = index
+            self.row = row
+            self.column = column
+            self.rowCount = rowCount
+            self.columnCount = columnCount
+        }
+    }
+    
+}
