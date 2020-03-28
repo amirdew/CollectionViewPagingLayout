@@ -42,7 +42,7 @@
 		AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */; };
 		AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7C1E0523B4E2B2006441DE /* MainViewController.swift */; };
 		AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7C1E0723B4E2C0006441DE /* MainViewController.xib */; };
-		ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */; };
+		ABA0DA0123F93CA3004A9C18 /* ShapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0023F93CA3004A9C18 /* ShapeLayout.swift */; };
 		ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0223F93CDB004A9C18 /* Shape.swift */; };
 		ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */; };
 		ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */; };
@@ -101,7 +101,7 @@
 		AB500A5E23B154950056BE37 /* FruitsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitsCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB7C1E0523B4E2B2006441DE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AB7C1E0723B4E2C0006441DE /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesLayoutMode.swift; sourceTree = "<group>"; };
+		ABA0DA0023F93CA3004A9C18 /* ShapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeLayout.swift; sourceTree = "<group>"; };
 		ABA0DA0223F93CDB004A9C18 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		ABA0DA0723F98B65004A9C18 /* ShapeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCardView.swift; sourceTree = "<group>"; };
 		ABA0DA0923F98B70004A9C18 /* ShapeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapeCardView.xib; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 				AB500A5723B154210056BE37 /* Fruit.swift */,
 				ABC242CB23B6831400DBD4D6 /* Photo.swift */,
 				2925CDDE23D4D21F00243F5F /* Card.swift */,
-				ABA0DA0023F93CA3004A9C18 /* ShapesLayoutMode.swift */,
+				ABA0DA0023F93CA3004A9C18 /* ShapeLayout.swift */,
 				ABA0DA0223F93CDB004A9C18 /* Shape.swift */,
 			);
 			path = Models;
@@ -509,7 +509,7 @@
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
 				29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */,
 				29D9F95B23F88A6900656A67 /* ScaleShapeCollectionViewCells.swift in Sources */,
-				ABA0DA0123F93CA3004A9C18 /* ShapesLayoutMode.swift in Sources */,
+				ABA0DA0123F93CA3004A9C18 /* ShapeLayout.swift in Sources */,
 				29D9F94C23F7FC5800656A67 /* LayoutTypeCollectionViewCell.swift in Sources */,
 				AB1BBA9C23CA5179004E5C3B /* CardCollectionViewCell.swift in Sources */,
 				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,

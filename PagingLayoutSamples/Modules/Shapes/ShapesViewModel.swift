@@ -12,22 +12,13 @@ class ShapesViewModel {
     
     // MARK: Properties
     
-    var selectedLayoutMode: ShapesLayoutMode = .snapshotDefault {
+    var selectedLayoutMode: ShapeLayout {
         didSet {
             refreshShapeViewModels()
         }
     }
     
-    let layoutTypeViewModels: [LayoutTypeCellViewModel] = [
-        .init(layout: .scalePerspective, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Perspective"),
-        .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
-        .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
-        .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
-        
-        .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
-        
-        .init(layout: .snapshotDefault, iconName: "rectangle.stack.fill", title: "Snapshot", subtitle: "Default"),
-    ]
+    let layoutTypeViewModels: [LayoutTypeCellViewModel]
     
     var shapeViewModels: [ShapeCardViewModel] = []
     
@@ -42,10 +33,23 @@ class ShapesViewModel {
         .init(name: "Capsule", iconName: "capsule.fill")
     ]
     
+    private static let allLayoutViewModes: [LayoutTypeCellViewModel] = [
+        .init(layout: .scalePerspective, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Perspective"),
+        .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
+        .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
+        .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
+        
+        .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
+        
+        .init(layout: .snapshotDefault, iconName: "rectangle.stack.fill", title: "Snapshot", subtitle: "Default"),
+    ]
+    
     
     // MARK: Lifecycle
     
-    init() {
+    init(layouts: [ShapeLayout]) {
+        self.layoutTypeViewModels = layouts.compactMap { layout in  ShapesViewModel.allLayoutViewModes.first { $0.layout == layout } }
+        selectedLayoutMode = layouts.first!
         refreshShapeViewModels()
     }
     
@@ -61,7 +65,6 @@ class ShapesViewModel {
             colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]
         case .snapshotDefault:
             colors = [#colorLiteral(red: 0.9176470588, green: 1, blue: 0, alpha: 1), #colorLiteral(red: 0.3137254902, green: 0.8, blue: 1, alpha: 1)]
-            
         }
         shapeViewModels = shapes.map {
             ShapeCardViewModel(iconName: $0.iconName, title: $0.name, colors: colors)
