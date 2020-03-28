@@ -11,12 +11,22 @@ import CollectionViewPagingLayout
 
 class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
+    // MARK: Constants
+    
+    private struct Constants {
+        
+        static let infiniteNumberOfItems = 100000
+    }
+    
+    
     // MARK: Properties
     
     var viewModel: ShapesViewModel!
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var layoutTypeCollectionView: UICollectionView!
+    
+    private var didScrollCollectionViewToMiddle = false
     
     
     // MARK: UIViewController
@@ -28,6 +38,13 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        if !didScrollCollectionViewToMiddle {
+            let layout = layoutTypeCollectionView.collectionViewLayout as? CollectionViewPagingLayout
+            layout?.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
+            didScrollCollectionViewToMiddle = true
+        }
+        
         collectionView.collectionViewLayout.invalidateLayout()
         layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
     }
@@ -98,7 +115,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             
         case .stackDefault:
             return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultStackShapeCollectionViewCell
-                
+            
         case .snapshotDefault:
             return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultSnapshotShapeCollectionViewCell
         }
@@ -109,7 +126,7 @@ extension ShapesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == layoutTypeCollectionView {
-            return viewModel.layoutTypeViewModels.count
+            return Constants.infiniteNumberOfItems
         }
         if collectionView == self.collectionView {
             return viewModel.shapeViewModels.count
@@ -120,7 +137,7 @@ extension ShapesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == layoutTypeCollectionView {
-            let itemViewModel = viewModel.layoutTypeViewModels[indexPath.row]
+            let itemViewModel = viewModel.layoutTypeViewModels[indexPath.row % viewModel.layoutTypeViewModels.count]
             let cell: LayoutTypeCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.viewModel = itemViewModel
             return cell
@@ -142,7 +159,8 @@ extension ShapesViewController: UICollectionViewDataSource {
 extension ShapesViewController: CollectionViewPagingLayoutDelegate {
     
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
-        self.viewModel.selectedLayoutMode = self.viewModel.layoutTypeViewModels[currentPage].layout
+        let index = currentPage % viewModel.layoutTypeViewModels.count
+        self.viewModel.selectedLayoutMode = self.viewModel.layoutTypeViewModels[index].layout
         self.collectionView.reloadData()
         
         collectionView.performBatchUpdates({

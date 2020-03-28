@@ -29,6 +29,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private let layout = CollectionViewPagingLayout()
+    private var didScrollCollectionViewToMiddle = false
     
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -41,17 +42,13 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         configureViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        layout.setCurrentPage(Constants.infiniteNumberOfItems/2, animated: false)
-        UIView.animate(withDuration: 0.25) {
-            self.collectionView.alpha = 1
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.invalidateLayout()
+        if !didScrollCollectionViewToMiddle {
+            layout.setCurrentPage(Constants.infiniteNumberOfItems/2, animated: false)
+            didScrollCollectionViewToMiddle = true
+        }
     }
     
     
@@ -88,7 +85,6 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
-        collectionView.alpha = 0
         collectionView.scrollsToTop = false
     }
     
