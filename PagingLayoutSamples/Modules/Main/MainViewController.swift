@@ -11,10 +11,30 @@ import UIKit
 
 class MainViewController: UIViewController, NibBased {
 
+    // MARK: Properties
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     
     // MARK: Event listeners
     
-    @IBAction private func shapesButtonTouched() {
+    @IBAction private func stackButtonTouched() {
+        navigationController?.pushViewController(
+            ShapesViewController.instantiate(viewModel: ShapesViewModel()),
+            animated: true
+        )
+    }
+    
+    @IBAction private func scaleButtonTouched() {
+        navigationController?.pushViewController(
+            ShapesViewController.instantiate(viewModel: ShapesViewModel()),
+            animated: true
+        )
+    }
+    
+    @IBAction private func snapshotButtonTouched() {
         navigationController?.pushViewController(
             ShapesViewController.instantiate(viewModel: ShapesViewModel()),
             animated: true
