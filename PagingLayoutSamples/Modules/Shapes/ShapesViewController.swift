@@ -69,7 +69,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.registerClass(ScaleLinearShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseInShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleEaseOutShapeCollectionViewCell.self)
-        collectionView.registerClass(ScalePerspectiveShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleInvertedCylinderShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleCylinderShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleCoverFlowShapeCollectionViewCell.self)
         
         collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
         
@@ -78,7 +80,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 5
+        layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
@@ -101,8 +103,14 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     private func getShapeCell(collectionView: UICollectionView, for indexPath: IndexPath) -> BaseShapeCollectionViewCell {
         
         switch viewModel.selectedLayoutMode {
-        case .scalePerspective:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScalePerspectiveShapeCollectionViewCell
+        case .scaleCylinder:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleCylinderShapeCollectionViewCell
+            
+        case .scaleInvertedCylinder:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleInvertedCylinderShapeCollectionViewCell
+        
+        case .scaleCoverFlow:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleCoverFlowShapeCollectionViewCell
             
         case .scaleLinear:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleLinearShapeCollectionViewCell

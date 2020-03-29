@@ -34,7 +34,9 @@ class ShapesViewModel {
     ]
     
     private static let allLayoutViewModes: [LayoutTypeCellViewModel] = [
-        .init(layout: .scalePerspective, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Perspective"),
+        .init(layout: .scaleInvertedCylinder, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Inverted Cylinder"),
+        .init(layout: .scaleCylinder, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cylinder"),
+        .init(layout: .scaleCoverFlow, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cover Flow"),
         .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
         .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
         .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
@@ -59,7 +61,7 @@ class ShapesViewModel {
     private func refreshShapeViewModels() {
         let colors: [UIColor]
         switch selectedLayoutMode {
-        case .scalePerspective, .scaleLinear, .scaleEaseIn, .scaleEaseOut:
+        case .scaleCylinder, .scaleInvertedCylinder, .scaleCoverFlow, .scaleLinear, .scaleEaseIn, .scaleEaseOut:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         case .stackDefault:
             colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]

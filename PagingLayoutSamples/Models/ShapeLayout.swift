@@ -7,7 +7,9 @@
 //
 
 enum ShapeLayout {
-    case scalePerspective
+    case scaleInvertedCylinder
+    case scaleCylinder
+    case scaleCoverFlow
     case scaleLinear
     case scaleEaseIn
     case scaleEaseOut

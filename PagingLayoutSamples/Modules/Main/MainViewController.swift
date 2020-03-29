@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MainViewController: UIViewController, NibBased {
-
+    
     // MARK: Properties
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -32,10 +32,12 @@ class MainViewController: UIViewController, NibBased {
     @IBAction private func scaleButtonTouched() {
         navigationController?.pushViewController(
             ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
+                .scaleCylinder,
+                .scaleInvertedCylinder,
+                .scaleCoverFlow,
                 .scaleLinear,
                 .scaleEaseIn,
                 .scaleEaseOut,
-                .scalePerspective
             ])),
             animated: true
         )
