@@ -85,7 +85,7 @@
 		AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB1E03AE23B25CE70087F904 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
-		AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingLayoutSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB500A2F23B104E20056BE37 /* Paging Layouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paging Layouts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB500A3223B104E20056BE37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB500A3B23B104E60056BE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB500A3E23B104E60056BE37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		AB500A3023B104E20056BE37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */,
+				AB500A2F23B104E20056BE37 /* Paging Layouts.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 			);
 			name = PagingLayoutSamples;
 			productName = CollectionViewPagingLayout;
-			productReference = AB500A2F23B104E20056BE37 /* PagingLayoutSamples.app */;
+			productReference = AB500A2F23B104E20056BE37 /* Paging Layouts.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -669,7 +669,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.PagingLayoutSamples;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Paging Layouts";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -688,7 +688,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.PagingLayoutSamples;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Paging Layouts";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
