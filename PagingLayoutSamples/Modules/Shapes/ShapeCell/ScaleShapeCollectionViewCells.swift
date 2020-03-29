@@ -63,7 +63,7 @@ class ScaleCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTr
         maxTranslationRatio: .zero,
         shadowEnabled: false,
         rotation3d: .init(angle: .pi/4, minAngle: -.pi, maxAngle: .pi, x: 0, y: 1, z: 0, m34: -0.0012),
-        translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, 310), maxTranslates: (0, 0, 310))
+        translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, UIScreen.main.bounds.width * 0.8), maxTranslates: (0, 0, UIScreen.main.bounds.width * 0.8))
     )
 }
 
@@ -79,7 +79,7 @@ class ScaleInvertedCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell,
         maxTranslationRatio: .zero,
         shadowEnabled: false,
         rotation3d: .init(angle: .pi/3, minAngle: -.pi, maxAngle: .pi, x: 0, y: -1, z: 0, m34: -0.002),
-        translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, -210), maxTranslates: (0, 0, -210))
+        translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, UIScreen.main.bounds.width * 0.57), maxTranslates: (0, 0, -UIScreen.main.bounds.width * 0.57))
     )
 }
 
@@ -95,6 +95,6 @@ class ScaleCoverFlowShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleT
         maxTranslationRatio: .zero,
         shadowEnabled: false,
         rotation3d: .init(angle: .pi/1.65, minAngle: -.pi/3, maxAngle: .pi/3, x: 0, y: -1, z: 0, m34: -0.0005),
-        translation3d: .init(translateRatios: (30, 0, -150), minTranslates: (-30, 0, -1000), maxTranslates: (30, 0, 0))
+        translation3d: .init(translateRatios: (30, 0, -UIScreen.main.bounds.width * 0.42), minTranslates: (-30, 0, -1000), maxTranslates: (30, 0, 0))
     )
 }

@@ -22,6 +22,9 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Lb2-15-Dq3">
                     <rect key="frame" x="0.0" y="664" width="414" height="232"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="w5m-Ra-rqd"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Oc9-yA-d02">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,7 +42,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p26-Ln-ASY">
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p26-Ln-ASY">
                     <rect key="frame" x="32" y="63" width="23" height="20"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                     <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +67,7 @@
                 <constraint firstAttribute="bottom" secondItem="Lb2-15-Dq3" secondAttribute="bottom" id="WX7-I4-6KC"/>
                 <constraint firstItem="KcB-fn-Ojq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eq6-iY-n0D"/>
                 <constraint firstItem="p26-Ln-ASY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="rlv-DQ-Q8w"/>
-                <constraint firstItem="KcB-fn-Ojq" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.637" id="tZ6-4E-M86"/>
+                <constraint firstItem="KcB-fn-Ojq" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.637" priority="900" id="tZ6-4E-M86"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
