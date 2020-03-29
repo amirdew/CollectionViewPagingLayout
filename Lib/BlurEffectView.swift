@@ -14,6 +14,7 @@ public class BlurEffectView: UIVisualEffectView {
     // MARK: Parameters
     
     private var animator: UIViewPropertyAnimator?
+    private var radius: CGFloat?
     
     
     // MARK: Lifecycle
@@ -30,7 +31,11 @@ public class BlurEffectView: UIVisualEffectView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         if animator?.state != .active {
-            self.effect = nil
+            if let radius = radius, effect != nil {
+                setBlurRadius(radius: radius)
+            } else {
+                removeFromSuperview()
+            }
         }
     }
     
@@ -47,6 +52,7 @@ public class BlurEffectView: UIVisualEffectView {
             return
         }
         if animator == nil ||
+            self.effect == .none ||
             animator?.state != .active ||
             animator?.fractionComplete == 1 ||
             animator?.fractionComplete == 0 {
@@ -55,6 +61,7 @@ public class BlurEffectView: UIVisualEffectView {
             self.effect = nil
             animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [unowned self] in self.effect = effect }
         }
+        self.radius = radius
         animator?.fractionComplete = radius
     }
     

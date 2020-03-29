@@ -40,6 +40,8 @@ class ShapesViewModel {
         .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
         .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
         .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
+        .init(layout: .scaleRotary, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Rotary"),
+        .init(layout: .scaleBlur, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Blurry"),
         
         .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
         
@@ -61,7 +63,9 @@ class ShapesViewModel {
     private func refreshShapeViewModels() {
         let colors: [UIColor]
         switch selectedLayoutMode {
-        case .scaleCylinder, .scaleInvertedCylinder, .scaleCoverFlow, .scaleLinear, .scaleEaseIn, .scaleEaseOut:
+        case .scaleCylinder, .scaleInvertedCylinder,
+             .scaleCoverFlow, .scaleRotary, .scaleBlur,
+             .scaleLinear, .scaleEaseIn, .scaleEaseOut:
             colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
         case .stackDefault:
             colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]

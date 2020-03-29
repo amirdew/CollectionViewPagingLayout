@@ -14,8 +14,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="osk-ZD-7dD">
                     <rect key="frame" x="30" y="54.5" width="248" height="350"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" image="hexagon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rmw-sA-AN8">
-                            <rect key="frame" x="62" y="-0.5" width="124" height="136"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" image="hexagon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rmw-sA-AN8">
+                            <rect key="frame" x="62" y="-0.5" width="124" height="98.5"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="QJG-G6-k9o"/>
@@ -23,13 +23,13 @@
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="100"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="1000" text="Hexagon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="sct-7j-4CZ">
-                            <rect key="frame" x="53" y="147" width="142.5" height="50.5"/>
+                            <rect key="frame" x="53" y="109.5" width="142.5" height="44.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.74000000953674316" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="NUa-Rw-8xL">
-                            <rect key="frame" x="0.0" y="210.5" width="248" height="139.5"/>
+                            <rect key="frame" x="0.0" y="167" width="248" height="183"/>
                         </imageView>
                     </subviews>
                     <constraints>

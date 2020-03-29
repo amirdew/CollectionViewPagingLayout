@@ -93,8 +93,37 @@ class ScaleCoverFlowShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleT
         translationRatio: .zero,
         minTranslationRatio: .zero,
         maxTranslationRatio: .zero,
-        shadowEnabled: false,
+        shadowEnabled: true,
         rotation3d: .init(angle: .pi/1.65, minAngle: -.pi/3, maxAngle: .pi/3, x: 0, y: -1, z: 0, m34: -0.0005),
         translation3d: .init(translateRatios: (30, 0, -UIScreen.main.bounds.width * 0.42), minTranslates: (-30, 0, -1000), maxTranslates: (30, 0, 0))
+    )
+}
+
+
+class ScaleBlurShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
+
+    var options = ScaleTransformViewOptions(
+        minScale: 0.6,
+        scaleRatio: 0.4,
+        translationRatio: CGPoint(x: 0.66, y: 0.2),
+        maxTranslationRatio: CGPoint(x: 2, y: 0),
+        blurEffectEnabled: true,
+        blurEffectRadiusRatio: 0.2
+    )
+}
+
+
+class ScaleRotaryShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
+
+    var options = ScaleTransformViewOptions(
+        minScale: 0,
+        scaleRatio: 0.4,
+        translationRatio: CGPoint(x: 0.1, y: 0.1),
+        minTranslationRatio: CGPoint(x: -1, y: 0),
+        maxTranslationRatio: CGPoint(x: 1, y: 1),
+        rotation3d: .init(angle: .pi/15, minAngle: -.pi/3, maxAngle: .pi/3, x: 0, y: 0, z: 1, m34: -0.004),
+        translation3d: .init(translateRatios: (200, UIScreen.main.bounds.width * 0.1, 0),
+                             minTranslates: (-1000, -UIScreen.main.bounds.width, -100),
+                             maxTranslates: (1000, UIScreen.main.bounds.width, -100))
     )
 }

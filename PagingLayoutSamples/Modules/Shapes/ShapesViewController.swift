@@ -72,6 +72,8 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.registerClass(ScaleInvertedCylinderShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleCylinderShapeCollectionViewCell.self)
         collectionView.registerClass(ScaleCoverFlowShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleRotaryShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleBlurShapeCollectionViewCell.self)
         
         collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
         
@@ -108,7 +110,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             
         case .scaleInvertedCylinder:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleInvertedCylinderShapeCollectionViewCell
-        
+            
         case .scaleCoverFlow:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleCoverFlowShapeCollectionViewCell
             
@@ -120,6 +122,12 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             
         case .scaleEaseOut:
             return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseOutShapeCollectionViewCell
+            
+        case .scaleRotary:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleRotaryShapeCollectionViewCell
+            
+        case .scaleBlur:
+            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleBlurShapeCollectionViewCell
             
         case .stackDefault:
             return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultStackShapeCollectionViewCell

@@ -77,8 +77,8 @@ public class ScaleTransformViewOptions {
     /// Enabling the blur effect for side views
     public var blurEffectEnabled: Bool
     
-    /// The maximum blur radius for side views between 0 and 1
-    public var maxBlurEffectRadius: CGFloat
+    /// The Ratio for computing blur radius, radius = progress * `burEffectRadiusRatio`
+    public var blurEffectRadiusRatio: CGFloat
     
     /// Blur effect style in case you enable it
     public var blurEffectStyle: UIBlurEffect.Style
@@ -113,7 +113,7 @@ public class ScaleTransformViewOptions {
         shadowOpacityMin: Float = 0.1,
         shadowOpacityMax: Float = 0.1,
         blurEffectEnabled: Bool = false,
-        maxBlurEffectRadius: CGFloat = 0.4,
+        blurEffectRadiusRatio: CGFloat = 0.4,
         blurEffectStyle: UIBlurEffect.Style = .light,
         rotation3d: Rotation3dOptions? = nil,
         translation3d: Translation3dOptions? = nil
@@ -138,7 +138,7 @@ public class ScaleTransformViewOptions {
         self.shadowOpacityMin = shadowOpacityMin
         self.shadowOpacityMax = shadowOpacityMax
         self.blurEffectEnabled = blurEffectEnabled
-        self.maxBlurEffectRadius = maxBlurEffectRadius
+        self.blurEffectRadiusRatio = blurEffectRadiusRatio
         self.blurEffectStyle = blurEffectStyle
         self.rotation3d = rotation3d
         self.translation3d = translation3d

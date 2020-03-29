@@ -38,6 +38,8 @@ class MainViewController: UIViewController, NibBased {
                 .scaleLinear,
                 .scaleEaseIn,
                 .scaleEaseOut,
+                .scaleRotary,
+                .scaleBlur,
             ])),
             animated: true
         )

@@ -10,9 +10,11 @@ enum ShapeLayout {
     case scaleInvertedCylinder
     case scaleCylinder
     case scaleCoverFlow
+    case scaleRotary
     case scaleLinear
     case scaleEaseIn
     case scaleEaseOut
+    case scaleBlur
     
     case stackDefault
     
