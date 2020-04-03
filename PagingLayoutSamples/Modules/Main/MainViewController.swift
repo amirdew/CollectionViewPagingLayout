@@ -23,7 +23,12 @@ class MainViewController: UIViewController, NibBased {
     @IBAction private func stackButtonTouched() {
         navigationController?.pushViewController(
             ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
-                .stackDefault
+                .stackTransparent,
+                .stackBlur,
+                .stackVortex,
+                .stackRotary,
+                .stackReverse,
+                .stackPerspective
             ])),
             animated: true
         )

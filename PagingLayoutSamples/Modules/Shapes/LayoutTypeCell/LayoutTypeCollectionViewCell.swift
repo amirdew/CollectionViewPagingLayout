@@ -60,7 +60,8 @@ extension LayoutTypeCollectionViewCell: ScaleTransformView {
         circleView
     }
     
-    func extendTransform(progress: CGFloat) {
+    func transform(progress: CGFloat) {
+        applyScaleTransform(progress: progress)
         titleLabel.alpha = 1 - abs(progress)
         subtitleLabel.alpha = titleLabel.alpha
     }

@@ -101,33 +101,39 @@ public extension StackTransformView {
         var xAdjustment: CGFloat = 0
         var yAdjustment: CGFloat = 0
         
-        let scale = 1 - max(progress, 0) * options.scaleFactor
-        let translateX: CGFloat
-        let translateY: CGFloat
+        var scale = 1 - progress * options.scaleFactor
+        if let minScale = options.minScale {
+            scale = max(minScale, scale)
+        }
+        if let maxScale = options.maxScale {
+            scale = min(maxScale, scale)
+        }
         
         let stackProgress = progress.interpolate(in: .init(0, CGFloat(options.maxStackSize)))
         let perspectiveProgress  = TransformCurve.easeOut.computeFromLinear(progress: stackProgress) * options.perspectiveRatio
         
-        switch options.stackPosition {
-        case .top, .bottom:
-            translateX = 0
-            translateY = cardView.bounds.height * options.spacingFactor * -max(progress, 0) * (options.stackPosition == .bottom ? -1 : 1)
-            yAdjustment = ((scale - 1) * cardView.bounds.height) / 2 // make y equal for all cards
-            yAdjustment += perspectiveProgress * cardView.bounds.height
-            
-            if options.stackPosition == .bottom {
-                yAdjustment *= -1
-            }
-        case .right, .left:
-            translateX = cardView.bounds.width * options.spacingFactor * -max(progress, 0) * (options.stackPosition == .right ? -1 : 1)
-            translateY = 0
-            xAdjustment = ((scale - 1) * cardView.bounds.width) / 2 // make x equal for all cards
-            xAdjustment += perspectiveProgress * cardView.bounds.width
-            
-            if options.stackPosition == .right {
-                xAdjustment *= -1
-            }
+    
+        var xSpacing = cardView.bounds.width * options.spacingFactor
+        if let max = options.maxSpacing {
+            xSpacing = min(xSpacing, cardView.bounds.width * max)
         }
+        let translateX = xSpacing * -max(progress, 0) * -options.stackPosition.x
+        
+        var ySpacing = cardView.bounds.height * options.spacingFactor
+        if let max = options.maxSpacing {
+            ySpacing = min(ySpacing, cardView.bounds.height * max)
+        }
+        let translateY = ySpacing * -max(progress, 0) * -options.stackPosition.y
+        
+        yAdjustment = ((scale - 1) * cardView.bounds.height) / 2 // make y equal for all cards
+        yAdjustment += perspectiveProgress * cardView.bounds.height
+        yAdjustment *= -options.stackPosition.y
+        
+        xAdjustment = ((scale - 1) * cardView.bounds.width) / 2 // make x equal for all cards
+        xAdjustment += perspectiveProgress * cardView.bounds.width
+        xAdjustment *= -options.stackPosition.x
+        
+        
         if progress < 0 {
             xAdjustment -= cardView.bounds.width * options.popOffsetRatio.width * progress
             yAdjustment -= cardView.bounds.height * options.popOffsetRatio.height * progress
@@ -146,15 +152,16 @@ public extension StackTransformView {
         if progress >= floatStackSize - 1 {
             let targetCard = floatStackSize - 1
             cardView.alpha = 1 - progress.interpolate(
-                in: .init(targetCard, targetCard + options.bottomStackOpacitySpeedFactor)
+                in: .init(targetCard, targetCard + options.bottomStackAlphaSpeedFactor)
             )
         } else if progress < 0 {
-            cardView.alpha = progress.interpolate(in: .init(-1, -1 + options.topStackOpacitySpeedFactor))
+            cardView.alpha = progress.interpolate(in: .init(-1, -1 + options.topStackAlphaSpeedFactor))
         }
         
-        if cardView.alpha > 0 {
-            cardView.alpha -= progress * options.opacityReduceFactor
+        if cardView.alpha > 0, progress >= 0 {
+            cardView.alpha -= progress * options.alphaFactor
         }
+        
     }
     
     private func applyRotation(progress: CGFloat) {

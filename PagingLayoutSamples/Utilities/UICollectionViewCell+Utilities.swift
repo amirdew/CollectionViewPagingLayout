@@ -12,12 +12,12 @@ extension UICollectionView {
 
     // MARK: Public functions
 
-    func registerClass<T: UICollectionViewCell>(_ cellType: T.Type) {
-        register(cellType, forCellWithReuseIdentifier: T.reuseIdentifier)
+    func registerClass<T: UICollectionViewCell>(_ cellType: T.Type, reuseIdentifier: String = T.reuseIdentifier) {
+        register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    func dequeueReusableCellClass<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
-        dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+    func dequeueReusableCellClass<T: UICollectionViewCell>(for indexPath: IndexPath, type: T.Type? = nil, reuseIdentifier: String = T.reuseIdentifier) -> T {
+        dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! T
     }
 
 }

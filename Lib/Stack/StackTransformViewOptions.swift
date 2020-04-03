@@ -16,17 +16,23 @@ public struct StackTransformViewOptions {
     /// and the scale for the card just below top card is (1 - scaleFactor) and so on
     public var scaleFactor: CGFloat
     
+    public var minScale: CGFloat?
+    
+    public var maxScale: CGFloat?
+    
     /// The maximum number of visible card in the stack
     public var maxStackSize: Int
     
     /// 
     public var spacingFactor: CGFloat
+    ///
+    public var maxSpacing: CGFloat?
     
-    public var opacityReduceFactor: CGFloat
+    public var alphaFactor: CGFloat
     
-    public var bottomStackOpacitySpeedFactor: CGFloat
+    public var bottomStackAlphaSpeedFactor: CGFloat
     
-    public var topStackOpacitySpeedFactor: CGFloat
+    public var topStackAlphaSpeedFactor: CGFloat
     
     public var perspectiveRatio: CGFloat
     
@@ -46,7 +52,7 @@ public struct StackTransformViewOptions {
     
     public var popOffsetRatio: CGSize
     
-    public var stackPosition: Position
+    public var stackPosition: CGPoint
     
     public var reverse: Bool
     
@@ -61,32 +67,39 @@ public struct StackTransformViewOptions {
     
     public init(
         scaleFactor: CGFloat = 0.15,
-        maxStackSize: Int = 4,
-        spacingFactor: CGFloat = 0.1,
-        opacityReduceFactor: CGFloat = 0.0,
-        bottomStackOpacitySpeedFactor: CGFloat = 0.9,
-        topStackOpacitySpeedFactor: CGFloat = 0.3,
-        perspectiveRatio: CGFloat = 0.45,
+        minScale: CGFloat? = 0,
+        maxScale: CGFloat? = 1,
+        maxStackSize: Int = 3,
+        spacingFactor: CGFloat = 0.03,
+        maxSpacing: CGFloat? = nil,
+        alphaFactor: CGFloat = 0.0,
+        minAlpha: CGFloat = 0.0,
+        bottomStackAlphaSpeedFactor: CGFloat = 0.9,
+        topStackAlphaSpeedFactor: CGFloat = 0.3,
+        perspectiveRatio: CGFloat = 0,
         shadowEnabled: Bool = true,
         shadowColor: UIColor = .black,
-        shadowOpacity: Float = 0.05,
+        shadowOpacity: Float = 0.1,
         shadowOffset: CGSize = .zero,
-        stackRotateAngel: CGFloat = .pi/15,
+        stackRotateAngel: CGFloat = 0,
         shadowRadius: CGFloat = 10,
         popAngle: CGFloat = .pi/7,
         popOffsetRatio: CGSize = .init(width: -1.3, height: 0.3),
-        stackPosition: Position = .top,
+        stackPosition: CGPoint =  CGPoint(x: 0, y: -1),
         reverse: Bool = false,
-        blurEffectEnabled: Bool = true,
-        maxBlurEffectRadius: CGFloat = 0.1,
+        blurEffectEnabled: Bool = false,
+        maxBlurEffectRadius: CGFloat = 0.0,
         blurEffectStyle: UIBlurEffect.Style = .light
     ) {
         self.scaleFactor = scaleFactor
+        self.minScale = minScale
+        self.maxScale = maxScale
         self.maxStackSize = maxStackSize
         self.spacingFactor = spacingFactor
-        self.opacityReduceFactor = opacityReduceFactor
-        self.bottomStackOpacitySpeedFactor = bottomStackOpacitySpeedFactor
-        self.topStackOpacitySpeedFactor = topStackOpacitySpeedFactor
+        self.maxSpacing = maxSpacing
+        self.alphaFactor = alphaFactor
+        self.bottomStackAlphaSpeedFactor = bottomStackAlphaSpeedFactor
+        self.topStackAlphaSpeedFactor = topStackAlphaSpeedFactor
         self.perspectiveRatio = perspectiveRatio
         self.shadowEnabled = shadowEnabled
         self.shadowColor = shadowColor
@@ -101,15 +114,5 @@ public struct StackTransformViewOptions {
         self.blurEffectEnabled = blurEffectEnabled
         self.maxBlurEffectRadius = maxBlurEffectRadius
         self.blurEffectStyle = blurEffectStyle
-    }
-}
-
-
-public extension StackTransformViewOptions {
-    enum Position {
-        case top
-        case right
-        case bottom
-        case left
     }
 }

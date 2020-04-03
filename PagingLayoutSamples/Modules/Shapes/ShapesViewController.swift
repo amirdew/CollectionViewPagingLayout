@@ -66,18 +66,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func configureCollectionView() {
-        collectionView.registerClass(ScaleLinearShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleEaseInShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleEaseOutShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleInvertedCylinderShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleCylinderShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleCoverFlowShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleRotaryShapeCollectionViewCell.self)
-        collectionView.registerClass(ScaleBlurShapeCollectionViewCell.self)
-        
-        collectionView.registerClass(DefaultStackShapeCollectionViewCell.self)
-        
-        collectionView.registerClass(DefaultSnapshotShapeCollectionViewCell.self)
+        ShapesViewModel.allLayoutViewModes.forEach {
+            collectionView.registerClass($0.cellClass, reuseIdentifier: "\($0.layout)")
+        }
         
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
@@ -101,41 +92,6 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         layoutTypeCollectionView.clipsToBounds = false
         layoutTypeCollectionView.backgroundColor = .clear
     }
-    
-    private func getShapeCell(collectionView: UICollectionView, for indexPath: IndexPath) -> BaseShapeCollectionViewCell {
-        
-        switch viewModel.selectedLayoutMode {
-        case .scaleCylinder:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleCylinderShapeCollectionViewCell
-            
-        case .scaleInvertedCylinder:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleInvertedCylinderShapeCollectionViewCell
-            
-        case .scaleCoverFlow:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleCoverFlowShapeCollectionViewCell
-            
-        case .scaleLinear:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleLinearShapeCollectionViewCell
-            
-        case .scaleEaseIn:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseInShapeCollectionViewCell
-            
-        case .scaleEaseOut:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleEaseOutShapeCollectionViewCell
-            
-        case .scaleRotary:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleRotaryShapeCollectionViewCell
-            
-        case .scaleBlur:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as ScaleBlurShapeCollectionViewCell
-            
-        case .stackDefault:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultStackShapeCollectionViewCell
-            
-        case .snapshotDefault:
-            return collectionView.dequeueReusableCellClass(for: indexPath) as DefaultSnapshotShapeCollectionViewCell
-        }
-    }
 }
 
 extension ShapesViewController: UICollectionViewDataSource {
@@ -145,7 +101,7 @@ extension ShapesViewController: UICollectionViewDataSource {
             return Constants.infiniteNumberOfItems
         }
         if collectionView == self.collectionView {
-            return viewModel.shapeViewModels.count
+            return viewModel.selectedLayout.cardViewModels.count
         }
         
         fatalError("unknown collection view")
@@ -160,8 +116,8 @@ extension ShapesViewController: UICollectionViewDataSource {
         }
         
         if collectionView == self.collectionView {
-            let itemViewModel = viewModel.shapeViewModels[indexPath.row]
-            let cell = getShapeCell(collectionView: collectionView, for: indexPath)
+            let itemViewModel = viewModel.selectedLayout.cardViewModels[indexPath.row]
+            let cell = collectionView.dequeueReusableCellClass(for: indexPath, type: viewModel.selectedLayout.cellClass, reuseIdentifier: "\(viewModel.selectedLayout.layout)")
             cell.viewModel = itemViewModel
             return cell
         }
@@ -176,7 +132,7 @@ extension ShapesViewController: CollectionViewPagingLayoutDelegate {
     
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
         let index = currentPage % viewModel.layoutTypeViewModels.count
-        self.viewModel.selectedLayoutMode = self.viewModel.layoutTypeViewModels[index].layout
+        self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
         self.collectionView.reloadData()
         
         collectionView.performBatchUpdates({

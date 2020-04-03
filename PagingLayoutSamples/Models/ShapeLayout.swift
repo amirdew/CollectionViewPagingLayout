@@ -6,6 +6,8 @@
 //  Copyright © 2020 Amir Khorsandi. All rights reserved.
 //
 
+import UIKit
+
 enum ShapeLayout {
     case scaleInvertedCylinder
     case scaleCylinder
@@ -16,7 +18,12 @@ enum ShapeLayout {
     case scaleEaseOut
     case scaleBlur
     
-    case stackDefault
+    case stackTransparent
+    case stackPerspective
+    case stackRotary
+    case stackVortex
+    case stackReverse
+    case stackBlur
     
     case snapshotDefault
 }

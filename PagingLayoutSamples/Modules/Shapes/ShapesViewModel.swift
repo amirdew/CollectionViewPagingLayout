@@ -12,69 +12,90 @@ class ShapesViewModel {
     
     // MARK: Properties
     
-    var selectedLayoutMode: ShapeLayout {
-        didSet {
-            refreshShapeViewModels()
-        }
-    }
+    var selectedLayout: LayoutTypeCellViewModel
     
     let layoutTypeViewModels: [LayoutTypeCellViewModel]
     
-    var shapeViewModels: [ShapeCardViewModel] = []
-    
-    private let shapes: [Shape] = [
-        .init(name: "Hexagon", iconName: "hexagon.fill"),
-        .init(name: "Rectangle", iconName: "rectangle.fill"),
-        .init(name: "Shield", iconName: "shield.fill"),
-        .init(name: "App", iconName: "app.fill"),
-        .init(name: "Triangle", iconName: "triangle.fill"),
-        .init(name: "Circle", iconName: "circle.fill"),
-        .init(name: "Square", iconName: "square.fill"),
-        .init(name: "Capsule", iconName: "capsule.fill")
-    ]
-    
-    private static let allLayoutViewModes: [LayoutTypeCellViewModel] = [
-        .init(layout: .scaleInvertedCylinder, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Inverted Cylinder"),
-        .init(layout: .scaleCylinder, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cylinder"),
-        .init(layout: .scaleCoverFlow, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cover Flow"),
-        .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear"),
-        .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn"),
-        .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut"),
-        .init(layout: .scaleRotary, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Rotary"),
-        .init(layout: .scaleBlur, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Blurry"),
+    static let allLayoutViewModes: [LayoutTypeCellViewModel] = [
+        .init(layout: .scaleInvertedCylinder,
+              iconName: "rectangle.stack.fill",
+              title: "Scale",
+              subtitle: "Inverted Cylinder",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleInvertedCylinderShapeCollectionViewCell.self),
+        .init(layout: .scaleCylinder, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cylinder",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleCylinderShapeCollectionViewCell.self),
+        .init(layout: .scaleCoverFlow, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Cover Flow",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleCoverFlowShapeCollectionViewCell.self),
+        .init(layout: .scaleLinear, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Linear",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleLinearShapeCollectionViewCell.self),
+        .init(layout: .scaleEaseIn, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseIn",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleEaseInShapeCollectionViewCell.self),
+        .init(layout: .scaleEaseOut, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "EaseOut",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleEaseOutShapeCollectionViewCell.self),
+        .init(layout: .scaleRotary, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Rotary",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleRotaryShapeCollectionViewCell.self),
+        .init(layout: .scaleBlur, iconName: "rectangle.stack.fill", title: "Scale", subtitle: "Blurry",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]),
+              cellClass: ScaleBlurShapeCollectionViewCell.self),
         
-        .init(layout: .stackDefault, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Default"),
+        .init(layout: .stackTransparent, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Transparent",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: TransparentStackShapeCollectionViewCell.self),
+        .init(layout: .stackPerspective, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Perspective",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: PerspectiveStackShapeCollectionViewCell.self),
+        .init(layout: .stackRotary, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Rotary",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: RotaryStackShapeCollectionViewCell.self),
+        .init(layout: .stackBlur, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Blur",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: BlurStackShapeCollectionViewCell.self),
+        .init(layout: .stackVortex, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Vortex",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: VortexStackShapeCollectionViewCell.self),
+        .init(layout: .stackReverse, iconName: "rectangle.stack.fill", title: "Stack", subtitle: "Reverse",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]),
+              cellClass: ReverseStackShapeCollectionViewCell.self),
         
-        .init(layout: .snapshotDefault, iconName: "rectangle.stack.fill", title: "Snapshot", subtitle: "Default"),
+        .init(layout: .snapshotDefault, iconName: "rectangle.stack.fill", title: "Snapshot", subtitle: "Default",
+              cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.9176470588, green: 1, blue: 0, alpha: 1), #colorLiteral(red: 0.3137254902, green: 0.8, blue: 1, alpha: 1)]),
+              cellClass: DefaultSnapshotShapeCollectionViewCell.self),
     ]
-    
     
     // MARK: Lifecycle
     
     init(layouts: [ShapeLayout]) {
         self.layoutTypeViewModels = layouts.compactMap { layout in  ShapesViewModel.allLayoutViewModes.first { $0.layout == layout } }
-        selectedLayoutMode = layouts.first!
-        refreshShapeViewModels()
+        selectedLayout = layoutTypeViewModels.first!
     }
     
     
     // MARK: Private properties
     
-    private func refreshShapeViewModels() {
-        let colors: [UIColor]
-        switch selectedLayoutMode {
-        case .scaleCylinder, .scaleInvertedCylinder,
-             .scaleCoverFlow, .scaleRotary, .scaleBlur,
-             .scaleLinear, .scaleEaseIn, .scaleEaseOut:
-            colors = [#colorLiteral(red: 1, green: 0.4274509804, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.7803921569, blue: 0, alpha: 1)]
-        case .stackDefault:
-            colors = [#colorLiteral(red: 0.3058823529, green: 1, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1137254902, green: 0.4156862745, blue: 0.6666666667, alpha: 1)]
-        case .snapshotDefault:
-            colors = [#colorLiteral(red: 0.9176470588, green: 1, blue: 0, alpha: 1), #colorLiteral(red: 0.3137254902, green: 0.8, blue: 1, alpha: 1)]
-        }
-        shapeViewModels = shapes.map {
+    private static func generateCardViewModels(colors: [UIColor]) -> [ShapeCardViewModel] {
+        let shapes: [Shape] = [
+            .init(name: "Hexagon", iconName: "hexagon.fill"),
+            .init(name: "Rectangle", iconName: "rectangle.fill"),
+            .init(name: "Shield", iconName: "shield.fill"),
+            .init(name: "App", iconName: "app.fill"),
+            .init(name: "Triangle", iconName: "triangle.fill"),
+            .init(name: "Circle", iconName: "circle.fill"),
+            .init(name: "Square", iconName: "square.fill"),
+            .init(name: "Capsule", iconName: "capsule.fill")
+        ]
+        return shapes.map {
             ShapeCardViewModel(iconName: $0.iconName, title: $0.name, colors: colors)
         }
     }
     
 }
+
+
+
