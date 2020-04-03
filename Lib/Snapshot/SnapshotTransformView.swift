@@ -19,20 +19,7 @@ public protocol SnapshotTransformView: TransformableView {
     /// The identifier for snapshot, it won't make a new snapshot if
     /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
-    
-    /// If you wish to extend this protocol and add more transformations to it
-    /// you can implement this method and do whatever you want
-    func extendTransform(snapshot: SnapshotContainerView, progress: CGFloat)
 }
-
-
-public extension SnapshotTransformView {
-    
-    /// An empty default implementation for extendTransform to make it optional
-    func extendTransform(snapshot: SnapshotContainerView, progress: CGFloat) {}
-    
-}
-
 
 public extension SnapshotTransformView where Self: UICollectionViewCell {
     
@@ -71,9 +58,20 @@ public extension SnapshotTransformView {
     // MARK: TransformableView
     
     func transform(progress: CGFloat) {
-        guard let snapshot = findSnapshot() ?? makeSnapshot() else {
+        guard let snapshot = getSnapshot() else {
             return
         }
+        applySnapshotTransform(snapshot: snapshot, progress: progress)
+    }
+    
+    
+    // MARK: Public functions
+    
+    func getSnapshot() -> SnapshotContainerView? {
+        findSnapshot() ?? makeSnapshot()
+    }
+    
+    func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat) {
         if progress == 0 {
             targetView.transform = .identity
             snapshot.alpha = 0
@@ -83,9 +81,8 @@ public extension SnapshotTransformView {
             targetView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -UIScreen.main.bounds.height)
         }
         snapshot.transform(progress: progress, options: options)
-        
-        extendTransform(snapshot: snapshot, progress: progress)
     }
+    
     
     // MARK: Private functions
     

@@ -19,17 +19,10 @@ public protocol StackTransformView: TransformableView {
     
     /// The view to apply blur effect on
     var blurViewHost: UIView { get }
-    
-    /// If you wish to extend this protocol and add more transforming to it
-    /// you can implement this method and do whatever you want
-    func extendTransform(progress: CGFloat)
 }
 
 
 public extension StackTransformView {
-    
-    /// An empty default implementation for extendTransform to make it optional
-    func extendTransform(progress: CGFloat) {}
     
     /// The default value is the super view of `cardView`
     var blurViewHost: UIView {
@@ -61,6 +54,21 @@ public extension StackTransformView {
     // MARK: TransformableView
     
     func transform(progress: CGFloat) {
+        applyStackTransform(progress: progress)
+    }
+    
+    func zPosition(progress: CGFloat) -> Int {
+        var zPosition = -Int(round(progress))
+        if options.reverse {
+            zPosition *= -1
+        }
+        return zPosition
+    }
+    
+    
+    // MARK: Public functions
+    
+    func applyStackTransform(progress: CGFloat) {
         var progress = progress
         if options.reverse {
             progress *= -1
@@ -72,16 +80,6 @@ public extension StackTransformView {
         if #available(iOS 10, *) {
             applyBlurEffect(progress: progress)
         }
-        
-        extendTransform(progress: progress)
-    }
-    
-    func zPosition(progress: CGFloat) -> Int {
-        var zPosition = -Int(round(progress))
-        if options.reverse {
-            zPosition *= -1
-        }
-        return zPosition
     }
     
     

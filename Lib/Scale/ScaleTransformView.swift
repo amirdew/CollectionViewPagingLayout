@@ -19,17 +19,10 @@ public protocol ScaleTransformView: TransformableView {
     
     /// The view to apply blur effect on
     var blurViewHost: UIView { get }
-    
-    /// If you wish to extend this protocol and add more transforming to it
-    /// you can implement this method and do whatever you want
-    func extendTransform(progress: CGFloat)
 }
 
 
 public extension ScaleTransformView {
-    
-    /// An empty default implementation for extendTransform to make it optional
-    func extendTransform(progress: CGFloat) {}
     
     /// The default value is the super view of `scalableView`
     var blurViewHost: UIView {
@@ -60,6 +53,13 @@ public extension ScaleTransformView {
     // MARK: TransformableView
     
     func transform(progress: CGFloat) {
+        applyScaleTransform(progress: progress)
+    }
+    
+    
+    // MARK: Public functions
+    
+    func applyScaleTransform(progress: CGFloat) {
         applyStyle(progress: progress)
         applyScaleAndTranslation(progress: progress)
         applyCATransform3D(progress: progress)
@@ -68,7 +68,6 @@ public extension ScaleTransformView {
             applyBlurEffect(progress: progress)
         }
         
-        extendTransform(progress: progress)
     }
     
     
