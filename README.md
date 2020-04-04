@@ -124,7 +124,7 @@ extension LayoutTypeCollectionViewCell: ScaleTransformView {
     
     func transform(progress: CGFloat) {
         applyScaleTransform(progress: progress)
-        // customize or add transforms here, like this:
+        // customize views here, like this:
         titleLabel.alpha = 1 - abs(progress)
         subtitleLabel.alpha = titleLabel.alpha
     }
