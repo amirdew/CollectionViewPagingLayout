@@ -14,8 +14,7 @@
 ## About
 A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
 by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to change the cell view.  
-You can see the usage by looking into the example source code.  
-More examples will be added.
+You can see the usage by looking into the samples source code.  
 
 ## Add to your project
 
@@ -34,7 +33,7 @@ Just add all the files under `Lib` directory to your project
 ```swift
 import CollectionViewPagingLayout
 ```
-- Set the layout for collection view:
+- Set the layout for your collection view:
 (in most cases you want a paging effect so make sure you enable it)
 ```swift
 let layout = CollectionViewPagingLayout()
@@ -42,7 +41,7 @@ collectionView.collectionViewLayout = layout
 collectionView.isPagingEnabled = true // enabling paging effect
 ```
 
-- Here you can set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time   
+- Then you can set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time   
 ```swift
 layout.numberOfVisibleItems = ...
 ```
@@ -70,6 +69,87 @@ extension MyCollectionViewCell: TransformableView {
         contentView.subviews.forEach { $0.transform = transform }
         contentView.alpha = alpha
     }
+}
+```
+
+## Prepared Transformables
+
+There are prepared transformables to make it easier to use this library,    
+using them is very simple, you just need to conform your `UICollectionViewCell` to the prepared protocol        
+and then set the options for that to customize it as you want.       
+there are three types of transformables protocol at the moment `ScaleTransformView`, `SnapshotTransformView`, and `StackTransformView`.      
+as you can see in the samples app these protocols are highly customizable and you can make tons of different effects with them.        
+here is a simple example for `ScaleTransformView` which gives you a simple paging with scaling effect:
+```swift
+extension MyCollectionViewCell: ScaleTransformView {
+    var scaleOptions = ScaleTransformViewOptions(
+        minScale: 0.6,
+        scaleRatio: 0.4,
+        translationRatio: CGPoint(x: 0.66, y: 0.2),
+        maxTranslationRatio: CGPoint(x: 2, y: 0),
+        keepVerticalSpacingEqual: true,
+        keepHorizontalSpacingEqual: true,
+        scaleCurve: .linear,
+        translationCurve: .linear
+    )
+}
+```
+there is an options struct for each transformable where you can customize the effect, check the struct to find out what each parameter does.          
+a short comment on the top of each parameter explains how you can use it.      
+`ScaleTransformView` -> [`ScaleTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Scale/ScaleTransformViewOptions.swift)     
+`SnapshotTransformView` -> [`SnapshotTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Snapshot/SnapshotTransformViewOptions.swift)     
+`StackTransformView` -> [`StackTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Stack/StackTransformViewOptions.swift)     
+     
+you can see some examples in the samples app for these transformables.      
+check [here](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/PagingLayoutSamples/Modules/Shapes/ShapeCell) to see used options for each: `/PagingLayoutSamples/Modules/Shapes/ShapeCell/`
+
+#### Target view
+You may wonder how does it figure out the view for applying transforms on, if you check each transformable protocol you can see the target views are defined for each, you can also see there is an extension to provide the default target views.    
+for instance we have `ScaleTransformView.scalableView` which is the view that we apply scale transforms on, and for `UICollectionViewCell` the default view is the first subview of `contentView`:
+
+```swift
+public extension ScaleTransformView where Self: UICollectionViewCell {
+    
+    /// Default `scalableView` for `UICollectionViewCell` is the first subview of
+    /// `contentView` or the content view itself if there is no subview
+    var scalableView: UIView {
+        contentView.subviews.first ?? contentView
+    }
+}
+```
+of course you can easily override this
+
+
+## Customize Prepared Transformables
+
+Yes, you can customize them or even combine them, to do that like before conform your cell class to the transformable protocol(s) and then implement `TransformableView.transform` function and call the transformable function manually, like this:     
+```swift
+extension LayoutTypeCollectionViewCell: ScaleTransformView {
+    
+    func transform(progress: CGFloat) {
+        applyScaleTransform(progress: progress)
+        // customize or add transforms here, like this:
+        titleLabel.alpha = 1 - abs(progress)
+        subtitleLabel.alpha = titleLabel.alpha
+    }
+
+}
+```
+as you can see `applyScaleTransform` applies the scale transforms and right after that we change the alpha for `titleLabel` and `subtitleLabel`.      
+to find the public function(s) for each tansformable check the protocol definition.
+
+## Other features
+
+You can control the current page by following public functions of `CollectionViewPagingLayout`:
+- `func setCurrentPage(_ page: Int, animated: Bool = true)`
+- `func goToNextPage(animated: Bool = true)`
+- `func goToPreviousPage(animated: Bool = true)`
+these are safe wrappers for setting `ContentOffset` of `UICollectionview`   
+you can also get current page by a public variable `CollectionViewPagingLayout.currentPage` or listen to the changes by setting `CollectionViewPagingLayout.delegate`:
+
+```swift
+public protocol CollectionViewPagingLayoutDelegate: class {
+    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
 }
 ```
 
