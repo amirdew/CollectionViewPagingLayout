@@ -87,10 +87,6 @@ extension MyCollectionViewCell: ScaleTransformView {
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
         maxTranslationRatio: CGPoint(x: 2, y: 0),
-        keepVerticalSpacingEqual: true,
-        keepHorizontalSpacingEqual: true,
-        scaleCurve: .linear,
-        translationCurve: .linear
     )
 }
 ```
