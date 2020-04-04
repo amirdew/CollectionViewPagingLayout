@@ -1,0 +1,6 @@
+platform :ios, '13.0'
+
+target 'PagingLayoutSamples' do
+  use_frameworks!
+  pod 'CollectionViewPagingLayout', :path => './'
+end

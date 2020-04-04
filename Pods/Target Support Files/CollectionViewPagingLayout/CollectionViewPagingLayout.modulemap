@@ -1,0 +1,6 @@
+framework module CollectionViewPagingLayout {
+  umbrella header "CollectionViewPagingLayout-umbrella.h"
+
+  export *
+  module * { export * }
+}
