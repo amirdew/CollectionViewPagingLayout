@@ -45,8 +45,8 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             didScrollCollectionViewToMiddle = true
         }
         
-        collectionView.collectionViewLayout.invalidateLayout()
         layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
+        updateSelectedLayout()
     }
     
     // MARK: Event listener

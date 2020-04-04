@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "snapshot_chess.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
