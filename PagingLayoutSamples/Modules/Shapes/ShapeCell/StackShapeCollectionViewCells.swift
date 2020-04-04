@@ -11,7 +11,7 @@ import CollectionViewPagingLayout
 
 class TransparentStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: 0.12,
         minScale: 0.0,
         maxStackSize: 4,
@@ -26,7 +26,7 @@ class TransparentStackShapeCollectionViewCell: BaseShapeCollectionViewCell, Stac
 
 class PerspectiveStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: 0.1,
         minScale: 0.2,
         maxStackSize: 6,
@@ -43,7 +43,7 @@ class PerspectiveStackShapeCollectionViewCell: BaseShapeCollectionViewCell, Stac
 
 class RotaryStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: -0.03,
         minScale: 0.2,
         maxStackSize: 3,
@@ -60,7 +60,7 @@ class RotaryStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTran
 
 class VortexStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: -0.15,
         minScale: 0.2,
         maxScale: nil,
@@ -79,7 +79,7 @@ class VortexStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTran
 
 class ReverseStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: 0.1,
         maxScale: nil,
         maxStackSize: 4,
@@ -95,7 +95,7 @@ class ReverseStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTra
 
 class BlurStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
 
-    var options: StackTransformViewOptions = .init(
+    var stackOptions: StackTransformViewOptions = .init(
         scaleFactor: 0.1,
         maxScale: nil,
         maxStackSize: 7,

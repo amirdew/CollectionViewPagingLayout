@@ -12,7 +12,7 @@ import UIKit
 public protocol ScaleTransformView: TransformableView {
     
     /// Options for controlling scale effect, see `ScaleTransformViewOptions.swift`
-    var options: ScaleTransformViewOptions { get }
+    var scaleOptions: ScaleTransformViewOptions { get }
     
     /// The view to apply scale effect on
     var scalableView: UIView { get }
@@ -45,7 +45,7 @@ public extension ScaleTransformView {
     
     // MARK: Properties
     
-    var options: ScaleTransformViewOptions {
+    var scaleOptions: ScaleTransformViewOptions {
         .init()
     }
     
@@ -74,48 +74,48 @@ public extension ScaleTransformView {
     // MARK: Private functions
     
     private func applyStyle(progress: CGFloat) {
-        guard options.shadowEnabled else {
+        guard scaleOptions.shadowEnabled else {
             return
         }
         let layer = scalableView.layer
-        layer.shadowColor = options.shadowColor.cgColor
+        layer.shadowColor = scaleOptions.shadowColor.cgColor
         let offset = CGSize(
-            width: max(options.shadowOffsetMin.width, (1 - abs(progress)) * options.shadowOffsetMax.width),
-            height: max(options.shadowOffsetMin.height, (1 - abs(progress)) * options.shadowOffsetMax.height)
+            width: max(scaleOptions.shadowOffsetMin.width, (1 - abs(progress)) * scaleOptions.shadowOffsetMax.width),
+            height: max(scaleOptions.shadowOffsetMin.height, (1 - abs(progress)) * scaleOptions.shadowOffsetMax.height)
         )
         layer.shadowOffset = offset
-        layer.shadowRadius = max(options.shadowRadiusMin, (1 - abs(progress)) * options.shadowRadiusMax)
-        layer.shadowOpacity = max(options.shadowOpacityMin, (1 - abs(Float(progress))) * options.shadowOpacityMax)
+        layer.shadowRadius = max(scaleOptions.shadowRadiusMin, (1 - abs(progress)) * scaleOptions.shadowRadiusMax)
+        layer.shadowOpacity = max(scaleOptions.shadowOpacityMin, (1 - abs(Float(progress))) * scaleOptions.shadowOpacityMax)
     }
     
     private func applyScaleAndTranslation(progress: CGFloat) {
         var transform = CGAffineTransform.identity
         var xAdjustment: CGFloat = 0
         var yAdjustment: CGFloat = 0
-        let scaleProgress = options.scaleCurve.computeFromLinear(progress: abs(progress))
-        var scale = 1 - scaleProgress * options.scaleRatio
-        scale = max(scale, options.minScale)
-        scale = min(scale, options.maxScale)
+        let scaleProgress = scaleOptions.scaleCurve.computeFromLinear(progress: abs(progress))
+        var scale = 1 - scaleProgress * scaleOptions.scaleRatio
+        scale = max(scale, scaleOptions.minScale)
+        scale = min(scale, scaleOptions.maxScale)
         
-        if options.keepHorizontalSpacingEqual {
+        if scaleOptions.keepHorizontalSpacingEqual {
             xAdjustment = ((1 - scale) * scalableView.bounds.width) / 2
             if progress > 0 {
                 xAdjustment *= -1
             }
         }
         
-        if options.keepVerticalSpacingEqual {
+        if scaleOptions.keepVerticalSpacingEqual {
             yAdjustment = ((1 - scale) * scalableView.bounds.height) / 2
         }
         
-        let translateProgress = options.translationCurve.computeFromLinear(progress: abs(progress))
-        var translateX = scalableView.bounds.width * options.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
-        var translateY = scalableView.bounds.height * options.translationRatio.y * abs(translateProgress) - yAdjustment
-        if let min = options.minTranslationRatio {
+        let translateProgress = scaleOptions.translationCurve.computeFromLinear(progress: abs(progress))
+        var translateX = scalableView.bounds.width * scaleOptions.translationRatio.x * (translateProgress * (progress < 0 ? -1 : 1)) - xAdjustment
+        var translateY = scalableView.bounds.height * scaleOptions.translationRatio.y * abs(translateProgress) - yAdjustment
+        if let min = scaleOptions.minTranslationRatio {
             translateX = max(translateX, scalableView.bounds.width * min.x)
             translateY = max(translateY, scalableView.bounds.height * min.y)
         }
-        if let max = options.maxTranslationRatio {
+        if let max = scaleOptions.maxTranslationRatio {
             translateX = min(translateX, scalableView.bounds.width * max.x)
             translateY = min(translateY, scalableView.bounds.height * max.y)
         }
@@ -128,7 +128,7 @@ public extension ScaleTransformView {
     private func applyCATransform3D(progress: CGFloat) {
         var transform = CATransform3DMakeAffineTransform(scalableView.transform)
         
-        if let options = self.options.rotation3d {
+        if let options = self.scaleOptions.rotation3d {
             var angle = options.angle * progress
             angle = max(angle, options.minAngle)
             angle = min(angle, options.maxAngle)
@@ -137,7 +137,7 @@ public extension ScaleTransformView {
             scalableView.layer.isDoubleSided = options.isDoubleSided
         }
         
-        if let options = self.options.translation3d {
+        if let options = self.scaleOptions.translation3d {
             var x = options.translateRatios.0 * progress
             var y = options.translateRatios.1 * abs(progress)
             var z = options.translateRatios.2 * abs(progress)
@@ -155,17 +155,17 @@ public extension ScaleTransformView {
     
     @available(iOS 10.0, *)
     private func applyBlurEffect(progress: CGFloat) {
-        guard options.blurEffectRadiusRatio > 0, options.blurEffectEnabled else {
+        guard scaleOptions.blurEffectRadiusRatio > 0, scaleOptions.blurEffectEnabled else {
             return
         }
         let blurView: BlurEffectView
         if let view = blurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
             blurView = view
         } else {
-            blurView = BlurEffectView(effect: UIBlurEffect(style: options.blurEffectStyle))
+            blurView = BlurEffectView(effect: UIBlurEffect(style: scaleOptions.blurEffectStyle))
             blurViewHost.fill(with: blurView)
         }
-        blurView.setBlurRadius(radius: abs(progress) * options.blurEffectRadiusRatio)
+        blurView.setBlurRadius(radius: abs(progress) * scaleOptions.blurEffectRadiusRatio)
         blurView.transform = CGAffineTransform.identity.translatedBy(x: scalableView.transform.tx, y: scalableView.transform.ty)
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 public extension SnapshotTransformViewOptions {
     
-    enum PiecesValue<Type: MultipliableToCGFloat & MultipliableToSelf> {
+    enum PiecesValue<Type: MultipliableToCGFloat & MultipliableToSelf & SummableToCGFloat & SummableToSelf> {
         
         // MARK: Cases
         
@@ -23,7 +23,7 @@ public extension SnapshotTransformViewOptions {
         case rowBasedCustom([Type])
         case columnBasedCustom([Type])
         case `static`(Type)
-        case aggregated([PiecesValue<Type>])
+        case aggregated([PiecesValue<Type>], (Type, Type) -> Type)
         
         
         // MARK: Public functions
@@ -63,13 +63,20 @@ public extension SnapshotTransformViewOptions {
                 var colIndex = position.column
                 if colIndex >= middle {
                     colIndex -= middle
+                    if position.columnCount % 2 == 0 {
+                        colIndex += 1
+                    }
                 } else {
                     colIndex = middle - colIndex
                 }
                 if reversed {
                     colIndex = middle - colIndex
                 }
-                return ratio * CGFloat(colIndex) * (position.column > middle ? 1 : -1)
+                var colFloatIndex = CGFloat(colIndex)
+                if position.columnCount % 2 == 0 {
+                    colFloatIndex -= 0.5
+                }
+                return ratio * colFloatIndex * (position.column >= middle ? 1 : -1)
             case .rowBasedMirror(let ratio, let reversed):
                 let middle = Int(position.rowCount / 2)
                 if position.rowCount % 2 == 1, position.row == middle {
@@ -78,21 +85,28 @@ public extension SnapshotTransformViewOptions {
                 var rowIndex = position.row
                 if rowIndex >= middle {
                     rowIndex -= middle
+                    if position.rowCount % 2 == 0 {
+                        rowIndex += 1
+                    }
                 } else {
                     rowIndex = middle - rowIndex
                 }
                 if reversed {
                     rowIndex = middle - rowIndex
                 }
-                return ratio * CGFloat(rowIndex) * (position.row > middle ? 1 : -1)
-            case .aggregated(let values):
+                var rowFloatIndex = CGFloat(rowIndex)
+                if position.rowCount % 2 == 0 {
+                    rowFloatIndex -= 0.5
+                }
+                return ratio * rowFloatIndex * (position.row >= middle ? 1 : -1)
+            case .aggregated(let values, let nextPartialResult):
                 guard !values.isEmpty else {
                     fatalError("aggregate array is empty")
                 }
                 let result = values.map {
                     $0.getRatio(position: position)
                 }
-                return result.dropFirst().reduce(result.first!, *)
+                return result.dropFirst().reduce(result.first!, nextPartialResult)
             }
         }
         

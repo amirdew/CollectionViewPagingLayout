@@ -11,7 +11,7 @@ import UIKit
 public protocol SnapshotTransformView: TransformableView {
     
     /// Options for controlling the effects, see `SnapshotTransformViewOptions.swift`
-    var options: SnapshotTransformViewOptions { get }
+    var snapshotOptions: SnapshotTransformViewOptions { get }
     
     /// The view to apply the effect on
     var targetView: UIView { get }
@@ -51,7 +51,7 @@ public extension SnapshotTransformView {
     
     // MARK: Properties
     
-    var options: SnapshotTransformViewOptions {
+    var snapshotOptions: SnapshotTransformViewOptions {
         .init()
     }
     
@@ -80,7 +80,7 @@ public extension SnapshotTransformView {
             // hide the original view, we apply transform on the snapshot
             targetView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -UIScreen.main.bounds.height)
         }
-        snapshot.transform(progress: progress, options: options)
+        snapshot.transform(progress: progress, options: snapshotOptions)
     }
     
     
@@ -96,7 +96,7 @@ public extension SnapshotTransformView {
     }
     
     private func makeSnapshot() -> SnapshotContainerView? {
-        guard let view = SnapshotContainerView(targetView: targetView, pieceSizeRatio: options.pieceSizeRatio, identifier: identifier) else {
+        guard let view = SnapshotContainerView(targetView: targetView, pieceSizeRatio: snapshotOptions.pieceSizeRatio, identifier: identifier) else {
             return nil
         }
         targetView.superview?.insertSubview(view, aboveSubview: targetView)

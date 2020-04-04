@@ -53,9 +53,9 @@
 		320CFF31C4164E8486E7B077D290CC91 /* CGFloat+Range.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGFloat+Range.swift"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		38DA3BFCBD491AC2A9D734622A15C6BA /* Pods-PagingLayoutSamples.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PagingLayoutSamples.modulemap"; sourceTree = "<group>"; };
-		41CB117C81623426BE4CDC65F1CB5CE3 /* Pods_PagingLayoutSamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PagingLayoutSamples.framework; path = "Pods-PagingLayoutSamples.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41CB117C81623426BE4CDC65F1CB5CE3 /* Pods_PagingLayoutSamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingLayoutSamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4690EFBE0901C7A0A5D32B1E23976EFE /* Pods-PagingLayoutSamples-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingLayoutSamples-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4D8F964FEA10FF4ED7C669359A356BC9 /* CollectionViewPagingLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CollectionViewPagingLayout.framework; path = CollectionViewPagingLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8F964FEA10FF4ED7C669359A356BC9 /* CollectionViewPagingLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionViewPagingLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F315E2AF8DBFE053BADD02F9C185A6E /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
 		5238CABE94B71667F9CE67EF2FB2FBB6 /* ScaleTransformView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScaleTransformView.swift; sourceTree = "<group>"; };
 		55F92F10F3B954FA563448C9FE473338 /* ScaleTransformViewOptions.Translation3dOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScaleTransformViewOptions.Translation3dOptions.swift; sourceTree = "<group>"; };
@@ -66,20 +66,20 @@
 		6ECCD26246C723061D853AE3263EB47F /* StackTransformView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StackTransformView.swift; sourceTree = "<group>"; };
 		7249B37F4623C2E21E3B1FAA5747B067 /* ScaleTransformViewOptions.Rotation3dOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScaleTransformViewOptions.Rotation3dOptions.swift; sourceTree = "<group>"; };
 		76DD44D829D0C67FF43E10568382205A /* SnapshotContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotContainerView.swift; sourceTree = "<group>"; };
-		7CDA1C7C434E8EFDFC0F9A727D74AF68 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		7CDA1C7C434E8EFDFC0F9A727D74AF68 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		99EE88DE66E33F387B7BDBEEABACFAF3 /* Multipliable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Multipliable.swift; sourceTree = "<group>"; };
 		9B75F3756588B2B87438987521329860 /* ScaleTransformViewOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScaleTransformViewOptions.swift; sourceTree = "<group>"; };
 		9BE2D500F088CF6F3838D9C4DC77671F /* Pods-PagingLayoutSamples-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingLayoutSamples-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB750FC60739B9D4CB907BA60258C03 /* CollectionViewPagingLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CollectionViewPagingLayout-prefix.pch"; sourceTree = "<group>"; };
 		9DF8AB4CE442B7D91A91068729E9D57D /* Pods-PagingLayoutSamples-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingLayoutSamples-Info.plist"; sourceTree = "<group>"; };
-		A68F4800B2E2C1313016674A1A5254DD /* CollectionViewPagingLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CollectionViewPagingLayout.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A68F4800B2E2C1313016674A1A5254DD /* CollectionViewPagingLayout.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = CollectionViewPagingLayout.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AD062164EC31FACD9BE7CBC19A8725E2 /* TransformCurve.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformCurve.swift; path = Lib/TransformCurve.swift; sourceTree = "<group>"; };
 		B698ABB0BBA4809DD4DAC3DB8FA9BAF7 /* CollectionViewPagingLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CollectionViewPagingLayout-umbrella.h"; sourceTree = "<group>"; };
 		C8248B3A2EF1F924E16001C98AB16C91 /* StackTransformViewOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StackTransformViewOptions.swift; sourceTree = "<group>"; };
 		CFB7B9D04235894C23AD3737807A0EDF /* SnapshotTransformViewOptions.PiecePosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotTransformViewOptions.PiecePosition.swift; sourceTree = "<group>"; };
 		D3F86F7F917E14C3DAA9532C64221E7A /* CollectionViewPagingLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CollectionViewPagingLayout.modulemap; sourceTree = "<group>"; };
-		D68BE54456B4A371FE8B6CA22BF110D6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D68BE54456B4A371FE8B6CA22BF110D6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D85859B64D1D67EF6BF3B84F632FBD2F /* Pods-PagingLayoutSamples-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingLayoutSamples-dummy.m"; sourceTree = "<group>"; };
 		E445EFBD894BA7CF728C290A7B12C9AB /* Pods-PagingLayoutSamples-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingLayoutSamples-frameworks.sh"; sourceTree = "<group>"; };
 		EB735E0FC56255F3A75F0B71DB619E0A /* CGFloat+Interpolate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "CGFloat+Interpolate.swift"; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 		1F7C59E64762D59136BC130A3027884F /* Snapshot */ = {
 			isa = PBXGroup;
 			children = (
-				76DD44D829D0C67FF43E10568382205A /* SnapshotContainerView.swift */,
 				68D8B65F8C93546D7E5DDA03A18E8909 /* SnapshotTransformView.swift */,
+				76DD44D829D0C67FF43E10568382205A /* SnapshotContainerView.swift */,
 				2E6D2D677664C7C47B77970383ACDF5A /* SnapshotTransformViewOptions.swift */,
 				CFB7B9D04235894C23AD3737807A0EDF /* SnapshotTransformViewOptions.PiecePosition.swift */,
 				5EFB0B999A3B995D52FA42E23B376D31 /* SnapshotTransformViewOptions.PiecesValue.swift */,

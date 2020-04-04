@@ -11,7 +11,7 @@ import CollectionViewPagingLayout
 
 class ScaleLinearShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -26,7 +26,7 @@ class ScaleLinearShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTran
 
 class ScaleEaseInShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -40,7 +40,7 @@ class ScaleEaseInShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTran
 
 class ScaleEaseOutShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -54,7 +54,7 @@ class ScaleEaseOutShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTra
 
 class ScaleCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.55,
         maxScale: 0.55,
         scaleRatio: 0,
@@ -70,7 +70,7 @@ class ScaleCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTr
 
 class ScaleInvertedCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
 
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 1.2,
         maxScale: 1.2,
         scaleRatio: 0,
@@ -86,7 +86,7 @@ class ScaleInvertedCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell,
 
 class ScaleCoverFlowShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
     
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.7,
         maxScale: 0.7,
         scaleRatio: 0,
@@ -102,7 +102,7 @@ class ScaleCoverFlowShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleT
 
 class ScaleBlurShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
 
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.6,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.66, y: 0.2),
@@ -115,7 +115,7 @@ class ScaleBlurShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransf
 
 class ScaleRotaryShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTransformView {
 
-    var options = ScaleTransformViewOptions(
+    var scaleOptions = ScaleTransformViewOptions(
         minScale: 0,
         scaleRatio: 0.4,
         translationRatio: CGPoint(x: 0.1, y: 0.1),
