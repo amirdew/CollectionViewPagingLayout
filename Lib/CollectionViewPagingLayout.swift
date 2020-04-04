@@ -27,15 +27,15 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         getContentSize()
     }
     
-    private var currentScrollOffset: CGFloat {
-        let visibleRect = self.visibleRect
-        return scrollDirection == .horizontal ? (visibleRect.minX / max(visibleRect.width, 1)) : (visibleRect.minY / max(visibleRect.height, 1))
-    }
-    
-    private(set) var currentPage: Int = 0 {
+    public private(set) var currentPage: Int = 0 {
         didSet {
             delegate?.onCurrentPageChanged(layout: self, currentPage: currentPage)
         }
+    }
+    
+    private var currentScrollOffset: CGFloat {
+        let visibleRect = self.visibleRect
+        return scrollDirection == .horizontal ? (visibleRect.minX / max(visibleRect.width, 1)) : (visibleRect.minY / max(visibleRect.height, 1))
     }
     
     private var visibleRect: CGRect {

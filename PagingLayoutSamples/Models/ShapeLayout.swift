@@ -25,5 +25,12 @@ enum ShapeLayout {
     case stackReverse
     case stackBlur
     
-    case snapshotDefault
+    case snapshotGrid
+    case snapshotSpace
+    case snapshotChess
+    case snapshotTiles
+    case snapshotLines
+    case snapshotBars
+    case snapshotPuzzle
+    case snapshotFade
 }

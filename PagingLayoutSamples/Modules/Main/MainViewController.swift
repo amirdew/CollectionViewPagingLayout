@@ -53,7 +53,14 @@ class MainViewController: UIViewController, NibBased {
     @IBAction private func snapshotButtonTouched() {
         navigationController?.pushViewController(
             ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
-                .snapshotDefault
+                .snapshotBars,
+                .snapshotFade,
+                .snapshotGrid,
+                .snapshotChess,
+                .snapshotLines,
+                .snapshotSpace,
+                .snapshotTiles,
+                .snapshotPuzzle
             ])),
             animated: true
         )

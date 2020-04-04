@@ -86,11 +86,23 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         layoutTypeCollectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 5
-        layout.delegate = self
         layoutTypeCollectionView.collectionViewLayout = layout
         layoutTypeCollectionView.showsHorizontalScrollIndicator = false
         layoutTypeCollectionView.clipsToBounds = false
         layoutTypeCollectionView.backgroundColor = .clear
+        layoutTypeCollectionView.delegate = self
+    }
+    
+    private func updateSelectedLayout() {
+        guard let layout = layoutTypeCollectionView.collectionViewLayout as? CollectionViewPagingLayout else {
+            return
+        }
+        let index = layout.currentPage % viewModel.layoutTypeViewModels.count
+        self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
+        collectionView.reloadData()
+        collectionView.performBatchUpdates({
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
     }
 }
 
@@ -127,16 +139,22 @@ extension ShapesViewController: UICollectionViewDataSource {
     
 }
 
-
-extension ShapesViewController: CollectionViewPagingLayoutDelegate {
+extension ShapesViewController: UICollectionViewDelegate {
     
-    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
-        let index = currentPage % viewModel.layoutTypeViewModels.count
-        self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
-        self.collectionView.reloadData()
-        
-        collectionView.performBatchUpdates({
-            self.collectionView.collectionViewLayout.invalidateLayout()
-        }, completion: nil)
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard scrollView == layoutTypeCollectionView else {
+            return
+        }
+        if !decelerate {
+            updateSelectedLayout()
+        }
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView == layoutTypeCollectionView else {
+            return
+        }
+        updateSelectedLayout()
+    }
+    
 }
