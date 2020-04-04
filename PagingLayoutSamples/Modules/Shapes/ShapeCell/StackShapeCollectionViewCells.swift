@@ -49,8 +49,8 @@ class RotaryStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTran
         maxStackSize: 3,
         spacingFactor: 0.01,
         alphaFactor: 0.1,
-        stackRotateAngel: .pi/16,
         shadowRadius: 8,
+        stackRotateAngel: .pi/16,
         popAngle: .pi/4,
         popOffsetRatio: .init(width: -1.45, height: 0.4),
         stackPosition: CGPoint(x: 0, y: 1)
