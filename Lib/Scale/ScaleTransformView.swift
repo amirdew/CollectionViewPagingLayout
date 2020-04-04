@@ -19,6 +19,9 @@ public protocol ScaleTransformView: TransformableView {
     
     /// The view to apply blur effect on
     var blurViewHost: UIView { get }
+    
+    /// the main function for applying transforms
+    func applyScaleTransform(progress: CGFloat)
 }
 
 

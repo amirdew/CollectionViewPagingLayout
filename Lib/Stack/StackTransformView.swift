@@ -19,6 +19,9 @@ public protocol StackTransformView: TransformableView {
     
     /// The view to apply blur effect on
     var blurViewHost: UIView { get }
+    
+    /// the main function for applying transforms
+    func applyStackTransform(progress: CGFloat)
 }
 
 

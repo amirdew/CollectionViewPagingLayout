@@ -19,6 +19,12 @@ public protocol SnapshotTransformView: TransformableView {
     /// The identifier for snapshot, it won't make a new snapshot if
     /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
+    
+    /// the function for getting the cached snapshot or make a new one cache it
+    func getSnapshot() -> SnapshotContainerView?
+    
+    /// the main function for applying transforms on the snapshot
+    func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat)
 }
 
 public extension SnapshotTransformView where Self: UICollectionViewCell {
