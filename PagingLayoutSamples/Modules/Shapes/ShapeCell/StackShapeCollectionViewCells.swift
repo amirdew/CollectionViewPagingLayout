@@ -98,15 +98,15 @@ class BlurStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransf
     var options: StackTransformViewOptions = .init(
         scaleFactor: 0.1,
         maxScale: nil,
-        maxStackSize: 5,
-        spacingFactor: 0.03,
+        maxStackSize: 7,
+        spacingFactor: 0.06,
         topStackAlphaSpeedFactor: 0.1,
         perspectiveRatio: 0.04,
         shadowRadius: 8,
         popAngle: .pi/4,
         popOffsetRatio: .init(width: -1.45, height: 0.4),
-        stackPosition: CGPoint(x: 0, y: -1),
+        stackPosition: CGPoint(x: -1, y: 0),
         blurEffectEnabled: true,
-        maxBlurEffectRadius: 0.05
+        maxBlurEffectRadius: 0.08
     )
 }
