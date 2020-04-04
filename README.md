@@ -131,17 +131,18 @@ extension LayoutTypeCollectionViewCell: ScaleTransformView {
 
 }
 ```
-as you can see `applyScaleTransform` applies the scale transforms and right after that we change the alpha for `titleLabel` and `subtitleLabel`.      
-to find the public function(s) for each tansformable check the protocol definition.
+as you can see `applyScaleTransform` applies the scale transforms and right after that we change the alpha for `titleLabel` and `subtitleLabel`.        
+to find the public function(s) for each tansformable check the protocol definition.      
 
 ## Other features
 
 You can control the current page by following public functions of `CollectionViewPagingLayout`:
 - `func setCurrentPage(_ page: Int, animated: Bool = true)`
 - `func goToNextPage(animated: Bool = true)`
-- `func goToPreviousPage(animated: Bool = true)`
-these are safe wrappers for setting `ContentOffset` of `UICollectionview`   
-you can also get current page by a public variable `CollectionViewPagingLayout.currentPage` or listen to the changes by setting `CollectionViewPagingLayout.delegate`:
+- `func goToPreviousPage(animated: Bool = true)`       
+
+these are safe wrappers for setting `ContentOffset` of `UICollectionview`        
+you can also get current page by a public variable `CollectionViewPagingLayout.currentPage` or listen to the changes by setting `CollectionViewPagingLayout.delegate`:      
 
 ```swift
 public protocol CollectionViewPagingLayoutDelegate: class {
