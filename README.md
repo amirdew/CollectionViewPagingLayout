@@ -5,11 +5,50 @@
 [![Platform](https://img.shields.io/cocoapods/p/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 
 ## Preview
+
+### ScaleTransformView
 <p float="left">
-<img width="375" src="https://amir.app/git/flowlayout_preview.gif"></img>
-<img width="375" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_cylinder.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_invertedcylinder.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_linear.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_easein.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_easeout.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_rotary.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_coverflow.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/scale_blur.gif"></img>
 </p>
-<img width="800" src="https://amir.app/git/card_stack_preview.gif"></img>
+
+### StackTransformView
+
+<p float="left">
+<img width="100" src="https://amir.app/git/shapes_preview/stack_blur.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/stack_perspective.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/stack_reverse.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/stack_rotary.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/stack_transparent.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/stack_vortex.gif"></img>
+</p>
+
+### SnapshotTransformView
+
+<p float="left">
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_bars.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_chess.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_fade.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_grid.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_lines.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_puzzle.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_space.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_tiles.gif"></img>
+</p>
+
+
+### Custom Implementations
+<p float="left">
+<img width="200" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="200" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="200" src="https://amir.app/git/cards_preview.gif"></img>
+</p>
 
 ## About
 A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
