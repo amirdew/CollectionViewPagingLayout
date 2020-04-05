@@ -67,9 +67,9 @@ class LinesSnapshotShapeCollectionViewCell: BaseShapeCollectionViewCell, Snapsho
         piecesCornerRadiusRatio: .static(0),
         piecesAlphaRatio: .static(0.4),
         piecesTranslationRatio: .rowOddEven(CGPoint(x: -0.15, y: 0), CGPoint(x: 0.15, y: 0)),
-        piecesScaleRatio: .static(.init(width: 0.1, height: 0.96)),
+        piecesScaleRatio: .static(.init(width: 0.6, height: 0.96)),
         containerScaleRatio: 0.1,
-        containerTranslationRatio: .init(x: 1, y: 0)
+        containerTranslationRatio: .init(x: 0.8, y: 0)
     )
 }
 
