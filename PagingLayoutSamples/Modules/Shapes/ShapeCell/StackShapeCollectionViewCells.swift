@@ -103,9 +103,10 @@ class BlurStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransf
         topStackAlphaSpeedFactor: 0.1,
         perspectiveRatio: 0.04,
         shadowRadius: 8,
-        popAngle: .pi/4,
-        popOffsetRatio: .init(width: -1.45, height: 0.4),
+        popAngle: -.pi/4,
+        popOffsetRatio: .init(width: 1.45, height: 0.4),
         stackPosition: CGPoint(x: -1, y: 0),
+        reverse: true,
         blurEffectEnabled: true,
         maxBlurEffectRadius: 0.08
     )
