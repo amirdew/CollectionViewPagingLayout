@@ -51,9 +51,9 @@
 </p>
 
 ## About
-A custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells   
-by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to change the cell view.  
-You can see the usage by looking into the samples source code.  
+This is a custom `UICollectionViewLayout` that gives you the ability to apply transforms easily on the cells        
+by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to apply any changes on your cell view.  
+See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) part for more details.  
 
 ## Add to your project
 
@@ -85,8 +85,8 @@ collectionView.isPagingEnabled = true // enabling paging effect
 layout.numberOfVisibleItems = ...
 ```
 - Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms
-> `progress` is a float value that represents current position of the cell.   
-> When it's `0` means the current position of the cell is exactly in the center of your collection view.   
+> `progress` is a float value that represents the current position of your cell in the collection view.   
+> When it's `0` that means the current position of the cell is exactly in the center of your collection view.   
 > the value could be negative or positive and that represents the distance to the center of your collection view.   
 > for instance `1` means the distance between the center of the cell and the center of your collection view is equal to your collection view width.
 
