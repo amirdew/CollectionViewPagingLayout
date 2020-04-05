@@ -111,7 +111,7 @@ extension MyCollectionViewCell: TransformableView {
 }
 ```
 
-## Prepared Transformables Protocols
+## Prepared Transformable Protocols
 
 There are prepared transformables to make it easier to use this library,    
 using them is very simple, you just need to conform your `UICollectionViewCell` to the prepared protocol        
