@@ -6,6 +6,12 @@
 
 ## Preview
 
+<p float="left">
+<img width="200" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="200" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="200" src="https://amir.app/git/cards_preview.gif"></img>
+</p>
+
 ### SnapshotTransformView
 
 <p float="left">
@@ -40,13 +46,6 @@
 <img width="100" src="https://amir.app/git/shapes_preview/stack_rotary.gif"></img>
 <img width="100" src="https://amir.app/git/shapes_preview/stack_transparent.gif"></img>
 <img width="100" src="https://amir.app/git/shapes_preview/stack_vortex.gif"></img>
-</p>
-
-### Custom Implementations
-<p float="left">
-<img width="200" src="https://amir.app/git/flowlayout_preview.gif"></img>
-<img width="200" src="https://amir.app/git/gallery_preview.gif"></img>
-<img width="200" src="https://amir.app/git/cards_preview.gif"></img>
 </p>
 
 ## About
