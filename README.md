@@ -6,6 +6,25 @@
 
 ## Preview
 
+<p float="left">
+<img width="200" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="200" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="200" src="https://amir.app/git/cards_preview.gif"></img>
+</p>
+
+### SnapshotTransformView
+
+<p float="left">
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_bars.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_chess.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_fade.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_grid.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_lines.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_puzzle.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_space.gif"></img>
+<img width="100" src="https://amir.app/git/shapes_preview/snapshot_tiles.gif"></img>
+</p>
+
 ### ScaleTransformView
 <p float="left">
 <img width="100" src="https://amir.app/git/shapes_preview/scale_cylinder.gif"></img>
@@ -27,27 +46,6 @@
 <img width="100" src="https://amir.app/git/shapes_preview/stack_rotary.gif"></img>
 <img width="100" src="https://amir.app/git/shapes_preview/stack_transparent.gif"></img>
 <img width="100" src="https://amir.app/git/shapes_preview/stack_vortex.gif"></img>
-</p>
-
-### SnapshotTransformView
-
-<p float="left">
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_bars.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_chess.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_fade.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_grid.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_lines.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_puzzle.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_space.gif"></img>
-<img width="100" src="https://amir.app/git/shapes_preview/snapshot_tiles.gif"></img>
-</p>
-
-
-### Custom Implementations
-<p float="left">
-<img width="200" src="https://amir.app/git/flowlayout_preview.gif"></img>
-<img width="200" src="https://amir.app/git/gallery_preview.gif"></img>
-<img width="200" src="https://amir.app/git/cards_preview.gif"></img>
 </p>
 
 ## About
