@@ -1,8 +1,10 @@
 # CollectionViewPagingLayout
 
-[![pod](https://img.shields.io/cocoapods/v/CollectionViewPagingLayout.svg)](https://cocoapods.org/pods/CollectionViewPagingLayout)
 [![License](https://img.shields.io/cocoapods/l/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 [![Platform](https://img.shields.io/cocoapods/p/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
+[![pod](https://img.shields.io/cocoapods/v/CollectionViewPagingLayout.svg)](https://cocoapods.org/pods/CollectionViewPagingLayout)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 ## Preview
 
@@ -53,20 +55,51 @@ This is a custom `UICollectionViewLayout` that gives you the ability to apply tr
 by conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to apply any changes on your cell view.  
 See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) part for more details.  
 
-## Add to your project
+## Installation
+CollectionViewPagingLayout doesn't contain any external dependencies.
 
-#### Cocoapods
+#### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 CollectionViewPagingLayout is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "CollectionViewPagingLayout"
+# Podfile
+use_frameworks!
+
+target 'YOUR_TARGET_NAME' do
+    pod 'CollectionViewPagingLayout'
+end
 ```
+Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
+
+```bash
+$ pod install
+```
+
+#### [Carthage](https://github.com/Carthage/Carthage)
+
+Add this to `Cartfile`
+
+```
+github "CollectionViewPagingLayout"
+```
+
+and then, in the `Cartfile` directory, type:
+```bash
+$ carthage update
+```
+
+#### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+using Xcode:
+
+File > Swift Packages > Add Package Dependency
+
 #### Manually
 Just add all the files under `Lib` directory to your project
 
 ## How to use
-- make sure you imported the library if you use cocoapods
+- make sure you imported the library
 ```swift
 import CollectionViewPagingLayout
 ```
