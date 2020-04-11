@@ -15,6 +15,7 @@ let package = Package(
     targets: [
         .target(
             name: "CollectionViewPagingLayout",
-            dependencies: []),
+            dependencies: [],
+            path: "Lib"),
     ]
 )
