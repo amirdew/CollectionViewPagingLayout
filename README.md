@@ -1,6 +1,6 @@
 # CollectionViewPagingLayout
 
-[![Version](https://img.shields.io/cocoapods/v/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
+[![pod](https://img.shields.io/cocoapods/v/CollectionViewPagingLayout.svg)](https://cocoapods.org/pods/CollectionViewPagingLayout)
 [![License](https://img.shields.io/cocoapods/l/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 [![Platform](https://img.shields.io/cocoapods/p/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 
