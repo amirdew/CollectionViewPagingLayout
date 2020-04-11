@@ -1,6 +1,6 @@
 {
   "name": "CollectionViewPagingLayout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "Simple layout for making paging effects with UICollectionView.",
   "description": "A custom UICollectionViewLayout for making paging effects with custom transforms",
   "homepage": "https://github.com/amirdew/CollectionViewPagingLayout",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/amirdew/CollectionViewPagingLayout.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "swift_versions": [
     "5.1"
