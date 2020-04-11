@@ -15,7 +15,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
     private struct Constants {
         
-        static let infiniteNumberOfItems = 100000
+        static let infiniteNumberOfItems = 100_000
     }
     
     

@@ -37,6 +37,7 @@ class PhotoCollectionViewCell: UICollectionViewCell, NibBased {
     // MARK: Lifecycle
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupViews()
     }
     
@@ -76,8 +77,8 @@ class PhotoCollectionViewCell: UICollectionViewCell, NibBased {
         subtitleLabel.layer.shadowRadius = 2
         
         photoContainerView.layer.zPosition = 500
-        titleLabel.layer.zPosition = 1000
-        subtitleLabel.layer.zPosition = 1000
+        titleLabel.layer.zPosition = 1_000
+        subtitleLabel.layer.zPosition = 1_000
         backgroundVisualEffectView.effect = UIBlurEffect(style: .dark)
     }
     
@@ -96,7 +97,7 @@ class PhotoCollectionViewCell: UICollectionViewCell, NibBased {
             zoomAnimator?.startAnimation()
             return
         }
-        zooming = !zooming
+        zooming.toggle()
         zoomAnimator = UIViewPropertyAnimator(duration: 7, curve: .linear) { [weak self] in
             guard let self = self else { return }
             let scale: CGFloat = self.zooming ? 1.2 : 1
@@ -164,8 +165,8 @@ extension PhotoCollectionViewCell: TransformableView {
             zoomAnimator?.pauseAnimation()
         }
         let angle = .pi * progress
-        var transform = CATransform3DIdentity;
-        transform.m34 = -0.0015;
+        var transform = CATransform3DIdentity
+        transform.m34 = -0.001_5
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
         
         photoContainerView.layer.transform = transform

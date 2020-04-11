@@ -44,7 +44,7 @@ class MainViewController: UIViewController, NibBased {
                 .scaleEaseIn,
                 .scaleEaseOut,
                 .scaleRotary,
-                .scaleBlur,
+                .scaleBlur
             ])),
             animated: true
         )

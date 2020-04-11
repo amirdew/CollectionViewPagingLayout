@@ -162,7 +162,7 @@ extension ShapesViewModel {
               title: "Snapshot",
               subtitle: "Fade",
               cardViewModels: generateCardViewModels(colors: [#colorLiteral(red: 0.9176470588, green: 1, blue: 0, alpha: 1), #colorLiteral(red: 0.3137254902, green: 0.8, blue: 1, alpha: 1)]),
-              cellClass: FadeSnapshotShapeCollectionViewCell.self),
+              cellClass: FadeSnapshotShapeCollectionViewCell.self)
     ]
     
     private static func generateCardViewModels(colors: [UIColor]) -> [ShapeCardViewModel] {

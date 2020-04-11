@@ -35,7 +35,7 @@ extension NibBased where Self: UIView {
     static func instantiate(owner: Any? = nil) -> Self {
         let nib = UINib(nibName: nibName, bundle: nil)
         let items = nib.instantiate(withOwner: owner, options: nil)
-        return items.first! as! Self
+        return (items.first! as? Self)!
     }
 
 }
@@ -73,7 +73,7 @@ extension UICollectionView {
     }
     
     func dequeueReusableCell<T: UICollectionViewCell & NibBased>(for indexPath: IndexPath) -> T {
-        dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+        (dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T)!
     }
 
 }

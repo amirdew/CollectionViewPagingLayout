@@ -37,6 +37,7 @@ class FruitsCollectionViewCell: UICollectionViewCell, NibBased {
     // MARK: Lifecycle
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupViews()
     }
     
@@ -102,8 +103,8 @@ extension FruitsCollectionViewCell: TransformableView {
     
     private func transformPriceTagView(progress: CGFloat) {
         let angle = .pi * progress
-        var transform = CATransform3DIdentity;
-        transform.m34 = -0.008;
+        var transform = CATransform3DIdentity
+        transform.m34 = -0.008
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
         priceTagViewContainer.layer.transform = transform
         priceTagViewContainer.alpha = abs(progress) > 0.5 ? 0 : 1
@@ -112,7 +113,7 @@ extension FruitsCollectionViewCell: TransformableView {
     private func transformPageTitle(progress: CGFloat) {
         let pageTitleWidth: CGFloat = 80
         let pageTitleScale = max(1 - abs(0.3 * progress), 0.7)
-        let pageTitleX = pageTitleWidth/2 + progress * pageTitleWidth - (pageTitleScale * pageTitleWidth)/2
+        let pageTitleX = pageTitleWidth / 2 + progress * pageTitleWidth - (pageTitleScale * pageTitleWidth) / 2
         pageTitleLabel.transform = CGAffineTransform(translationX: pageTitleX, y: 0)
             .scaledBy(x: pageTitleScale, y: pageTitleScale)
         var pageTitleAlpha = max(1 - abs(0.7 * progress), 0.3)
@@ -125,22 +126,22 @@ extension FruitsCollectionViewCell: TransformableView {
     private func transformCardView(progress: CGFloat) {
         let translationX: CGFloat = bounds.width * progress
         
-        let imageScale = 1  - abs(0.5 * progress)
-        imageView.transform = CGAffineTransform(translationX: translationX, y: progress * imageView.frame.height/8)
+        let imageScale = 1 - abs(0.5 * progress)
+        imageView.transform = CGAffineTransform(translationX: translationX, y: progress * imageView.frame.height / 8)
             .scaledBy(x: imageScale, y: imageScale)
         
-        let cardBackgroundScale = 1  - abs(0.3 * progress)
-        cardBackgroundView.transform = CGAffineTransform(translationX: translationX/1.55, y: 0)
+        let cardBackgroundScale = 1 - abs(0.3 * progress)
+        cardBackgroundView.transform = CGAffineTransform(translationX: translationX / 1.55, y: 0)
             .scaledBy(x: cardBackgroundScale, y: cardBackgroundScale)
         
-        var transform = CATransform3DIdentity;
+        var transform = CATransform3DIdentity
         if progress < 0 {
-            let angle = max(0 - abs(-CGFloat.pi/3 * progress), -CGFloat.pi/3)
-            transform.m34 = -0.011;
+            let angle = max(0 - abs(-CGFloat.pi / 3 * progress), -CGFloat.pi / 3)
+            transform.m34 = -0.011
             transform = CATransform3DRotate(transform, angle, 0, 1, 1)
         } else {
-            let angle = max(0 - abs(-CGFloat.pi/8 * progress), -CGFloat.pi/8)
-            transform.m34 = 0.002;
+            let angle = max(0 - abs(-CGFloat.pi / 8 * progress), -CGFloat.pi / 8)
+            transform.m34 = 0.002
             transform.m41 = bounds.width * 0.093 * progress
             transform = CATransform3DRotate(transform, angle, 0, 1, -0.1)
         }

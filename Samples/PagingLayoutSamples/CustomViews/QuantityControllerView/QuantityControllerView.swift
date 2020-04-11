@@ -62,8 +62,8 @@ class QuantityControllerView: UIView, NibBased {
         let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
         
         var newTransform = CATransform3DIdentity
-        newTransform.m34 = -0.004;
-        newTransform = CATransform3DRotate(newTransform, (isDecrease ? -1 : 1) * .pi/6, 0, 1, 0)
+        newTransform.m34 = -0.004
+        newTransform = CATransform3DRotate(newTransform, (isDecrease ? -1 : 1) * .pi / 6, 0, 1, 0)
         
         CATransaction.begin()
         if !reset {
@@ -80,9 +80,8 @@ class QuantityControllerView: UIView, NibBased {
             animation.fromValue = CATransform3DIdentity
             animation.toValue = newTransform
         }
-        container.layer.transform = animation.toValue as! CATransform3D
+        container.layer.transform = (animation.toValue as? CATransform3D)!
         container.layer.add(animation, forKey: nil)
         CATransaction.commit()
     }
 }
-

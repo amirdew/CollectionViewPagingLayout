@@ -57,7 +57,7 @@ public struct SnapshotTransformViewOptions {
     // MARK: Lifecycle
     
     public init(
-        pieceSizeRatio: CGSize = .init(width: 1, height: 1.0/8.0),
+        pieceSizeRatio: CGSize = .init(width: 1, height: 1.0 / 8.0),
         piecesCornerRadiusRatio: PiecesValue<CGFloat> = .static(0),
         piecesAlphaRatio: PiecesValue<CGFloat> = .static(0),
         piecesTranslationRatio: PiecesValue<CGPoint> = .rowOddEven(.init(x: 0, y: -1), .init(x: -1, y: -1)),

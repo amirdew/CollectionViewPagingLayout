@@ -28,6 +28,7 @@ class LayoutTypeCollectionViewCell: UICollectionViewCell, NibBased {
     // MARK: UICollectionViewCell
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupViews()
     }
     

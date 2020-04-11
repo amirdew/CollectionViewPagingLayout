@@ -12,7 +12,7 @@ import UIKit
 protocol ViewModelBased {
     associatedtype ViewModelType
     
-    var viewModel: ViewModelType! { set get }
+    var viewModel: ViewModelType! { get set }
 }
 
 

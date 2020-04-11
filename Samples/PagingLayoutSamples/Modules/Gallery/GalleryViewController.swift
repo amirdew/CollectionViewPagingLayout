@@ -89,4 +89,3 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
 
 }
-

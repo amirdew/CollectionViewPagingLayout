@@ -19,7 +19,7 @@ class CardsViewModel {
         Card(imageName: "card02"),
         Card(imageName: "card06"),
         Card(imageName: "card07"),
-        Card(imageName: "card08"),
+        Card(imageName: "card08")
     ]
     
     

@@ -47,7 +47,7 @@ public class BlurEffectView: UIVisualEffectView {
     /// - Parameters:
     ///   - effect: optional blur effect, eg UIBlurEffect(style: .dark), default value is current effect
     ///   - radius: blur intensity between 0.0 and 1.0
-    public func setBlurRadius(effect: UIBlurEffect? = nil, radius: CGFloat) {
+    public func setBlurRadius(effect: UIBlurEffect? = nil, radius: CGFloat = 1.0) {
         guard let effect = (effect ?? self.effect) as? UIBlurEffect else {
             return
         }

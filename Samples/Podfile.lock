@@ -1,8 +1,14 @@
 PODS:
   - CollectionViewPagingLayout (0.1.1)
+  - SwiftLint (0.38.2)
 
 DEPENDENCIES:
   - CollectionViewPagingLayout (from `./../`)
+  - SwiftLint
+
+SPEC REPOS:
+  trunk:
+    - SwiftLint
 
 EXTERNAL SOURCES:
   CollectionViewPagingLayout:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CollectionViewPagingLayout: b65c6db9e029ddd98b8f23a50e8658e4313d2f39
+  SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
 
-PODFILE CHECKSUM: 2122fe1cc6a530e608069eb13e0e300b0ac6e378
+PODFILE CHECKSUM: d54981f255915076f292cd3189a505de4496f5f0
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

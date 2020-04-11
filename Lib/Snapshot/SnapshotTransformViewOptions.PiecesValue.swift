@@ -3,6 +3,7 @@
 //  CollectionViewPagingLayout
 //
 //  Created by Amir on 27/03/2020.
+//  Copyright © 2020 Amir Khorsandi. All rights reserved.
 //
 
 import UIKit
@@ -31,18 +32,9 @@ public extension SnapshotTransformViewOptions {
         func getRatio(position: PiecePosition) -> Type {
             switch self {
             case .columnBased(let ratio, let reversed):
-                if reversed {
-                    return ratio * CGFloat(position.columnCount - position.column - 1)
-                } else {
-                    return ratio * CGFloat(position.column)
-                }
+                return getRowColumnBased(ratio: ratio, count: position.columnCount, current: position.column, reversed: reversed)
             case .rowBased(let ratio, let reversed):
-                if reversed {
-                    return ratio * CGFloat(position.rowCount - position.row - 1)
-                } else {
-                    return ratio * CGFloat(position.row)
-                }
-                
+                return getRowColumnBased(ratio: ratio, count: position.rowCount, current: position.row, reversed: reversed)
             case .columnOddEven(let oddRatio, let evenRatio, let increasing):
                 return (position.column % 2 == 0 ? evenRatio : oddRatio) * (increasing ? CGFloat(position.column) : 1)
             case .rowOddEven(let oddRatio, let evenRatio, let increasing):
@@ -56,49 +48,9 @@ public extension SnapshotTransformViewOptions {
             case .static(let ratio):
                 return ratio
             case .columnBasedMirror(let ratio, let reversed):
-                let middle = Int(position.columnCount / 2)
-                if position.columnCount % 2 == 1, position.column == middle {
-                    return ratio * 0;
-                }
-                var colIndex = position.column
-                if colIndex >= middle {
-                    colIndex -= middle
-                    if position.columnCount % 2 == 0 {
-                        colIndex += 1
-                    }
-                } else {
-                    colIndex = middle - colIndex
-                }
-                if reversed {
-                    colIndex = middle - colIndex
-                }
-                var colFloatIndex = CGFloat(colIndex)
-                if position.columnCount % 2 == 0 {
-                    colFloatIndex -= 0.5
-                }
-                return ratio * colFloatIndex * (position.column >= middle ? 1 : -1)
+                return getRowColumnBasedMirror(ratio: ratio, count: position.columnCount, current: position.column, reversed: reversed)
             case .rowBasedMirror(let ratio, let reversed):
-                let middle = Int(position.rowCount / 2)
-                if position.rowCount % 2 == 1, position.row == middle {
-                    return ratio * 0;
-                }
-                var rowIndex = position.row
-                if rowIndex >= middle {
-                    rowIndex -= middle
-                    if position.rowCount % 2 == 0 {
-                        rowIndex += 1
-                    }
-                } else {
-                    rowIndex = middle - rowIndex
-                }
-                if reversed {
-                    rowIndex = middle - rowIndex
-                }
-                var rowFloatIndex = CGFloat(rowIndex)
-                if position.rowCount % 2 == 0 {
-                    rowFloatIndex -= 0.5
-                }
-                return ratio * rowFloatIndex * (position.row >= middle ? 1 : -1)
+                return getRowColumnBasedMirror(ratio: ratio, count: position.rowCount, current: position.row, reversed: reversed)
             case .aggregated(let values, let nextPartialResult):
                 guard !values.isEmpty else {
                     fatalError("aggregate array is empty")
@@ -108,6 +60,41 @@ public extension SnapshotTransformViewOptions {
                 }
                 return result.dropFirst().reduce(result.first!, nextPartialResult)
             }
+        }
+        
+        
+        // MARK: Private functions
+        
+        private func getRowColumnBased(ratio: Type, count: Int, current: Int, reversed: Bool) -> Type {
+            if reversed {
+                return ratio * CGFloat(count - current - 1)
+            } else {
+                return ratio * CGFloat(current)
+            }
+        }
+        
+        private func getRowColumnBasedMirror(ratio: Type, count: Int, current: Int, reversed: Bool) -> Type {
+            let middle = Int(count / 2)
+            if count % 2 == 1, current == middle {
+                return ratio * 0
+            }
+            var index = current
+            if index >= middle {
+                index -= middle
+                if count % 2 == 0 {
+                    index += 1
+                }
+            } else {
+                index = middle - index
+            }
+            if reversed {
+                index = middle - index
+            }
+            var floatIndex = CGFloat(index)
+            if count % 2 == 0 {
+                floatIndex -= 0.5
+            }
+            return ratio * floatIndex * (current >= middle ? 1 : -1)
         }
         
     }

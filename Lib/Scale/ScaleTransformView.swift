@@ -135,7 +135,7 @@ public extension ScaleTransformView {
             var angle = options.angle * progress
             angle = max(angle, options.minAngle)
             angle = min(angle, options.maxAngle)
-            transform.m34 = options.m34;
+            transform.m34 = options.m34
             transform = CATransform3DRotate(transform, angle, options.x, options.y, options.z)
             scalableView.layer.isDoubleSided = options.isDoubleSided
         }
@@ -151,7 +151,7 @@ public extension ScaleTransformView {
             z = max(z, options.minTranslates.2)
             z = min(z, options.maxTranslates.2)
             
-            transform = CATransform3DTranslate(transform,  x, y, z)
+            transform = CATransform3DTranslate(transform, x, y, z)
         }
         scalableView.layer.transform = transform
     }

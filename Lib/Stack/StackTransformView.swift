@@ -113,7 +113,7 @@ public extension StackTransformView {
         }
         
         let stackProgress = progress.interpolate(in: .init(0, CGFloat(stackOptions.maxStackSize)))
-        let perspectiveProgress  = TransformCurve.easeOut.computeFromLinear(progress: stackProgress) * stackOptions.perspectiveRatio
+        let perspectiveProgress = TransformCurve.easeOut.computeFromLinear(progress: stackProgress) * stackOptions.perspectiveRatio
         
     
         var xSpacing = cardView.bounds.width * stackOptions.spacingFactor

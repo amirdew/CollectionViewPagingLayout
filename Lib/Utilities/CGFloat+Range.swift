@@ -15,7 +15,7 @@ extension CGFloat {
         let lower: CGFloat
         let upper: CGFloat
         
-        public init(_ lower: CGFloat,_ upper: CGFloat) {
+        public init(_ lower: CGFloat, _ upper: CGFloat) {
             self.lower = lower
             self.upper = upper
         }

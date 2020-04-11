@@ -1,0 +1,32 @@
+whitelist_rules:
+  - let_var_whitespace 
+  - return_arrow_whitespace
+  - opening_brace
+  - colon
+  - mark
+  - trailing_newline
+  - statement_position
+  - trailing_semicolon
+  - control_statement
+  - comma
+  - vertical_whitespace
+  - closure_end_indentation
+  - closure_spacing
+  - empty_parameters
+  - joined_default_parameter
+  - operator_usage_whitespace
+  - unneeded_parentheses_in_closure_argument
+  - redundant_optional_initialization
+  - implicit_return
+  - literal_expression_end_indentation
+  - nimble_operator
+  - number_separator
+  - unused_import
+
+excluded:
+- Pods
+
+# adjusting rules
+
+vertical_whitespace:
+  max_empty_lines: 2

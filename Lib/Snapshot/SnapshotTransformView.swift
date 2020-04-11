@@ -39,7 +39,7 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
     /// if you have the same content with different indexes (like infinite list)
     /// you should override this and provide a content-based identifier
     var identifier: String {
-        var collectionView: UICollectionView? = nil
+        var collectionView: UICollectionView?
         var superview = self.superview
         while superview != nil {
             if let view = superview as? UICollectionView {

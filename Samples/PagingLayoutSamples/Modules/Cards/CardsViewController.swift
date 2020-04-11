@@ -16,7 +16,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
     
     private struct Constants {
         
-        static let infiniteNumberOfItems = 100000
+        static let infiniteNumberOfItems = 100_000
     }
     
     
@@ -46,7 +46,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         super.viewDidLayoutSubviews()
         layout.invalidateLayout()
         if !didScrollCollectionViewToMiddle {
-            layout.setCurrentPage(Constants.infiniteNumberOfItems/2, animated: false)
+            layout.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
             didScrollCollectionViewToMiddle = true
         }
     }
@@ -105,4 +105,3 @@ extension CardsViewController: UICollectionViewDataSource {
     }
 
 }
-

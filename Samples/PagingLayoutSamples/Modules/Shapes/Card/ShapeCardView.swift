@@ -25,6 +25,7 @@ class ShapeCardView: GradientView, NibBased {
     // MARK: UICollectionViewCell
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupViews()
     }
     

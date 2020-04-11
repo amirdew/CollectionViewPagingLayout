@@ -370,6 +370,7 @@
 			buildConfigurationList = AB500A4323B104E60056BE37 /* Build configuration list for PBXNativeTarget "PagingLayoutSamples" */;
 			buildPhases = (
 				6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */,
+				296700332442116600A1F508 /* SwiftLint */,
 				AB500A2B23B104E20056BE37 /* Sources */,
 				AB500A2C23B104E20056BE37 /* Frameworks */,
 				AB500A2D23B104E20056BE37 /* Resources */,
@@ -458,6 +459,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		296700332442116600A1F508 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}\"/SwiftLint/swiftlint autocorrect --config \"${SRCROOT}/../.swiftlint_autocorrect.yml\";\n\"${PODS_ROOT}\"/SwiftLint/swiftlint --config \"${SRCROOT}/../.swiftlint.yml\";\n";
 		};
 		6C5C2953E0649518FCAADAB2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

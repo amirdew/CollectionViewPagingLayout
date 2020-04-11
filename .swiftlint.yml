@@ -1,0 +1,69 @@
+disabled_rules:
+  - file_length
+  - type_body_length
+  - function_body_length
+  - trailing_whitespace
+  - empty_enum_arguments
+  - function_parameter_count
+  - identifier_name
+  - type_name
+  - nesting
+  - large_tuple
+
+opt_in_rules:
+  - private_action
+  - private_outlet
+  - prefixed_toplevel_constant
+  - overridden_super_call
+  - file_header
+  - weak_delegate
+  - collection_alignment
+  - empty_count
+  - empty_string
+  - fatal_error_message
+  - function_default_parameter_at_end
+  - last_where
+  - legacy_random
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - override_in_extension
+  - sorted_first_last
+  - toggle_bool
+  - unused_optional_binding
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
+
+excluded:
+  - Package.swift
+  - Pods
+
+# adjusting rules
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+line_length:
+  warning: 180
+  error: 200
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  (CollectionViewPagingLayout.*?|Unit Tests)
+                    \/\/
+                    \/\/  (Created by .*? on .*?)
+                    \/\/  Copyright © \d{4} Amir Khorsandi. All rights reserved\.
+                    \/\/
+                   
+type_name:
+  min_length: 3
+  max_length:
+    warning: 50
+    error: 65
+  excluded: id # excluded via string
+reporter: "xcode"
+
+cyclomatic_complexity:
+  ignores_case_statements: true

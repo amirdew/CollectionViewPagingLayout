@@ -13,19 +13,17 @@ class GradientView: UIView {
     // MARK: Properties
     
     override class var layerClass: Swift.AnyClass {
-        get {
-            return CAGradientLayer.self
-        }
+        CAGradientLayer.self
     }
     
     override var layer: CAGradientLayer {
-        return super.layer as! CAGradientLayer
+        (super.layer as? CAGradientLayer)!
     }
     
     
     // MARK: Public functions
     
-    public func set(colors:[UIColor]) {
+    public func set(colors: [UIColor]) {
         backgroundColor = .clear
         layer.colors = colors.map { $0.cgColor }
     }

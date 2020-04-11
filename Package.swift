@@ -10,12 +10,12 @@ let package = Package(
     products: [
         .library(
             name: "CollectionViewPagingLayout",
-            targets: ["CollectionViewPagingLayout"]),
+            targets: ["CollectionViewPagingLayout"])
     ],
     targets: [
         .target(
             name: "CollectionViewPagingLayout",
             path: "Lib",
-            exclude: ["Samples"]),
+            exclude: ["Samples"])
     ]
 )

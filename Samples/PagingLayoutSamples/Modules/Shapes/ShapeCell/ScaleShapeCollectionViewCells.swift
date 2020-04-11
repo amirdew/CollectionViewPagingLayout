@@ -62,7 +62,7 @@ class ScaleCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTr
         minTranslationRatio: .zero,
         maxTranslationRatio: .zero,
         shadowEnabled: false,
-        rotation3d: .init(angle: .pi/4, minAngle: -.pi, maxAngle: .pi, x: 0, y: 1, z: 0, m34: -0.0012),
+        rotation3d: .init(angle: .pi / 4, minAngle: -.pi, maxAngle: .pi, x: 0, y: 1, z: 0, m34: -0.001_2),
         translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, UIScreen.main.bounds.width * 0.8), maxTranslates: (0, 0, UIScreen.main.bounds.width * 0.8))
     )
 }
@@ -78,7 +78,7 @@ class ScaleInvertedCylinderShapeCollectionViewCell: BaseShapeCollectionViewCell,
         minTranslationRatio: .zero,
         maxTranslationRatio: .zero,
         shadowEnabled: false,
-        rotation3d: .init(angle: .pi/3, minAngle: -.pi, maxAngle: .pi, x: 0, y: -1, z: 0, m34: -0.002),
+        rotation3d: .init(angle: .pi / 3, minAngle: -.pi, maxAngle: .pi, x: 0, y: -1, z: 0, m34: -0.002),
         translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, UIScreen.main.bounds.width * 0.57), maxTranslates: (0, 0, -UIScreen.main.bounds.width * 0.57))
     )
 }
@@ -94,8 +94,8 @@ class ScaleCoverFlowShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleT
         minTranslationRatio: .zero,
         maxTranslationRatio: .zero,
         shadowEnabled: true,
-        rotation3d: .init(angle: .pi/1.65, minAngle: -.pi/3, maxAngle: .pi/3, x: 0, y: -1, z: 0, m34: -0.0005),
-        translation3d: .init(translateRatios: (30, 0, -UIScreen.main.bounds.width * 0.42), minTranslates: (-30, 0, -1000), maxTranslates: (30, 0, 0))
+        rotation3d: .init(angle: .pi / 1.65, minAngle: -.pi / 3, maxAngle: .pi / 3, x: 0, y: -1, z: 0, m34: -0.000_5),
+        translation3d: .init(translateRatios: (30, 0, -UIScreen.main.bounds.width * 0.42), minTranslates: (-30, 0, -1_000), maxTranslates: (30, 0, 0))
     )
 }
 
@@ -121,9 +121,9 @@ class ScaleRotaryShapeCollectionViewCell: BaseShapeCollectionViewCell, ScaleTran
         translationRatio: CGPoint(x: 0.1, y: 0.1),
         minTranslationRatio: CGPoint(x: -1, y: 0),
         maxTranslationRatio: CGPoint(x: 1, y: 1),
-        rotation3d: .init(angle: .pi/15, minAngle: -.pi/3, maxAngle: .pi/3, x: 0, y: 0, z: 1, m34: -0.004),
+        rotation3d: .init(angle: .pi / 15, minAngle: -.pi / 3, maxAngle: .pi / 3, x: 0, y: 0, z: 1, m34: -0.004),
         translation3d: .init(translateRatios: (200, UIScreen.main.bounds.width * 0.1, 0),
-                             minTranslates: (-1000, -UIScreen.main.bounds.width, -100),
-                             maxTranslates: (1000, UIScreen.main.bounds.width, -100))
+                             minTranslates: (-1_000, -UIScreen.main.bounds.width, -100),
+                             maxTranslates: (1_000, UIScreen.main.bounds.width, -100))
     )
 }
