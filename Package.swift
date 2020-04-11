@@ -16,6 +16,11 @@ let package = Package(
         .target(
             name: "CollectionViewPagingLayout",
             dependencies: [],
-            path: "Lib"),
+            path: "Lib",
+        exclude: [
+        "Config",
+        "Public",
+        "Samples",
+        ]),
     ]
 )
