@@ -59,8 +59,6 @@ See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-us
 CollectionViewPagingLayout doesn't contain any external dependencies.
 
 #### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
-CollectionViewPagingLayout is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
 ```ruby
 # Podfile
