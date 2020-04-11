@@ -15,9 +15,7 @@ let package = Package(
     targets: [
         .target(
             name: "CollectionViewPagingLayout",
-            dependencies: [],
             path: "Lib",
-            exclude: ["Samples"],
-            sources: ["Lib"]),
+            exclude: ["Samples"]),
     ]
 )
