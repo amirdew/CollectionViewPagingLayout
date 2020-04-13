@@ -140,10 +140,10 @@ extension MyCollectionViewCell: TransformableView {
 }
 ```
 
-## Premade Transformable Protocols
+## Prepared Transformable Protocols
 
-There are premade transformables to make it easier to use this library,    
-using them is very simple, you just need to conform your `UICollectionViewCell` to the premade protocol        
+There are prepared transformables to make it easier to use this library,    
+using them is very simple, you just need to conform your `UICollectionViewCell` to the prepared protocol        
 and then set the options for that to customize it as you want.       
 there are three types of transformables protocol at the moment `ScaleTransformView`, `SnapshotTransformView`, and `StackTransformView`.      
 as you can see in the samples app these protocols are highly customizable and you can make tons of different effects with them.        
@@ -184,7 +184,7 @@ public extension ScaleTransformView where Self: UICollectionViewCell {
 of course you can easily override this
 
 
-## Customize Premade Transformables
+## Customize Prepared Transformables
 
 Yes, you can customize them or even combine them, to do that like before conform your cell class to the transformable protocol(s) and then implement `TransformableView.transform` function and call the transformable function manually, like this:     
 ```swift
