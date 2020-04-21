@@ -97,23 +97,23 @@ File > Swift Packages > Add Package Dependency
 Just add all the files under `Lib` directory to your project
 
 ## How to use
-- make sure you imported the library
+- Make sure you imported the library
 ```swift
 import CollectionViewPagingLayout
 ```
+- Set up your `UICollectionView` as you always do (you need to use a custom class for cells)
 - Set the layout for your collection view:
-(in most cases you want a paging effect so make sure you enable it)
+(in most cases you want a paging effect so enable that too)
 ```swift
 let layout = CollectionViewPagingLayout()
 collectionView.collectionViewLayout = layout
 collectionView.isPagingEnabled = true // enabling paging effect
 ```
 
-- Then you can set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time   
-```swift
-layout.numberOfVisibleItems = ...
-```
-- Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms
+- Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms.     
+
+*Note:* you can use [prepared transformable protocols](#prepared-transformable-protocols) instead of `TransformableView` if you don't want a custom effect!        
+
 > `progress` is a float value that represents the current position of your cell in the collection view.   
 > When it's `0` that means the current position of the cell is exactly in the center of your collection view.   
 > the value could be negative or positive and that represents the distance to the center of your collection view.   
@@ -138,6 +138,11 @@ extension MyCollectionViewCell: TransformableView {
         contentView.alpha = alpha
     }
 }
+```
+
+- Don't forget to set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time  
+```swift
+layout.numberOfVisibleItems = ...
 ```
 
 ## Prepared Transformable Protocols
