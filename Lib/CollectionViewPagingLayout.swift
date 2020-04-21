@@ -39,10 +39,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private var visibleRect: CGRect {
-        guard let collectionView = collectionView else {
-            return .zero
-        }
-        return CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        collectionView.map { CGRect(origin: $0.contentOffset, size: $0.bounds.size) } ?? .zero
     }
     
     private var numberOfItems: Int {
