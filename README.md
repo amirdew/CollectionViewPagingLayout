@@ -112,12 +112,7 @@ collectionView.isPagingEnabled = true // enabling paging effect
 
 - Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms.     
 
-*Note:* you can use [prepared transformable protocols](#prepared-transformable-protocols) instead of `TransformableView` if you don't want a custom effect!        
-
-> `progress` is a float value that represents the current position of your cell in the collection view.   
-> When it's `0` that means the current position of the cell is exactly in the center of your collection view.   
-> the value could be negative or positive and that represents the distance to the center of your collection view.   
-> for instance `1` means the distance between the center of the cell and the center of your collection view is equal to your collection view width.
+*Note:* you can use [Prepared Transformable Protocols](#prepared-transformable-protocols) instead of `TransformableView` if you don't want a custom effect!        
 
 ```swift
 extension MyCollectionViewCell: TransformableView {
@@ -126,6 +121,11 @@ extension MyCollectionViewCell: TransformableView {
     }
 }
 ```
+> `progress` is a float value that represents the current position of your cell in the collection view.   
+> When it's `0` that means the current position of the cell is exactly in the center of your collection view.   
+> the value could be negative or positive and that represents the distance to the center of your collection view.   
+> for instance `1` means the distance between the center of the cell and the center of your collection view is equal to your collection view width.
+
 
 you can start with a simple transform like this:
 ```swift
