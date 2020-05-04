@@ -43,7 +43,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private var numberOfItems: Int {
-        var count = 0;
+        var count = 0
         if let sectionCount = collectionView?.numberOfSections {
             for i in (0 ..< sectionCount) {
                 count += collectionView?.numberOfItems(inSection: i) ?? 0
