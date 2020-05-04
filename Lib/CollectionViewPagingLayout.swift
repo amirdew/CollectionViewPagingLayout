@@ -43,7 +43,9 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private var numberOfItems: Int {
-        collectionView?.numberOfItems(inSection: 0) ?? 0
+        return (0..<(collectionView?.numberOfSections ?? 0))
+        .compactMap { collectionView?.numberOfItems(inSection: $0) }
+        .reduce(0, +)
     }
     
     
@@ -88,8 +90,19 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         let endIndex = min(numberOfItems, initialEndIndex + startIndexOutOfBounds)
         
         var attributesArray: [UICollectionViewLayoutAttributes] = []
+        var section = 0
+        var numberOfItemsInSection = collectionView?.numberOfItems(inSection: section) ?? 0
+        var numberOfItemsInPrevSections = 0
         for index in startIndex..<endIndex {
-            let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
+            var item = index - numberOfItemsInPrevSections
+            while item >= numberOfItemsInSection {
+                numberOfItemsInPrevSections += numberOfItemsInSection
+                section += 1
+                numberOfItemsInSection = collectionView?.numberOfItems(inSection: section) ?? 0
+                item = index - numberOfItemsInPrevSections
+            }
+            
+            let cellAttributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: item, section: section))
             let pageIndex = CGFloat(index)
             let progress = pageIndex - currentScrollOffset
             var zIndex = Int(-abs(round(progress)))
