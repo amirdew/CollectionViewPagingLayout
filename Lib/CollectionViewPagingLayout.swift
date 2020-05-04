@@ -72,6 +72,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let currentScrollOffset = self.currentScrollOffset
+        let numberOfItems = self.numberOfItems
         let attributesCount = numberOfVisibleItems ?? numberOfItems
         let visibleRangeMid = attributesCount / 2
         let currentPageIndex = Int(round(currentScrollOffset))
