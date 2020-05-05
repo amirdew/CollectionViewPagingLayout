@@ -43,7 +43,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private var numberOfItems: Int {
-        return (0..<(collectionView?.numberOfSections ?? 0))
+        (0..<(collectionView?.numberOfSections ?? 0))
         .compactMap { collectionView?.numberOfItems(inSection: $0) }
         .reduce(0, +)
     }
