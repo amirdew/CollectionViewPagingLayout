@@ -1,5 +1,5 @@
 PODS:
-  - CollectionViewPagingLayout (0.1.1)
+  - CollectionViewPagingLayout (0.1.4)
   - SwiftLint (0.38.2)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "./../"
 
 SPEC CHECKSUMS:
-  CollectionViewPagingLayout: b65c6db9e029ddd98b8f23a50e8658e4313d2f39
+  CollectionViewPagingLayout: ad473d532d5cea6c9f979d006750c34caf92861c
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
 
 PODFILE CHECKSUM: d54981f255915076f292cd3189a505de4496f5f0
