@@ -3,11 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291224682400352F001B603A /* StackShapeCollectionViewCells.swift */; };
+		292489B02461A97900A316B0 /* LayoutDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */; };
+		292489B22461E31300A316B0 /* LayoutDesignerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292489B12461E31300A316B0 /* LayoutDesignerViewController.xib */; };
+		292489BD2461F08B00A316B0 /* AppKitGlue.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 292489B72461F07D00A316B0 /* AppKitGlue.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		292489C32461FD6A00A316B0 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C22461FD6A00A316B0 /* MacApp.swift */; };
+		292489C52461FE2700A316B0 /* Catalyst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C42461FE2700A316B0 /* Catalyst.swift */; };
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
 		297AD305244C97FF002C4C1E /* UIWindow+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297AD304244C97FF002C4C1E /* UIWindow+Size.swift */; };
 		29B815B12414132100F1C824 /* SnapshotShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */; };
@@ -62,8 +67,42 @@
 		ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC242CF23B6861000DBD4D6 /* PhotoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		292489BE2461F08B00A316B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB500A2723B104E20056BE37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 292489B62461F07D00A316B0;
+			remoteInfo = AppKitGlue;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		292489C02461F08B00A316B0 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				292489BD2461F08B00A316B0 /* AppKitGlue.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		291224682400352F001B603A /* StackShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		292489AD2461A57900A316B0 /* Paging Layout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Paging Layout.entitlements"; sourceTree = "<group>"; };
+		292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerViewController.swift; sourceTree = "<group>"; };
+		292489B12461E31300A316B0 /* LayoutDesignerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerViewController.xib; sourceTree = "<group>"; };
+		292489B72461F07D00A316B0 /* AppKitGlue.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppKitGlue.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		292489B92461F07D00A316B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		292489C12461FD6900A316B0 /* AppKitGlue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppKitGlue-Bridging-Header.h"; sourceTree = "<group>"; };
+		292489C22461FD6A00A316B0 /* MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacApp.swift; sourceTree = "<group>"; };
+		292489C42461FE2700A316B0 /* Catalyst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalyst.swift; sourceTree = "<group>"; };
+		292489CA24620BD600A316B0 /* AppKitBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKitBridge.h; sourceTree = "<group>"; };
+		292489CB24620C4D00A316B0 /* PagingLayoutSamples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagingLayoutSamples-Bridging-Header.h"; sourceTree = "<group>"; };
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		297AD304244C97FF002C4C1E /* UIWindow+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Size.swift"; sourceTree = "<group>"; };
 		29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotShapeCollectionViewCells.swift; sourceTree = "<group>"; };
@@ -123,6 +162,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		292489B42461F07D00A316B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB500A2C23B104E20056BE37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,6 +186,25 @@
 				A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		292489AE2461A96600A316B0 /* LayoutMaker */ = {
+			isa = PBXGroup;
+			children = (
+				292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */,
+				292489B12461E31300A316B0 /* LayoutDesignerViewController.xib */,
+			);
+			path = LayoutMaker;
+			sourceTree = "<group>";
+		};
+		292489B82461F07D00A316B0 /* AppKitGlue */ = {
+			isa = PBXGroup;
+			children = (
+				292489B92461F07D00A316B0 /* Info.plist */,
+				292489C22461FD6A00A316B0 /* MacApp.swift */,
+				292489C12461FD6900A316B0 /* AppKitGlue-Bridging-Header.h */,
+			);
+			path = AppKitGlue;
 			sourceTree = "<group>";
 		};
 		29D9F94123F7F92000656A67 /* Shapes */ = {
@@ -221,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				AB500A3123B104E20056BE37 /* PagingLayoutSamples */,
+				292489B82461F07D00A316B0 /* AppKitGlue */,
 				AB500A3023B104E20056BE37 /* Products */,
 				4D87DB0F34A1E0FEF9A22214 /* Pods */,
 				05F53E609F3F8B841D87E931 /* Frameworks */,
@@ -231,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				AB500A2F23B104E20056BE37 /* Paging Layout.app */,
+				292489B72461F07D00A316B0 /* AppKitGlue.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,14 +305,18 @@
 		AB500A3123B104E20056BE37 /* PagingLayoutSamples */ = {
 			isa = PBXGroup;
 			children = (
+				292489AD2461A57900A316B0 /* Paging Layout.entitlements */,
 				AB1E03AD23B25CD30087F904 /* CustomViews */,
 				AB500A5223B152170056BE37 /* Modules */,
 				AB500A5123B152130056BE37 /* Models */,
 				AB500A5323B152400056BE37 /* Utilities */,
 				AB500A3223B104E20056BE37 /* AppDelegate.swift */,
+				292489C42461FE2700A316B0 /* Catalyst.swift */,
 				AB500A3B23B104E60056BE37 /* Assets.xcassets */,
 				AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */,
 				AB500A4023B104E60056BE37 /* Info.plist */,
+				292489CA24620BD600A316B0 /* AppKitBridge.h */,
+				292489CB24620C4D00A316B0 /* PagingLayoutSamples-Bridging-Header.h */,
 			);
 			path = PagingLayoutSamples;
 			sourceTree = "<group>";
@@ -276,6 +347,7 @@
 		AB500A5223B152170056BE37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				292489AE2461A96600A316B0 /* LayoutMaker */,
 				AB7C1E0423B4E292006441DE /* Main */,
 				29D9F94123F7F92000656A67 /* Shapes */,
 				AB500A4823B13B9D0056BE37 /* Fruits */,
@@ -368,6 +440,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		292489B62461F07D00A316B0 /* AppKitGlue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 292489BA2461F07D00A316B0 /* Build configuration list for PBXNativeTarget "AppKitGlue" */;
+			buildPhases = (
+				292489B32461F07D00A316B0 /* Sources */,
+				292489B42461F07D00A316B0 /* Frameworks */,
+				292489B52461F07D00A316B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppKitGlue;
+			productName = AppKitGlue;
+			productReference = 292489B72461F07D00A316B0 /* AppKitGlue.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		AB500A2E23B104E20056BE37 /* PagingLayoutSamples */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB500A4323B104E60056BE37 /* Build configuration list for PBXNativeTarget "PagingLayoutSamples" */;
@@ -378,10 +467,12 @@
 				AB500A2C23B104E20056BE37 /* Frameworks */,
 				AB500A2D23B104E20056BE37 /* Resources */,
 				16CABBE36A64D6ED31E82309 /* [CP] Embed Pods Frameworks */,
+				292489C02461F08B00A316B0 /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				292489BF2461F08B00A316B0 /* PBXTargetDependency */,
 			);
 			name = PagingLayoutSamples;
 			productName = CollectionViewPagingLayout;
@@ -398,6 +489,10 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Amir Khorsandi";
 				TargetAttributes = {
+					292489B62461F07D00A316B0 = {
+						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
+					};
 					AB500A2E23B104E20056BE37 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -417,11 +512,19 @@
 			projectRoot = "";
 			targets = (
 				AB500A2E23B104E20056BE37 /* PagingLayoutSamples */,
+				292489B62461F07D00A316B0 /* AppKitGlue */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		292489B52461F07D00A316B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB500A2D23B104E20056BE37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +537,7 @@
 				29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */,
 				ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */,
 				ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */,
+				292489B22461E31300A316B0 /* LayoutDesignerViewController.xib in Resources */,
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
 				AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */,
@@ -506,6 +610,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		292489B32461F07D00A316B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				292489C32461FD6A00A316B0 /* MacApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB500A2B23B104E20056BE37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,14 +656,25 @@
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
+				292489B02461A97900A316B0 /* LayoutDesignerViewController.swift in Sources */,
 				29B815B12414132100F1C824 /* SnapshotShapeCollectionViewCells.swift in Sources */,
 				29D9F95923F874E900656A67 /* GradientView.swift in Sources */,
 				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
+				292489C52461FE2700A316B0 /* Catalyst.swift in Sources */,
 				AB500A3323B104E20056BE37 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		292489BF2461F08B00A316B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = maccatalyst;
+			target = 292489B62461F07D00A316B0 /* AppKitGlue */;
+			targetProxy = 292489BE2461F08B00A316B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AB500A3D23B104E60056BE37 /* LaunchScreen.storyboard */ = {
@@ -565,6 +688,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		292489BB2461F07D00A316B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = AppKitGlue/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = amir.app.AppKitGlue;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AppKitGlue/AppKitGlue-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		292489BC2461F07D00A316B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = AppKitGlue/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = amir.app.AppKitGlue;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AppKitGlue/AppKitGlue-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		AB500A4123B104E60056BE37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -683,26 +857,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89FF77F458B1EB2029D8978E /* Pods-PagingLayoutSamples.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
-				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.amir.paginglayout;
-				PRODUCT_NAME = "Paging Layout";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		AB500A4523B104E60056BE37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */;
-			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -714,15 +869,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.paginglayout;
 				PRODUCT_NAME = "Paging Layout";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PagingLayoutSamples/PagingLayoutSamples-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB500A4523B104E60056BE37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.amir.paginglayout;
+				PRODUCT_NAME = "Paging Layout";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PagingLayoutSamples/PagingLayoutSamples-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		292489BA2461F07D00A316B0 /* Build configuration list for PBXNativeTarget "AppKitGlue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				292489BB2461F07D00A316B0 /* Debug */,
+				292489BC2461F07D00A316B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AB500A2A23B104E20056BE37 /* Build configuration list for PBXProject "PagingLayoutSamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

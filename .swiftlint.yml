@@ -51,7 +51,7 @@ file_header:
   required_pattern: |
                     \/\/
                     \/\/  .*?\.swift
-                    \/\/  (CollectionViewPagingLayout.*?|Unit Tests)
+                    \/\/  .*
                     \/\/
                     \/\/  (Created by .*? on .*?)
                     \/\/  Copyright © \d{4} Amir Khorsandi. All rights reserved\.
