@@ -38,8 +38,8 @@ class BaseShapeCollectionViewCell: UICollectionViewCell {
     
     private func setupViews() {
         shapeCardView = ShapeCardView.instantiate()
-        let leftRightMargin = UIScreen.main.bounds.width * 0.18
-        let topBottomMargin = UIScreen.main.bounds.height * 0.06
+        let leftRightMargin = UIWindow.firstWindowSize.width * 0.18
+        let topBottomMargin = UIWindow.firstWindowSize.height * 0.06
         contentView.fill(with: shapeCardView,
                          edges: UIEdgeInsets(top: topBottomMargin, left: leftRightMargin, bottom: -topBottomMargin, right: -leftRightMargin))
         clipsToBounds = false
