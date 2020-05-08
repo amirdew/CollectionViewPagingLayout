@@ -188,13 +188,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		292489AE2461A96600A316B0 /* LayoutMaker */ = {
+		292489AE2461A96600A316B0 /* LayoutDesigner */ = {
 			isa = PBXGroup;
 			children = (
 				292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */,
 				292489B12461E31300A316B0 /* LayoutDesignerViewController.xib */,
 			);
-			path = LayoutMaker;
+			path = LayoutDesigner;
 			sourceTree = "<group>";
 		};
 		292489B82461F07D00A316B0 /* AppKitGlue */ = {
@@ -347,7 +347,7 @@
 		AB500A5223B152170056BE37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				292489AE2461A96600A316B0 /* LayoutMaker */,
+				292489AE2461A96600A316B0 /* LayoutDesigner */,
 				AB7C1E0423B4E292006441DE /* Main */,
 				29D9F94123F7F92000656A67 /* Shapes */,
 				AB500A4823B13B9D0056BE37 /* Fruits */,
