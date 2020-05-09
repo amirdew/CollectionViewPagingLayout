@@ -21,8 +21,16 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
     // MARK: Properties
     
-    var viewModel: ShapesViewModel!
+    var viewModel: ShapesViewModel! {
+        didSet {
+            updateSelectedLayout()
+            layoutTypeCollectionView?.collectionViewLayout.invalidateLayout()
+            layoutTypeCollectionView?.reloadData()
+            collectionView?.reloadData()
+        }
+    }
     
+    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var layoutTypeCollectionView: UICollectionView!
     
@@ -61,6 +69,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     private func configureViews() {
         view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
         view.clipsToBounds = true
+        backButton.isHidden = !viewModel.showBackButton
         configureCollectionView()
         configureLayoutTypeCollectionView()
     }
@@ -94,7 +103,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func updateSelectedLayout() {
-        guard let layout = layoutTypeCollectionView.collectionViewLayout as? CollectionViewPagingLayout else {
+        guard let layout = layoutTypeCollectionView?.collectionViewLayout as? CollectionViewPagingLayout else {
             return
         }
         let index = layout.currentPage % viewModel.layoutTypeViewModels.count

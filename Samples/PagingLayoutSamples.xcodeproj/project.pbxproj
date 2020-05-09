@@ -14,7 +14,6 @@
 		292489C32461FD6A00A316B0 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C22461FD6A00A316B0 /* MacApp.swift */; };
 		292489C52461FE2700A316B0 /* Catalyst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C42461FE2700A316B0 /* Catalyst.swift */; };
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
-		297AD305244C97FF002C4C1E /* UIWindow+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297AD304244C97FF002C4C1E /* UIWindow+Size.swift */; };
 		29B815B12414132100F1C824 /* SnapshotShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */; };
 		29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94223F7F98800656A67 /* ShapesViewController.swift */; };
 		29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94423F7F99400656A67 /* ShapesViewModel.swift */; };
@@ -104,7 +103,6 @@
 		292489CA24620BD600A316B0 /* AppKitBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKitBridge.h; sourceTree = "<group>"; };
 		292489CB24620C4D00A316B0 /* PagingLayoutSamples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagingLayoutSamples-Bridging-Header.h"; sourceTree = "<group>"; };
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		297AD304244C97FF002C4C1E /* UIWindow+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Size.swift"; sourceTree = "<group>"; };
 		29B815B02414132100F1C824 /* SnapshotShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotShapeCollectionViewCells.swift; sourceTree = "<group>"; };
 		29D9F94223F7F98800656A67 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		29D9F94423F7F99400656A67 /* ShapesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewModel.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				ABA0DA0D23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift */,
 				AB500A5423B152500056BE37 /* ViewModelBased.swift */,
 				29D9F94F23F806C400656A67 /* Optional+Let.swift */,
-				297AD304244C97FF002C4C1E /* UIWindow+Size.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -650,7 +647,6 @@
 				291224692400352F001B603A /* StackShapeCollectionViewCells.swift in Sources */,
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
-				297AD305244C97FF002C4C1E /* UIWindow+Size.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,

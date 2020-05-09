@@ -19,13 +19,16 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     @IBOutlet private weak var stackButtonView: UIView!
     @IBOutlet private weak var scaleButtonView: UIView!
     @IBOutlet private weak var snapshotButtonView: UIView!
+    @IBOutlet private weak var previewContainerView: UIView!
+    @IBOutlet private weak var codeContainerView: UIView!
     
+    private var previewViewController: ShapesViewController!
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setInitialStateForLayoutButtons()
+        configureViews()
     }
     
     
@@ -33,6 +36,19 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     
     @IBAction private func layoutCategoryButtonTouched(button: UIButton) {
         guard let view = button.superview else { return }
+        
+        let layouts: [ShapeLayout]
+        switch view {
+        case stackButtonView:
+            layouts = .stack
+        case scaleButtonView:
+            layouts = .scale
+        case snapshotButtonView:
+            layouts = .snapshot
+        default:
+            layouts = []
+        }
+        setLayoutsForPreview(layouts)
         
         setLayoutButtonSelected(view: stackButtonView, isSelected: view == stackButtonView)
         setLayoutButtonSelected(view: scaleButtonView, isSelected: view == scaleButtonView)
@@ -46,12 +62,16 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     
     // MARK: Private functions
     
+    private func configureViews() {
+        setInitialStateForLayoutButtons()
+        addPreviewController()
+    }
+    
     private func setInitialStateForLayoutButtons() {
         setLayoutButtonSelected(view: stackButtonView, isSelected: true)
         setLayoutButtonSelected(view: scaleButtonView, isSelected: false)
         setLayoutButtonSelected(view: snapshotButtonView, isSelected: false)
     }
-    
     
     private func setLayoutButtonSelected(view: UIView, isSelected: Bool, animated: Bool = true) {
         guard let titleStackView = view.subviews.first(where: { $0 is UIStackView })?
@@ -76,5 +96,17 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         view.layer.add(borderAnimation, forKey: nil)
     }
     
+    private func addPreviewController() {
+        previewViewController = ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack, showBackButton: false))
+        addChild(previewViewController)
+        previewViewController.view.layer.cornerRadius = 30
+        previewViewController.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        previewContainerView.fill(with: previewViewController.view)
+        previewViewController.didMove(toParent: self)
+    }
+    
+    private func setLayoutsForPreview(_ layouts: [ShapeLayout]) {
+        previewViewController.viewModel = ShapesViewModel(layouts: layouts, showBackButton: false)
+    }
     
 }

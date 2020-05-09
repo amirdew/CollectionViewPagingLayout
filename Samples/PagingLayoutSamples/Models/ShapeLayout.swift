@@ -34,3 +34,37 @@ enum ShapeLayout {
     case snapshotPuzzle
     case snapshotFade
 }
+
+extension Array where Element == ShapeLayout {
+    
+    static let scale: [ShapeLayout] = [
+        .scaleInvertedCylinder,
+        .scaleCylinder,
+        .scaleCoverFlow,
+        .scaleRotary,
+        .scaleLinear,
+        .scaleEaseIn,
+        .scaleEaseOut,
+        .scaleBlur
+    ]
+    
+    static let stack: [ShapeLayout] = [
+        .stackVortex,
+        .stackRotary,
+        .stackTransparent,
+        .stackBlur,
+        .stackReverse,
+        .stackPerspective
+    ]
+    
+    static var snapshot: [ShapeLayout] = [
+        .snapshotBars,
+        .snapshotFade,
+        .snapshotGrid,
+        .snapshotChess,
+        .snapshotLines,
+        .snapshotSpace,
+        .snapshotTiles,
+        .snapshotPuzzle
+    ]
+}

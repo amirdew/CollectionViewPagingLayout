@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LayoutDesignerViewController" customModule="Paging_Layout" customModuleProvider="target">
             <connections>
+                <outlet property="codeContainerView" destination="CdL-lt-E7G" id="TPq-ZZ-4TH"/>
+                <outlet property="previewContainerView" destination="h51-4z-wO0" id="Prg-zg-0zJ"/>
                 <outlet property="scaleButtonView" destination="2wv-bO-feC" id="7I4-mt-9Ii"/>
                 <outlet property="snapshotButtonView" destination="E4u-ez-gsh" id="8FM-uc-9hN"/>
                 <outlet property="stackButtonView" destination="3Yl-40-qB9" id="TPG-yr-NAc"/>
@@ -216,11 +218,11 @@
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="qxy-3u-1M3"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h51-4z-wO0">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h51-4z-wO0" userLabel="previewContainerView">
                     <rect key="frame" x="494" y="0.0" width="469" height="758"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" red="0.1201978996" green="0.27515318989999998" blue="0.87504833940000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-lt-E7G">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-lt-E7G" userLabel="codeContainerView">
                     <rect key="frame" x="963" y="0.0" width="514" height="758"/>
                     <color key="backgroundColor" red="0.16078431372549018" green="0.16470588235294117" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                 </view>

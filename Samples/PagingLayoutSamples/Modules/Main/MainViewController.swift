@@ -22,46 +22,21 @@ class MainViewController: UIViewController, NibBased {
     
     @IBAction private func stackButtonTouched() {
         navigationController?.pushViewController(
-            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
-                .stackVortex,
-                .stackRotary,
-                .stackTransparent,
-                .stackBlur,
-                .stackReverse,
-                .stackPerspective
-            ])),
+            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)),
             animated: true
         )
     }
     
     @IBAction private func scaleButtonTouched() {
         navigationController?.pushViewController(
-            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
-                .scaleCylinder,
-                .scaleInvertedCylinder,
-                .scaleCoverFlow,
-                .scaleLinear,
-                .scaleEaseIn,
-                .scaleEaseOut,
-                .scaleRotary,
-                .scaleBlur
-            ])),
+            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .scale)),
             animated: true
         )
     }
     
     @IBAction private func snapshotButtonTouched() {
         navigationController?.pushViewController(
-            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: [
-                .snapshotBars,
-                .snapshotFade,
-                .snapshotGrid,
-                .snapshotChess,
-                .snapshotLines,
-                .snapshotSpace,
-                .snapshotTiles,
-                .snapshotPuzzle
-            ])),
+            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .snapshot)),
             animated: true
         )
     }
