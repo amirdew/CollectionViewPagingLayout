@@ -84,7 +84,7 @@ public extension SnapshotTransformView {
         } else {
             snapshot.alpha = 1
             // hide the original view, we apply transform on the snapshot
-            targetView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -UIScreen.main.bounds.height)
+            targetView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -2 * UIScreen.main.bounds.height)
         }
         snapshot.transform(progress: progress, options: snapshotOptions)
     }
