@@ -10,6 +10,6 @@
 
 @protocol AppKitBridge <NSObject>
 
-- (void)setSize;
+- (void)initialise;
 
 @end

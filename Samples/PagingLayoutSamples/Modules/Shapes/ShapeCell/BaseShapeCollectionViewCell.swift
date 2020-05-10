@@ -21,6 +21,7 @@ class BaseShapeCollectionViewCell: UICollectionViewCell {
     private(set) var shapeCardView: ShapeCardView!
     private var edgeConstraints: [NSLayoutConstraint]?
     
+    
     // MARK: Lifecycle
     
     override init(frame: CGRect) {
@@ -47,6 +48,7 @@ class BaseShapeCollectionViewCell: UICollectionViewCell {
         edgeConstraints[1].constant = topBottomMargin
         edgeConstraints[3].constant = -topBottomMargin
     }
+    
     
     // MARK: Private functions
     

@@ -61,6 +61,10 @@ extension LayoutTypeCollectionViewCell: ScaleTransformView {
         circleView
     }
     
+    var selectableView: UIView? {
+        circleView
+    }
+    
     func transform(progress: CGFloat) {
         applyScaleTransform(progress: progress)
         titleLabel.alpha = 1 - abs(progress)

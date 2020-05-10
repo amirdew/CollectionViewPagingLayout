@@ -9,7 +9,7 @@
 import Foundation
 
 enum Catalyst {
-    static var bridge: AppKitBridge? {
+    static var bridge: AppKitBridge? = {
         #if targetEnvironment(macCatalyst)
         guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent("AppKitGlue.bundle"),
             let bundle = Bundle(path: url.path),
@@ -22,5 +22,5 @@ enum Catalyst {
         #else
         return nil
         #endif
-    }
+    }()
 }

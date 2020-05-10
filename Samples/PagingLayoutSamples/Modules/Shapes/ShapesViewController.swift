@@ -24,9 +24,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     var viewModel: ShapesViewModel! {
         didSet {
             updateSelectedLayout()
-            layoutTypeCollectionView?.collectionViewLayout.invalidateLayout()
-            layoutTypeCollectionView?.reloadData()
-            collectionView?.reloadData()
+            reloadDataAndLayouts()
         }
     }
     
@@ -48,14 +46,14 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         super.viewDidLayoutSubviews()
         
         if !didScrollCollectionViewToMiddle {
-            let layout = layoutTypeCollectionView.collectionViewLayout as? CollectionViewPagingLayout
-            layout?.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
+            getPagingLayout(layoutTypeCollectionView)?.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
             didScrollCollectionViewToMiddle = true
         }
         
-        layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
         updateSelectedLayout()
+        invalidateLayouts()
     }
+    
     
     // MARK: Event listener
     
@@ -84,6 +82,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
+        layout.configureTapOnCollectionView(goToSelectedPage: true)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
@@ -94,8 +93,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         layoutTypeCollectionView.isPagingEnabled = true
         layoutTypeCollectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 5
+        layout.numberOfVisibleItems = 10
         layoutTypeCollectionView.collectionViewLayout = layout
+        layout.configureTapOnCollectionView(goToSelectedPage: true)
         layoutTypeCollectionView.showsHorizontalScrollIndicator = false
         layoutTypeCollectionView.clipsToBounds = false
         layoutTypeCollectionView.backgroundColor = .clear
@@ -113,7 +113,28 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             self.collectionView.collectionViewLayout.invalidateLayout()
         }, completion: nil)
     }
+    
+    private func reloadDataAndLayouts() {
+        layoutTypeCollectionView?.reloadData()
+        collectionView?.reloadData()
+        invalidateLayouts()
+    }
+    
+    private func invalidateLayouts() {
+        layoutTypeCollectionView?.performBatchUpdates({
+            self.layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
+        })
+        collectionView?.performBatchUpdates({
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        })
+    }
+    
+    private func getPagingLayout(_ collectionView: UICollectionView) -> CollectionViewPagingLayout? {
+        collectionView.collectionViewLayout as? CollectionViewPagingLayout
+    }
+    
 }
+
 
 extension ShapesViewController: UICollectionViewDataSource {
     
@@ -148,6 +169,7 @@ extension ShapesViewController: UICollectionViewDataSource {
     
 }
 
+
 extension ShapesViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -166,4 +188,10 @@ extension ShapesViewController: UICollectionViewDelegate {
         updateSelectedLayout()
     }
     
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        guard scrollView == layoutTypeCollectionView else {
+            return
+        }
+        updateSelectedLayout()
+    }
 }

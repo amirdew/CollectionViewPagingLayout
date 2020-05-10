@@ -15,28 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var navigationController: UINavigationController!
     
+    override init() {
+        super.init()
+        Catalyst.bridge?.initialise()
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         window = UIWindow()
         navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        navigationController.setViewControllers([LayoutDesignerViewController.instantiate()], animated: false)
+        let mainVC = UIDevice.current.userInterfaceIdiom == .pad ? LayoutDesignerViewController.instantiate() : MainViewController.instantiate()
+        navigationController.setViewControllers([mainVC], animated: false)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
-        
-        #if targetEnvironment(macCatalyst)
-        if let titlebar = window?.windowScene?.titlebar {
-            window?.tintColor = .red
-            titlebar.titleVisibility = .hidden
-            titlebar.toolbar = nil
-        }
-        #endif
-        DispatchQueue.main.async {
-            Catalyst.bridge?.setSize()
-        }
-        
         return true
     }
-    
 }
