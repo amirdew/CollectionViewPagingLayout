@@ -11,6 +11,13 @@ import UIKit
 
 public protocol TransformableView {
     
+    /// The view for detecting tap gesture
+    /// when you call `CollectionViewPagingLayout.configureTapOnCollectionView()`
+    /// a tap gesture will be added to the CollectionView and when the user tap on it
+    /// it checks if the tap location was in this view frame it will trigger
+    /// `CollectionViewPagingLayoutDelegate.collectionViewPagingLayout(_ layout:, didSelectItemAt indexPath:)`
+    var selectableView: UIView? { get }
+    
     /// Sends a float value based on the position of the view (cell)
     /// if the view is in the center of CollectionView it sends 0
     ///
@@ -33,3 +40,14 @@ public extension TransformableView {
         Int(-abs(round(progress)))
     }
 }
+
+
+public extension TransformableView where Self: UICollectionViewCell {
+    
+    /// Default `selectableView` for `UICollectionViewCell` is the first subview of
+    /// `contentView` or the content view itself if there is no subview
+    var selectableView: UIView? {
+        contentView.subviews.first
+    }
+}
+

@@ -9,7 +9,25 @@
 import UIKit
 
 public protocol CollectionViewPagingLayoutDelegate: class {
+    
+    /// Calls when the current page changes
+    ///
+    /// - Parameter layout: a reference to the layout class
+    /// - Parameter currentPage: the new current page index
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
+    
+    /// Calls when the user taps on the `TransformableView.selectableView`
+    /// to enable this functionality you need to call `configureTapOnCollectionView()` after setting the layout
+    ///
+    /// - Parameter layout: a reference to the layout class
+    /// - Parameter indexPath: IndexPath for the selected cell
+    func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath)
+}
+
+
+public extension CollectionViewPagingLayoutDelegate {
+    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {}
+    func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath) {}
 }
 
 
@@ -48,6 +66,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         .reduce(0, +)
     }
     
+    private var currentPageCache: Int?
+    private var attributesCache: [(page: Int, attributes:UICollectionViewLayoutAttributes)]?
+    private var scrollToSelectedCell: Bool = false
+    
     
     // MARK: Public functions
     
@@ -63,11 +85,19 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         setCurrentPage(currentPage - 1, animated: animated)
     }
     
+    public func configureTapOnCollectionView(goToSelectedPage: Bool = false) {
+        self.scrollToSelectedCell = goToSelectedPage
+        addTapGestureToCollectionView()
+    }
+    
     
     // MARK: UICollectionViewLayout
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        true
+        if newBounds.size != visibleRect.size {
+            currentPageCache = currentPage
+        }
+        return true
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -90,7 +120,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         let startIndex = max(0, initialStartIndex - endIndexOutOfBounds)
         let endIndex = min(numberOfItems, initialEndIndex + startIndexOutOfBounds)
         
-        var attributesArray: [UICollectionViewLayoutAttributes] = []
+        var attributesArray: [(page: Int, attributes:UICollectionViewLayoutAttributes)] = []
         var section = 0
         var numberOfItemsInSection = collectionView?.numberOfItems(inSection: section) ?? 0
         var numberOfItemsInPrevSections = 0
@@ -122,14 +152,20 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             }
             
             cellAttributes.zIndex = zIndex
-            attributesArray.append(cellAttributes)
+            attributesArray.append((page: Int(pageIndex), attributes: cellAttributes))
         }
-        return attributesArray
+        attributesCache = attributesArray
+        return attributesArray.map(\.attributes)
     }
     
     override public func invalidateLayout() {
         super.invalidateLayout()
-        updateCurrentPageIfNeeded()
+        if let page = currentPageCache {
+            setCurrentPage(page, animated: false)
+            currentPageCache = nil
+        } else {
+            updateCurrentPageIfNeeded()
+        }
     }
     
     
@@ -174,5 +210,39 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
         collectionView?.setContentOffset(contentOffset, animated: animated)
+    }
+    
+    private func addTapGestureToCollectionView() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOnCollectionView(gesture:)))
+        collectionView?.addGestureRecognizer(gesture)
+    }
+    
+    @objc private func tapOnCollectionView(gesture: UITapGestureRecognizer) {
+        var items = collectionView?.visibleCells.compactMap { cell -> (cell: UICollectionViewCell, rect: CGRect, attributes: UICollectionViewLayoutAttributes, page: Int)? in
+            guard let indexPath = collectionView?.indexPath(for: cell),
+                let view = cell as? TransformableView,
+                let selectableView = view.selectableView,
+                let attributesAndPage = attributesCache?.first(where: { $0.attributes.indexPath == indexPath }) else {
+                    return nil
+            }
+            let rect = selectableView.superview?.convert(selectableView.frame, to: collectionView) ?? .zero
+            return (cell: cell, rect: rect, attributes: attributesAndPage.attributes, page: attributesAndPage.page)
+            } ?? []
+        
+        items.sort { $0.attributes.zIndex > $1.attributes.zIndex }
+        
+        let location = gesture.location(in: gesture.view)
+        for item in items {
+            var findSelected = false
+            if !findSelected, item.rect.contains(location) {
+                delegate?.collectionViewPagingLayout(self, didSelectItemAt: item.attributes.indexPath)
+                item.cell.isSelected = true
+                findSelected = true
+                if scrollToSelectedCell {
+                    setCurrentPage(item.page, animated: true)
+                }
+            }
+            item.cell.isSelected = false
+        }
     }
 }
