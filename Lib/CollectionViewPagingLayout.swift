@@ -232,8 +232,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         items.sort { $0.attributes.zIndex > $1.attributes.zIndex }
         
         let location = gesture.location(in: gesture.view)
+        var findSelected = false
         for item in items {
-            var findSelected = false
             if !findSelected, item.rect.contains(location) {
                 delegate?.collectionViewPagingLayout(self, didSelectItemAt: item.attributes.indexPath)
                 item.cell.isSelected = true
