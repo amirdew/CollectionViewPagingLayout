@@ -21,6 +21,7 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     @IBOutlet private weak var snapshotButtonView: UIView!
     @IBOutlet private weak var previewContainerView: UIView!
     @IBOutlet private weak var codeContainerView: UIView!
+    @IBOutlet private weak var optionsTableView: LayoutDesignerOptionsTableView!
     
     private var previewViewController: ShapesViewController!
     

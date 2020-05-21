@@ -63,6 +63,17 @@ extension NibBased where Self: UICollectionViewCell {
 }
 
 
+extension NibBased where Self: UITableViewCell {
+
+    // MARK: Static properties
+
+    static var nib: UINib {
+        UINib(nibName: String(describing: self), bundle: nil)
+    }
+
+}
+
+
 extension UICollectionView {
 
     // MARK: Public functions
@@ -74,6 +85,21 @@ extension UICollectionView {
     
     func dequeueReusableCell<T: UICollectionViewCell & NibBased>(for indexPath: IndexPath) -> T {
         (dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T)!
+    }
+
+}
+
+extension UITableView {
+
+    // MARK: Public functions
+
+    func register<T: UITableViewCell & NibBased>(_ cellType: T.Type, nibName: String? = nil) {
+        let nib = nibName.let { UINib(nibName: $0, bundle: nil) } ?? T.nib
+        register(nib, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell & NibBased>(for indexPath: IndexPath) -> T {
+        (dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T)!
     }
 
 }
