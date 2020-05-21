@@ -46,7 +46,10 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         super.viewDidLayoutSubviews()
         
         if !didScrollCollectionViewToMiddle {
-            getPagingLayout(layoutTypeCollectionView)?.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
+            getPagingLayout(layoutTypeCollectionView)?.setCurrentPage(
+                Constants.infiniteNumberOfItems / 2,
+                animated: false
+            )
             didScrollCollectionViewToMiddle = true
         }
         
