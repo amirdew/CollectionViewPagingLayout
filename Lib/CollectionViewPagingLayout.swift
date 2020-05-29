@@ -175,6 +175,6 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
         collectionView?.setContentOffset(contentOffset, animated: animated)
-        updateCurrentPageIfNeeded(basedOn: contentOffset)
+        //updateCurrentPageIfNeeded(basedOn: contentOffset)
     }
 }
