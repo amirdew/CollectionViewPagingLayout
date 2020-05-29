@@ -65,9 +65,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     
     // MARK: UICollectionViewLayout
+    var ignoreBoundsChange : Bool = false
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        true
+        !ignoreBoundsChange
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -174,7 +175,14 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
+        ignoreBoundsChange = true
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({
+            self.ignoreBoundsChange = false
+            self.updateCurrentPageIfNeeded(basedOn: contentOffset)
+        })
+        CATransaction.commit()
         collectionView?.setContentOffset(contentOffset, animated: animated)
-        //updateCurrentPageIfNeeded(basedOn: contentOffset)
+        
     }
 }
