@@ -183,8 +183,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             self.ignoreUpdateCurrentPage = false
             self.updateCurrentPageIfNeeded(basedOn: contentOffset)
         })
-        CATransaction.commit()
         collectionView?.setContentOffset(contentOffset, animated: animated)
+        CATransaction.commit()
         
     }
 }
