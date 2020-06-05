@@ -65,10 +65,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     
     // MARK: UICollectionViewLayout
-    var ignoreBoundsChange : Bool = false
+    var ignoreUpdateCurrentPage : Bool = false
     
     override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        !ignoreBoundsChange
+        true
     }
     
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -130,7 +130,9 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     override public func invalidateLayout() {
         super.invalidateLayout()
-        updateCurrentPageIfNeeded()
+        if !ignoreUpdateCurrentPage{
+            updateCurrentPageIfNeeded()
+        }
     }
     
     
@@ -175,10 +177,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
-        ignoreBoundsChange = true
+        ignoreUpdateCurrentPage = true
         CATransaction.begin()
         CATransaction.setCompletionBlock({
-            self.ignoreBoundsChange = false
+            self.ignoreUpdateCurrentPage = false
             self.updateCurrentPageIfNeeded(basedOn: contentOffset)
         })
         CATransaction.commit()
