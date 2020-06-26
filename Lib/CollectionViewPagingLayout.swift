@@ -171,15 +171,16 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Private functions
     
-    private func updateCurrentPageIfNeeded() {
+    private func updateCurrentPageIfNeeded(basedOn contentOffset: CGPoint? = nil) {
         var currentPage: Int = 0
         if let collectionView = collectionView {
+            let contentOffset = contentOffset ?? collectionView.contentOffset
             let pageSize = scrollDirection == .horizontal ? collectionView.frame.width : collectionView.frame.height
-            let contentOffset = scrollDirection == .horizontal ?
-                (collectionView.contentOffset.x + collectionView.contentInset.left) :
-                (collectionView.contentOffset.y + collectionView.contentInset.top)
+            let offset = scrollDirection == .horizontal ?
+                (contentOffset.x + collectionView.contentInset.left) :
+                (contentOffset.y + collectionView.contentInset.top)
             if pageSize > 0 {
-                currentPage = Int(round(contentOffset / pageSize))
+                currentPage = Int(round(offset / pageSize))
             }
         }
         if currentPage != self.currentPage {
@@ -209,7 +210,15 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.updateCurrentPageIfNeeded(basedOn: contentOffset)
+        }
+        if !animated {
+            updateCurrentPageIfNeeded(basedOn: contentOffset)
+        }
         collectionView?.setContentOffset(contentOffset, animated: animated)
+        CATransaction.commit()
     }
     
     private func addTapGestureToCollectionView() {

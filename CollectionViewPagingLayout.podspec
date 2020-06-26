@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CollectionViewPagingLayout"
-  s.version          = "0.1.4"
+  s.version          = "0.1.5"
   s.summary          = "Simple layout for making paging effects with UICollectionView."
  
   s.description      = <<-DESC
