@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Splash
 
 class LayoutDesignerViewController: UIViewController, NibBased {
     
@@ -24,6 +25,8 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     @IBOutlet private weak var optionsTableView: LayoutDesignerOptionsTableView!
     
     private var previewViewController: ShapesViewController!
+    private var codePreviewViewController: LayoutDesignerCodePreviewViewController!
+    
     
     // MARK: UIViewController
     
@@ -66,6 +69,7 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     private func configureViews() {
         setInitialStateForLayoutButtons()
         addPreviewController()
+        addCodePreviewController()
     }
     
     private func setInitialStateForLayoutButtons() {
@@ -104,6 +108,50 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         previewViewController.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         previewContainerView.fill(with: previewViewController.view)
         previewViewController.didMove(toParent: self)
+    }
+    
+    private func addCodePreviewController() {
+        codePreviewViewController = LayoutDesignerCodePreviewViewController()
+        addChild(codePreviewViewController)
+        codeContainerView.fill(with: codePreviewViewController.view)
+        codePreviewViewController.didMove(toParent: self)
+        
+        codePreviewViewController.viewModel = .init(code: """
+        class ReverseStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
+
+            var stackOptions: StackTransformViewOptions = .init(
+                scaleFactor: 0.1,
+                maxScale: nil,
+                maxStackSize: 4,
+                spacingFactor: 0.08,
+                shadowRadius: 8,
+                popAngle: -.pi / 4,
+                popOffsetRatio: .init(width: 1.45, height: 0.4),
+                stackPosition: CGPoint(x: -1, y: -0.2),
+                reverse: true
+            )
+        }
+
+
+        class BlurStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
+
+            var stackOptions: StackTransformViewOptions = .init(
+                scaleFactor: 0.1,
+                maxScale: nil,
+                maxStackSize: 7,
+                spacingFactor: 0.06,
+                topStackAlphaSpeedFactor: 0.1,
+                perspectiveRatio: 0.04,
+                shadowRadius: 8,
+                popAngle: -.pi / 4,
+                popOffsetRatio: .init(width: 1.45, height: 0.4),
+                stackPosition: CGPoint(x: -1, y: 0),
+                reverse: true,
+                blurEffectEnabled: true,
+                maxBlurEffectRadius: 0.08
+            )
+        }
+        """)
     }
     
     private func setLayoutsForPreview(_ layouts: [ShapeLayout]) {
