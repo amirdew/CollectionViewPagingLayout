@@ -225,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				29BEC4D62476DDA7004BA505 /* cell */,
-				2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */,
 				29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */,
 			);
 			path = Options;
@@ -234,6 +233,7 @@
 		29BEC4D62476DDA7004BA505 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */,
 				2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */,
 				2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */,
 			);
