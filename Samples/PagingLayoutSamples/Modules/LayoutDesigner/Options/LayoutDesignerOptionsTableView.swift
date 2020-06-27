@@ -10,6 +10,15 @@ import UIKit
 
 class LayoutDesignerOptionsTableView: UITableView {
     
+    // MARK: Properties
+    
+    var optionViewModels: [LayoutDesignerOptionCellViewModel] = [] {
+        didSet {
+            reloadData()
+        }
+    }
+    
+    
     // MARK: Lifecycle
     
     required init?(coder: NSCoder) {
@@ -22,6 +31,7 @@ class LayoutDesignerOptionsTableView: UITableView {
     
     private func configure() {
         dataSource = self
+        delegate = self
         register(LayoutDesignerOptionCell.self)
         backgroundColor = .clear
         separatorStyle = .none
@@ -34,10 +44,19 @@ class LayoutDesignerOptionsTableView: UITableView {
 extension LayoutDesignerOptionsTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        optionViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(for: indexPath) as LayoutDesignerOptionCell
+        let cell: LayoutDesignerOptionCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.viewModel = optionViewModels[indexPath.row]
+        return cell
+    }
+}
+
+extension LayoutDesignerOptionsTableView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        54
     }
 }

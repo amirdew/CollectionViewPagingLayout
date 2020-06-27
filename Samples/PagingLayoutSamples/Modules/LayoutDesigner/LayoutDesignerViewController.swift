@@ -61,6 +61,8 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             view.superview?.layoutIfNeeded()
         }, completion: nil)
+        
+        setOptionsList()
     }
     
     
@@ -156,6 +158,17 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     
     private func setLayoutsForPreview(_ layouts: [ShapeLayout]) {
         previewViewController.viewModel = ShapesViewModel(layouts: layouts, showBackButton: false)
+    }
+    
+    private func setOptionsList() {
+        optionsTableView.optionViewModels = [
+            .init(title: "Min scale", kind: .singleSlider(current: 0.3, onChange: { _ in })),
+            .init(title: "Scale ratio", kind: .singleSlider(current: 0.7, onChange: { _ in })),
+            .init(title: "Translate ratio", kind: .doubleSlider(current: (0.2, 0.7), onChange: { _, _  in })),
+            .init(title: "Keep vertical spacing equal", kind: .toggleSwitch(current: true, onChange: { _ in })),
+            .init(title: "Keep horizontal spacing equal", kind: .toggleSwitch(current: false, onChange: { _ in })),
+            .init(title: "Scale curve", kind: .segmented(options: ["Linear", "EaseIn", "EeaseOut"], current: "Linear", onChange: { _ in }))
+        ]
     }
     
 }

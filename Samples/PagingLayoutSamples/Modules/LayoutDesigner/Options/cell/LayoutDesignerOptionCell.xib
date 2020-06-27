@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,42 +25,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6iD-NN-Pkp">
-                                <rect key="frame" x="72" y="24.5" width="113" height="34"/>
+                                <rect key="frame" x="72" y="26.5" width="520" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOn-7W-5CC">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOn-7W-5CC">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="tDz-j2-ysK"/>
+                                            <constraint firstAttribute="width" constant="40" id="tDz-j2-ysK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mrr-fb-BXW">
-                                        <rect key="frame" x="41" y="0.0" width="74" height="35"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mrr-fb-BXW">
+                                        <rect key="frame" x="46" y="0.0" width="476" height="31"/>
                                     </slider>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMP-47-ejK">
-                                <rect key="frame" x="215" y="24.5" width="113" height="34"/>
+                                <rect key="frame" x="622" y="26.5" width="48" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92B-Vi-VUn">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92B-Vi-VUn">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="RqI-rc-Knq"/>
+                                            <constraint firstAttribute="width" constant="40" id="RqI-rc-Knq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-dO-1Su">
-                                        <rect key="frame" x="41" y="0.0" width="74" height="35"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-dO-1Su">
+                                        <rect key="frame" x="46" y="0.0" width="4" height="31"/>
                                     </slider>
                                 </subviews>
                             </stackView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="753" verticalHuggingPriority="750" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qN-5W-LDE">
-                                <rect key="frame" x="358" y="26" width="51" height="31"/>
+                                <rect key="frame" x="700" y="26" width="2" height="31"/>
                             </switch>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0Zl-FA-hd7">
-                                <rect key="frame" x="437" y="26" width="293" height="32"/>
+                                <rect key="frame" x="730" y="26" width="0.0" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -68,7 +68,7 @@
                             </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="sGo-dO-1Su" firstAttribute="width" secondItem="mrr-fb-BXW" secondAttribute="width" id="N2H-QF-ez3"/>
+                            <constraint firstItem="mrr-fb-BXW" firstAttribute="width" secondItem="nsZ-12-SEz" secondAttribute="width" priority="900" id="9yO-80-BMd"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -80,7 +80,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="equalWidthConstraint" destination="N2H-QF-ez3" id="fGd-9C-fTV"/>
                 <outlet property="input1" destination="DOn-7W-5CC" id="J4q-or-U2S"/>
                 <outlet property="input2" destination="92B-Vi-VUn" id="YbX-cg-mJi"/>
                 <outlet property="label" destination="GRr-hL-CcP" id="ZCB-RG-kzX"/>
@@ -89,7 +88,7 @@
                 <outlet property="slider2" destination="sGo-dO-1Su" id="6ip-1N-rgE"/>
                 <outlet property="switchView" destination="2qN-5W-LDE" id="RLq-Zh-YiA"/>
             </connections>
-            <point key="canvasLocation" x="346" y="79"/>
+            <point key="canvasLocation" x="344.92753623188406" y="78.683035714285708"/>
         </tableViewCell>
     </objects>
 </document>
