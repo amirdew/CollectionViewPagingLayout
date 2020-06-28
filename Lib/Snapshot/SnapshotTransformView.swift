@@ -134,12 +134,12 @@ private extension SnapshotContainerView {
                           y: translateY)
             .scaledBy(x: scale, y: scale)
         var sizeRatioRow = options.pieceSizeRatio.height
-        if sizeRatioRow == 0 {
-            sizeRatioRow = 1
+        if abs(sizeRatioRow) < 0.01 {
+            sizeRatioRow = 0.01
         }
         var sizeRatioColumn = options.pieceSizeRatio.width
-        if sizeRatioColumn == 0 {
-            sizeRatioColumn = 1
+        if abs(sizeRatioColumn) < 0.01 {
+            sizeRatioColumn = 0.01
         }
         let rowCount = Int(1.0 / sizeRatioRow)
         let columnCount = Int(1.0 / sizeRatioColumn)

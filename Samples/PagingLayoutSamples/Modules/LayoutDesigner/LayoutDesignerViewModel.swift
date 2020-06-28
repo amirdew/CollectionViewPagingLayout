@@ -157,6 +157,11 @@ class LayoutDesignerViewModel {
             let update: ((inout SnapshotTransformViewOptions) -> Void) -> Void = {  [weak self] in
                 self?.update(options: &options, closure: $0)
             }
+            optionViewModels = [
+                .init(title: "Piece size ratio", kind: .doubleSlider(current: options.pieceSizeRatio.pair) { n in
+                    update { $0.pieceSizeRatio = .by(pair: n) }
+                    })
+            ]
         }
     }
     
