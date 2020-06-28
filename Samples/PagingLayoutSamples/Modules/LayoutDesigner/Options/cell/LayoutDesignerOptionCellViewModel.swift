@@ -15,7 +15,7 @@ class LayoutDesignerOptionCellViewModel {
     
     enum Kind {
         case singleSlider(current: CGFloat, onChange: (CGFloat) -> Void)
-        case doubleSlider(current: (CGFloat, CGFloat), onChange: (CGFloat, CGFloat) -> Void)
+        case doubleSlider(current: (CGFloat, CGFloat)?, onChange: ((CGFloat, CGFloat)) -> Void)
         case toggleSwitch(current: Bool, onChange: (Bool) -> Void)
         case segmented(options: [String], current: String?, onChange: (String) -> Void)
     }

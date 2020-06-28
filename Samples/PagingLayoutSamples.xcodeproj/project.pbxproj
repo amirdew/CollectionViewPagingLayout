@@ -21,6 +21,11 @@
 		2993722324A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */; };
 		29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */; };
 		29B5A72224A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */; };
+		29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */; };
+		29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72524A8D8B300C9843E /* OptionsCodeGenerator.swift */; };
+		29B5A72824A8D8F700C9843E /* TransformCurve+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72724A8D8F700C9843E /* TransformCurve+Name.swift */; };
+		29B5A72A24A8D94300C9843E /* Values+Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72924A8D94300C9843E /* Values+Pair.swift */; };
+		29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */; };
 		29BEC4D52476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */; };
 		29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94223F7F98800656A67 /* ShapesViewController.swift */; };
 		29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94423F7F99400656A67 /* ShapesViewModel.swift */; };
@@ -119,6 +124,11 @@
 		2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+ScaleOptions.swift"; sourceTree = "<group>"; };
 		29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+StackOptions.swift"; sourceTree = "<group>"; };
 		29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+SnapshotOptions.swift"; sourceTree = "<group>"; };
+		29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+String.swift"; sourceTree = "<group>"; };
+		29B5A72524A8D8B300C9843E /* OptionsCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCodeGenerator.swift; sourceTree = "<group>"; };
+		29B5A72724A8D8F700C9843E /* TransformCurve+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransformCurve+Name.swift"; sourceTree = "<group>"; };
+		29B5A72924A8D94300C9843E /* Values+Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Values+Pair.swift"; sourceTree = "<group>"; };
+		29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect.Style+Name.swift"; sourceTree = "<group>"; };
 		29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionsTableView.swift; sourceTree = "<group>"; };
 		29D9F94223F7F98800656A67 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		29D9F94423F7F99400656A67 /* ShapesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewModel.swift; sourceTree = "<group>"; };
@@ -212,6 +222,7 @@
 				292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */,
 				294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */,
 				292489B12461E31300A316B0 /* LayoutDesignerViewController.xib */,
+				29B5A72524A8D8B300C9843E /* OptionsCodeGenerator.swift */,
 			);
 			path = LayoutDesigner;
 			sourceTree = "<group>";
@@ -413,6 +424,10 @@
 				2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */,
 				AB500A5423B152500056BE37 /* ViewModelBased.swift */,
 				29D9F94F23F806C400656A67 /* Optional+Let.swift */,
+				29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */,
+				29B5A72724A8D8F700C9843E /* TransformCurve+Name.swift */,
+				29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */,
+				29B5A72924A8D94300C9843E /* Values+Pair.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -684,10 +699,12 @@
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */,
 				2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */,
+				29B5A72A24A8D94300C9843E /* Values+Pair.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
 				ABC242C323B6822200DBD4D6 /* GalleryViewController.swift in Sources */,
 				2993722324A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift in Sources */,
 				AB1BBAA023CA7BE6004E5C3B /* CardsViewModel.swift in Sources */,
+				29B5A72824A8D8F700C9843E /* TransformCurve+Name.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
 				ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */,
 				AB1BBA9E23CA7BD9004E5C3B /* CardsViewController.swift in Sources */,
@@ -704,9 +721,12 @@
 				29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */,
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
+				29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */,
 				29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
+				29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */,
+				29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
 				29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,

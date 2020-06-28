@@ -43,6 +43,18 @@ class ShapesViewModel {
         selectedLayout = layoutTypeViewModels.first!
     }
     
+    
+    // MARK: Public functions
+    
+    func setCustomOptions<T>(_ options: T) {
+        if let options = options as? ScaleTransformViewOptions {
+            ShapesViewModel.scaleOptions = options
+        } else if let options = options as? StackTransformViewOptions {
+            ShapesViewModel.stackOptions = options
+        } else if let options = options as? SnapshotTransformViewOptions {
+            ShapesViewModel.snapshotOptions = options
+        }
+    }
 }
 
 

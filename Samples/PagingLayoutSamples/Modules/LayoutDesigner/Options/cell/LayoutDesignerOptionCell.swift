@@ -145,16 +145,16 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             slider1.isHidden = false
             input1.isHidden = false
             slider2.superview?.isHidden = false
-            input1.set(value: current.0)
-            slider1.value = Float(current.0)
+            input1.set(value: current?.0 ?? 0)
+            slider1.value = Float(current?.0 ?? 0)
             slider2.isHidden = false
             input2.isHidden = false
-            input2.set(value: current.1)
-            slider2.value = Float(current.1)
-            onSlider1Change = { [weak self] in onChange($0, CGFloat(self?.slider2.value ?? 0)) }
-            onSlider2Change = { [weak self] in onChange(CGFloat(self?.slider1.value ?? 0), $0) }
-            onInput1Change = { [weak self] in onChange($0, CGFloat(self?.input2.floatValue ?? 0)) }
-            onInput2Change = { [weak self] in onChange(CGFloat(self?.input1.floatValue ?? 0), $0) }
+            input2.set(value: current?.1 ?? 0)
+            slider2.value = Float(current?.1 ?? 0)
+            onSlider1Change = { [weak self] in onChange(($0, CGFloat(self?.slider2.value ?? 0))) }
+            onSlider2Change = { [weak self] in onChange((CGFloat(self?.slider1.value ?? 0), $0)) }
+            onInput1Change = { [weak self] in onChange(($0, CGFloat(self?.input2.floatValue ?? 0))) }
+            onInput2Change = { [weak self] in onChange((CGFloat(self?.input1.floatValue ?? 0), $0)) }
             
         case let .toggleSwitch(current, onChange):
             switchView.isHidden = false
@@ -180,14 +180,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
 private extension UITextField {
     
     var floatValue: Float {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.allowsFloats = true
-        formatter.maximumFractionDigits = 2
-        formatter.locale = Locale(identifier: "en_US")
-        let text = self.text?.replacingOccurrences(of: ",", with: ".") ?? "0"
-        let number = formatter.number(from: text)
-        return number?.floatValue ?? 0
+        text?.floatValue ?? 0
     }
     
     func set(value: Float) {
@@ -195,6 +188,6 @@ private extension UITextField {
     }
     
     func set(value: CGFloat) {
-        text = String(format: "%.2f", value)
+        text = value.format()
     }
 }

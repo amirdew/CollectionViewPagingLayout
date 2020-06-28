@@ -65,6 +65,14 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     
+    // MARK: Public functions
+    
+    func reloadAndInvalidateShapes() {
+        collectionView?.reloadData()
+        invalidateCollectionViewLayout()
+    }
+    
+    
     // MARK: Event listener
     
     @IBAction private func onBackTouched() {
@@ -119,10 +127,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         let index = layout.currentPage % viewModel.layoutTypeViewModels.count
         self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
         delegate?.shapesViewController(self, onSelectedLayoutChange: viewModel.selectedLayout.layout)
-        collectionView.reloadData()
-        collectionView.performBatchUpdates({
-            self.collectionView.collectionViewLayout.invalidateLayout()
-        }, completion: nil)
+        reloadAndInvalidateShapes()
     }
     
     private func reloadDataAndLayouts() {
@@ -132,9 +137,17 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func invalidateLayouts() {
+        invalidateLayoutTypeCollectionViewLayout()
+        invalidateCollectionViewLayout()
+    }
+    
+    private func invalidateLayoutTypeCollectionViewLayout() {
         layoutTypeCollectionView?.performBatchUpdates({
             self.layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
         })
+    }
+    
+    private func invalidateCollectionViewLayout() {
         collectionView?.performBatchUpdates({
             self.collectionView.collectionViewLayout.invalidateLayout()
         })

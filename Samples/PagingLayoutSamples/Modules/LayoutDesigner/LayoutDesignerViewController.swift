@@ -56,8 +56,7 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         default:
             viewModel.layouts = []
         }
-        
-        previewViewController.viewModel = viewModel.getPreviewViewModel()
+        previewViewController.viewModel = viewModel.shapesViewModel
         
         setLayoutButtonSelected(view: stackButtonView, isSelected: view == stackButtonView)
         setLayoutButtonSelected(view: scaleButtonView, isSelected: view == scaleButtonView)
@@ -107,13 +106,16 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     }
     
     private func addPreviewController() {
-        previewViewController = ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack, showBackButton: false))
+        previewViewController = ShapesViewController.instantiate(viewModel: viewModel.shapesViewModel)
         addChild(previewViewController)
         previewViewController.view.layer.cornerRadius = 30
         previewViewController.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         previewContainerView.fill(with: previewViewController.view)
         previewViewController.didMove(toParent: self)
         previewViewController.delegate = self
+        viewModel.onOptionsChange = { [weak self] in
+            self?.previewViewController.reloadAndInvalidateShapes()
+        }
     }
     
     private func addCodePreviewController() {
@@ -127,7 +129,7 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     }
     
     private func setOptionsList() {
-        optionsTableView.optionViewModels = viewModel.getOptionViewModels()
+        optionsTableView.optionViewModels = viewModel.optionViewModels
     }
     
 }

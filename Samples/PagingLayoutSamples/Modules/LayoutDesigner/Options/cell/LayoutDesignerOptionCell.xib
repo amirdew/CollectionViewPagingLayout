@@ -71,11 +71,21 @@
                             <constraint firstItem="mrr-fb-BXW" firstAttribute="width" secondItem="nsZ-12-SEz" secondAttribute="width" priority="900" id="9yO-80-BMd"/>
                         </constraints>
                     </stackView>
+                    <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-ee-GI3">
+                        <rect key="frame" x="23" y="82" width="732" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="mMG-5S-2qm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="pXN-ee-GI3" firstAttribute="leading" secondItem="PxB-JM-JuU" secondAttribute="leading" constant="23" id="1D0-mK-5QZ"/>
+                    <constraint firstAttribute="bottom" secondItem="pXN-ee-GI3" secondAttribute="bottom" id="3HJ-sb-NIN"/>
                     <constraint firstItem="nsZ-12-SEz" firstAttribute="leading" secondItem="PxB-JM-JuU" secondAttribute="leading" constant="24" id="Afy-kk-jYN"/>
                     <constraint firstAttribute="trailing" secondItem="nsZ-12-SEz" secondAttribute="trailing" constant="24" id="UeI-uw-LMX"/>
                     <constraint firstItem="nsZ-12-SEz" firstAttribute="top" secondItem="PxB-JM-JuU" secondAttribute="top" id="XM1-o8-tUx"/>
+                    <constraint firstItem="pXN-ee-GI3" firstAttribute="width" secondItem="PxB-JM-JuU" secondAttribute="width" constant="-46" id="okV-BN-xAI"/>
                     <constraint firstAttribute="bottom" secondItem="nsZ-12-SEz" secondAttribute="bottom" id="pTk-36-SVa"/>
                 </constraints>
             </tableViewCellContentView>
