@@ -160,6 +160,18 @@ class LayoutDesignerViewModel {
             optionViewModels = [
                 .init(title: "Piece size ratio", kind: .doubleSlider(current: options.pieceSizeRatio.pair) { n in
                     update { $0.pieceSizeRatio = .by(pair: n) }
+                    }),
+                .init(title: "Container scale ratio", kind: .singleSlider(current: options.containerScaleRatio) { n in
+                    update { $0.containerScaleRatio = n }
+                    }),
+                .init(title: "Container translation ratio", kind: .doubleSlider(current: options.containerTranslationRatio.pair) { n in
+                    update { $0.containerTranslationRatio = .by(pair: n) }
+                    }),
+                .init(title: "Container min translation ratio", kind: .doubleSlider(current: options.containerMinTranslationRatio?.pair) { n in
+                    update { $0.containerMinTranslationRatio = .by(pair: n) }
+                    }),
+                .init(title: "Container max translation ratio", kind: .doubleSlider(current: options.containerMaxTranslationRatio?.pair) { n in
+                    update { $0.containerMaxTranslationRatio = .by(pair: n) }
                     })
             ]
         }
