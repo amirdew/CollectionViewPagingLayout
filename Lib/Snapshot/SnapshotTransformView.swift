@@ -133,8 +133,16 @@ private extension SnapshotContainerView {
             .translatedBy(x: translateX,
                           y: translateY)
             .scaledBy(x: scale, y: scale)
-        let rowCount = Int(1.0 / options.pieceSizeRatio.height)
-        let columnCount = Int(1.0 / options.pieceSizeRatio.width)
+        var sizeRatioRow = options.pieceSizeRatio.height
+        if sizeRatioRow == 0 {
+            sizeRatioRow = 1
+        }
+        var sizeRatioColumn = options.pieceSizeRatio.width
+        if sizeRatioColumn == 0 {
+            sizeRatioColumn = 1
+        }
+        let rowCount = Int(1.0 / sizeRatioRow)
+        let columnCount = Int(1.0 / sizeRatioColumn)
         
         snapshots.enumerated().forEach { index, view in
             let position = SnapshotTransformViewOptions.PiecePosition(
