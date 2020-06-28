@@ -108,7 +108,6 @@ public struct StackTransformViewOptions {
         spacingFactor: CGFloat = 0.03,
         maxSpacing: CGFloat? = nil,
         alphaFactor: CGFloat = 0.0,
-        minAlpha: CGFloat = 0.0,
         bottomStackAlphaSpeedFactor: CGFloat = 0.9,
         topStackAlphaSpeedFactor: CGFloat = 0.3,
         perspectiveRatio: CGFloat = 0,
