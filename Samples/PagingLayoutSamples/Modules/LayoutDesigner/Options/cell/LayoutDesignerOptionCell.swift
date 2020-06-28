@@ -135,8 +135,8 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
         case let .singleSlider(current, onChange):
             slider1.isHidden = false
             input1.isHidden = false
-            input1.set(value: current)
-            slider1.value = Float(current)
+            input1.set(value: current ?? 0)
+            slider1.value = Float(current ?? 0)
             onSlider1Change = onChange
             
         case let .doubleSlider(current, onChange):
