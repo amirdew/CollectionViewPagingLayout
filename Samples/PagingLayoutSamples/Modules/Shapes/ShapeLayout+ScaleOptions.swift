@@ -74,7 +74,7 @@ extension ShapeLayout {
                 maxTranslationRatio: .zero,
                 shadowEnabled: false,
                 rotation3d: .init(angle: .pi / 4, minAngle: -.pi, maxAngle: .pi, x: 0, y: 1, z: 0, m34: -0.000_4 - 0.8 * 0.000_2 ),
-                translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, 320), maxTranslates: (0, 0, 320))
+                translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, 340), maxTranslates: (0, 0, 340))
             )
         case .scaleInvertedCylinder:
             return ScaleTransformViewOptions(
@@ -87,8 +87,8 @@ extension ShapeLayout {
                 shadowEnabled: false,
                 rotation3d: .init(angle: .pi / 3, minAngle: -.pi, maxAngle: .pi, x: 0, y: -1, z: 0, m34: -0.002),
                 translation3d: .init(translateRatios: (0, 0, 0),
-                                     minTranslates: (0, 0, 375 * 0.57),
-                                     maxTranslates: (0, 0, -375 * 0.57))
+                                     minTranslates: (0, 0, 240),
+                                     maxTranslates: (0, 0, -240))
             )
         case .scaleCoverFlow:
             return ScaleTransformViewOptions(
