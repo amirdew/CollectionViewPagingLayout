@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class ScaleTransformViewOptions {
+public struct ScaleTransformViewOptions {
     
     // MARK: Properties
     
