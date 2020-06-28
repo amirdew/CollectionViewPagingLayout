@@ -15,25 +15,25 @@ public extension ScaleTransformViewOptions {
         // MARK: Properties
         
         /// The angle for rotate side views
-        var angle: CGFloat
+        public var angle: CGFloat
         
         /// The minimum angle for rotation
-        var minAngle: CGFloat
+        public var minAngle: CGFloat
         
         /// The maximum angle for rotation
-        var maxAngle: CGFloat
+        public var maxAngle: CGFloat
         
-        var x: CGFloat
+        public var x: CGFloat
         
-        var y: CGFloat
+        public var y: CGFloat
         
-        var z: CGFloat
+        public var z: CGFloat
         
         /// `CATransform3D.m34`, read more: https://stackoverflow.com/questions/3881446/meaning-of-m34-of-catransform3d
-        var m34: CGFloat
+        public var m34: CGFloat
         
         /// `CALayer.isDoubleSided`, read more: https://developer.apple.com/documentation/quartzcore/calayer/1410924-isdoublesided
-        var isDoubleSided: Bool = false
+        public var isDoubleSided: Bool = false
         
 
         // MARK: Lifecycle
