@@ -15,5 +15,4 @@ struct LayoutTypeCellViewModel {
     let title: String
     let subtitle: String
     let cardViewModels: [ShapeCardViewModel]
-    let cellClass: BaseShapeCollectionViewCell.Type
 }

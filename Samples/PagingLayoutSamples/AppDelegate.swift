@@ -24,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        let mainVC = UIDevice.current.userInterfaceIdiom == .pad ? LayoutDesignerViewController.instantiate() : MainViewController.instantiate()
+        let mainVC = UIDevice.current.userInterfaceIdiom == .pad ?
+            LayoutDesignerViewController.instantiate(viewModel: LayoutDesignerViewModel()) :
+            MainViewController.instantiate()
+        
         navigationController.setViewControllers([mainVC], animated: false)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()

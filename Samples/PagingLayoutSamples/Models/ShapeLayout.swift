@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CollectionViewPagingLayout
 
 enum ShapeLayout {
     case scaleInvertedCylinder
@@ -35,9 +36,8 @@ enum ShapeLayout {
     case snapshotFade
 }
 
-extension Array where Element == ShapeLayout {
-    
-    static let scale: [ShapeLayout] = [
+extension ShapeLayout {
+    static let scaleLayouts: [ShapeLayout] = [
         .scaleInvertedCylinder,
         .scaleCylinder,
         .scaleCoverFlow,
@@ -48,7 +48,7 @@ extension Array where Element == ShapeLayout {
         .scaleBlur
     ]
     
-    static let stack: [ShapeLayout] = [
+    static let stackLayouts: [ShapeLayout] = [
         .stackVortex,
         .stackRotary,
         .stackTransparent,
@@ -57,7 +57,7 @@ extension Array where Element == ShapeLayout {
         .stackPerspective
     ]
     
-    static var snapshot: [ShapeLayout] = [
+    static let snapshotLayouts: [ShapeLayout] = [
         .snapshotBars,
         .snapshotFade,
         .snapshotGrid,
@@ -67,4 +67,10 @@ extension Array where Element == ShapeLayout {
         .snapshotTiles,
         .snapshotPuzzle
     ]
+}
+
+extension Array where Element == ShapeLayout {
+    static var scale: [ShapeLayout] { ShapeLayout.scaleLayouts }
+    static var stack: [ShapeLayout] { ShapeLayout.stackLayouts }
+    static var snapshot: [ShapeLayout] { ShapeLayout.snapshotLayouts }
 }

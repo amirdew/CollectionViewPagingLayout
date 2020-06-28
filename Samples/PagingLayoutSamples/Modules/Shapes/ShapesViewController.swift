@@ -9,6 +9,11 @@
 import UIKit
 import CollectionViewPagingLayout
 
+protocol ShapesViewControllerDelegate: AnyObject {
+    func shapesViewController(_ vc: ShapesViewController, onSelectedLayoutChange layout: ShapeLayout)
+}
+
+
 class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
     // MARK: Constants
@@ -27,6 +32,8 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
             reloadDataAndLayouts()
         }
     }
+    
+    weak var delegate: ShapesViewControllerDelegate?
     
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -76,9 +83,9 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func configureCollectionView() {
-        ShapesViewModel.allLayoutViewModes.forEach {
-            collectionView.registerClass($0.cellClass, reuseIdentifier: "\($0.layout)")
-        }
+        collectionView.registerClass(StackShapeCollectionViewCell.self)
+        collectionView.registerClass(ScaleShapeCollectionViewCell.self)
+        collectionView.registerClass(SnapshotShapeCollectionViewCell.self)
         
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
@@ -111,6 +118,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         }
         let index = layout.currentPage % viewModel.layoutTypeViewModels.count
         self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
+        delegate?.shapesViewController(self, onSelectedLayoutChange: viewModel.selectedLayout.layout)
         collectionView.reloadData()
         collectionView.performBatchUpdates({
             self.collectionView.collectionViewLayout.invalidateLayout()
@@ -162,7 +170,17 @@ extension ShapesViewController: UICollectionViewDataSource {
         
         if collectionView == self.collectionView {
             let itemViewModel = viewModel.selectedLayout.cardViewModels[indexPath.row]
-            let cell = collectionView.dequeueReusableCellClass(for: indexPath, type: viewModel.selectedLayout.cellClass, reuseIdentifier: "\(viewModel.selectedLayout.layout)")
+            var cell: BaseShapeCollectionViewCell!
+            if ShapeLayout.scaleLayouts.contains(viewModel.selectedLayout.layout) {
+                cell = collectionView.dequeueReusableCellClass(for: indexPath) as ScaleShapeCollectionViewCell
+                
+            } else if ShapeLayout.stackLayouts.contains(viewModel.selectedLayout.layout) {
+                cell = collectionView.dequeueReusableCellClass(for: indexPath) as StackShapeCollectionViewCell
+                
+            } else if ShapeLayout.snapshotLayouts.contains(viewModel.selectedLayout.layout) {
+                cell = collectionView.dequeueReusableCellClass(for: indexPath) as SnapshotShapeCollectionViewCell
+            }
+            
             cell.viewModel = itemViewModel
             return cell
         }

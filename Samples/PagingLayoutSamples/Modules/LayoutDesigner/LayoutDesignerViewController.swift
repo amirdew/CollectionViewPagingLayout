@@ -9,13 +9,17 @@
 import UIKit
 import Splash
 
-class LayoutDesignerViewController: UIViewController, NibBased {
+class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     
     // MARK: Properties
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
+    
+    // MARK: Properties
+    
+    var viewModel: LayoutDesignerViewModel!
     
     @IBOutlet private weak var stackButtonView: UIView!
     @IBOutlet private weak var scaleButtonView: UIView!
@@ -33,6 +37,7 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
+        setOptionsList()
     }
     
     
@@ -41,18 +46,18 @@ class LayoutDesignerViewController: UIViewController, NibBased {
     @IBAction private func layoutCategoryButtonTouched(button: UIButton) {
         guard let view = button.superview else { return }
         
-        let layouts: [ShapeLayout]
         switch view {
         case stackButtonView:
-            layouts = .stack
+            viewModel.layouts = .stack
         case scaleButtonView:
-            layouts = .scale
+            viewModel.layouts = .scale
         case snapshotButtonView:
-            layouts = .snapshot
+            viewModel.layouts = .snapshot
         default:
-            layouts = []
+            viewModel.layouts = []
         }
-        setLayoutsForPreview(layouts)
+        
+        previewViewController.viewModel = viewModel.getPreviewViewModel()
         
         setLayoutButtonSelected(view: stackButtonView, isSelected: view == stackButtonView)
         setLayoutButtonSelected(view: scaleButtonView, isSelected: view == scaleButtonView)
@@ -61,8 +66,6 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             view.superview?.layoutIfNeeded()
         }, completion: nil)
-        
-        setOptionsList()
     }
     
     
@@ -110,6 +113,7 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         previewViewController.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         previewContainerView.fill(with: previewViewController.view)
         previewViewController.didMove(toParent: self)
+        previewViewController.delegate = self
     }
     
     private func addCodePreviewController() {
@@ -117,58 +121,21 @@ class LayoutDesignerViewController: UIViewController, NibBased {
         addChild(codePreviewViewController)
         codeContainerView.fill(with: codePreviewViewController.view)
         codePreviewViewController.didMove(toParent: self)
-        
-        codePreviewViewController.viewModel = .init(code: """
-        class ReverseStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
-
-            var stackOptions: StackTransformViewOptions = .init(
-                scaleFactor: 0.1,
-                maxScale: nil,
-                maxStackSize: 4,
-                spacingFactor: 0.08,
-                shadowRadius: 8,
-                popAngle: -.pi / 4,
-                popOffsetRatio: .init(width: 1.45, height: 0.4),
-                stackPosition: CGPoint(x: -1, y: -0.2),
-                reverse: true
-            )
+        viewModel.onCodePreviewViewModelChange = { [weak self] in
+            self?.codePreviewViewController.viewModel = $0
         }
-
-
-        class BlurStackShapeCollectionViewCell: BaseShapeCollectionViewCell, StackTransformView {
-
-            var stackOptions: StackTransformViewOptions = .init(
-                scaleFactor: 0.1,
-                maxScale: nil,
-                maxStackSize: 7,
-                spacingFactor: 0.06,
-                topStackAlphaSpeedFactor: 0.1,
-                perspectiveRatio: 0.04,
-                shadowRadius: 8,
-                popAngle: -.pi / 4,
-                popOffsetRatio: .init(width: 1.45, height: 0.4),
-                stackPosition: CGPoint(x: -1, y: 0),
-                reverse: true,
-                blurEffectEnabled: true,
-                maxBlurEffectRadius: 0.08
-            )
-        }
-        """)
-    }
-    
-    private func setLayoutsForPreview(_ layouts: [ShapeLayout]) {
-        previewViewController.viewModel = ShapesViewModel(layouts: layouts, showBackButton: false)
     }
     
     private func setOptionsList() {
-        optionsTableView.optionViewModels = [
-            .init(title: "Min scale", kind: .singleSlider(current: 0.3, onChange: { _ in })),
-            .init(title: "Scale ratio", kind: .singleSlider(current: 0.7, onChange: { _ in })),
-            .init(title: "Translate ratio", kind: .doubleSlider(current: (0.2, 0.7), onChange: { _, _  in })),
-            .init(title: "Keep vertical spacing equal", kind: .toggleSwitch(current: true, onChange: { _ in })),
-            .init(title: "Keep horizontal spacing equal", kind: .toggleSwitch(current: false, onChange: { _ in })),
-            .init(title: "Scale curve", kind: .segmented(options: ["Linear", "EaseIn", "EeaseOut"], current: "Linear", onChange: { _ in }))
-        ]
+        optionsTableView.optionViewModels = viewModel.getOptionViewModels()
     }
     
+}
+
+
+extension LayoutDesignerViewController: ShapesViewControllerDelegate {
+    func shapesViewController(_ vc: ShapesViewController, onSelectedLayoutChange layout: ShapeLayout) {
+        viewModel.selectedLayout = layout
+        setOptionsList()
+    }
 }
