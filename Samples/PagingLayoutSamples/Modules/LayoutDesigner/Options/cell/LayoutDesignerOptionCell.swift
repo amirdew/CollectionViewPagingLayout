@@ -12,7 +12,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     
     // MARK: Properties
     
-    var viewModel: LayoutDesignerOptionCellViewModel? {
+    var viewModel: LayoutDesignerOptionViewModel? {
         didSet {
             updateViews()
         }
@@ -145,20 +145,26 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
         switch viewModel.kind {
             
         case let .singleSlider(current, range, optional, onChange):
+            let latestValue = viewModel.getLatestValue() ?? current
             singleSlider.isHidden = false
             singleSliderInput.isHidden = false
-            singleSliderInput.set(value: current ?? 0)
-            singleSlider.value = Float(current ?? 0)
             singleSlider.maximumValue = Float(range.upperBound)
             singleSlider.minimumValue = Float(range.lowerBound)
-            onSingleSliderChange = onChange
+            singleSliderInput.set(value: latestValue ?? 0)
+            singleSlider.value = Float(latestValue ?? 0)
+            let onNewValue: ((CGFloat?) -> Void) = {
+                viewModel.onNewValue($0)
+                onChange($0)
+            }
+            
+            onSingleSliderChange = onNewValue
             if optional {
                 switchView.isHidden = false
-                switchView.isOn = current == nil
+                switchView.isOn = latestValue == nil
                 nilLabel.isHidden = false
                 onSwitchChange = { [weak self] in
                     guard let self = self else { return }
-                    onChange($0 ? nil : CGFloat(self.singleSlider.value))
+                    onNewValue($0 ? nil : CGFloat(self.singleSlider.value))
                     self.singleSlider.isHidden = $0
                     self.singleSliderInput.isHidden = $0
                 }
@@ -166,27 +172,33 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             }
             
         case let .doubleSlider(current, range, optional, onChange):
+            let latestValue = viewModel.getLatestValue() ?? current
             doubleSliderStackView.isHidden = false
             doubleSliderStackView.alpha = 1
-            doubleSliderInput1.set(value: current?.0 ?? 0)
-            doubleSlider1.value = Float(current?.0 ?? 0)
-            doubleSliderInput2.set(value: current?.1 ?? 0)
-            doubleSlider2.value = Float(current?.1 ?? 0)
             doubleSlider1.maximumValue = Float(range.upperBound)
             doubleSlider2.maximumValue = Float(range.upperBound)
             doubleSlider1.minimumValue = Float(range.lowerBound)
             doubleSlider2.minimumValue = Float(range.lowerBound)
+            doubleSliderInput1.set(value: latestValue?.0 ?? 0)
+            doubleSlider1.value = Float(latestValue?.0 ?? 0)
+            doubleSliderInput2.set(value: latestValue?.1 ?? 0)
+            doubleSlider2.value = Float(latestValue?.1 ?? 0)
             let getValues = { [weak self] in self.map { (CGFloat($0.doubleSlider1.value), CGFloat($0.doubleSlider2.value)) } }
             
-            onDoubleSlider1Change = { _ in onChange(getValues()) }
-            onDoubleSlider2Change = { _ in onChange(getValues()) }
+            let onNewValue: (((CGFloat, CGFloat)?) -> Void) = {
+                viewModel.onNewValue($0)
+                onChange($0)
+            }
+            
+            onDoubleSlider1Change = { _ in onNewValue(getValues()) }
+            onDoubleSlider2Change = { _ in onNewValue(getValues()) }
             if optional {
                 switchView.isHidden = false
-                switchView.isOn = current == nil
+                switchView.isOn = latestValue == nil
                 nilLabel.isHidden = false
                 onSwitchChange = { [weak self] in
                     guard let self = self else { return }
-                    onChange($0 ? nil : getValues())
+                    onNewValue($0 ? nil : getValues())
                     self.doubleSliderStackView.alpha = $0 ? 0 : 1
                 }
                 onSwitchChange(switchView.isOn)
@@ -195,8 +207,11 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             
         case let .toggleSwitch(current, onChange):
             switchView.isHidden = false
-            switchView.isOn = current
-            onSwitchChange = onChange
+            switchView.isOn = viewModel.getLatestValue() ?? current
+            onSwitchChange = {
+                viewModel.onNewValue($0)
+                onChange($0)
+            }
             
         case let .segmented(options, current, onChange):
             segmentedControl.isHidden = false
@@ -204,8 +219,12 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             options.reversed().forEach {
                 segmentedControl.insertSegment(withTitle: $0, at: 0, animated: false)
             }
-            onSelectedSegmentChange = { onChange(options[$0]) }
-            if let index = options.firstIndex(of: current) {
+            onSelectedSegmentChange = {
+                viewModel.onNewValue($0)
+                onChange(options[$0])
+            }
+            let selected = viewModel.getLatestValue() ?? current
+            if let index = options.firstIndex(of: selected) {
                 segmentedControl.selectedSegmentIndex = index
             }
         }

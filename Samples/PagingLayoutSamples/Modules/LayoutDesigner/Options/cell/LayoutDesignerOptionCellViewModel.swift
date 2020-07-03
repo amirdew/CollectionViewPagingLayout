@@ -9,7 +9,24 @@
 import Foundation
 import UIKit
 
-class LayoutDesignerOptionCellViewModel {
+class LayoutDesignerOptionSectionViewModel {
+    
+    // MARK: Properties
+    
+    let title: String
+    var items: [LayoutDesignerOptionViewModel]
+    
+    
+    // MARK: Lifecycle
+    
+    init(title: String, items: [LayoutDesignerOptionViewModel]) {
+        self.title = title
+        self.items = items
+    }
+}
+
+
+class LayoutDesignerOptionViewModel {
     
     // MARK: Constants
     
@@ -26,12 +43,30 @@ class LayoutDesignerOptionCellViewModel {
     let title: String
     let kind: Kind
     
+    private var changed: Bool = false
+    private var latestValue: Any?
+    
     
     // MARK: Lifecycle
     
     init(title: String, kind: Kind) {
         self.title = title
         self.kind = kind
+    }
+    
+    
+    // MARK: Public functions
+    
+    func onNewValue(_ value: Any?) {
+        changed = true
+        latestValue = value
+    }
+    
+    func getLatestValue<T>() -> T? {
+        if !changed {
+            return nil
+        }
+        return latestValue as? T
     }
     
 }

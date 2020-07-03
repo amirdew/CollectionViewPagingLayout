@@ -12,7 +12,7 @@ class LayoutDesignerOptionsTableView: UITableView {
     
     // MARK: Properties
     
-    var optionViewModels: [LayoutDesignerOptionCellViewModel] = [] {
+    var optionViewModels: [LayoutDesignerOptionSectionViewModel] = [] {
         didSet {
             reloadData()
         }
@@ -31,10 +31,12 @@ class LayoutDesignerOptionsTableView: UITableView {
     
     private func configure() {
         dataSource = self
+        delegate = self
         register(LayoutDesignerOptionCell.self)
         backgroundColor = .clear
         separatorStyle = .none
         allowsSelection = false
+        sectionHeaderHeight = 60
     }
     
 }
@@ -42,13 +44,31 @@ class LayoutDesignerOptionsTableView: UITableView {
 
 extension LayoutDesignerOptionsTableView: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         optionViewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        optionViewModels[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: LayoutDesignerOptionCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.viewModel = optionViewModels[indexPath.row]
+        cell.viewModel = optionViewModels[indexPath.section].items[indexPath.row]
         return cell
+    }
+}
+
+extension LayoutDesignerOptionsTableView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        let label = UILabel()
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 33, weight: .medium)
+        label.text = optionViewModels[section].title
+        header.fill(with: label, edges: .init(top: 10, left: 24, bottom: -10, right: -24))
+        header.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.2705882353, blue: 0.8431372549, alpha: 1)
+        return header
     }
 }

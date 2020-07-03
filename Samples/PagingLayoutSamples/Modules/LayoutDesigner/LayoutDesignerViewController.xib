@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -220,28 +221,20 @@
                                 </view>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIJ-FO-Jan">
-                            <rect key="frame" x="24" y="188" width="115.5" height="39.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="33"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dmm-bK-wwh" customClass="LayoutDesignerOptionsTableView" customModule="Paging_Layout" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="252.5" width="494" height="505.5"/>
+                            <rect key="frame" x="0.0" y="188" width="494" height="570"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" red="0.16006854179999999" green="0.27162900569999998" blue="0.84318453069999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" name="DesignerBackground"/>
                     <constraints>
-                        <constraint firstItem="dmm-bK-wwh" firstAttribute="top" secondItem="JIJ-FO-Jan" secondAttribute="bottom" constant="25" id="BCl-LA-ovu"/>
                         <constraint firstItem="NyD-R7-l0J" firstAttribute="leading" secondItem="nl2-ey-EcQ" secondAttribute="leading" constant="22" id="EBD-hI-uBV"/>
                         <constraint firstItem="dmm-bK-wwh" firstAttribute="leading" secondItem="nl2-ey-EcQ" secondAttribute="leading" id="Eko-sH-H04"/>
                         <constraint firstAttribute="trailing" secondItem="NyD-R7-l0J" secondAttribute="trailing" constant="22" id="FxT-KW-h7C"/>
                         <constraint firstAttribute="trailing" secondItem="dmm-bK-wwh" secondAttribute="trailing" id="G13-Js-ic1"/>
+                        <constraint firstItem="dmm-bK-wwh" firstAttribute="top" secondItem="NyD-R7-l0J" secondAttribute="bottom" constant="37" id="Jyu-fX-wo8"/>
                         <constraint firstAttribute="bottom" secondItem="dmm-bK-wwh" secondAttribute="bottom" id="WEg-wb-pcQ"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="qxy-3u-1M3"/>
-                        <constraint firstItem="JIJ-FO-Jan" firstAttribute="top" secondItem="NyD-R7-l0J" secondAttribute="bottom" constant="37" id="rMR-Ji-0gf"/>
-                        <constraint firstItem="JIJ-FO-Jan" firstAttribute="leading" secondItem="nl2-ey-EcQ" secondAttribute="leading" constant="24" id="rQF-HR-vOj"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h51-4z-wO0" userLabel="previewContainerView">
@@ -280,5 +273,8 @@
         <image name="scaleWhite" width="48" height="43"/>
         <image name="snapshotWhite" width="44" height="51"/>
         <image name="stackWhite" width="41" height="43"/>
+        <namedColor name="DesignerBackground">
+            <color red="0.16078431372549021" green="0.27058823529411763" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

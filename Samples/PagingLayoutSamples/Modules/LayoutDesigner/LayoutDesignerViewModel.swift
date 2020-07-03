@@ -24,7 +24,7 @@ class LayoutDesignerViewModel {
     var shapesViewModel: ShapesViewModel {
         ShapesViewModel(layouts: layouts, showBackButton: false)
     }
-    private(set) var optionViewModels: [LayoutDesignerOptionCellViewModel] = []
+    private(set) var optionViewModels: [LayoutDesignerOptionSectionViewModel] = []
     private let codeGenerator = OptionsCodeGenerator()
     
     
@@ -52,7 +52,7 @@ class LayoutDesignerViewModel {
                 self?.update(options: &options, closure: $0)
             }
             
-            optionViewModels = [
+            let generalOptions: [LayoutDesignerOptionViewModel] = [
                 .init(title: "Min scale", kind: .singleSlider(current: options.minScale, range: 0...2) { n in
                     update { $0.minScale = n! }
                     }),
@@ -82,7 +82,150 @@ class LayoutDesignerViewModel {
                     }),
                 .init(title: "Translation curve", kind: .segmented(options: TransformCurve.all.map(\.name), current: options.translationCurve.name) { n in
                     update { $0.translationCurve = .by(name: n)! }
+                    }),
+                .init(title: "Shadow enabled", kind: .toggleSwitch(current: options.shadowEnabled) { n in
+                    update { $0.shadowEnabled = n }
+                    }),
+                .init(title: "Shadow opacity", kind: .singleSlider(current: CGFloat(options.shadowOpacity)) { n in
+                    update { $0.shadowOpacity = Float(n!) }
+                    }),
+                .init(title: "Shadow opacity min", kind: .singleSlider(current: CGFloat(options.shadowOpacityMin)) { n in
+                    update { $0.shadowOpacityMin = Float(n!) }
+                    }),
+                .init(title: "Shadow opacity max", kind: .singleSlider(current: CGFloat(options.shadowOpacityMax)) { n in
+                    update { $0.shadowOpacityMax = Float(n!) }
+                    }),
+                .init(title: "Shadow radius max", kind: .singleSlider(current: options.shadowRadiusMax, range: 0...15) { n in
+                    update { $0.shadowRadiusMax = n! }
+                    }),
+                .init(title: "Shadow radius min", kind: .singleSlider(current: options.shadowRadiusMin, range: 0...15) { n in
+                    update { $0.shadowRadiusMin = n! }
+                    }),
+                .init(title: "Shadow offset min", kind: .doubleSlider(current: options.shadowOffsetMin.pair, range: -7...7) { n in
+                    update { $0.shadowOffsetMin = .by(pair: n!) }
+                    }),
+                .init(title: "Shadow offset max", kind: .doubleSlider(current: options.shadowOffsetMax.pair, range: -7...7) { n in
+                    update { $0.shadowOffsetMax = .by(pair: n!) }
+                    }),
+                .init(title: "Blur effect enabled", kind: .toggleSwitch(current: options.blurEffectEnabled) { n in
+                    update { $0.blurEffectEnabled = n }
+                    }),
+                .init(title: "Blur effect radius ratio", kind: .singleSlider(current: options.blurEffectRadiusRatio) { n in
+                    update { $0.blurEffectRadiusRatio = n! }
+                    }),
+                .init(title: "Blur effect style", kind: .segmented(options: UIBlurEffect.Style.all.map(\.name), current: options.blurEffectStyle.name) { n in
+                    update { $0.blurEffectStyle = .by(name: n)! }
                     })
+            ]
+            
+            let originalRotation3dOptions = options.rotation3d ?? ScaleTransformViewOptions.Rotation3dOptions(
+                angle: .pi / 3,
+                minAngle: 0,
+                maxAngle: .pi,
+                x: 0,
+                y: 1,
+                z: 0,
+                m34: -0.000_1
+            )
+            
+            let rotation3dOptions: [LayoutDesignerOptionViewModel] = [
+                .init(title: "Enabled", kind: .toggleSwitch(current: options.rotation3d != nil) { n in
+                    update { $0.rotation3d = !n ? nil : originalRotation3dOptions }
+                    }),
+                .init(title: "Angle", kind: .singleSlider(current: options.rotation3d?.angle, range: -.pi...CGFloat.pi) { n in
+                    update { $0.rotation3d?.angle = n! }
+                    }),
+                .init(title: "Min angle", kind: .singleSlider(current: options.rotation3d?.minAngle, range: -.pi...CGFloat.pi) { n in
+                    update { $0.rotation3d?.minAngle = n! }
+                    }),
+                .init(title: "Max angle", kind: .singleSlider(current: options.rotation3d?.maxAngle, range: -.pi...CGFloat.pi) { n in
+                    update { $0.rotation3d?.maxAngle = n! }
+                    }),
+                .init(title: "X", kind: .singleSlider(current: options.rotation3d?.x, range: -1...1) { n in
+                    update { $0.rotation3d?.x = n! }
+                    }),
+                .init(title: "Y", kind: .singleSlider(current: options.rotation3d?.y, range: -1...1) { n in
+                    update { $0.rotation3d?.y = n! }
+                    }),
+                .init(title: "Z", kind: .singleSlider(current: options.rotation3d?.z, range: -1...1) { n in
+                    update { $0.rotation3d?.z = n! }
+                    }),
+                .init(title: "m34", kind: .singleSlider(current: options.rotation3d.map { $0.m34 * 1_000 }, range: -2...2) { n in
+                    update { $0.rotation3d?.m34 = n! / 1_000 }
+                    })
+            ]
+            
+            let originalTranslation3dOptions = options.translation3d ?? ScaleTransformViewOptions.Translation3dOptions(
+                translateRatios: (30, 0, -375 * 0.42),
+                minTranslates: (-30, 0, -1_000),
+                maxTranslates: (30, 0, 0)
+            )
+            
+            let translation3dOptions: [LayoutDesignerOptionViewModel] = [
+                .init(title: "Enabled", kind: .toggleSwitch(current: options.translation3d != nil) { n in
+                    update { $0.translation3d = !n ? nil : originalTranslation3dOptions }
+                    }),
+                .init(title: "X ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.0, range: -500...500) { n in
+                    update {
+                        guard let current = $0.translation3d?.translateRatios else { return }
+                        $0.translation3d?.translateRatios = (n!, current.1, current.2)
+                    }
+                    }),
+                .init(title: "Y ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.1, range: -500...500) { n in
+                    update {
+                        guard let current = $0.translation3d?.translateRatios else { return }
+                        $0.translation3d?.translateRatios = (current.0, n!, current.2)
+                    }
+                    }),
+                .init(title: "Z ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.2, range: -500...500) { n in
+                    update {
+                        guard let current = $0.translation3d?.translateRatios else { return }
+                        $0.translation3d?.translateRatios = (current.0, current.1, n!)
+                    }
+                    }),
+                .init(title: "X min", kind: .singleSlider(current: options.translation3d?.minTranslates.0, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.minTranslates else { return }
+                        $0.translation3d?.minTranslates = (n!, current.1, current.2)
+                    }
+                    }),
+                .init(title: "X max", kind: .singleSlider(current: options.translation3d?.maxTranslates.0, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.maxTranslates else { return }
+                        $0.translation3d?.maxTranslates = (n!, current.1, current.2)
+                    }
+                    }),
+                .init(title: "Y min", kind: .singleSlider(current: options.translation3d?.minTranslates.1, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.minTranslates else { return }
+                        $0.translation3d?.minTranslates = (current.0, n!, current.2)
+                    }
+                    }),
+                .init(title: "Y max", kind: .singleSlider(current: options.translation3d?.maxTranslates.1, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.maxTranslates else { return }
+                        $0.translation3d?.maxTranslates = (current.0, n!, current.2)
+                    }
+                    }),
+                .init(title: "Z min", kind: .singleSlider(current: options.translation3d?.minTranslates.2, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.minTranslates else { return }
+                        $0.translation3d?.minTranslates = (current.0, current.1, n!)
+                    }
+                    }),
+                .init(title: "Z max", kind: .singleSlider(current: options.translation3d?.maxTranslates.2, range: -2_000...2_000) { n in
+                    update {
+                        guard let current = $0.translation3d?.maxTranslates else { return }
+                        $0.translation3d?.maxTranslates = (current.0, current.1, n!)
+                    }
+                    })
+            ]
+            
+            
+            optionViewModels = [
+                .init(title: "Options", items: generalOptions),
+                .init(title: "Rotation 3D options", items: rotation3dOptions),
+                .init(title: "Translation 3D options", items: translation3dOptions)
             ]
         } else if var options = selectedLayout.stackOptions {
             updateCodePreview(options: options)
@@ -90,7 +233,7 @@ class LayoutDesignerViewModel {
                 self?.update(options: &options, closure: $0)
             }
             
-            optionViewModels = [
+            let options: [LayoutDesignerOptionViewModel] = [
                 .init(title: "Scale factor", kind: .singleSlider(current: options.scaleFactor, range: -1...1) { n in
                     update { $0.scaleFactor = n! }
                     }),
@@ -155,12 +298,16 @@ class LayoutDesignerViewModel {
                     update { $0.blurEffectStyle = .by(name: n)! }
                     })
             ]
+            
+            optionViewModels = [
+                .init(title: "Options", items: options)
+            ]
         } else if var options = selectedLayout.snapshotOptions {
             updateCodePreview(options: options)
             let update: ((inout SnapshotTransformViewOptions) -> Void) -> Void = {  [weak self] in
                 self?.update(options: &options, closure: $0)
             }
-            optionViewModels = [
+            let options: [LayoutDesignerOptionViewModel] = [
                 .init(title: "Piece size ratio", kind: .doubleSlider(current: options.pieceSizeRatio.pair, range: 0.01...1) { n in
                     update { $0.pieceSizeRatio = .by(pair: n!) }
                     }),
@@ -176,6 +323,9 @@ class LayoutDesignerViewModel {
                 .init(title: "Container max translation ratio", kind: .doubleSlider(current: options.containerMaxTranslationRatio?.pair, range: 0...2, optional: true) { n in
                     update { $0.containerMaxTranslationRatio = n.map { .by(pair: $0) } }
                     })
+            ]
+            optionViewModels = [
+                .init(title: "Options", items: options)
             ]
         }
     }
