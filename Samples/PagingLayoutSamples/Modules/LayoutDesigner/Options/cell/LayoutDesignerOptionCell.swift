@@ -19,18 +19,23 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     }
     
     @IBOutlet private weak var label: UILabel!
-    @IBOutlet private weak var slider1: UISlider!
-    @IBOutlet private weak var input1: UITextField!
-    @IBOutlet private weak var slider2: UISlider!
-    @IBOutlet private weak var input2: UITextField!
+    @IBOutlet private weak var singleSlider: UISlider!
+    @IBOutlet private weak var singleSliderInput: UITextField!
+    @IBOutlet private weak var doubleSliderStackView: UIStackView!
+    @IBOutlet private weak var doubleSlider1: UISlider!
+    @IBOutlet private weak var doubleSliderInput1: UITextField!
+    @IBOutlet private weak var doubleSlider2: UISlider!
+    @IBOutlet private weak var doubleSliderInput2: UITextField!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var nilLabel: UILabel!
     @IBOutlet private weak var switchView: UISwitch!
-    private var equalWidthConstraint: NSLayoutConstraint?
     
-    private var onSlider1Change: (CGFloat) -> Void = { _ in }
-    private var onInput1Change: (CGFloat) -> Void = { _ in }
-    private var onSlider2Change: (CGFloat) -> Void = { _ in }
-    private var onInput2Change: (CGFloat) -> Void = { _ in }
+    private var onSingleSliderChange: (CGFloat) -> Void = { _ in }
+    private var onSingleSliderInputChange: (CGFloat) -> Void = { _ in }
+    private var onDoubleSlider1Change: (CGFloat) -> Void = { _ in }
+    private var onDoubleSliderInput1Change: (CGFloat) -> Void = { _ in }
+    private var onDoubleSlider2Change: (CGFloat) -> Void = { _ in }
+    private var onDoubleSliderInput2Change: (CGFloat) -> Void = { _ in }
     private var onSwitchChange: (Bool) -> Void = { _ in }
     private var onSelectedSegmentChange: (Int) -> Void = { _ in }
     
@@ -49,14 +54,15 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     private func setupViews() {
         backgroundColor = .clear
         label.textColor = UIColor.white.withAlphaComponent(0.7)
-        [slider1, slider2].forEach {
+        nilLabel.textColor = UIColor.white.withAlphaComponent(0.7)
+        [singleSlider, doubleSlider1, doubleSlider2].forEach {
             $0?.tintColor = .white
             $0?.thumbTintColor = .white
             $0?.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.3)
             $0?.minimumTrackTintColor = .white
             $0?.addTarget(self, action: #selector(onSliderChange(slider:)), for: .valueChanged)
         }
-        [input1, input2].forEach {
+        [singleSliderInput, doubleSliderInput1, doubleSliderInput2].forEach {
             $0?.backgroundColor = .white
             $0?.textAlignment = .center
             $0?.layer.cornerRadius = 8
@@ -93,27 +99,35 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     
     private func onSliderChange(slider: UISlider, fromInput: Bool) {
         let value = CGFloat(slider.value)
-        if slider == slider1, !(slider1.value == Float(value) && fromInput) {
-            onSlider1Change(value)
-            onInputChange(input: input1, fromSlider: true)
-            input1.set(value: value)
-        } else if slider == slider2, !(slider2.value == Float(value) && fromInput) {
-            onSlider2Change(value)
-            onInputChange(input: input2, fromSlider: true)
-            input2.set(value: value)
+        if slider == singleSlider, !(singleSlider.value == Float(value) && fromInput) {
+            onSingleSliderChange(value)
+            onInputChange(input: singleSliderInput, fromSlider: true)
+            singleSliderInput.set(value: value)
+        } else if slider == doubleSlider1, !(doubleSlider1.value == Float(value) && fromInput) {
+            onDoubleSlider1Change(value)
+            onInputChange(input: doubleSliderInput1, fromSlider: true)
+            doubleSliderInput1.set(value: value)
+        } else if slider == doubleSlider2, !(doubleSlider2.value == Float(value) && fromInput) {
+            onDoubleSlider2Change(value)
+            onInputChange(input: doubleSliderInput2, fromSlider: true)
+            doubleSliderInput2.set(value: value)
         }
     }
     
     private func onInputChange(input: UITextField, fromSlider: Bool) {
         let value = input.floatValue
-        if input == input1, !(input1.floatValue == value && fromSlider) {
-            onInput1Change(CGFloat(value))
-            onSliderChange(slider: slider1, fromInput: true)
-            slider1.value = value
-        } else if input == input2, !(input2.floatValue == value && fromSlider) {
-            onInput2Change(CGFloat(value))
-            onSliderChange(slider: slider2, fromInput: true)
-            slider2.value = value
+        if input == singleSliderInput, !(singleSliderInput.floatValue == value && fromSlider) {
+            onSingleSliderInputChange(CGFloat(value))
+            onSliderChange(slider: singleSlider, fromInput: true)
+            singleSlider.value = value
+        } else if input == doubleSliderInput1, !(doubleSliderInput1.floatValue == value && fromSlider) {
+            onDoubleSliderInput1Change(CGFloat(value))
+            onSliderChange(slider: doubleSlider1, fromInput: true)
+            doubleSlider1.value = value
+        } else if input == doubleSliderInput2, !(doubleSliderInput2.floatValue == value && fromSlider) {
+            onDoubleSliderInput2Change(CGFloat(value))
+            onSliderChange(slider: doubleSlider2, fromInput: true)
+            doubleSlider2.value = value
         }
     }
     
@@ -121,40 +135,57 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
         guard let viewModel = viewModel, label != nil else { return }
         
         label.text = viewModel.title
-        slider1.isHidden = true
-        input1.isHidden = true
-        slider2.isHidden = true
-        input2.isHidden = true
+        singleSlider.isHidden = true
+        singleSliderInput.isHidden = true
+        doubleSliderStackView.isHidden = true
         segmentedControl.isHidden = true
         switchView.isHidden = true
-        equalWidthConstraint?.isActive = false
-        slider2.superview?.isHidden = true
+        nilLabel.isHidden = true
         
         switch viewModel.kind {
             
-        case let .singleSlider(current, onChange):
-            slider1.isHidden = false
-            input1.isHidden = false
-            input1.set(value: current ?? 0)
-            slider1.value = Float(current ?? 0)
-            onSlider1Change = onChange
+        case let .singleSlider(current, optional, onChange):
+            singleSlider.isHidden = false
+            singleSliderInput.isHidden = false
+            singleSliderInput.set(value: current ?? 0)
+            singleSlider.value = Float(current ?? 0)
+            onSingleSliderChange = onChange
+            if optional {
+                switchView.isHidden = false
+                switchView.isOn = current == nil
+                nilLabel.isHidden = false
+                onSwitchChange = { [weak self] in
+                    guard let self = self else { return }
+                    onChange($0 ? nil : CGFloat(self.singleSlider.value))
+                    self.singleSlider.isHidden = $0
+                    self.singleSliderInput.isHidden = $0
+                }
+                onSwitchChange(switchView.isOn)
+            }
             
-        case let .doubleSlider(current, onChange):
-            equalWidthConstraint = slider1.widthAnchor.constraint(equalTo: slider2.widthAnchor, multiplier: 1)
-            equalWidthConstraint?.isActive = true
-            slider1.isHidden = false
-            input1.isHidden = false
-            slider2.superview?.isHidden = false
-            input1.set(value: current?.0 ?? 0)
-            slider1.value = Float(current?.0 ?? 0)
-            slider2.isHidden = false
-            input2.isHidden = false
-            input2.set(value: current?.1 ?? 0)
-            slider2.value = Float(current?.1 ?? 0)
-            onSlider1Change = { [weak self] in onChange(($0, CGFloat(self?.slider2.value ?? 0))) }
-            onSlider2Change = { [weak self] in onChange((CGFloat(self?.slider1.value ?? 0), $0)) }
-            onInput1Change = { [weak self] in onChange(($0, CGFloat(self?.input2.floatValue ?? 0))) }
-            onInput2Change = { [weak self] in onChange((CGFloat(self?.input1.floatValue ?? 0), $0)) }
+        case let .doubleSlider(current, optional, onChange):
+            doubleSliderStackView.isHidden = false
+            doubleSliderStackView.alpha = 1
+            doubleSliderInput1.set(value: current?.0 ?? 0)
+            doubleSlider1.value = Float(current?.0 ?? 0)
+            doubleSliderInput2.set(value: current?.1 ?? 0)
+            doubleSlider2.value = Float(current?.1 ?? 0)
+            let getValues = { [weak self] in self.map { (CGFloat($0.doubleSlider1.value), CGFloat($0.doubleSlider2.value)) } }
+            
+            onDoubleSlider1Change = { _ in onChange(getValues()) }
+            onDoubleSlider2Change = { _ in onChange(getValues()) }
+            if optional {
+                switchView.isHidden = false
+                switchView.isOn = current == nil
+                nilLabel.isHidden = false
+                onSwitchChange = { [weak self] in
+                    guard let self = self else { return }
+                    onChange($0 ? nil : getValues())
+                    self.doubleSliderStackView.alpha = $0 ? 0 : 1
+                }
+                onSwitchChange(switchView.isOn)
+            }
+            
             
         case let .toggleSwitch(current, onChange):
             switchView.isHidden = false
@@ -168,7 +199,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
                 segmentedControl.insertSegment(withTitle: $0, at: 0, animated: false)
             }
             onSelectedSegmentChange = { onChange(options[$0]) }
-            if let current = current, let index = options.firstIndex(of: current) {
+            if let index = options.firstIndex(of: current) {
                 segmentedControl.selectedSegmentIndex = index
             }
         }

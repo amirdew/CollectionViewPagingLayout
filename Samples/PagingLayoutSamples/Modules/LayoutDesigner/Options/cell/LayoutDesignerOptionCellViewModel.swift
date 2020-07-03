@@ -14,10 +14,10 @@ class LayoutDesignerOptionCellViewModel {
     // MARK: Constants
     
     enum Kind {
-        case singleSlider(current: CGFloat?, onChange: (CGFloat) -> Void)
-        case doubleSlider(current: (CGFloat, CGFloat)?, onChange: ((CGFloat, CGFloat)) -> Void)
+        case singleSlider(current: CGFloat?, optional: Bool = false, onChange: (CGFloat?) -> Void)
+        case doubleSlider(current: (CGFloat, CGFloat)?, optional: Bool = false, onChange: ((CGFloat, CGFloat)?) -> Void)
         case toggleSwitch(current: Bool, onChange: (Bool) -> Void)
-        case segmented(options: [String], current: String?, onChange: (String) -> Void)
+        case segmented(options: [String], current: String, onChange: (String) -> Void)
     }
     
     

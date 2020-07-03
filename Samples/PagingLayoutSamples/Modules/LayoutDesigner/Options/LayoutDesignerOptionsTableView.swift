@@ -31,7 +31,6 @@ class LayoutDesignerOptionsTableView: UITableView {
     
     private func configure() {
         dataSource = self
-        delegate = self
         register(LayoutDesignerOptionCell.self)
         backgroundColor = .clear
         separatorStyle = .none
@@ -51,12 +50,5 @@ extension LayoutDesignerOptionsTableView: UITableViewDataSource {
         let cell: LayoutDesignerOptionCell = tableView.dequeueReusableCell(for: indexPath)
         cell.viewModel = optionViewModels[indexPath.row]
         return cell
-    }
-}
-
-extension LayoutDesignerOptionsTableView: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        64
     }
 }
