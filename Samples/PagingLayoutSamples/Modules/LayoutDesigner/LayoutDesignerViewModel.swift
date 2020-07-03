@@ -53,22 +53,22 @@ class LayoutDesignerViewModel {
             }
             
             optionViewModels = [
-                .init(title: "Min scale", kind: .singleSlider(current: options.minScale) { n in
+                .init(title: "Min scale", kind: .singleSlider(current: options.minScale, range: 0...2) { n in
                     update { $0.minScale = n! }
                     }),
-                .init(title: "Max scale", kind: .singleSlider(current: options.maxScale) { n in
+                .init(title: "Max scale", kind: .singleSlider(current: options.maxScale, range: 0...2) { n in
                     update { $0.maxScale = n! }
                     }),
-                .init(title: "Scale ratio", kind: .singleSlider(current: options.scaleRatio) { n in
+                .init(title: "Scale ratio", kind: .singleSlider(current: options.scaleRatio, range: 0...2) { n in
                     update { $0.scaleRatio = n! }
                     }),
-                .init(title: "Translation ratio", kind: .doubleSlider(current: options.translationRatio.pair) { n in
+                .init(title: "Translation ratio", kind: .doubleSlider(current: options.translationRatio.pair, range: -2...2) { n in
                     update { $0.translationRatio = .by(pair: n!) }
                     }),
-                .init(title: "Min translation ratio", kind: .doubleSlider(current: options.minTranslationRatio?.pair, optional: true) { n in
+                .init(title: "Min translation ratio", kind: .doubleSlider(current: options.minTranslationRatio?.pair, range: -5...5, optional: true) { n in
                     update { $0.minTranslationRatio = n.map { .by(pair: $0) } }
                     }),
-                .init(title: "Max translation ratio", kind: .doubleSlider(current: options.maxTranslationRatio?.pair, optional: true) { n in
+                .init(title: "Max translation ratio", kind: .doubleSlider(current: options.maxTranslationRatio?.pair, range: -5...5, optional: true) { n in
                     update { $0.maxTranslationRatio = n.map { .by(pair: $0) } }
                     }),
                 .init(title: "Keep vertical spacing equal", kind: .toggleSwitch(current: options.keepVerticalSpacingEqual) { n in
@@ -79,6 +79,9 @@ class LayoutDesignerViewModel {
                     }),
                 .init(title: "Scale curve", kind: .segmented(options: TransformCurve.all.map(\.name), current: options.scaleCurve.name) { n in
                     update { $0.scaleCurve = .by(name: n)! }
+                    }),
+                .init(title: "Translation curve", kind: .segmented(options: TransformCurve.all.map(\.name), current: options.translationCurve.name) { n in
+                    update { $0.translationCurve = .by(name: n)! }
                     })
             ]
         } else if var options = selectedLayout.stackOptions {
@@ -88,7 +91,7 @@ class LayoutDesignerViewModel {
             }
             
             optionViewModels = [
-                .init(title: "Scale factor", kind: .singleSlider(current: options.scaleFactor) { n in
+                .init(title: "Scale factor", kind: .singleSlider(current: options.scaleFactor, range: -1...1) { n in
                     update { $0.scaleFactor = n! }
                     }),
                 .init(title: "Min scale", kind: .singleSlider(current: options.minScale, optional: true) { n in
@@ -97,7 +100,7 @@ class LayoutDesignerViewModel {
                 .init(title: "Max scale", kind: .singleSlider(current: options.maxScale, optional: true) { n in
                     update { $0.maxScale = n }
                     }),
-                .init(title: "Spacing factor", kind: .singleSlider(current: options.spacingFactor) { n in
+                .init(title: "Spacing factor", kind: .singleSlider(current: options.spacingFactor, range: 0...0.5) { n in
                     update { $0.spacingFactor = n! }
                     }),
                 .init(title: "Max spacing", kind: .singleSlider(current: options.maxSpacing, optional: true) { n in
@@ -106,13 +109,13 @@ class LayoutDesignerViewModel {
                 .init(title: "Alpha factor", kind: .singleSlider(current: options.alphaFactor) { n in
                     update { $0.alphaFactor = n! }
                     }),
-                .init(title: "Bottom stack alpha speed factor", kind: .singleSlider(current: options.bottomStackAlphaSpeedFactor) { n in
+                .init(title: "Bottom stack alpha speed factor", kind: .singleSlider(current: options.bottomStackAlphaSpeedFactor, range: 0...10) { n in
                     update { $0.bottomStackAlphaSpeedFactor = n! }
                     }),
-                .init(title: "Top stack alpha speed factor", kind: .singleSlider(current: options.topStackAlphaSpeedFactor) { n in
+                .init(title: "Top stack alpha speed factor", kind: .singleSlider(current: options.topStackAlphaSpeedFactor, range: 0...10) { n in
                     update { $0.topStackAlphaSpeedFactor = n! }
                     }),
-                .init(title: "Perspective ratio", kind: .singleSlider(current: options.perspectiveRatio) { n in
+                .init(title: "Perspective ratio", kind: .singleSlider(current: options.perspectiveRatio, range: -1...1) { n in
                     update { $0.perspectiveRatio = n! }
                     }),
                 .init(title: "Shadow enabled", kind: .toggleSwitch(current: options.shadowEnabled) { n in
@@ -124,19 +127,19 @@ class LayoutDesignerViewModel {
                 .init(title: "Shadow offset", kind: .doubleSlider(current: options.shadowOffset.pair) { n in
                     update { $0.shadowOffset = .by(pair: n!) }
                     }),
-                .init(title: "Shadow radius", kind: .singleSlider(current: options.shadowRadius) { n in
+                .init(title: "Shadow radius", kind: .singleSlider(current: options.shadowRadius, range: 1...10) { n in
                     update { $0.shadowRadius = n! }
                     }),
-                .init(title: "Rotate angel", kind: .singleSlider(current: options.stackRotateAngel) { n in
+                .init(title: "Rotate angel", kind: .singleSlider(current: options.stackRotateAngel, range: -CGFloat.pi...CGFloat.pi) { n in
                     update { $0.stackRotateAngel = n! }
                     }),
-                .init(title: "Pop angle", kind: .singleSlider(current: options.popAngle) { n in
+                .init(title: "Pop angle", kind: .singleSlider(current: options.popAngle, range: -CGFloat.pi...CGFloat.pi) { n in
                     update { $0.popAngle = n! }
                     }),
-                .init(title: "Pop offset ratio", kind: .doubleSlider(current: options.popOffsetRatio.pair) { n in
+                .init(title: "Pop offset ratio", kind: .doubleSlider(current: options.popOffsetRatio.pair, range: -2...2) { n in
                     update { $0.popOffsetRatio = .by(pair: n!) }
                     }),
-                .init(title: "Stack position", kind: .doubleSlider(current: options.stackPosition.pair) { n in
+                .init(title: "Stack position", kind: .doubleSlider(current: options.stackPosition.pair, range: -1...1) { n in
                     update { $0.stackPosition = .by(pair: n!) }
                     }),
                 .init(title: "Reverse", kind: .toggleSwitch(current: options.reverse) { n in
@@ -158,19 +161,19 @@ class LayoutDesignerViewModel {
                 self?.update(options: &options, closure: $0)
             }
             optionViewModels = [
-                .init(title: "Piece size ratio", kind: .doubleSlider(current: options.pieceSizeRatio.pair) { n in
+                .init(title: "Piece size ratio", kind: .doubleSlider(current: options.pieceSizeRatio.pair, range: 0.01...1) { n in
                     update { $0.pieceSizeRatio = .by(pair: n!) }
                     }),
                 .init(title: "Container scale ratio", kind: .singleSlider(current: options.containerScaleRatio) { n in
                     update { $0.containerScaleRatio = n! }
                     }),
-                .init(title: "Container translation ratio", kind: .doubleSlider(current: options.containerTranslationRatio.pair) { n in
+                .init(title: "Container translation ratio", kind: .doubleSlider(current: options.containerTranslationRatio.pair, range: 0...2) { n in
                     update { $0.containerTranslationRatio = .by(pair: n!) }
                     }),
-                .init(title: "Container min translation ratio", kind: .doubleSlider(current: options.containerMinTranslationRatio?.pair, optional: true) { n in
+                .init(title: "Container min translation ratio", kind: .doubleSlider(current: options.containerMinTranslationRatio?.pair, range: 0...2, optional: true) { n in
                     update { $0.containerMinTranslationRatio = n.map { .by(pair: $0) } }
                     }),
-                .init(title: "Container max translation ratio", kind: .doubleSlider(current: options.containerMaxTranslationRatio?.pair, optional: true) { n in
+                .init(title: "Container max translation ratio", kind: .doubleSlider(current: options.containerMaxTranslationRatio?.pair, range: 0...2, optional: true) { n in
                     update { $0.containerMaxTranslationRatio = n.map { .by(pair: $0) } }
                     })
             ]

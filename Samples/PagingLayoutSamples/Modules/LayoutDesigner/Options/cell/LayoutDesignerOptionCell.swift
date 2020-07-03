@@ -144,11 +144,13 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
         
         switch viewModel.kind {
             
-        case let .singleSlider(current, optional, onChange):
+        case let .singleSlider(current, range, optional, onChange):
             singleSlider.isHidden = false
             singleSliderInput.isHidden = false
             singleSliderInput.set(value: current ?? 0)
             singleSlider.value = Float(current ?? 0)
+            singleSlider.maximumValue = Float(range.upperBound)
+            singleSlider.minimumValue = Float(range.lowerBound)
             onSingleSliderChange = onChange
             if optional {
                 switchView.isHidden = false
@@ -163,13 +165,17 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
                 onSwitchChange(switchView.isOn)
             }
             
-        case let .doubleSlider(current, optional, onChange):
+        case let .doubleSlider(current, range, optional, onChange):
             doubleSliderStackView.isHidden = false
             doubleSliderStackView.alpha = 1
             doubleSliderInput1.set(value: current?.0 ?? 0)
             doubleSlider1.value = Float(current?.0 ?? 0)
             doubleSliderInput2.set(value: current?.1 ?? 0)
             doubleSlider2.value = Float(current?.1 ?? 0)
+            doubleSlider1.maximumValue = Float(range.upperBound)
+            doubleSlider2.maximumValue = Float(range.upperBound)
+            doubleSlider1.minimumValue = Float(range.lowerBound)
+            doubleSlider2.minimumValue = Float(range.lowerBound)
             let getValues = { [weak self] in self.map { (CGFloat($0.doubleSlider1.value), CGFloat($0.doubleSlider2.value)) } }
             
             onDoubleSlider1Change = { _ in onChange(getValues()) }
