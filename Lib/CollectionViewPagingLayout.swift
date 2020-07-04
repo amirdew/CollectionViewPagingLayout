@@ -171,10 +171,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Private functions
     
-    private func updateCurrentPageIfNeeded(basedOn contentOffset: CGPoint? = nil) {
+    private func updateCurrentPageIfNeeded() {
         var currentPage: Int = 0
         if let collectionView = collectionView {
-            let contentOffset = contentOffset ?? collectionView.contentOffset
+            let contentOffset = collectionView.contentOffset
             let pageSize = scrollDirection == .horizontal ? collectionView.frame.width : collectionView.frame.height
             let offset = scrollDirection == .horizontal ?
                 (contentOffset.x + collectionView.contentInset.left) :
@@ -212,10 +212,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
-            self?.updateCurrentPageIfNeeded(basedOn: contentOffset)
-        }
-        if !animated {
-            updateCurrentPageIfNeeded(basedOn: contentOffset)
+            self?.invalidateLayout()
         }
         collectionView?.setContentOffset(contentOffset, animated: animated)
         CATransaction.commit()
