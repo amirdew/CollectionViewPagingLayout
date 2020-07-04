@@ -20,7 +20,7 @@ class LayoutDesignerViewModel {
             refreshOptionViewModels()
         }
     }
-    var layouts: [ShapeLayout] = .stack
+    var layouts: [ShapeLayout] = .scale
     var shapesViewModel: ShapesViewModel {
         ShapesViewModel(layouts: layouts, showBackButton: false, showPageControl: true)
     }
@@ -181,18 +181,6 @@ class LayoutDesignerViewModel {
                     $0.translation3d?.translateRatios = (n!, current.1, current.2)
                 }
                 }),
-            .init(title: "Y ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.1, range: -500...500) { n in
-                update {
-                    guard let current = $0.translation3d?.translateRatios else { return }
-                    $0.translation3d?.translateRatios = (current.0, n!, current.2)
-                }
-                }),
-            .init(title: "Z ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.2, range: -500...500) { n in
-                update {
-                    guard let current = $0.translation3d?.translateRatios else { return }
-                    $0.translation3d?.translateRatios = (current.0, current.1, n!)
-                }
-                }),
             .init(title: "X min", kind: .singleSlider(current: options.translation3d?.minTranslates.0, range: -2_000...2_000) { n in
                 update {
                     guard let current = $0.translation3d?.minTranslates else { return }
@@ -205,6 +193,12 @@ class LayoutDesignerViewModel {
                     $0.translation3d?.maxTranslates = (n!, current.1, current.2)
                 }
                 }),
+            .init(title: "Y ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.1, range: -500...500) { n in
+                update {
+                    guard let current = $0.translation3d?.translateRatios else { return }
+                    $0.translation3d?.translateRatios = (current.0, n!, current.2)
+                }
+                }),
             .init(title: "Y min", kind: .singleSlider(current: options.translation3d?.minTranslates.1, range: -2_000...2_000) { n in
                 update {
                     guard let current = $0.translation3d?.minTranslates else { return }
@@ -215,6 +209,12 @@ class LayoutDesignerViewModel {
                 update {
                     guard let current = $0.translation3d?.maxTranslates else { return }
                     $0.translation3d?.maxTranslates = (current.0, n!, current.2)
+                }
+                }),
+            .init(title: "Z ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.2, range: -500...500) { n in
+                update {
+                    guard let current = $0.translation3d?.translateRatios else { return }
+                    $0.translation3d?.translateRatios = (current.0, current.1, n!)
                 }
                 }),
             .init(title: "Z min", kind: .singleSlider(current: options.translation3d?.minTranslates.2, range: -2_000...2_000) { n in

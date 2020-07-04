@@ -191,6 +191,7 @@ public extension StackTransformView {
     @available(iOS 10.0, *)
     private func applyBlurEffect(progress: CGFloat) {
         guard stackOptions.maxBlurEffectRadius > 0, stackOptions.blurEffectEnabled else {
+            blurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
             return
         }
         let blurView: BlurEffectView

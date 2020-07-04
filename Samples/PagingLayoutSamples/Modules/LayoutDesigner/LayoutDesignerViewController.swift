@@ -77,8 +77,8 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     }
     
     private func setInitialStateForLayoutButtons() {
-        setLayoutButtonSelected(view: stackButtonView, isSelected: true)
-        setLayoutButtonSelected(view: scaleButtonView, isSelected: false)
+        setLayoutButtonSelected(view: stackButtonView, isSelected: false)
+        setLayoutButtonSelected(view: scaleButtonView, isSelected: true)
         setLayoutButtonSelected(view: snapshotButtonView, isSelected: false)
     }
     

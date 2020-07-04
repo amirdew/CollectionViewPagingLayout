@@ -155,13 +155,14 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         invalidateCollectionViewLayout()
     }
     
-    private func invalidateLayoutTypeCollectionViewLayout() {
+    private func invalidateLayoutTypeCollectionViewLayout() { layoutTypeCollectionView?.collectionViewLayout.invalidateLayout()
         layoutTypeCollectionView?.performBatchUpdates({
             self.layoutTypeCollectionView.collectionViewLayout.invalidateLayout()
         })
     }
     
     private func invalidateCollectionViewLayout() {
+        collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.performBatchUpdates({
             self.collectionView.collectionViewLayout.invalidateLayout()
         })
