@@ -22,7 +22,7 @@ class LayoutDesignerViewModel {
     }
     var layouts: [ShapeLayout] = .stack
     var shapesViewModel: ShapesViewModel {
-        ShapesViewModel(layouts: layouts, showBackButton: false)
+        ShapesViewModel(layouts: layouts, showBackButton: false, showPageControl: true)
     }
     private(set) var optionViewModels: [LayoutDesignerOptionSectionViewModel] = []
     private let codeGenerator = OptionsCodeGenerator()

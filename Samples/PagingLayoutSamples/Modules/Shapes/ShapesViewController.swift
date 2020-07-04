@@ -38,6 +38,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var layoutTypeCollectionView: UICollectionView!
+    @IBOutlet private weak var pageControlView: PageControlView!
     
     private var didScrollCollectionViewToMiddle = false
     
@@ -79,6 +80,14 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction private func onNextButtonTouched() {
+        (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.goToNextPage()
+    }
+    
+    @IBAction private func onPreviousButtonTouched() {
+        (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.goToPreviousPage()
+    }
+    
     
     // MARK: Private functions
     
@@ -88,6 +97,10 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         backButton.isHidden = !viewModel.showBackButton
         configureCollectionView()
         configureLayoutTypeCollectionView()
+        
+        pageControlView.numberOfPages = 8
+        pageControlView.preferences = .init(color: UIColor.black.withAlphaComponent(0.5), dimFactor: 0.2, dotRadius: 5, gapSize: 6, currentDotBorderWidth: 3.5)
+        pageControlView.superview?.isHidden = !viewModel.showPageControl
     }
     
     private func configureCollectionView() {
@@ -101,6 +114,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
         layout.configureTapOnCollectionView(goToSelectedPage: true)
+        layout.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
@@ -227,5 +241,13 @@ extension ShapesViewController: UICollectionViewDelegate {
             return
         }
         updateSelectedLayout()
+    }
+}
+
+
+extension ShapesViewController: CollectionViewPagingLayoutDelegate {
+    func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
+        guard layout.collectionView == collectionView else { return }
+        pageControlView.currentPage = currentPage
     }
 }

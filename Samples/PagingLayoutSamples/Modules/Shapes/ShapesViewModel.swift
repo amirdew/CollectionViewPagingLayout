@@ -33,12 +33,14 @@ class ShapesViewModel {
     }
     let layoutTypeViewModels: [LayoutTypeCellViewModel]
     let showBackButton: Bool
+    let showPageControl: Bool
     
     
     // MARK: Lifecycle
     
-    init(layouts: [ShapeLayout], showBackButton: Bool = true) {
+    init(layouts: [ShapeLayout], showBackButton: Bool = true, showPageControl: Bool = false) {
         self.showBackButton = showBackButton
+        self.showPageControl = showPageControl
         self.layoutTypeViewModels = layouts.compactMap { layout in  ShapesViewModel.allLayoutViewModes.first { $0.layout == layout } }
         selectedLayout = layoutTypeViewModels.first!
     }
