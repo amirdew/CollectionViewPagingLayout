@@ -109,17 +109,49 @@ private extension SnapshotTransformViewOptions.PiecesValue {
         case let .static(value):
             return ".static(\(formatValue(value)))"
         case let .columnBased(value, reversed):
-            return ".columnBased(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+            return """
+            .columnBased(
+                    \(formatValue(value)),
+                    reversed: \(reversed ? "true" : "false")
+                )
+            """
         case let .rowBased(value, reversed):
-            return ".rowBased(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+            return """
+            .rowBased(
+                    \(formatValue(value)),
+                    reversed: \(reversed ? "true" : "false")
+                )
+            """
         case let .columnOddEven(odd, even, increasing):
-            return ".columnOddEven(\(formatValue(odd)), \(formatValue(even)), increasing: \(increasing ? "true" : "false"))"
+            return """
+            .columnOddEven(
+                    \(formatValue(odd)),
+                    \(formatValue(even)),
+                    increasing: \(increasing ? "true" : "false")
+                )
+            """
         case let .rowOddEven(odd, even, increasing):
-            return ".rowOddEven(\(formatValue(odd)), \(formatValue(even)), increasing: \(increasing ? "true" : "false"))"
+            return """
+            .rowOddEven(
+                    \(formatValue(odd)),
+                    \(formatValue(even)),
+                    increasing: \(increasing ? "true" : "false")
+                )
+            """
         case let .columnBasedMirror(value, reversed):
-            return ".columnBasedMirror(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+            return """
+            .columnBasedMirror(
+                    \(formatValue(value)),
+                    reversed: \(reversed ? "true" : "false")
+                )
+            """
         case let .rowBasedMirror(value, reversed):
-            return ".rowBasedMirror(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+            return """
+            .rowBasedMirror(
+                    \(formatValue(value)),
+                    reversed: \(reversed ? "true" : "false")
+                )
+            """
         case let .indexBasedCustom(values):
             return ".indexBasedCustom(\(values.map { formatValue($0) }.joined(separator: ", ")))"
         case let .rowBasedCustom(values):

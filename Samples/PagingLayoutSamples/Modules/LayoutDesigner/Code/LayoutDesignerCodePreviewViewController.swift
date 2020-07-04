@@ -34,6 +34,7 @@ class LayoutDesignerCodePreviewViewController: UIViewController {
     private func configureViews() {
         let codeTextView = UITextView()
         codeTextView.backgroundColor = .clear
+        codeTextView.isEditable = false
         view.fill(with: codeTextView, edges: .init(top: 20, left: 20, bottom: -20, right: -20))
         self.codeTextView = codeTextView
     }
