@@ -127,8 +127,8 @@ private extension SnapshotTransformViewOptions.PiecesValue {
         case let .columnBasedCustom(values):
             return ".columnBasedCustom(\(values.map { formatValue($0) }.joined(separator: ", ")))"
         case let .aggregated(piecesValue, _):
-            // Custom detection for functions, find a better way to detect it
-            //.aggregated([.rowBasedMirror(CGPoint(x: 1
+            // Custom detection for the functions, I don't think there is a better way for that
+            // This works only on the current options
             var function = "+"
             if case .rowBasedMirror(let value, _) = piecesValue.first,
                 let point = value as? CGPoint,

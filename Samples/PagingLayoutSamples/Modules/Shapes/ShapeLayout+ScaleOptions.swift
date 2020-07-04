@@ -60,9 +60,9 @@ extension ShapeLayout {
                 minTranslationRatio: CGPoint(x: -1, y: 0),
                 maxTranslationRatio: CGPoint(x: 1, y: 1),
                 rotation3d: ScaleTransformViewOptions.Rotation3dOptions(angle: .pi / 15, minAngle: -.pi / 3, maxAngle: .pi / 3, x: 0, y: 0, z: 1, m34: -0.004),
-                translation3d: .init(translateRatios: (200, 375 * 0.1, 0),
-                                     minTranslates: (-1_000, -375, -100),
-                                     maxTranslates: (1_000, 375, -100))
+                translation3d: .init(translateRatios: (230, 395 * 0.1, 0),
+                                     minTranslates: (-1_000, -395, -100),
+                                     maxTranslates: (1_000, 395, -100))
             )
         case .scaleCylinder:
             return ScaleTransformViewOptions(
@@ -74,7 +74,7 @@ extension ShapeLayout {
                 maxTranslationRatio: .zero,
                 shadowEnabled: false,
                 rotation3d: .init(angle: .pi / 4, minAngle: -.pi, maxAngle: .pi, x: 0, y: 1, z: 0, m34: -0.000_4 - 0.8 * 0.000_2 ),
-                translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, 340), maxTranslates: (0, 0, 340))
+                translation3d: .init(translateRatios: (0, 0, 0), minTranslates: (0, 0, 380), maxTranslates: (0, 0, 380))
             )
         case .scaleInvertedCylinder:
             return ScaleTransformViewOptions(
@@ -86,9 +86,9 @@ extension ShapeLayout {
                 maxTranslationRatio: .zero,
                 shadowEnabled: false,
                 rotation3d: .init(angle: .pi / 3, minAngle: -.pi, maxAngle: .pi, x: 0, y: -1, z: 0, m34: -0.002),
-                translation3d: .init(translateRatios: (0, 0, 0),
-                                     minTranslates: (0, 0, 240),
-                                     maxTranslates: (0, 0, -240))
+                translation3d: .init(translateRatios: (30, 0, 0),
+                                     minTranslates: (-15, 0, 240),
+                                     maxTranslates: (15, 0, -240))
             )
         case .scaleCoverFlow:
             return ScaleTransformViewOptions(
@@ -100,7 +100,7 @@ extension ShapeLayout {
                 maxTranslationRatio: .zero,
                 shadowEnabled: true,
                 rotation3d: .init(angle: .pi / 1.65, minAngle: -.pi / 3, maxAngle: .pi / 3, x: 0, y: -1, z: 0, m34: -0.000_5),
-                translation3d: .init(translateRatios: (30, 0, -375 * 0.42), minTranslates: (-30, 0, -1_000), maxTranslates: (30, 0, 0))
+                translation3d: .init(translateRatios: (30, 0, -445 * 0.42), minTranslates: (-30, 0, -1_000), maxTranslates: (30, 0, 0))
             )
         default:
             return nil

@@ -27,7 +27,7 @@ class MacApp: NSObject, AppKitBridge {
         guard let window = NSApplication.shared.mainWindow else {
             return
         }
-        window.minSize = NSSize(width: 1_024, height: 768)
+        window.minSize = NSSize(width: 1_200, height: 768)
         window.setFrame(.init(origin: window.frame.origin, size: window.minSize), display: true, animate: true)
     }
     
