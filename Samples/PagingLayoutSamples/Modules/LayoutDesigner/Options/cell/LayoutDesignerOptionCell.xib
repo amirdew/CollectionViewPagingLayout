@@ -31,15 +31,15 @@
                                         <rect key="frame" x="55" y="6.5" width="574.5" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOn-7W-5CC">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="tDz-j2-ysK"/>
+                                                    <constraint firstAttribute="width" constant="60" id="tDz-j2-ysK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <slider opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mrr-fb-BXW">
-                                                <rect key="frame" x="46" y="0.0" width="530.5" height="31"/>
+                                                <rect key="frame" x="66" y="0.0" width="510.5" height="31"/>
                                             </slider>
                                         </subviews>
                                     </stackView>

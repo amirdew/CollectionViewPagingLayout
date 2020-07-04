@@ -88,7 +88,68 @@ class OptionsCodeGenerator {
     }
     
     private func generateCode(options: SnapshotTransformViewOptions) -> String {
-        ""
+        """
+        var snapshotOptions = SnapshotTransformViewOptions(
+            pieceSizeRatio: \(options.pieceSizeRatio.generateInitCode()),
+            piecesCornerRadiusRatio: \(options.piecesCornerRadiusRatio.generateInitCode()),
+            piecesAlphaRatio: \(options.piecesAlphaRatio.generateInitCode()),
+            piecesTranslationRatio: \(options.piecesTranslationRatio.generateInitCode()),
+            piecesScaleRatio: \(options.piecesScaleRatio.generateInitCode()),
+            containerScaleRatio: \(options.containerScaleRatio.format()),
+            containerTranslationRatio: \(options.containerTranslationRatio.generateInitCode())
+        )
+        """
+    }
+}
+
+
+private extension SnapshotTransformViewOptions.PiecesValue {
+    func generateInitCode() -> String {
+        switch self {
+        case let .static(value):
+            return ".static(\(formatValue(value)))"
+        case let .columnBased(value, reversed):
+            return ".columnBased(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+        case let .rowBased(value, reversed):
+            return ".rowBased(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+        case let .columnOddEven(odd, even, increasing):
+            return ".columnOddEven(\(formatValue(odd)), \(formatValue(even)), increasing: \(increasing ? "true" : "false"))"
+        case let .rowOddEven(odd, even, increasing):
+            return ".rowOddEven(\(formatValue(odd)), \(formatValue(even)), increasing: \(increasing ? "true" : "false"))"
+        case let .columnBasedMirror(value, reversed):
+            return ".columnBasedMirror(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+        case let .rowBasedMirror(value, reversed):
+            return ".rowBasedMirror(\(formatValue(value)), reversed: \(reversed ? "true" : "false"))"
+        case let .indexBasedCustom(values):
+            return ".indexBasedCustom(\(values.map { formatValue($0) }.joined(separator: ", ")))"
+        case let .rowBasedCustom(values):
+            return ".rowBasedCustom(\(values.map { formatValue($0) }.joined(separator: ", ")))"
+        case let .columnBasedCustom(values):
+            return ".columnBasedCustom(\(values.map { formatValue($0) }.joined(separator: ", ")))"
+        case let .aggregated(piecesValue, _):
+            // Custom detection for functions, find a better way to detect it
+            //.aggregated([.rowBasedMirror(CGPoint(x: 1
+            var function = "+"
+            if case .rowBasedMirror(let value, _) = piecesValue.first,
+                let point = value as? CGPoint,
+                point.x == 1 {
+                function = "*"
+            }
+            return ".aggregated([\(piecesValue.map { $0.generateInitCode() }.joined(separator: ", "))], \(function))"
+        }
+    }
+    
+    private func formatValue(_ value: Any) -> String {
+        if let value = value as? CGFloat {
+            return value.format()
+        }
+        if let value = value as? CGSize {
+            return value.generateInitCode()
+        }
+        if let value = value as? CGPoint {
+            return value.generateInitCode()
+        }
+        return "-"
     }
 }
 
