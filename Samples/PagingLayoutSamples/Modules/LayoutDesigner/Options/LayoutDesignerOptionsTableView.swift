@@ -65,6 +65,7 @@ extension LayoutDesignerOptionsTableView: UITableViewDelegate {
         let header = UIView()
         let label = UILabel()
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 33, weight: .medium)
         label.text = optionViewModels[section].title
         header.fill(with: label, edges: .init(top: 10, left: 24, bottom: -10, right: -24))

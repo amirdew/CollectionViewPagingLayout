@@ -235,6 +235,7 @@
                     </subviews>
                     <color key="backgroundColor" name="DesignerBackground"/>
                     <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="0b8-zO-xfB"/>
                         <constraint firstItem="NyD-R7-l0J" firstAttribute="leading" secondItem="nl2-ey-EcQ" secondAttribute="leading" constant="22" id="EBD-hI-uBV"/>
                         <constraint firstItem="dmm-bK-wwh" firstAttribute="leading" secondItem="nl2-ey-EcQ" secondAttribute="leading" id="Eko-sH-H04"/>
                         <constraint firstAttribute="trailing" secondItem="NyD-R7-l0J" secondAttribute="trailing" constant="22" id="FxT-KW-h7C"/>
@@ -248,7 +249,7 @@
                     <rect key="frame" x="913.5" y="0.0" width="563.5" height="758"/>
                     <color key="backgroundColor" red="0.16078431372549018" green="0.16470588235294117" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="A6T-bX-xuz"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="755" constant="500" id="A6T-bX-xuz"/>
                     </constraints>
                 </view>
             </subviews>
