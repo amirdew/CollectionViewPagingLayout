@@ -23,7 +23,11 @@ extension String {
 }
 
 extension CGFloat {
-    func format() -> String {
-        String(format: "%.2f", self).replacingOccurrences(of: "-0.00", with: "0.00")
+    func format(fractionDigits: Int = 2) -> String {
+        var formatted = String(format: "%.\(fractionDigits)f", self)
+        if self == 0 {
+            formatted = formatted.replacingOccurrences(of: "-0.00", with: "0.00")
+        }
+        return formatted
     }
 }

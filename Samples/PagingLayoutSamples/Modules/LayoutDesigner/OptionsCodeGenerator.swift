@@ -221,7 +221,7 @@ private extension ScaleTransformViewOptions.Rotation3dOptions {
                 x: \(x.format()),
                 y: \(y.format()),
                 z: \(z.format()),
-                m34: \(m34.format())
+                m34: \(m34.format(fractionDigits: 6))
             )
         """
     }
