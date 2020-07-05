@@ -219,6 +219,13 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
         collectionView?.setContentOffset(contentOffset, animated: animated)
         CATransaction.commit()
+        
+        // this is necessary when we want to set the current page without animation
+        if !animated {
+            collectionView?.performBatchUpdates({ [weak self] in
+                self?.collectionView?.collectionViewLayout.invalidateLayout()
+            })
+        }
     }
     
     private func addTapGestureToCollectionView() {
