@@ -54,6 +54,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     private func setupViews() {
         backgroundColor = .clear
         label.textColor = UIColor.white.withAlphaComponent(0.7)
+        label.adjustsFontSizeToFitWidth = true
         nilLabel.textColor = UIColor.white.withAlphaComponent(0.7)
         [singleSlider, doubleSlider1, doubleSlider2].forEach {
             $0?.tintColor = .white

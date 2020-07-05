@@ -66,13 +66,14 @@ class LayoutDesignerCodePreviewViewController: UIViewController {
     
     private func configureCodeTypeSegmentedControl() {
         let segmentedControl = UISegmentedControl()
-        segmentedControl.insertSegment(withTitle: "Full ViewController", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "ViewController", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Options variable", at: 0, animated: false)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
         codeModeSegmentedControl = segmentedControl
         segmentedControl.topAnchor.constraint(equalTo: copyButton.topAnchor).isActive = true
         segmentedControl.rightAnchor.constraint(equalTo: copyButton.leftAnchor, constant: -10).isActive = true
+        segmentedControl.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 20).isActive = true
         segmentedControl.heightAnchor.constraint(equalTo: copyButton.heightAnchor).isActive = true
         segmentedControl.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         segmentedControl.selectedSegmentTintColor = UIColor.white.withAlphaComponent(0.4)
