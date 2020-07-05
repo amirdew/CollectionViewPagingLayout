@@ -23,11 +23,24 @@ class LayoutDesignerCodePreviewViewController: UIViewController {
     private weak var copyButton: UIButton!
     private weak var codeModeSegmentedControl: UISegmentedControl!
     
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
+    }
+    
+    
+    // MARK: Listener
+    
+    @objc private func copyButtonTouched() {
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.string = codeTextView.text
+    }
+    
+    @objc private func codeTypeChanged() {
+        refreshViews()
     }
     
     
@@ -62,14 +75,11 @@ class LayoutDesignerCodePreviewViewController: UIViewController {
         segmentedControl.rightAnchor.constraint(equalTo: copyButton.leftAnchor, constant: -10).isActive = true
         segmentedControl.heightAnchor.constraint(equalTo: copyButton.heightAnchor).isActive = true
         segmentedControl.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        segmentedControl.selectedSegmentTintColor = UIColor.white.withAlphaComponent(0.8)
+        segmentedControl.selectedSegmentTintColor = UIColor.white.withAlphaComponent(0.4)
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black.withAlphaComponent(0.6)], for: .selected)
         segmentedControl.selectedSegmentIndex = 0
-        
-    }
-    
-    @objc private func copyButtonTouched() {
+        segmentedControl.addTarget(self, action: #selector(codeTypeChanged), for: .valueChanged)
         
     }
     
@@ -80,8 +90,11 @@ class LayoutDesignerCodePreviewViewController: UIViewController {
         view.fill(with: codeTextView, edges: .init(top: 100, left: 20, bottom: -20, right: -20))
         self.codeTextView = codeTextView
     }
+    
     private func refreshViews() {
-        codeTextView.attributedText = viewModel?.getHighlightedText()
+        codeTextView.attributedText = viewModel?.getHighlightedText(
+            addViewControllerInCode: codeModeSegmentedControl.selectedSegmentIndex != 0
+        )
     }
     
     
