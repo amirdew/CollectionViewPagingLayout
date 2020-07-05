@@ -38,6 +38,11 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         super.viewDidLoad()
         configureViews()
         setOptionsList()
+        registerKeyboardNotifications()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -130,6 +135,27 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     
     private func setOptionsList() {
         optionsTableView.optionViewModels = viewModel.optionViewModels
+    }
+    
+    private func registerKeyboardNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc private func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        var contentInset = optionsTableView.contentInset
+        
+        if keyboardViewEndFrame.minY < optionsTableView.frame.maxY {
+            contentInset.bottom = optionsTableView.frame.maxY - keyboardViewEndFrame.minY - 8
+        } else {
+            contentInset.bottom = 8
+        }
+        optionsTableView.contentInset = contentInset
     }
     
 }
