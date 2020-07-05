@@ -14,7 +14,7 @@ extension ShapeLayout {
         switch self {
         case .snapshotGrid:
             return SnapshotTransformViewOptions(
-                pieceSizeRatio: .init(width: 1.0 / 4.0, height: 1.0 / 8.0),
+                pieceSizeRatio: .init(width: 1.0 / 4.0, height: 1.0 / 10.0),
                 piecesCornerRadiusRatio: .static(1),
                 piecesAlphaRatio: .static(0),
                 piecesTranslationRatio: .aggregated([.rowBasedMirror(CGPoint(x: 0, y: -1.8)), .columnBasedMirror(CGPoint(x: -1.8, y: 0))], +),
@@ -34,7 +34,7 @@ extension ShapeLayout {
             )
         case .snapshotChess:
             return SnapshotTransformViewOptions(
-                pieceSizeRatio: .init(width: 1.0 / 5.0, height: 1.0 / 8.0),
+                pieceSizeRatio: .init(width: 1.0 / 5.0, height: 1.0 / 10.0),
                 piecesCornerRadiusRatio: .static(0.5),
                 piecesAlphaRatio: .columnBasedMirror(0.4),
                 piecesTranslationRatio: .columnBasedMirror(CGPoint(x: -1, y: 1)),
@@ -44,7 +44,7 @@ extension ShapeLayout {
             )
         case .snapshotTiles:
             return SnapshotTransformViewOptions(
-                pieceSizeRatio: .init(width: 1, height: 1.0 / 8.0),
+                pieceSizeRatio: .init(width: 1, height: 1.0 / 10.0),
                 piecesCornerRadiusRatio: .static(0),
                 piecesAlphaRatio: .static(0.4),
                 piecesTranslationRatio: .rowOddEven(CGPoint(x: -0.4, y: 0), CGPoint(x: 0.4, y: 0)),
@@ -74,7 +74,7 @@ extension ShapeLayout {
             )
         case .snapshotPuzzle:
             return SnapshotTransformViewOptions(
-                pieceSizeRatio: .init(width: 1.0 / 4.0, height: 1.0 / 8.0),
+                pieceSizeRatio: .init(width: 1.0 / 4.0, height: 1.0 / 10.0),
                 piecesCornerRadiusRatio: .static(0),
                 piecesAlphaRatio: .aggregated([.rowOddEven(0.2, 0), .columnOddEven(0, 0.2)], +),
                 piecesTranslationRatio: .rowOddEven(CGPoint(x: -0.15, y: 0), CGPoint(x: 0.15, y: 0)),
@@ -84,7 +84,7 @@ extension ShapeLayout {
             )
         case .snapshotFade:
             return SnapshotTransformViewOptions(
-                pieceSizeRatio: .init(width: 1, height: 1.0 / 12.0),
+                pieceSizeRatio: .init(width: 1, height: 1.0 / 10.0),
                 piecesCornerRadiusRatio: .static(0.1),
                 piecesAlphaRatio: .rowBased(0.1),
                 piecesTranslationRatio: .rowBasedMirror(CGPoint(x: 0, y: 0.1)),
