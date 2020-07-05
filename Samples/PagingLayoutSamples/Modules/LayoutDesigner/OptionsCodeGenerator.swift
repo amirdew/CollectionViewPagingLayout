@@ -82,7 +82,7 @@ class OptionsCodeGenerator {
             reverse: \(options.reverse ? "true" : "false"),
             blurEffectEnabled: \(options.blurEffectEnabled ? "true" : "false"),
             maxBlurEffectRadius: \(options.maxBlurEffectRadius.format()),
-            blurEffectStyle: \(options.blurEffectStyle.generateInitCode()),
+            blurEffectStyle: \(options.blurEffectStyle.generateInitCode())
         )
         """
     }
