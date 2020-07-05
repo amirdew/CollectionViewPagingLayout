@@ -115,7 +115,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
     }
     
     private func onInputChange(input: UITextField, fromSlider: Bool) {
-        let value = input.floatValue
+        let value = input.floatValue ?? 0
         if input == singleSliderInput, !(singleSliderInput.floatValue == value && fromSlider) {
             onSingleSliderInputChange(CGFloat(value))
             onSliderChange(slider: singleSlider, fromInput: true)
@@ -158,6 +158,7 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             }
             
             onSingleSliderChange = onNewValue
+            onSingleSliderInputChange = onNewValue
             if optional {
                 switchView.isHidden = false
                 switchView.isOn = latestValue == nil
@@ -192,6 +193,8 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
             
             onDoubleSlider1Change = { _ in onNewValue(getValues()) }
             onDoubleSlider2Change = { _ in onNewValue(getValues()) }
+            onDoubleSliderInput1Change = { _ in onNewValue(getValues()) }
+            onDoubleSliderInput2Change = { _ in onNewValue(getValues()) }
             if optional {
                 switchView.isHidden = false
                 switchView.isOn = latestValue == nil
@@ -235,8 +238,8 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
 
 private extension UITextField {
     
-    var floatValue: Float {
-        text?.floatValue ?? 0
+    var floatValue: Float? {
+        text?.floatValue
     }
     
     func set(value: Float) {

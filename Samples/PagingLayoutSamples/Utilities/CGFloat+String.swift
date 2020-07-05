@@ -10,15 +10,15 @@ import UIKit
 
 
 extension String {
-    var floatValue: Float {
+    var floatValue: Float? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.allowsFloats = true
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 5
         formatter.locale = Locale(identifier: "en_US")
         let text = self.replacingOccurrences(of: ",", with: ".")
         let number = formatter.number(from: text)
-        return number?.floatValue ?? 0
+        return number?.floatValue
     }
 }
 
