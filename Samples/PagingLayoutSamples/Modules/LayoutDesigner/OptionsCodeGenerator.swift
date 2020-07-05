@@ -202,9 +202,9 @@ private extension ScaleTransformViewOptions.Translation3dOptions {
     func generateInitCode() -> String {
         """
         .init(
-                translateRatios: (\(translateRatios.0), \(translateRatios.1), \(translateRatios.2)),
-                minTranslates: (\(minTranslates.0), \(minTranslates.1), \(minTranslates.2)),
-                maxTranslates: (\(maxTranslates.0), \(maxTranslates.1), \(maxTranslates.2))
+                translateRatios: (\(translateRatios.0.format()), \(translateRatios.1.format()), \(translateRatios.2.format())),
+                minTranslateRatios: (\(minTranslateRatios.0.format()), \(minTranslateRatios.1.format()), \(minTranslateRatios.2.format())),
+                maxTranslateRatios: (\(maxTranslateRatios.0.format()), \(maxTranslateRatios.1.format()), \(maxTranslateRatios.2.format()))
             )
         """
     }

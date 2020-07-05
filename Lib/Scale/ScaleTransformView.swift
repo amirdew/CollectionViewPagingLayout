@@ -141,15 +141,15 @@ public extension ScaleTransformView {
         }
         
         if let options = self.scaleOptions.translation3d {
-            var x = options.translateRatios.0 * progress
-            var y = options.translateRatios.1 * abs(progress)
-            var z = options.translateRatios.2 * abs(progress)
-            x = max(x, options.minTranslates.0)
-            x = min(x, options.maxTranslates.0)
-            y = max(y, options.minTranslates.1)
-            y = min(y, options.maxTranslates.1)
-            z = max(z, options.minTranslates.2)
-            z = min(z, options.maxTranslates.2)
+            var x = options.translateRatios.0 * progress * scalableView.bounds.width
+            var y = options.translateRatios.1 * abs(progress) * scalableView.bounds.height
+            var z = options.translateRatios.2 * abs(progress) * scalableView.bounds.width
+            x = max(x, options.minTranslateRatios.0 * scalableView.bounds.width)
+            x = min(x, options.maxTranslateRatios.0 * scalableView.bounds.width)
+            y = max(y, options.minTranslateRatios.1 * scalableView.bounds.height)
+            y = min(y, options.maxTranslateRatios.1 * scalableView.bounds.height)
+            z = max(z, options.minTranslateRatios.2 * scalableView.bounds.width)
+            z = min(z, options.maxTranslateRatios.2 * scalableView.bounds.width)
             
             transform = CATransform3DTranslate(transform, x, y, z)
         }

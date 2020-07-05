@@ -14,26 +14,29 @@ public extension ScaleTransformViewOptions {
         
         // MARK: Properties
         
-        /// The translates(x,y,z) ratios (translateX = progress * translates.x)
+        /// The translates(x,y,z) ratios
+        /// (translateX = progress * translates.x * targetView.width)
+        /// (translateY = progress * translates.y * targetView.height)
+        /// (translateZ = progress * translates.z * targetView.width)
         public var translateRatios: (CGFloat, CGFloat, CGFloat)
         
-        /// The minimum translate values
-        public var minTranslates: (CGFloat, CGFloat, CGFloat)
+        /// The minimum translate ratios
+        public var minTranslateRatios: (CGFloat, CGFloat, CGFloat)
         
-        /// The maximum translate values
-        public var maxTranslates: (CGFloat, CGFloat, CGFloat)
+        /// The maximum translate ratios
+        public var maxTranslateRatios: (CGFloat, CGFloat, CGFloat)
         
         
         // MARK: Lifecycle
         
         public init(
             translateRatios: (CGFloat, CGFloat, CGFloat),
-            minTranslates: (CGFloat, CGFloat, CGFloat),
-            maxTranslates: (CGFloat, CGFloat, CGFloat)
+            minTranslateRatios: (CGFloat, CGFloat, CGFloat),
+            maxTranslateRatios: (CGFloat, CGFloat, CGFloat)
         ) {
             self.translateRatios = translateRatios
-            self.minTranslates = minTranslates
-            self.maxTranslates = maxTranslates
+            self.minTranslateRatios = minTranslateRatios
+            self.maxTranslateRatios = maxTranslateRatios
         }
     }
     

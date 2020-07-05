@@ -166,67 +166,67 @@ class LayoutDesignerViewModel {
         ]
         
         let originalTranslation3dOptions = options.translation3d ?? ScaleTransformViewOptions.Translation3dOptions(
-            translateRatios: (30, 0, -375 * 0.42),
-            minTranslates: (-30, 0, -1_000),
-            maxTranslates: (30, 0, 0)
+            translateRatios: (0.1, 0, 0),
+            minTranslateRatios: (-0.05, 0, 0.86),
+            maxTranslateRatios: (0.05, 0, -0.86)
         )
         
         let translation3dOptions: [LayoutDesignerOptionViewModel] = [
             .init(title: "Enabled", kind: .toggleSwitch(current: options.translation3d != nil) { n in
                 update { $0.translation3d = !n ? nil : originalTranslation3dOptions }
                 }),
-            .init(title: "X ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.0, range: -500...500) { n in
+            .init(title: "X ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.0, range: -5...5) { n in
                 update {
                     guard let current = $0.translation3d?.translateRatios else { return }
                     $0.translation3d?.translateRatios = (n!, current.1, current.2)
                 }
                 }),
-            .init(title: "X min", kind: .singleSlider(current: options.translation3d?.minTranslates.0, range: -2_000...2_000) { n in
+            .init(title: "X min ratio", kind: .singleSlider(current: options.translation3d?.minTranslateRatios.0, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.minTranslates else { return }
-                    $0.translation3d?.minTranslates = (n!, current.1, current.2)
+                    guard let current = $0.translation3d?.minTranslateRatios else { return }
+                    $0.translation3d?.minTranslateRatios = (n!, current.1, current.2)
                 }
                 }),
-            .init(title: "X max", kind: .singleSlider(current: options.translation3d?.maxTranslates.0, range: -2_000...2_000) { n in
+            .init(title: "X max ratio", kind: .singleSlider(current: options.translation3d?.maxTranslateRatios.0, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.maxTranslates else { return }
-                    $0.translation3d?.maxTranslates = (n!, current.1, current.2)
+                    guard let current = $0.translation3d?.maxTranslateRatios else { return }
+                    $0.translation3d?.maxTranslateRatios = (n!, current.1, current.2)
                 }
                 }),
-            .init(title: "Y ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.1, range: -500...500) { n in
+            .init(title: "Y ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.1, range: -5...5) { n in
                 update {
                     guard let current = $0.translation3d?.translateRatios else { return }
                     $0.translation3d?.translateRatios = (current.0, n!, current.2)
                 }
                 }),
-            .init(title: "Y min", kind: .singleSlider(current: options.translation3d?.minTranslates.1, range: -2_000...2_000) { n in
+            .init(title: "Y min ratio", kind: .singleSlider(current: options.translation3d?.minTranslateRatios.1, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.minTranslates else { return }
-                    $0.translation3d?.minTranslates = (current.0, n!, current.2)
+                    guard let current = $0.translation3d?.minTranslateRatios else { return }
+                    $0.translation3d?.minTranslateRatios = (current.0, n!, current.2)
                 }
                 }),
-            .init(title: "Y max", kind: .singleSlider(current: options.translation3d?.maxTranslates.1, range: -2_000...2_000) { n in
+            .init(title: "Y max ratio", kind: .singleSlider(current: options.translation3d?.maxTranslateRatios.1, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.maxTranslates else { return }
-                    $0.translation3d?.maxTranslates = (current.0, n!, current.2)
+                    guard let current = $0.translation3d?.maxTranslateRatios else { return }
+                    $0.translation3d?.maxTranslateRatios = (current.0, n!, current.2)
                 }
                 }),
-            .init(title: "Z ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.2, range: -500...500) { n in
+            .init(title: "Z ratio", kind: .singleSlider(current: options.translation3d?.translateRatios.2, range: -5...5) { n in
                 update {
                     guard let current = $0.translation3d?.translateRatios else { return }
                     $0.translation3d?.translateRatios = (current.0, current.1, n!)
                 }
                 }),
-            .init(title: "Z min", kind: .singleSlider(current: options.translation3d?.minTranslates.2, range: -2_000...2_000) { n in
+            .init(title: "Z min ratio", kind: .singleSlider(current: options.translation3d?.minTranslateRatios.2, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.minTranslates else { return }
-                    $0.translation3d?.minTranslates = (current.0, current.1, n!)
+                    guard let current = $0.translation3d?.minTranslateRatios else { return }
+                    $0.translation3d?.minTranslateRatios = (current.0, current.1, n!)
                 }
                 }),
-            .init(title: "Z max", kind: .singleSlider(current: options.translation3d?.maxTranslates.2, range: -2_000...2_000) { n in
+            .init(title: "Z max ratio", kind: .singleSlider(current: options.translation3d?.maxTranslateRatios.2, range: -10...10) { n in
                 update {
-                    guard let current = $0.translation3d?.maxTranslates else { return }
-                    $0.translation3d?.maxTranslates = (current.0, current.1, n!)
+                    guard let current = $0.translation3d?.maxTranslateRatios else { return }
+                    $0.translation3d?.maxTranslateRatios = (current.0, current.1, n!)
                 }
                 })
         ]
