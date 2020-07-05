@@ -188,6 +188,12 @@ private extension SnapshotTransformViewOptions.PiecesValue {
 
 private extension UIColor {
     func generateInitCode() -> String {
+        if self == .black {
+            return ".black"
+        }
+        if self == .white {
+            return ".white"
+        }
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -230,14 +236,16 @@ private extension ScaleTransformViewOptions.Rotation3dOptions {
 
 private extension CGSize {
     func generateInitCode() -> String {
-        ".init(width: \(width.format()), height: \(height.format()))"
+        if self == .zero { return ".zero" }
+        return ".init(width: \(width.format()), height: \(height.format()))"
     }
 }
 
 
 private extension CGPoint {
     func generateInitCode() -> String {
-        ".init(x: \(x.format()), y: \(y.format()))"
+        if self == .zero { return ".zero" }
+        return ".init(x: \(x.format()), y: \(y.format()))"
     }
 }
 
