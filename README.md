@@ -56,10 +56,10 @@
 
 
 ## About
-CollectionViewPagingLayout is a simple but powerful tool for making complex layouts for your UICollectionView.
-The implementation is very simple there is custom `UICollectionViewLayout` that gives you the ability to apply transforms on the cells.
-No inheritance or anything like that.
-See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) part for more details.
+CollectionViewPagingLayout is a simple but powerful tool for making complex layouts for your UICollectionView.        
+The implementation is very simple there is custom `UICollectionViewLayout` that gives you the ability to apply transforms on the cells.       
+No inheritance or anything like that.      
+See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) part for more details.      
 
 
 ## Installation
@@ -107,8 +107,8 @@ Just add all the files under `Lib` directory to your project
 
 ### Using Layout Designer
 
-There is a macOS app to make it even easier for you to make your own custom layout.
-It allows you to tweak many options and see the result in real time. 
+There is a macOS app to make it even easier for you to build your own custom layout.      
+It allows you to tweak many options and see the result in real time.      
 - Clone the repository then build and run the mac app.
 - Tweak options and design your layout.
 - Copy the code from the right panel and paste it on Xcode, make sure to choose "ViewController" if you need the full implementation.
@@ -261,12 +261,12 @@ By default, the layout loads all of the cells in the collection view frame and t
 You can specify the number of cells that you need to show at a time by considering your design.
 
 - Touches on cells:
-The way that this layout works is putting all the cells in the collectionview frame (doesn't matter which TransformView you use)
-and then it applies transforms on the target view (StackTransformView.cardView, ScaleTransformView.scalableView etc)
+The way that this layout works is putting all the cells in the collectionview frame (doesn't matter which TransformView you use)         
+and then it applies transforms on the target view (StackTransformView.cardView, ScaleTransformView.scalableView etc).        
 so you can use `func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)` but only for one cell at the same time
 you can implement `func zPosition(progress: CGFloat) -> Int` to specify wich cell should be on top
 
-if you would like to handle tap on multiple cells at the same time see [Handle touches]()
+if you would like to handle tap on multiple cells at the same time see [Handle touches](https://github.com/amirdew/CollectionViewPagingLayout#handle-touches)
 
 
 ## License
