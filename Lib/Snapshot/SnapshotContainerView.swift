@@ -15,6 +15,7 @@ public class SnapshotContainerView: UIView {
     public let snapshots: [UIView]
     public let identifier: String
     public let snapshotSize: CGSize
+    public let pieceSizeRatio: CGSize
     
     private let targetView: UIView
     
@@ -23,6 +24,7 @@ public class SnapshotContainerView: UIView {
     
     public init?(targetView: UIView, pieceSizeRatio: CGSize, identifier: String) {
         var snapshots: [UIView] = []
+        self.pieceSizeRatio = pieceSizeRatio
         guard pieceSizeRatio.width > 0, pieceSizeRatio.height > 0 else {
             return nil
         }

@@ -20,12 +20,13 @@ public protocol SnapshotTransformView: TransformableView {
     /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
     
-    /// the function for getting the cached snapshot or make a new one cache it
+    /// the function for getting the cached snapshot or make a new one and cache it
     func getSnapshot() -> SnapshotContainerView?
     
     /// the main function for applying transforms on the snapshot
     func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat)
 }
+
 
 public extension SnapshotTransformView where Self: UICollectionViewCell {
     
@@ -94,7 +95,11 @@ public extension SnapshotTransformView {
     
     private func findSnapshot() -> SnapshotContainerView? {
         let snapshot = targetView.superview?.subviews.first(where: { $0 is SnapshotContainerView }) as? SnapshotContainerView
-        if let snapshot = snapshot, (snapshot.identifier != identifier || snapshot.snapshotSize != targetView.bounds.size) {
+        if let snapshot = snapshot,
+            (snapshot.identifier != identifier ||
+                snapshot.snapshotSize != targetView.bounds.size ||
+                snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio)
+        {
             snapshot.removeFromSuperview()
             return nil
         }
@@ -105,6 +110,7 @@ public extension SnapshotTransformView {
         guard let view = SnapshotContainerView(targetView: targetView, pieceSizeRatio: snapshotOptions.pieceSizeRatio, identifier: identifier) else {
             return nil
         }
+        targetView.superview?.subviews.first(where: { $0 is SnapshotContainerView })?.removeFromSuperview()
         targetView.superview?.insertSubview(view, aboveSubview: targetView)
         targetView.equalSize(to: view)
         targetView.center(to: view)
