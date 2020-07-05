@@ -265,6 +265,7 @@ The way that this layout works is putting all the cells in the collectionview fr
 and then it applies transforms on the target view (StackTransformView.cardView, ScaleTransformView.scalableView etc).        
 so you can use `func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)` but only for one cell at the same time
 you can implement `func zPosition(progress: CGFloat) -> Int` to specify wich cell should be on top
+this also means you can't handle any gesture for the cell that is not on the top!
 
 if you would like to handle tap on multiple cells at the same time see [Handle touches](https://github.com/amirdew/CollectionViewPagingLayout#handle-touches)
 
