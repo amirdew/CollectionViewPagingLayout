@@ -49,7 +49,11 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     }
     
     @IBAction private func saveButtonTouched() {
-        refreshViews()
+        guard let exportURL = viewModel.sampleProjectTempURL else { return }
+        viewModel.generateSampleProject()
+        let controller = UIDocumentPickerViewController(url: exportURL, in: UIDocumentPickerMode.exportToService)
+        controller.delegate = self
+        present(controller, animated: true)
     }
     
     @IBAction private func onHelpButtonTouched() {
@@ -81,7 +85,6 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
         codeModeSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         codeModeSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black.withAlphaComponent(0.6)], for: .selected)
         codeModeSegmentedControl.selectedSegmentIndex = 0
-        
     }
     
     private func configureTextView() {
@@ -96,4 +99,17 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     }
     
     
+}
+
+
+extension LayoutDesignerCodePreviewViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        controller.dismiss(animated: true)
+        viewModel.removeSampleProject()
+    }
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        controller.dismiss(animated: true)
+        viewModel.removeSampleProject()
+    }
 }

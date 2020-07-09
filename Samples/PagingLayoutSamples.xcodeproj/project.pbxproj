@@ -25,6 +25,7 @@
 		29A2D3D324B73A19005A0F6B /* LayoutDesignerIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3D224B73A19005A0F6B /* LayoutDesignerIntroCell.swift */; };
 		29A2D3D524B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3D424B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift */; };
 		29A2D3D724B73CB1005A0F6B /* LayoutDesignerIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3D624B73CB1005A0F6B /* LayoutDesignerIntroCell.xib */; };
+		29A2D3FC24B769D7005A0F6B /* SampleProject in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3FB24B769D7005A0F6B /* SampleProject */; };
 		29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */; };
 		29B5A72224A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */; };
 		29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */; };
@@ -134,6 +135,7 @@
 		29A2D3D224B73A19005A0F6B /* LayoutDesignerIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroCell.swift; sourceTree = "<group>"; };
 		29A2D3D424B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroInfo.swift; sourceTree = "<group>"; };
 		29A2D3D624B73CB1005A0F6B /* LayoutDesignerIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerIntroCell.xib; sourceTree = "<group>"; };
+		29A2D3FB24B769D7005A0F6B /* SampleProject */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SampleProject; sourceTree = "<group>"; };
 		29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+StackOptions.swift"; sourceTree = "<group>"; };
 		29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+SnapshotOptions.swift"; sourceTree = "<group>"; };
 		29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+String.swift"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		AB500A3123B104E20056BE37 /* PagingLayoutSamples */ = {
 			isa = PBXGroup;
 			children = (
+				29A2D3FB24B769D7005A0F6B /* SampleProject */,
 				292489AD2461A57900A316B0 /* Paging Layout.entitlements */,
 				AB1E03AD23B25CD30087F904 /* CustomViews */,
 				AB500A5223B152170056BE37 /* Modules */,
@@ -635,6 +638,7 @@
 				AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */,
 				ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */,
 				29A2D3AA24B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib in Resources */,
+				29A2D3FC24B769D7005A0F6B /* SampleProject in Resources */,
 				ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

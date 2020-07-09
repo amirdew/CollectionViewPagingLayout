@@ -14,6 +14,9 @@ struct LayoutDesignerCodePreviewViewModel {
     // MARK: Properties
     
     let code: String
+    var sampleProjectTempURL: URL? {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SampleProject")
+    }
     
     private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: .sundellsColors(withFont: Font(size: 14))))
     
@@ -24,10 +27,32 @@ struct LayoutDesignerCodePreviewViewModel {
         highlighter.highlight(getCode(includeViewController: includeVC))
     }
     
+    func generateSampleProject() {
+        removeSampleProject()
+        guard let sampleProjectTempURL = sampleProjectTempURL,
+            let sampleProjectURL = Bundle.main.url(forResource: "SampleProject", withExtension: nil) else {
+            return
+        }
+        try? FileManager.default.copyItem(at: sampleProjectURL, to: sampleProjectTempURL)
+        
+        let viewControllerPath = sampleProjectTempURL.appendingPathComponent("PagingLayout").appendingPathComponent("ViewController.swift")
+        try? FileManager.default.removeItem(at: viewControllerPath)
+        
+        let code = getCode(includeViewController: true)
+        try? code.write(to: viewControllerPath, atomically: true, encoding: .utf8)
+    }
+    
+    func removeSampleProject() {
+        guard let sampleProjectTempURL = sampleProjectTempURL else {
+            return
+        }
+        try? FileManager.default.removeItem(at: sampleProjectTempURL)
+    }
+    
     
     // MARK: Private functions
     
-    func getCode(includeViewController: Bool) -> String {
+    private func getCode(includeViewController: Bool) -> String {
         if !includeViewController {
             return code
         }
