@@ -59,7 +59,7 @@
 CollectionViewPagingLayout is a simple but powerful tool for making complex layouts for your UICollectionView.        
 The implementation is very simple there is custom `UICollectionViewLayout` that gives you the ability to apply transforms on the cells.       
 No inheritance or anything like that.      
-See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) part for more details.      
+See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) for more details.      
 
 
 ## Installation
