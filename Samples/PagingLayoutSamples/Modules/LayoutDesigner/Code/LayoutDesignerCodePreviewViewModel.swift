@@ -36,12 +36,18 @@ struct LayoutDesignerCodePreviewViewModel {
         
         return """
         import UIKit
+        
+        // Make sure you added this dependency to your project
+        // More info at https://bit.ly/CVPagingLayout
         import CollectionViewPagingLayout
         
+        // The cell class needs to conform to `\(viewProtocolName)` protocol
+        // to be able to provide the transform options
         class MyCell: UICollectionViewCell, \(viewProtocolName) {
             
             \(code.replacingOccurrences(of: "\n", with: "\n    "))
         
+            // The card view that we apply effects on
             var card: UIView!
             
             override init(frame: CGRect) {
@@ -55,7 +61,7 @@ struct LayoutDesignerCodePreviewViewModel {
             }
             
             func setup() {
-                // preferably use AutoLayout! this is only for simplicity
+                // Adjust the card view frame you can use Autolayout too
                 let cardFrame = CGRect(x: 80,
                                        y: 100,
                                        width: frame.width - 160,
@@ -66,7 +72,8 @@ struct LayoutDesignerCodePreviewViewModel {
             }
         }
         
-
+        // A simple View Controller that filled with a UICollectionView
+        // You can use `UICollectionViewController` too
         class ViewController: UIViewController, UICollectionViewDataSource {
             
             var collectionView: UICollectionView!

@@ -124,7 +124,7 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     }
     
     private func addCodePreviewController() {
-        codePreviewViewController = LayoutDesignerCodePreviewViewController()
+        codePreviewViewController = LayoutDesignerCodePreviewViewController.instantiate()
         addChild(codePreviewViewController)
         codeContainerView.fill(with: codePreviewViewController.view)
         codePreviewViewController.didMove(toParent: self)
