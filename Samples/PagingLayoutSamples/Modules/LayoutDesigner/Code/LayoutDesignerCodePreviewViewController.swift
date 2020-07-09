@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import Splash
 
+protocol LayoutDesignerCodePreviewViewControllerDelegate: AnyObject {
+    func layoutDesignerCodePreviewViewController(_ vc: LayoutDesignerCodePreviewViewController, onHelpButtonTouched button: UIButton)
+}
+
+
 class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewModelBased {
  
     // MARK: Properties
@@ -19,6 +24,8 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
             refreshViews()
         }
     }
+    weak var delegate: LayoutDesignerCodePreviewViewControllerDelegate?
+    
     @IBOutlet private weak var codeTextView: UITextView!
     @IBOutlet private weak var copyButton: UIButton!
     @IBOutlet private weak var saveButton: UIButton!
@@ -46,6 +53,7 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     }
     
     @IBAction private func onHelpButtonTouched() {
+        delegate?.layoutDesignerCodePreviewViewController(self, onHelpButtonTouched: helpButton)
     }
     
     @IBAction private func codeTypeChanged() {
