@@ -23,7 +23,7 @@ extension Array where Element == LayoutDesignerIntroInfo {
               imageName: nil,
               description: """
                           The easiest way to make a beautiful paging layout for your UICollectionView.
-                          You can use it for your iOS, iPadOS and macOS Catalyst app.
+                          You can use it for your iOS, iPadOS, and macOS Catalyst app.
                           """,
               leftButtonTitle: "Skip",
               rightButtonTitle: "Show me how!"),
@@ -53,7 +53,7 @@ extension Array where Element == LayoutDesignerIntroInfo {
                            Now you can see the result on the sample cards (orange cards)
                            You can switch between them to see the animation by clicking on the arrows or on the card itself.
                            If you use a Trackpad you can also switch between them by scrolling to right and left.
-                           Now adjust the options if needed and see changes in real time.
+                           Now adjust the options if needed and see changes in real-time.
                            """,
               leftButtonTitle: "Previous",
               rightButtonTitle: "Next"),
