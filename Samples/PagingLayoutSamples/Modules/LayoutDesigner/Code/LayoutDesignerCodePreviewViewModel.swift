@@ -30,16 +30,32 @@ struct LayoutDesignerCodePreviewViewModel {
     func generateSampleProject() {
         removeSampleProject()
         guard let sampleProjectTempURL = sampleProjectTempURL,
-            let sampleProjectURL = Bundle.main.url(forResource: "SampleProject", withExtension: nil) else {
-            return
+            let bundlePath = Bundle.main.url(forResource: "SampleProject", withExtension: "bundle"),
+            let sampleProjectURL = Bundle(url: bundlePath)?.url(forResource: "SampleProject", withExtension: nil) else {
+                return
         }
         try? FileManager.default.copyItem(at: sampleProjectURL, to: sampleProjectTempURL)
         
-        let viewControllerPath = sampleProjectTempURL.appendingPathComponent("PagingLayout").appendingPathComponent("ViewController.swift")
+        let baseProjectPath = sampleProjectTempURL.appendingPathComponent("PagingLayout")
+        let viewControllerPath = baseProjectPath.appendingPathComponent("ViewController.swift")
         try? FileManager.default.removeItem(at: viewControllerPath)
         
         let code = getCode(includeViewController: true)
         try? code.write(to: viewControllerPath, atomically: true, encoding: .utf8)
+        
+        try? FileManager.default.moveItem(at: sampleProjectTempURL.appendingPathComponent("PagingLayout.xcodeproj_sample"),
+                                          to: sampleProjectTempURL.appendingPathComponent("PagingLayout.xcodeproj"))
+        
+        let projectURL = sampleProjectTempURL.appendingPathComponent("PagingLayout.xcodeproj")
+        
+        try? FileManager.default.moveItem(at: projectURL.appendingPathComponent("project.pbxproj_sample"),
+                                          to: projectURL.appendingPathComponent("project.pbxproj"))
+        
+        try? FileManager.default.moveItem(at: projectURL.appendingPathComponent("project.xcworkspace_sample"),
+                                          to: projectURL.appendingPathComponent("project.xcworkspace"))
+        
+        try? FileManager.default.moveItem(at: baseProjectPath.appendingPathComponent("info_sample.plist"),
+                                          to: baseProjectPath.appendingPathComponent("info.plist"))
     }
     
     func removeSampleProject() {
