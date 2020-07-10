@@ -19,6 +19,12 @@
 		2977657E2474531D00835DBD /* LayoutDesignerOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */; };
 		29776580247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */; };
 		2993722324A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */; };
+		29A2D3AA24B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */; };
+		29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */; };
+		29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3D024B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift */; };
+		29A2D3D324B73A19005A0F6B /* LayoutDesignerIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3D224B73A19005A0F6B /* LayoutDesignerIntroCell.swift */; };
+		29A2D3D524B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3D424B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift */; };
+		29A2D3D724B73CB1005A0F6B /* LayoutDesignerIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3D624B73CB1005A0F6B /* LayoutDesignerIntroCell.xib */; };
 		29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */; };
 		29B5A72224A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */; };
 		29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */; };
@@ -27,6 +33,7 @@
 		29B5A72A24A8D94300C9843E /* Values+Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72924A8D94300C9843E /* Values+Pair.swift */; };
 		29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */; };
 		29BEC4D52476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */; };
+		29CE3D4624B7763C00380DCD /* SampleProject.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29CE3D4524B7763C00380DCD /* SampleProject.bundle */; };
 		29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94223F7F98800656A67 /* ShapesViewController.swift */; };
 		29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F94423F7F99400656A67 /* ShapesViewModel.swift */; };
 		29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29D9F94623F7F9B700656A67 /* ShapesViewController.xib */; };
@@ -122,6 +129,12 @@
 		2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerOptionCell.xib; sourceTree = "<group>"; };
 		2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCellViewModel.swift; sourceTree = "<group>"; };
 		2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+ScaleOptions.swift"; sourceTree = "<group>"; };
+		29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerCodePreviewViewController.xib; sourceTree = "<group>"; };
+		29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroViewController.swift; sourceTree = "<group>"; };
+		29A2D3D024B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroViewModel.swift; sourceTree = "<group>"; };
+		29A2D3D224B73A19005A0F6B /* LayoutDesignerIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroCell.swift; sourceTree = "<group>"; };
+		29A2D3D424B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroInfo.swift; sourceTree = "<group>"; };
+		29A2D3D624B73CB1005A0F6B /* LayoutDesignerIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerIntroCell.xib; sourceTree = "<group>"; };
 		29B5A71F24A7B02900C9843E /* ShapeLayout+StackOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+StackOptions.swift"; sourceTree = "<group>"; };
 		29B5A72124A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+SnapshotOptions.swift"; sourceTree = "<group>"; };
 		29B5A72324A8CC4B00C9843E /* CGFloat+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+String.swift"; sourceTree = "<group>"; };
@@ -130,6 +143,7 @@
 		29B5A72924A8D94300C9843E /* Values+Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Values+Pair.swift"; sourceTree = "<group>"; };
 		29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect.Style+Name.swift"; sourceTree = "<group>"; };
 		29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionsTableView.swift; sourceTree = "<group>"; };
+		29CE3D4524B7763C00380DCD /* SampleProject.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SampleProject.bundle; sourceTree = "<group>"; };
 		29D9F94223F7F98800656A67 /* ShapesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewController.swift; sourceTree = "<group>"; };
 		29D9F94423F7F99400656A67 /* ShapesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesViewModel.swift; sourceTree = "<group>"; };
 		29D9F94623F7F9B700656A67 /* ShapesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShapesViewController.xib; sourceTree = "<group>"; };
@@ -152,7 +166,7 @@
 		AB1BBA9923CA5178004E5C3B /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB1BBA9A23CA5179004E5C3B /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB1E03AE23B25CE70087F904 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
-		AB500A2F23B104E20056BE37 /* Paging Layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paging Layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB500A2F23B104E20056BE37 /* Layout Designer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Layout Designer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB500A3223B104E20056BE37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB500A3B23B104E60056BE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB500A3E23B104E60056BE37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -217,6 +231,7 @@
 		292489AE2461A96600A316B0 /* LayoutDesigner */ = {
 			isa = PBXGroup;
 			children = (
+				29A2D3CB24B73870005A0F6B /* Intro */,
 				29FF296024A631DC00C83DF9 /* Code */,
 				2977657A247452BC00835DBD /* Options */,
 				292489AF2461A97900A316B0 /* LayoutDesignerViewController.swift */,
@@ -244,6 +259,17 @@
 				29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */,
 			);
 			path = Options;
+			sourceTree = "<group>";
+		};
+		29A2D3CB24B73870005A0F6B /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */,
+				29A2D3D024B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift */,
+				29A2D3D224B73A19005A0F6B /* LayoutDesignerIntroCell.swift */,
+				29A2D3D624B73CB1005A0F6B /* LayoutDesignerIntroCell.xib */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		29BEC4D62476DDA7004BA505 /* cell */ = {
@@ -295,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */,
+				29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */,
 				29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */,
 			);
 			path = Code;
@@ -355,7 +382,7 @@
 		AB500A3023B104E20056BE37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB500A2F23B104E20056BE37 /* Paging Layout.app */,
+				AB500A2F23B104E20056BE37 /* Layout Designer.app */,
 				292489B72461F07D00A316B0 /* AppKitGlue.bundle */,
 			);
 			name = Products;
@@ -376,6 +403,7 @@
 				AB500A4023B104E60056BE37 /* Info.plist */,
 				292489CA24620BD600A316B0 /* AppKitBridge.h */,
 				292489CB24620C4D00A316B0 /* PagingLayoutSamples-Bridging-Header.h */,
+				29CE3D4524B7763C00380DCD /* SampleProject.bundle */,
 			);
 			path = PagingLayoutSamples;
 			sourceTree = "<group>";
@@ -399,6 +427,7 @@
 				2925CDDE23D4D21F00243F5F /* Card.swift */,
 				ABA0DA0023F93CA3004A9C18 /* ShapeLayout.swift */,
 				ABA0DA0223F93CDB004A9C18 /* Shape.swift */,
+				29A2D3D424B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -539,7 +568,7 @@
 			);
 			name = PagingLayoutSamples;
 			productName = CollectionViewPagingLayout;
-			productReference = AB500A2F23B104E20056BE37 /* Paging Layout.app */;
+			productReference = AB500A2F23B104E20056BE37 /* Layout Designer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -598,6 +627,7 @@
 				AB500A5F23B154950056BE37 /* FruitsCollectionViewCell.xib in Resources */,
 				AB1BBA9F23CA7BE3004E5C3B /* CardsViewController.xib in Resources */,
 				2977657E2474531D00835DBD /* LayoutDesignerOptionCell.xib in Resources */,
+				29CE3D4624B7763C00380DCD /* SampleProject.bundle in Resources */,
 				29D9F94723F7F9B700656A67 /* ShapesViewController.xib in Resources */,
 				ABC242D023B6861000DBD4D6 /* PhotoCollectionViewCell.xib in Resources */,
 				ABA0DA0A23F98B70004A9C18 /* ShapeCardView.xib in Resources */,
@@ -605,8 +635,10 @@
 				AB500A4C23B13BC90056BE37 /* FruitsViewController.xib in Resources */,
 				AB500A3C23B104E60056BE37 /* Assets.xcassets in Resources */,
 				AB1BBA9D23CA5179004E5C3B /* CardCollectionViewCell.xib in Resources */,
+				29A2D3D724B73CB1005A0F6B /* LayoutDesignerIntroCell.xib in Resources */,
 				AB7C1E0823B4E2C0006441DE /* MainViewController.xib in Resources */,
 				ABA1A72E23B42247006A46A3 /* PriceTagView.xib in Resources */,
+				29A2D3AA24B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib in Resources */,
 				ABA1A73323B422B9006A46A3 /* QuantityControllerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,13 +719,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC242CE23B6860700DBD4D6 /* PhotoCollectionViewCell.swift in Sources */,
+				29A2D3D324B73A19005A0F6B /* LayoutDesignerIntroCell.swift in Sources */,
 				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
 				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
+				29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */,
 				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
 				AB1E03AF23B25CE70087F904 /* PageControlView.swift in Sources */,
 				29B5A72224A7B06300C9843E /* ShapeLayout+SnapshotOptions.swift in Sources */,
+				29A2D3D524B73AB7005A0F6B /* LayoutDesignerIntroInfo.swift in Sources */,
 				29776580247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift in Sources */,
 				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
@@ -729,6 +764,7 @@
 				29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
 				29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */,
+				29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
 				29BEC4D52476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift in Sources */,
@@ -939,14 +975,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
 				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.paginglayout;
-				PRODUCT_NAME = "Paging Layout";
+				PRODUCT_NAME = "Layout Designer";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "PagingLayoutSamples/PagingLayoutSamples-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -962,14 +1000,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
 				INFOPLIST_FILE = PagingLayoutSamples/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.amir.paginglayout;
-				PRODUCT_NAME = "Paging Layout";
+				PRODUCT_NAME = "Layout Designer";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "PagingLayoutSamples/PagingLayoutSamples-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

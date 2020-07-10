@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB500A2E23B104E20056BE37"
-               BuildableName = "Paging Layout.app"
+               BuildableName = "Layout Designer.app"
                BlueprintName = "PagingLayoutSamples"
                ReferencedContainer = "container:PagingLayoutSamples.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB500A2E23B104E20056BE37"
-            BuildableName = "Paging Layout.app"
+            BuildableName = "Layout Designer.app"
             BlueprintName = "PagingLayoutSamples"
             ReferencedContainer = "container:PagingLayoutSamples.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB500A2E23B104E20056BE37"
-            BuildableName = "Paging Layout.app"
+            BuildableName = "Layout Designer.app"
             BlueprintName = "PagingLayoutSamples"
             ReferencedContainer = "container:PagingLayoutSamples.xcodeproj">
          </BuildableReference>

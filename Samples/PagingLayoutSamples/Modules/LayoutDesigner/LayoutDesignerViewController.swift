@@ -41,6 +41,13 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         registerKeyboardNotifications()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.shouldShowIntro {
+            showIntroViewController(viewModel: viewModel.getIntroViewModel())
+        }
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -124,7 +131,8 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     }
     
     private func addCodePreviewController() {
-        codePreviewViewController = LayoutDesignerCodePreviewViewController()
+        codePreviewViewController = LayoutDesignerCodePreviewViewController.instantiate()
+        codePreviewViewController.delegate = self
         addChild(codePreviewViewController)
         codeContainerView.fill(with: codePreviewViewController.view)
         codePreviewViewController.didMove(toParent: self)
@@ -135,6 +143,14 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
     
     private func setOptionsList() {
         optionsTableView.optionViewModels = viewModel.optionViewModels
+    }
+    
+    private func showIntroViewController(viewModel: LayoutDesignerIntroViewModel) {
+        let vc = LayoutDesignerIntroViewController()
+        vc.viewModel = viewModel
+        addChild(vc)
+        view.fill(with: vc.view)
+        vc.didMove(toParent: self)
     }
     
     private func registerKeyboardNotifications() {
@@ -165,5 +181,12 @@ extension LayoutDesignerViewController: ShapesViewControllerDelegate {
     func shapesViewController(_ vc: ShapesViewController, onSelectedLayoutChange layout: ShapeLayout) {
         viewModel.selectedLayout = layout
         setOptionsList()
+    }
+}
+
+
+extension LayoutDesignerViewController: LayoutDesignerCodePreviewViewControllerDelegate {
+    func layoutDesignerCodePreviewViewController(_ vc: LayoutDesignerCodePreviewViewController, onHelpButtonTouched button: UIButton) {
+        showIntroViewController(viewModel: viewModel.getIntroViewModel(showWelcome: false))
     }
 }

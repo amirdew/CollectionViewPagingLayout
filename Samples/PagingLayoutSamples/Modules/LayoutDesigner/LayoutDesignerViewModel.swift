@@ -24,11 +24,27 @@ class LayoutDesignerViewModel {
     var shapesViewModel: ShapesViewModel {
         ShapesViewModel(layouts: layouts, showBackButton: false, showPageControl: true)
     }
+    var shouldShowIntro: Bool {
+        if let introShown = UserDefaults.standard.value(forKey: "IntroShown") as? Bool, introShown {
+            return false
+        }
+        UserDefaults.standard.setValue(true, forKey: "IntroShown")
+        return true
+    }
+    
+    
     private(set) var optionViewModels: [LayoutDesignerOptionSectionViewModel] = []
     private let codeGenerator = OptionsCodeGenerator()
     
     
     // MARK: Public functions
+    
+    func getIntroViewModel(showWelcome: Bool = true) -> LayoutDesignerIntroViewModel {
+        LayoutDesignerIntroViewModel(introPages: showWelcome ? .all : .allExceptWelcome)
+    }
+    
+    
+    // MARK: Private functions
     
     private func updateCodePreview<T>(options: T) {
         onCodePreviewViewModelChange?(.init(code: codeGenerator.generateCode(options: options)))

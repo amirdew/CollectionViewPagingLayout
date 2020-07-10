@@ -37,6 +37,7 @@ opt_in_rules:
 excluded:
   - Package.swift
   - Pods
+  - PagingLayoutSamples/SampleProject
 
 # adjusting rules
 

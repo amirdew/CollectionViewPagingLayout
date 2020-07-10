@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PWv-zl-S3o" customClass="LayoutDesignerIntroCell" customModule="Layout_Designer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uNJ-Er-rNd">
+                <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifd-1I-x40">
+                        <rect key="frame" x="0.0" y="0.0" width="626" height="474"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-Yw-wMK">
+                                <rect key="frame" x="210" y="366" width="206" height="58"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmP-Dl-MvY">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="58"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onLeftButtonTouched" destination="PWv-zl-S3o" eventType="touchUpInside" id="Ocj-uv-gkV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bx3-nz-cG0">
+                                        <rect key="frame" x="58" y="0.0" width="148" height="58"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56862745098039214" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="nt6-xF-Jvc"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="udD-nn-EsE"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Show me how!"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onRightButtonTouched" destination="PWv-zl-S3o" eventType="touchUpInside" id="zhz-Qt-acL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="NUb-AH-M3S">
+                                <rect key="frame" x="50" y="16" width="526" height="283.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bm8-bB-sSr">
+                                        <rect key="frame" x="201.5" y="0.0" width="123" height="136"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Layout Designer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSt-mb-bLh">
+                                        <rect key="frame" x="114.5" y="163" width="297" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RGZ-0w-YuO">
+                                        <rect key="frame" x="143" y="205.5" width="240" height="0.0"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVE-iI-lP9">
+                                        <rect key="frame" x="22" y="219" width="482" height="64.5"/>
+                                        <string key="text">The easiest way to make a beautiful paging layout for your UICollectionView.
+You can use it for your iOS, iPadOS and macOS Catalyst app.</string>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NUb-AH-M3S" secondAttribute="trailing" constant="50" id="2kV-zm-6SM"/>
+                            <constraint firstItem="4pM-Yw-wMK" firstAttribute="centerX" secondItem="ifd-1I-x40" secondAttribute="centerX" id="4iQ-l7-8Im"/>
+                            <constraint firstItem="NUb-AH-M3S" firstAttribute="leading" secondItem="ifd-1I-x40" secondAttribute="leading" constant="50" id="BXB-Bi-Vyc"/>
+                            <constraint firstItem="NUb-AH-M3S" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ifd-1I-x40" secondAttribute="top" constant="16" id="CYG-et-iWM"/>
+                            <constraint firstItem="NUb-AH-M3S" firstAttribute="centerY" secondItem="ifd-1I-x40" secondAttribute="centerY" priority="700" constant="-80" id="KjX-mu-XQB"/>
+                            <constraint firstAttribute="bottom" secondItem="4pM-Yw-wMK" secondAttribute="bottom" constant="50" id="yxT-zn-Hdo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ifd-1I-x40" firstAttribute="leading" secondItem="uNJ-Er-rNd" secondAttribute="leading" id="F2P-iH-mVP"/>
+                    <constraint firstAttribute="trailing" secondItem="ifd-1I-x40" secondAttribute="trailing" id="Ldg-0x-Ccw"/>
+                    <constraint firstItem="ifd-1I-x40" firstAttribute="top" secondItem="uNJ-Er-rNd" secondAttribute="top" id="Yk3-WD-iwE"/>
+                    <constraint firstAttribute="bottom" secondItem="ifd-1I-x40" secondAttribute="bottom" id="evR-tQ-EbN"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="626" height="474"/>
+            <connections>
+                <outlet property="containerView" destination="ifd-1I-x40" id="U2J-gg-avl"/>
+                <outlet property="descriptionLabel" destination="GVE-iI-lP9" id="SbE-Uh-zpk"/>
+                <outlet property="headerImageView" destination="Bm8-bB-sSr" id="vGE-x1-IAV"/>
+                <outlet property="imageView" destination="RGZ-0w-YuO" id="2Ky-2A-5YK"/>
+                <outlet property="leftButton" destination="EmP-Dl-MvY" id="TV1-3y-MrN"/>
+                <outlet property="rightButton" destination="Bx3-nz-cG0" id="AG0-JS-JSs"/>
+                <outlet property="stackView" destination="NUb-AH-M3S" id="AN3-kY-NxZ"/>
+                <outlet property="titleLabel" destination="hSt-mb-bLh" id="j5e-Oo-4B8"/>
+            </connections>
+            <point key="canvasLocation" x="334.78260869565219" y="35.491071428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Logo" width="123" height="136"/>
+    </resources>
+</document>
