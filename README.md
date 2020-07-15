@@ -269,6 +269,7 @@ this also means you can't handle any gesture for the cell that is not on the top
 
 if you would like to handle tap on multiple cells at the same time see [Handle touches](https://github.com/amirdew/CollectionViewPagingLayout#handle-touches)
 
+- It doesn't support RTL layouts
 
 ## License
 
