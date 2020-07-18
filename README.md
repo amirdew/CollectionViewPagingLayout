@@ -7,7 +7,8 @@
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 ## Layout Designer
-<img width="600" src="https://amir.app/git/layout_designer_preview.gif"></img>
+<img width="600" src="https://amir.app/git/layout_designer_preview.gif"></img>            
+<a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>    
 
 
 ### SnapshotTransformView
@@ -109,8 +110,7 @@ Just add all the files under `Lib` directory to your project
       
 There is a macOS app to make it even easier for you to build your own custom layout.      
 It allows you to tweak many options and see the result in real time.      
-<a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>    
-- You can download the app from App Store and support this repository or build it yourself from the source.
+- You can (download)[https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12] the app from App Store and support this repository or build it yourself from the source.
 - Open the app, tweak options and design your layout.
 - Copy the code from the right panel and paste it on Xcode or click on "save it as project" and open it with Xcode.
 - Don't forget to [install](https://github.com/amirdew/CollectionViewPagingLayout#installation) the libray.
