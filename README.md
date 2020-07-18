@@ -46,7 +46,7 @@
 <img width="100" src="https://amir.app/git/shapes_preview/stack_vortex.gif"></img>
 </p>
 
-## Custom implementation
+## Custom implementations
 
 <p float="left">
 <img width="100" src="https://amir.app/git/flowlayout_preview.gif"></img>
@@ -57,7 +57,7 @@
 
 ## About
 CollectionViewPagingLayout is a simple but powerful tool for making complex layouts for your UICollectionView.        
-The implementation is very simple there is custom `UICollectionViewLayout` that gives you the ability to apply transforms on the cells.       
+The implementation is very simple, there is a custom `UICollectionViewLayout` that gives you the ability to apply transforms on the cells.       
 No inheritance or anything like that.      
 See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) for more details.      
 
@@ -107,12 +107,13 @@ Just add all the files under `Lib` directory to your project
 
 ### Using Layout Designer
 
+<a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>        
 There is a macOS app to make it even easier for you to build your own custom layout.      
 It allows you to tweak many options and see the result in real time.      
-- Clone the repository then build and run the mac app.
-- Tweak options and design your layout.
-- Copy the code from the right panel and paste it on Xcode, make sure to choose "ViewController" if you need the full implementation.
-- Don't forget to [install](https://github.com/amirdew/CollectionViewPagingLayout#installation) the libray
+- You can download the app from App Store and support this repository or build it yourself from the source.
+- Open the app, tweak options and design your layout.
+- Copy the code from the right panel and paste it on Xcode or click on "save it as project" and open it with Xcode.
+- Don't forget to [install](https://github.com/amirdew/CollectionViewPagingLayout#installation) the libray.
 
 
 ### Manually
