@@ -157,9 +157,11 @@ extension FruitsCollectionViewCell: QuantityControllerViewDelegate {
     // this is an example, in an ideal world we want to save the new quantity properly
     
     func onDecreaseButtonTouched(view: QuantityControllerView) {
-        viewModel?.quantity = max(0, (viewModel?.quantity ?? 0) - 1)
+        let current = viewModel?.quantity ?? 0
+        viewModel?.quantity = max(0, current - 1)
     }
     func onIncreaseButtonTouched(view: QuantityControllerView) {
-        viewModel?.quantity = (viewModel?.quantity ?? 0) + 1
+        let current = viewModel?.quantity ?? 0
+        viewModel?.quantity = current + 1
     }
 }
