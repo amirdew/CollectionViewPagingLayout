@@ -156,19 +156,15 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func invalidateLayoutTypeCollectionViewLayout() {
-        DispatchQueue.main.async { [weak self] in
-            self?.layoutTypeCollectionView?.performBatchUpdates({ [weak self] in
-                self?.layoutTypeCollectionView?.collectionViewLayout.invalidateLayout()
-            })
-        }
+        layoutTypeCollectionView?.performBatchUpdates({ [weak self] in
+            self?.layoutTypeCollectionView?.collectionViewLayout.invalidateLayout()
+        })
     }
     
     private func invalidateCollectionViewLayout() {
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.performBatchUpdates({ [weak self] in
-                self?.collectionView?.collectionViewLayout.invalidateLayout()
-            })
-        }
+        collectionView?.performBatchUpdates({ [weak self] in
+            self?.collectionView?.collectionViewLayout.invalidateLayout()
+        })
     }
     
     private func getPagingLayout(_ collectionView: UICollectionView) -> CollectionViewPagingLayout? {
