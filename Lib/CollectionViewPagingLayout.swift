@@ -222,9 +222,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         
         // this is necessary when we want to set the current page without animation
         if !animated, page != currentPage, let collectionView = collectionView {
-            collectionView.performBatchUpdates({
-                collectionView.collectionViewLayout.invalidateLayout()
-            })
+            DispatchQueue.main.async {
+                collectionView.performBatchUpdates({
+                    collectionView.collectionViewLayout.invalidateLayout()
+                })
+            }
         }
     }
     

@@ -36,9 +36,11 @@ class LayoutDesignerIntroViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView?.performBatchUpdates({ [weak self] in
-            self?.collectionView.collectionViewLayout.invalidateLayout()
-        })
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView?.performBatchUpdates({ [weak self] in
+                self?.collectionView?.collectionViewLayout.invalidateLayout()
+            })
+        }
     }
     
     

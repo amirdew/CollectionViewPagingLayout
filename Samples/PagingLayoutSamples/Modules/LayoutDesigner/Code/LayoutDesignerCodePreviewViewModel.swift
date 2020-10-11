@@ -137,9 +137,11 @@ struct LayoutDesignerCodePreviewViewModel {
             
             override func viewDidLayoutSubviews() {
                 super.viewDidLayoutSubviews()
-                collectionView?.performBatchUpdates({
-                    self.collectionView.collectionViewLayout.invalidateLayout()
-                })
+                DispatchQueue.main.async { [weak self] in
+                    self?.collectionView?.performBatchUpdates({ [weak self] in
+                        self?.collectionView?.collectionViewLayout.invalidateLayout()
+                    })
+                }
             }
             
             func collectionView(
