@@ -11,7 +11,7 @@ import Cocoa
 class MacApp: NSObject, AppKitBridge {
     
     func initialise() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if NSApplication.shared.mainWindow != nil {
                 self.onMainWindowReady()
             }
@@ -27,7 +27,9 @@ class MacApp: NSObject, AppKitBridge {
         guard let window = NSApplication.shared.mainWindow else {
             return
         }
-        window.minSize = NSSize(width: 1_200, height: 768)
+        if window.minSize.width < 1200 || window.minSize.height < 768 {
+            window.minSize = NSSize(width: 1_200, height: 768)
+        }
         window.setFrame(.init(origin: window.frame.origin, size: window.minSize), display: true, animate: true)
     }
     
