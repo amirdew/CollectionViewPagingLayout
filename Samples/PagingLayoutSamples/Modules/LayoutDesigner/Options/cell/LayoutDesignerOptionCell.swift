@@ -58,15 +58,18 @@ class LayoutDesignerOptionCell: UITableViewCell, NibBased {
         nilLabel.textColor = UIColor.white.withAlphaComponent(0.7)
         [singleSlider, doubleSlider1, doubleSlider2].forEach {
             $0?.tintColor = .white
-            $0?.thumbTintColor = .white
-            $0?.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.3)
-            $0?.minimumTrackTintColor = .white
+            if UIDevice.current.userInterfaceIdiom != .mac {
+                $0?.thumbTintColor = .white
+                $0?.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.3)
+                $0?.minimumTrackTintColor = .white
+            }
             $0?.addTarget(self, action: #selector(onSliderChange(slider:)), for: .valueChanged)
         }
         [singleSliderInput, doubleSliderInput1, doubleSliderInput2].forEach {
             $0?.backgroundColor = .white
             $0?.textAlignment = .center
             $0?.layer.cornerRadius = 8
+            $0?.layer.masksToBounds = true
             $0?.addTarget(self, action: #selector(onInputChange(input:)), for: .editingChanged)
             $0?.keyboardType = .decimalPad
         }

@@ -18,7 +18,7 @@ struct LayoutDesignerCodePreviewViewModel {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SampleProject")
     }
     
-    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: .sundellsColors(withFont: Font(size: 14))))
+    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: .sundellsColors(withFont: Font(size: 12))))
     
     
     // MARK: Public functions
@@ -88,7 +88,7 @@ struct LayoutDesignerCodePreviewViewModel {
             
             \(code.replacingOccurrences(of: "\n", with: "\n    "))
         
-            // The card view that we apply effects on
+            // The card view that we apply transforms on
             var card: UIView!
             
             override init(frame: CGRect) {
