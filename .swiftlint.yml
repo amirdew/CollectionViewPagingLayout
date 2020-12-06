@@ -38,6 +38,8 @@ excluded:
   - Package.swift
   - Pods
   - PagingLayoutSamples/SampleProject.bundle/SampleProject
+  - Samples/Pods
+  - Samples/PagingLayoutSamples/SampleProject.bundle/SampleProject
 
 # adjusting rules
 

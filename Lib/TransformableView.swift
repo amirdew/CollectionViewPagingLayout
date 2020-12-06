@@ -50,4 +50,3 @@ public extension TransformableView where Self: UICollectionViewCell {
         contentView.subviews.first
     }
 }
-

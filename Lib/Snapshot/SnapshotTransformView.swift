@@ -98,8 +98,7 @@ public extension SnapshotTransformView {
         if let snapshot = snapshot,
             (snapshot.identifier != identifier ||
                 snapshot.snapshotSize != targetView.bounds.size ||
-                snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio)
-        {
+                snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio) {
             snapshot.removeFromSuperview()
             return nil
         }

@@ -70,7 +70,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private var currentPageCache: Int?
-    private var attributesCache: [(page: Int, attributes:UICollectionViewLayoutAttributes)]?
+    private var attributesCache: [(page: Int, attributes: UICollectionViewLayoutAttributes)]?
     private var scrollToSelectedCell: Bool = false
     
     
@@ -123,7 +123,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         let startIndex = max(0, initialStartIndex - endIndexOutOfBounds)
         let endIndex = min(numberOfItems, initialEndIndex + startIndexOutOfBounds)
         
-        var attributesArray: [(page: Int, attributes:UICollectionViewLayoutAttributes)] = []
+        var attributesArray: [(page: Int, attributes: UICollectionViewLayoutAttributes)] = []
         var section = 0
         var numberOfItemsInSection = collectionView?.numberOfItems(inSection: section) ?? 0
         var numberOfItemsInPrevSections = 0
@@ -243,7 +243,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             }
             let rect = selectableView.superview?.convert(selectableView.frame, to: collectionView) ?? .zero
             return (cell: cell, rect: rect, attributes: attributesAndPage.attributes, page: attributesAndPage.page)
-            } ?? []
+        } ?? []
         
         items.sort { $0.attributes.zIndex > $1.attributes.zIndex }
         

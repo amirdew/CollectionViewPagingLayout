@@ -48,10 +48,6 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         }
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     
     // MARK: Event listeners
     
