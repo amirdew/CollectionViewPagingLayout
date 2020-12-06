@@ -16,7 +16,7 @@ protocol LayoutDesignerCodePreviewViewControllerDelegate: AnyObject {
 
 
 class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewModelBased {
- 
+    
     // MARK: Properties
     
     var viewModel: LayoutDesignerCodePreviewViewModel! {
@@ -51,7 +51,7 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     @IBAction private func saveButtonTouched() {
         guard let exportURL = viewModel.sampleProjectTempURL else { return }
         viewModel.generateSampleProject()
-        let controller = UIDocumentPickerViewController(url: exportURL, in: UIDocumentPickerMode.exportToService)
+        let controller = UIDocumentPickerViewController(forExporting: [exportURL])
         controller.delegate = self
         present(controller, animated: true)
     }
@@ -82,8 +82,12 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     private func configureCodeTypeSegmentedControl() {
         codeModeSegmentedControl.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         codeModeSegmentedControl.selectedSegmentTintColor = UIColor.white.withAlphaComponent(0.4)
-        codeModeSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-        codeModeSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black.withAlphaComponent(0.6)], for: .selected)
+        codeModeSegmentedControl.setTitleTextAttributes(
+            [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 12)],
+            for: .normal)
+        codeModeSegmentedControl.setTitleTextAttributes(
+            [.foregroundColor: UIColor.black.withAlphaComponent(0.6), .font: UIFont.systemFont(ofSize: 12)],
+            for: .selected)
         codeModeSegmentedControl.selectedSegmentIndex = 0
     }
     
@@ -96,6 +100,8 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
         codeTextView.attributedText = viewModel?.getHighlightedText(
             addViewControllerInCode: codeModeSegmentedControl.selectedSegmentIndex == 0
         )
+        codeTextView.contentInset = .init(top: 40 + view.safeAreaInsets.top, left: 0, bottom: 200 + view.safeAreaInsets.bottom, right: 0)
+        codeTextView.contentOffset = .init(x: 0, y: -codeTextView.contentInset.top)
     }
     
     
@@ -107,7 +113,7 @@ extension LayoutDesignerCodePreviewViewController: UIDocumentPickerDelegate {
         controller.dismiss(animated: true)
         viewModel.removeSampleProject()
     }
-
+    
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         controller.dismiss(animated: true)
         viewModel.removeSampleProject()

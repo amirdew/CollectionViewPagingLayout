@@ -24,10 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        let mainVC = UIDevice.current.userInterfaceIdiom == .pad ?
+        let mainVC = UIDevice.current.userInterfaceIdiom != .phone ?
             LayoutDesignerViewController.instantiate(viewModel: LayoutDesignerViewModel()) :
             MainViewController.instantiate()
         
+        #if targetEnvironment(macCatalyst)
+        if let titlebar = window?.windowScene?.titlebar {
+            titlebar.titleVisibility = .hidden
+            titlebar.toolbar = nil
+        }
+        #endif
         navigationController.setViewControllers([mainVC], animated: false)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()

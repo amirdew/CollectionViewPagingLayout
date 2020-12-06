@@ -36,7 +36,7 @@ class LayoutDesignerOptionsTableView: UITableView {
         backgroundColor = .clear
         separatorStyle = .none
         allowsSelection = false
-        sectionHeaderHeight = 60
+        sectionHeaderHeight = 30
     }
     
 }
@@ -66,9 +66,9 @@ extension LayoutDesignerOptionsTableView: UITableViewDelegate {
         let label = UILabel()
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 33, weight: .medium)
+        label.font = .systemFont(ofSize: 22, weight: .medium)
         label.text = optionViewModels[section].title
-        header.fill(with: label, edges: .init(top: 10, left: 24, bottom: -10, right: -24))
+        header.fill(with: label, edges: .init(top: 5, left: 24, bottom: -3, right: -24))
         header.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.2705882353, blue: 0.8431372549, alpha: 1)
         return header
     }
