@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CollectionViewPagingLayout"
-  s.version          = "0.4.0"
+  s.version          = "0.4.1"
   s.summary          = "Simple layout for making paging effects with UICollectionView."
  
   s.description      = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author           = { "Amir Khorsandi" => "khorsandi@me.com" }
   s.source           = { :git => "https://github.com/amirdew/CollectionViewPagingLayout.git", :tag => "#{s.version}" } 
 
-  s.swift_versions = ["5.3"]
+  s.swift_versions = ["5.4"]
   s.ios.deployment_target = "9.0"
 
   s.source_files = "Lib/**/*.swift"
