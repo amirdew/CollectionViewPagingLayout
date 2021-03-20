@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class MainViewController: UIViewController, NibBased {
     
@@ -21,8 +22,12 @@ class MainViewController: UIViewController, NibBased {
     // MARK: Event listeners
     
     @IBAction private func stackButtonTouched() {
+//        navigationController?.pushViewController(
+//            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)),
+//            animated: true
+//        )
         navigationController?.pushViewController(
-            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)),
+            UIHostingController(rootView: MyCardsView()),
             animated: true
         )
     }
