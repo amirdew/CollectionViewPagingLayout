@@ -25,16 +25,25 @@ struct MyCardsView: View {
         PagingCollectionView(cards,
                              id: \.imageName,
                              selection: $selectedCardImageName) { card in
-            Image(card.imageName)
+            ZStack {
+                Image(card.imageName)
+                Text(card.imageName)
+            }
+            .cornerRadius(17)
         }
         .onChange(of: selectedCardImageName) {
-            print($0)
+            print($0 ?? "")
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                selectedCardImageName = "card07"
+            }
         }
     }
 }
 
-// LazyTransformPageView() { object, transform in  }
-// LazyScalePageView(options: ScaleOptions) { object in  }
+// TransformPageView() { object, transform in  }
+// ScalePageView(options: ScaleOptions) { object in  }
 
 enum PagingViewTag {
     static let targetView = "PagingViewTargetViewTag"
@@ -53,7 +62,8 @@ struct PagingCollectionView<ValueType, ID: Hashable, PageContent: View>: UIViewC
         id: KeyPath<ValueType, ID>,
         selection: Binding<ID?>? = nil,
         changePageOnSelect: Bool = false,
-        @ViewBuilder pageContent: @escaping (ValueType) -> PageContent) {
+        @ViewBuilder pageContent: @escaping (ValueType) -> PageContent
+    ) {
         self.data = data
         self.pageViewBuilder = pageContent
         self.selection = selection
@@ -79,15 +89,17 @@ struct PagingCollectionView<ValueType, ID: Hashable, PageContent: View>: UIViewC
     }
 }
 
-class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>: UIViewController, UICollectionViewDataSource, CollectionViewPagingLayoutDelegate {
+class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>: UIViewController,
+    UICollectionViewDataSource,
+    CollectionViewPagingLayoutDelegate,
+    UICollectionViewDelegate,
+    UIScrollViewDelegate {
 
     var pageViewBuilder: ((ValueType) -> PageContent)!
     var onCurrentPageChanged: ((Int) -> Void)?
     private var collectionView: UICollectionView!
     private var list: [ValueType] = []
     private let layout = CollectionViewPagingLayout()
-    private var currentPage: Int?
-    private var syncCurrentPage: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,31 +117,25 @@ class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>
         collectionView.dataSource = self
         view.addSubview(collectionView)
         layout.configureTapOnCollectionView(goToSelectedPage: true)
+        collectionView.delegate = self
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.performBatchUpdates({ [weak self] in
-                self?.collectionView?.collectionViewLayout.invalidateLayout()
-            })
-        }
+        layout.invalidateLayoutWithPerformBatchUpdates()
     }
 
     func update(list: [ValueType], currentIndex: Int?) {
         self.list = list
-        let index = currentIndex ?? currentPage ?? 0
+        let index = currentIndex ?? layout.currentPage
         if index < list.count {
-            guard index != currentPage else { return }
-            syncCurrentPage = index
+            guard index != layout.currentPage else { return }
             view.isUserInteractionEnabled = false
-        	layout.setCurrentPage(index)
-        } else {
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView?.performBatchUpdates({ [weak self] in
-                    self?.collectionView?.collectionViewLayout.invalidateLayout()
-                })
+            layout.setCurrentPage(index) { [weak view] in
+                view?.isUserInteractionEnabled = true
             }
+        } else {
+            layout.invalidateLayoutWithPerformBatchUpdates()
         }
     }
 
@@ -144,85 +150,11 @@ class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>
     }
 
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {
-        self.currentPage = currentPage
-        if syncCurrentPage != nil {
-            if currentPage == syncCurrentPage {
-                syncCurrentPage = nil
-                view.isUserInteractionEnabled = true
-            }
-            return
-        }
         onCurrentPageChanged?(currentPage)
     }
 
     func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath) {
         onCurrentPageChanged(layout: layout, currentPage: indexPath.row)
     }
-}
 
-
-class PagingCollectionViewCell<Content: View>: UICollectionViewCell, ScaleTransformView {
-
-    var scaleOptions = ScaleTransformViewOptions(
-        minScale: 1.20,
-        maxScale: 1.20,
-        scaleRatio: 0.00,
-        translationRatio: .zero,
-        minTranslationRatio: .zero,
-        maxTranslationRatio: .zero,
-        keepVerticalSpacingEqual: true,
-        keepHorizontalSpacingEqual: true,
-        scaleCurve: .linear,
-        translationCurve: .linear,
-        shadowEnabled: false,
-        shadowColor: .black,
-        shadowOpacity: 0.60,
-        shadowRadiusMin: 2.00,
-        shadowRadiusMax: 13.00,
-        shadowOffsetMin: .init(width: 0.00, height: 2.00),
-        shadowOffsetMax: .init(width: 0.00, height: 6.00),
-        shadowOpacityMin: 0.10,
-        shadowOpacityMax: 0.10,
-        blurEffectEnabled: false,
-        blurEffectRadiusRatio: 0.40,
-        blurEffectStyle: .light,
-        rotation3d: .init(
-            angle: 1.05,
-            minAngle: -3.14,
-            maxAngle: 3.14,
-            x: 0.00,
-            y: -1.00,
-            z: 0.00,
-            m34: -0.002_000
-        ),
-        translation3d: .init(
-            translateRatios: (0.10, 0.00, 0.00),
-            minTranslateRatios: (-0.05, 0.00, 0.86),
-            maxTranslateRatios: (0.05, 0.00, -0.86)
-        )
-    )
-
-    private weak var hostingController: UIHostingController<Content>?
-
-    func update(_ view: Content, parent: UIViewController) {
-        if let controller = hostingController {
-            controller.rootView = view
-            controller.view.layoutIfNeeded()
-        } else {
-            let viewController = UIHostingController(rootView: view)
-            hostingController = viewController
-            viewController.view.backgroundColor = .clear
-
-            parent.addChild(viewController)
-            contentView.addSubview(viewController.view)
-            viewController.view.translatesAutoresizingMaskIntoConstraints = false
-            contentView.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-            contentView.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
-            contentView.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-            contentView.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
-
-            viewController.didMove(toParent: parent)
-            viewController.view.layoutIfNeeded()
-        }
-    }
 }

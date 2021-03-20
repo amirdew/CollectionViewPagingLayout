@@ -76,21 +76,29 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Public functions
     
-    public func setCurrentPage(_ page: Int, animated: Bool = true) {
-        safelySetCurrentPage(page, animated: animated)
+    public func setCurrentPage(_ page: Int, animated: Bool = true, completion: (() -> Void)? = nil) {
+        safelySetCurrentPage(page, animated: animated, completion: completion)
     }
     
-    public func goToNextPage(animated: Bool = true) {
-        setCurrentPage(currentPage + 1, animated: animated)
+    public func goToNextPage(animated: Bool = true, completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage + 1, animated: animated, completion: completion)
     }
     
-    public func goToPreviousPage(animated: Bool = true) {
-        setCurrentPage(currentPage - 1, animated: animated)
+    public func goToPreviousPage(animated: Bool = true, completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage - 1, animated: animated, completion: completion)
     }
     
     public func configureTapOnCollectionView(goToSelectedPage: Bool = false) {
         self.scrollToSelectedCell = goToSelectedPage
         addTapGestureToCollectionView()
+    }
+
+    public func invalidateLayoutWithPerformBatchUpdates() {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView?.performBatchUpdates({ [weak self] in
+                self?.invalidateLayout()
+            })
+        }
     }
     
     
@@ -205,7 +213,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
     }
     
-    private func safelySetCurrentPage(_ page: Int, animated: Bool) {
+    private func safelySetCurrentPage(_ page: Int, animated: Bool, completion: (() -> Void)? = nil) {
         let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
         let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
         let maxPossibleOffset = contentSize - pageSize
@@ -216,6 +224,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
             self?.invalidateLayout()
+            completion?()
         }
         collectionView?.setContentOffset(contentOffset, animated: animated)
         CATransaction.commit()
