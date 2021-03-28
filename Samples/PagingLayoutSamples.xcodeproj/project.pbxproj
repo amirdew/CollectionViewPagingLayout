@@ -13,7 +13,6 @@
 		292489C32461FD6A00A316B0 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C22461FD6A00A316B0 /* MacApp.swift */; };
 		292489C52461FE2700A316B0 /* Catalyst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292489C42461FE2700A316B0 /* Catalyst.swift */; };
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
-		29409CCD2605EDFD00FE6EAF /* PagingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29409CCC2605EDFD00FE6EAF /* PagingCollectionViewCell.swift */; };
 		2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */; };
 		294BA3C324A77A73008D0569 /* LayoutDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */; };
 		2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */; };
@@ -125,7 +124,6 @@
 		292489CA24620BD600A316B0 /* AppKitBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKitBridge.h; sourceTree = "<group>"; };
 		292489CB24620C4D00A316B0 /* PagingLayoutSamples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagingLayoutSamples-Bridging-Header.h"; sourceTree = "<group>"; };
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		29409CCC2605EDFD00FE6EAF /* PagingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewCell.swift; sourceTree = "<group>"; };
 		2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utilities.swift"; sourceTree = "<group>"; };
 		294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerViewModel.swift; sourceTree = "<group>"; };
 		2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCell.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				29834F2A25C5977300896343 /* MyCardsView.swift */,
-				29409CCC2605EDFD00FE6EAF /* PagingCollectionViewCell.swift */,
 			);
 			path = SwiftUIMyCards;
 			sourceTree = "<group>";
@@ -778,7 +775,6 @@
 				29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */,
 				29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
-				29409CCD2605EDFD00FE6EAF /* PagingCollectionViewCell.swift in Sources */,
 				29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */,
 				29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,

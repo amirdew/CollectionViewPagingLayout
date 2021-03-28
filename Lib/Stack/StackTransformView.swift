@@ -18,7 +18,7 @@ public protocol StackTransformView: TransformableView {
     var cardView: UIView { get }
     
     /// The view to apply blur effect on
-    var blurViewHost: UIView { get }
+    var stackBlurViewHost: UIView { get }
     
     /// the main function for applying transforms
     func applyStackTransform(progress: CGFloat)
@@ -28,7 +28,7 @@ public protocol StackTransformView: TransformableView {
 public extension StackTransformView {
     
     /// The default value is the super view of `cardView`
-    var blurViewHost: UIView {
+    var stackBlurViewHost: UIView {
         cardView.superview ?? cardView
     }
     
@@ -191,15 +191,15 @@ public extension StackTransformView {
     @available(iOS 10.0, *)
     private func applyBlurEffect(progress: CGFloat) {
         guard stackOptions.maxBlurEffectRadius > 0, stackOptions.blurEffectEnabled else {
-            blurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
+            stackBlurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
             return
         }
         let blurView: BlurEffectView
-        if let view = blurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
+        if let view = stackBlurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
             blurView = view
         } else {
             blurView = BlurEffectView()
-            blurViewHost.fill(with: blurView)
+            stackBlurViewHost.fill(with: blurView)
         }
         let radius = max(progress, 0).interpolate(in: .init(0, CGFloat(stackOptions.maxStackSize)))
         blurView.setBlurRadius(effect: UIBlurEffect(style: stackOptions.blurEffectStyle), radius: radius * stackOptions.maxBlurEffectRadius)

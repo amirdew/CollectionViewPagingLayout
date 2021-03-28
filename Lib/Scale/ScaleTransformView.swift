@@ -18,7 +18,7 @@ public protocol ScaleTransformView: TransformableView {
     var scalableView: UIView { get }
     
     /// The view to apply blur effect on
-    var blurViewHost: UIView { get }
+    var scaleBlurViewHost: UIView { get }
     
     /// the main function for applying transforms
     func applyScaleTransform(progress: CGFloat)
@@ -28,7 +28,7 @@ public protocol ScaleTransformView: TransformableView {
 public extension ScaleTransformView {
     
     /// The default value is the super view of `scalableView`
-    var blurViewHost: UIView {
+    var scaleBlurViewHost: UIView {
         scalableView.superview ?? scalableView
     }
 }
@@ -159,15 +159,15 @@ public extension ScaleTransformView {
     @available(iOS 10.0, *)
     private func applyBlurEffect(progress: CGFloat) {
         guard scaleOptions.blurEffectRadiusRatio > 0, scaleOptions.blurEffectEnabled else {
-            blurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
+            scaleBlurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
             return
         }
         let blurView: BlurEffectView
-        if let view = blurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
+        if let view = scaleBlurViewHost.subviews.first(where: { $0 is BlurEffectView }) as? BlurEffectView {
             blurView = view
         } else {
             blurView = BlurEffectView(effect: UIBlurEffect(style: scaleOptions.blurEffectStyle))
-            blurViewHost.fill(with: blurView)
+            scaleBlurViewHost.fill(with: blurView)
         }
         blurView.setBlurRadius(radius: abs(progress) * scaleOptions.blurEffectRadiusRatio)
         blurView.transform = CGAffineTransform.identity.translatedBy(x: scalableView.transform.tx, y: scalableView.transform.ty)
