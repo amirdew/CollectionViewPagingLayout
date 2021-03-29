@@ -57,14 +57,14 @@
 
 
 ## About
-CollectionViewPagingLayout is a simple but powerful class that lets you make complex layouts for your UICollectionView.        
-The implementation is quite simple. A custom `UICollectionViewLayout` gives you the ability to apply transforms to the cells.       
+This is a simple but powerful framework that lets you make complex layouts for your `UICollectionView`.        
+The implementation is quite simple. Just a custom `UICollectionViewLayout` that gives you the ability to apply transforms to the cells.       
 No UICollectionView inheritance or anything like that.         
-See [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use) for more details.      
+For more details, see [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use)       
 
 
 ## Installation
-CollectionViewPagingLayout doesn't contain any external dependencies.
+This framework doesn't contain any external dependencies.
 
 #### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 
