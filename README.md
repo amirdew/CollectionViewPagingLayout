@@ -108,19 +108,20 @@ Just add all the files under `Lib` directory to your project
 
 ### Using Layout Designer
       
-There is a macOS app to make it even easier for you to build your custom layout.      
-It allows you to tweak many options and see the result in real-time.      
-It also generates the code for you. So, you can copy it to your project.
-- You can [purchase](https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=1) the app from App Store and support this repository or, build it yourself from the source. Yes, the macOS app is open-source too!.
+There is a macOS app to make it even easier for you to build your custom layout.            
+It allows you to tweak many options and see the result in real-time.        
+It also generates the code for you. So, you can copy it to your project.       
+
+You can [purchase](https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=1) the app from App Store and support this repository,
+or you can build it yourself from the source.  
+Yes, the macOS app is open-source too!. 
 
 
-### Manually
-
-- Make sure you imported the library
+- First, make sure you imported the framework
 ```swift
 import CollectionViewPagingLayout
 ```
-- Set up your `UICollectionView` as you always do (you need to use a custom class for cells)
+- Set up your `UICollectionView` as you always do (you need a custom class for cells)
 - Set the layout for your collection view:
 (in most cases you want a paging effect so enable that too)
 ```swift
@@ -129,18 +130,20 @@ collectionView.collectionViewLayout = layout
 collectionView.isPagingEnabled = true // enabling paging effect
 ```
 
-- Now you just need to conform your `UICollectionViewCell` class to `TransformableView` and start implementing your custom transforms. By conforming your cell class to `TransformableView` protocol you will get a `progress` value and you can use it to apply any changes on your cell view.  
+*Note:* Go to [Prepared Transformable Protocols](#prepared-transformable-protocols) if you want to use prepared effects! to make a custom effect contiune.   
 
-
-*Note:* you can use [Prepared Transformable Protocols](#prepared-transformable-protocols) instead of `TransformableView` if you want to use prepared effects!        
-
+- Now, you just need to conform your cell class to `TransformableView` and start implementing your custom transforms. 
+for instance:
 ```swift
-extension MyCollectionViewCell: TransformableView {
-    func transform(progress: CGFloat) {
-      ...
-    }
+class YourCell: UICollectionViewCell { /*...*/ }
+extension YourCell: TransformableView {
+  func transform(progress: CGFloat) {
+    // apply changes on any view of your cell
+  }
 }
 ```
+As you see above, you get a `progress` value. Use that to apply any changes you want.  
+
 > `progress` is a float value that represents the current position of your cell in the collection view.   
 > When it's `0` that means the current position of the cell is exactly in the center of your collection view.   
 > the value could be negative or positive and that represents the distance to the center of your collection view.   
@@ -149,7 +152,7 @@ extension MyCollectionViewCell: TransformableView {
 
 you can start with a simple transform like this:
 ```swift
-extension MyCollectionViewCell: TransformableView {
+extension YourCell: TransformableView {
     func transform(progress: CGFloat) {
         let transform = CGAffineTransform(translationX: bounds.width/2 * progress, y: 0)
         let alpha = 1 - abs(progress)
@@ -160,7 +163,7 @@ extension MyCollectionViewCell: TransformableView {
 }
 ```
 
-- Don't forget to set `numberOfVisibleItems`, by default it's null and that means it will load all of the cells at a time  
+- Don't forget to set `numberOfVisibleItems`, by default it's null and that means all of the cells will be loaded in the memory.  
 ```swift
 layout.numberOfVisibleItems = ...
 ```
