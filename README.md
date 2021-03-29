@@ -172,14 +172,17 @@ layout.numberOfVisibleItems = ...
 
 ## Prepared Transformable Protocols
 
-There are prepared transformables to make it easier to use this library,    
-using them is very simple, you just need to conform your `UICollectionViewCell` to the prepared protocol        
-and then set the options for that to customize it as you want.       
-there are three types of transformables protocol at the moment `ScaleTransformView`, `SnapshotTransformView`, and `StackTransformView`.      
-as you can see in the samples app these protocols are highly customizable and you can make tons of different effects with them.        
-here is a simple example for `ScaleTransformView` which gives you a simple paging with scaling effect:
+There are some prepared transformable protocols to make it easier to use this framework.             
+Using them is simple. You only need to conform your `UICollectionViewCell` to the protocol.     
+You can use the options property to tweak it as you want.         
+There are three types:
+- `ScaleTransformView` (orange previews) 
+- `SnapshotTransformView` (green previews)
+- `StackTransformView` (blue previews)     
+These protocols are highly customizable, you can make tons of different effects using them.        
+Here is a simple example for `ScaleTransformView` which gives you a simple paging with scaling effect:
 ```swift
-extension MyCollectionViewCell: ScaleTransformView {
+extension YourCell: ScaleTransformView {
     var scaleOptions = ScaleTransformViewOptions(
         minScale: 0.6,
         scaleRatio: 0.4,
@@ -188,19 +191,23 @@ extension MyCollectionViewCell: ScaleTransformView {
     )
 }
 ```
-there is an options struct for each transformable where you can customize the effect, check the struct to find out what each parameter does.          
-a short comment on the top of each parameter explains how you can use it.      
+There is an "options" property for each of these protocols where you can customize the effect, check the struct to find out what each parameter does.          
+A short comment on the top of each parameter explains what that does.      
 `ScaleTransformView` -> [`ScaleTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Scale/ScaleTransformViewOptions.swift)     
 `SnapshotTransformView` -> [`SnapshotTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Snapshot/SnapshotTransformViewOptions.swift)     
 `StackTransformView` -> [`StackTransformViewOptions`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Stack/StackTransformViewOptions.swift)     
      
-you can see some examples in the samples app for these transformables.      
-check [here](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/PagingLayoutSamples/Modules/Shapes/ShapeCell) to see used options for each: `/PagingLayoutSamples/Modules/Shapes/ShapeCell/`
+See the examples in the samples app.      
+Check [here](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/PagingLayoutSamples/Modules/Shapes/ShapeCell) to see used options for each: `/PagingLayoutSamples/Modules/Shapes/ShapeCell/`
 
 #### Target view
-You may wonder how does it figure out the view for applying transforms on, if you check each transformable protocol you can see the target views are defined for each, you can also see there is an extension to provide the default target views.    
-for instance we have `ScaleTransformView.scalableView` which is the view that we apply scale transforms on, and for `UICollectionViewCell` the default view is the first subview of `contentView`:
+You may wonder how does it find out the subview in your cell to apply transforms on.      
+If you check the transformable protocols, you find the target view for each. like `ScaleTransformView.scalbleView`.      
 
+
+
+
+The default value is the first subview of "contentView":
 ```swift
 public extension ScaleTransformView where Self: UICollectionViewCell {
     
@@ -211,12 +218,13 @@ public extension ScaleTransformView where Self: UICollectionViewCell {
     }
 }
 ```
-of course you can easily override this
+If that's not what you want, you can implement it.
 
 
 ## Customize Prepared Transformables
 
-Yes, you can customize them or even combine them, to do that like before conform your cell class to the transformable protocol(s) and then implement `TransformableView.transform` function and call the transformable function manually, like this:     
+Yes, you can customize them or even combine them.       
+To do that, implement `TransformableView.transform` function and call the transformable function manually, like this:     
 ```swift
 extension LayoutTypeCollectionViewCell: ScaleTransformView {
     
@@ -229,8 +237,8 @@ extension LayoutTypeCollectionViewCell: ScaleTransformView {
 
 }
 ```
-as you can see `applyScaleTransform` applies the scale transforms and right after that we change the alpha for `titleLabel` and `subtitleLabel`.        
-to find the public function(s) for each tansformable check the protocol definition.      
+As you see, `applyScaleTransform` applies the scale transforms and right after that we change the alpha for `titleLabel` and `subtitleLabel`.        
+To find the public function(s) of each protocol check the definition of that.      
 
 ## Other features
 
@@ -241,8 +249,9 @@ You can control the current page by the following functions of `CollectionViewPa
 - `func goToNextPage(animated: Bool = true)`
 - `func goToPreviousPage(animated: Bool = true)`       
 
-these are safe wrappers for setting `ContentOffset` of `UICollectionview`        
-you can also get current page by a public variable `CollectionViewPagingLayout.currentPage` or listen to changes by using `CollectionViewPagingLayout.delegate`:      
+These are safe wrappers around setting the `ContentOffset` of `UICollectionview`.        
+You can get the current page by a public variable `CollectionViewPagingLayout.currentPage`.    
+Listen to the changes via `CollectionViewPagingLayout.delegate`:      
 ```swift
 public protocol CollectionViewPagingLayoutDelegate: class {
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
