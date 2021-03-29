@@ -108,12 +108,10 @@ Just add all the files under `Lib` directory to your project
 
 ### Using Layout Designer
       
-There is a macOS app to make it even easier for you to build your own custom layout.      
-It allows you to tweak many options and see the result in real time.      
-- You can [download](https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=1) the app from App Store and support this repository or build it yourself from the source.
-- Open the app, tweak options and design your layout.
-- Copy the code from the right panel and paste it on Xcode or click on "save it as project" and open it with Xcode.
-- Don't forget to [install](https://github.com/amirdew/CollectionViewPagingLayout#installation) the libray.
+There is a macOS app to make it even easier for you to build your custom layout.      
+It allows you to tweak many options and see the result in real-time.      
+It also generates the code for you. So, you can copy it to your project.
+- You can [purchase](https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=1) the app from App Store and support this repository or, build it yourself from the source. Yes, the macOS app is open-source too!.
 
 
 ### Manually
