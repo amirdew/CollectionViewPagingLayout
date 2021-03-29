@@ -257,14 +257,24 @@ But, you can use this instead:
 
 
 ## Limitations
--  Specify the number of visible cells:
-You need to specify the number of visible cells since this layout gives you the flexibility to show the next and previous cells.   
-By default, the layout loads all of the cells in the collection view frame and that means it keeps all of them in memory.
-You can specify the number of cells that you need to show at a time by considering your design.
+-  Specify the number of visible cells:    
+
+You need to specify the number of visible cells.       
+Since this layout gives you the flexibility to show the next and previous cells,        
+By default, it loads all of the cells in the collectionview's frame, which means iOS keeps all of them in the memory.      
+Based on your design, you can specify the number of cells that you need to show.     
 
 - didSelectItemAt:
-The way that this library works is by putting all of the cells in the collectionview's frame and applying transforms on the target-view (`StackTransformView.cardView`, `ScaleTransformView.scalableView` and `SnapshotTransformView.targetView`).        So, you can use `func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)` but if you have multiple cells on screen only one of them is selectable! (because the others are below it).          You can implement `func zPosition(progress: CGFloat) -> Int` to specify which cell should be on the top.                           
-This also means you can't handle any gesture for multiple cells.        But, there is a built-in solution to this, see [Select Item At](https://github.com/amirdew/CollectionViewPagingLayout#select-item-at)
+
+The way that this library works is by putting all of the cells in the collectionview's frame and applying transforms on the target-view           
+(`StackTransformView.cardView`, `ScaleTransformView.scalableView` and `SnapshotTransformView.targetView`).     
+
+So, you can use `func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)` but if you have multiple cells on screen only one of them is selectable! (because the others are below it).          
+
+You can implement `func zPosition(progress: CGFloat) -> Int` to specify which cell should be on the top.    
+
+This also means you can't handle any gesture for multiple cells.        
+But, there is a built-in solution to this, see [Select Item At](https://github.com/amirdew/CollectionViewPagingLayout#select-item-at)
 
 - It doesn't support RTL layouts
 
