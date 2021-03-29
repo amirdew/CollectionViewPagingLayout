@@ -117,6 +117,8 @@ or you can build it yourself from the source.
 Yes, the macOS app is open-source too!. 
 
 
+### Manually
+
 - First, make sure you imported the framework
 ```swift
 import CollectionViewPagingLayout
