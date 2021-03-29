@@ -248,11 +248,11 @@ public protocol CollectionViewPagingLayoutDelegate: class {
 
 ### Select Item At
 
-As explained in Limitations part you can't use collectionview's `didSelectItemAt` for more than one cell.    
+As explained in the Limitations, you can't use collectionview's didSelectItemAt for more than one cell.       
 But, you can use this instead:      
-- Implement `TransformableView.selectableView` and pass the view that you would like to be selectable (by default it's the first subview of `UICollectionViewCell.contentView`)
-- Call `CollectionViewPagingLayout.configureTapOnCollectionView()` AFTER setting the layout for you collection view
-- That's it, you can get a similar functionality by using `CollectionViewPagingLayout.delegate` instead of `CollectionView.delegate`
+- Implement `TransformableView.selectableView` and pass the view that you want to be selectable (by default it's the first subview of `UICollectionViewCell.contentView`)
+- Call `layout.configureTapOnCollectionView()` AFTER setting the layout for you collection view.
+- That's it. Now you get similar functionality by using `CollectionViewPagingLayout.delegate` instead of `CollectionView.delegate`
 - The method is `func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath)`
 
 
