@@ -18,7 +18,7 @@
 		2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */; };
 		2977657E2474531D00835DBD /* LayoutDesignerOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */; };
 		29776580247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */; };
-		29834F2B25C5977300896343 /* MyCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29834F2A25C5977300896343 /* MyCardsView.swift */; };
+		29834F2B25C5977300896343 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29834F2A25C5977300896343 /* DevicesView.swift */; };
 		2993722324A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */; };
 		29A2D3AA24B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */; };
 		29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */; };
@@ -129,7 +129,7 @@
 		2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCell.swift; sourceTree = "<group>"; };
 		2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerOptionCell.xib; sourceTree = "<group>"; };
 		2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCellViewModel.swift; sourceTree = "<group>"; };
-		29834F2A25C5977300896343 /* MyCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardsView.swift; sourceTree = "<group>"; };
+		29834F2A25C5977300896343 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+ScaleOptions.swift"; sourceTree = "<group>"; };
 		29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerCodePreviewViewController.xib; sourceTree = "<group>"; };
 		29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroViewController.swift; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 		29834F2925C5976300896343 /* SwiftUIMyCards */ = {
 			isa = PBXGroup;
 			children = (
-				29834F2A25C5977300896343 /* MyCardsView.swift */,
+				29834F2A25C5977300896343 /* DevicesView.swift */,
 			);
 			path = SwiftUIMyCards;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
 				29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */,
-				29834F2B25C5977300896343 /* MyCardsView.swift in Sources */,
+				29834F2B25C5977300896343 /* DevicesView.swift in Sources */,
 				29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,

@@ -40,3 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
+// add observer for bounds
+// delegate for invalidating or not
+// enable paging
+// vertical horizontal

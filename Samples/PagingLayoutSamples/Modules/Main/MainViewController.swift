@@ -27,7 +27,7 @@ class MainViewController: UIViewController, NibBased {
 //            animated: true
 //        )
         navigationController?.pushViewController(
-            UIHostingController(rootView: MyCardsView()),
+            UIHostingController(rootView: DevicesView()),
             animated: true
         )
     }
