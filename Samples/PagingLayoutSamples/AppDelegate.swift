@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainVC = UIDevice.current.userInterfaceIdiom != .phone ?
             LayoutDesignerViewController.instantiate(viewModel: LayoutDesignerViewModel()) :
             MainViewController.instantiate()
-        
+
         #if targetEnvironment(macCatalyst)
         if let titlebar = window?.windowScene?.titlebar {
             titlebar.titleVisibility = .hidden
@@ -35,13 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
         navigationController.setViewControllers([mainVC], animated: false)
-        window!.rootViewController = navigationController
+        window!.rootViewController = UIHostingController(rootView: DevicesView().ignoresSafeArea())
         window!.makeKeyAndVisible()
         return true
     }
 }
 
+// animation duration
 // add observer for bounds
+// use responder to fix handling touches
 // delegate for invalidating or not
 // enable paging
 // vertical horizontal
