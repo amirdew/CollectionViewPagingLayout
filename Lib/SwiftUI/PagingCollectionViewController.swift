@@ -10,8 +10,7 @@ import UIKit
 import SwiftUI
 
 @available(iOS 13.0, *)
-public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>:
-    UIViewController,
+public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>: UIViewController,
     UICollectionViewDataSource,
     CollectionViewPagingLayoutDelegate,
     UICollectionViewDelegate,
@@ -94,6 +93,17 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         layout.configureTapOnCollectionView(goToSelectedPage: true)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
         collectionView.delegate = self
+        collectionView[keyPath: \.showsHorizontalScrollIndicator] = false
+        modifierData?.collectionViewProperties?.forEach { property in
+            if let keyPath: WritableKeyPath<UICollectionView, Bool> = property.getKey(),
+               let value: Bool = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+            if let keyPath: WritableKeyPath<UICollectionView, UIView> = property.getKey(),
+               let value: UIView = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+        }
     }
 
 

@@ -15,8 +15,28 @@ struct PagingCollectionViewModifierData {
     var snapshotOptions: SnapshotTransformViewOptions?
     var numberOfVisibleItems: Int?
     var zPositionProvider: ((CGFloat) -> Int)?
+    var collectionViewProperties: [CollectionViewPropertyProtocol]?
 }
 
+@available(iOS 13.0, *)
+protocol CollectionViewPropertyProtocol {
+    func getKey<T>() -> WritableKeyPath<UICollectionView, T>?
+    func getValue<T>() -> T?
+}
+
+@available(iOS 13.0, *)
+struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
+    let keyPath: WritableKeyPath<UICollectionView, T>
+    let value: T
+
+    func getKey<T>() -> WritableKeyPath<UICollectionView, T>? {
+        return keyPath as? WritableKeyPath<UICollectionView, T>
+    }
+
+    func getValue<T>() -> T? {
+        value as? T
+    }
+}
 
 @available(iOS 13.0, *)
 public class PagingCollectionViewControllerBuilder<ValueType, ID: Hashable, PageContent: View> {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol CollectionViewPagingLayoutDelegate: class {
+public protocol CollectionViewPagingLayoutDelegate: AnyObject {
     
     /// Calls when the current page changes
     ///
@@ -34,17 +34,27 @@ public extension CollectionViewPagingLayoutDelegate {
 public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Properties
-    
+
+    /// Number of visible items at the same time
+    ///
+    /// nil = no limit
     public var numberOfVisibleItems: Int?
-    
+
+    /// Constants that indicate the direction of scrolling for the layout.
     public var scrollDirection: UICollectionView.ScrollDirection = .horizontal
+
+    /// See `ZPositionHandler` for details
+    public var zPositionHandler: ZPositionHandler = .both
     
     public weak var delegate: CollectionViewPagingLayoutDelegate?
     
     override public var collectionViewContentSize: CGSize {
         getContentSize()
     }
-    
+
+    /// Current page index
+    ///
+    /// Use `setCurrentPage` to change it
     public private(set) var currentPage: Int = 0 {
         didSet {
             delegate?.onCurrentPageChanged(layout: self, currentPage: currentPage)
@@ -161,8 +171,15 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             } else {
                 cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0), size: visibleRect.size)
             }
-            
-            cellAttributes.zIndex = zIndex
+
+            // In some cases attribute.zIndex doesn't work so this is the work-around
+            if let cell = cell, [ZPositionHandler.both, .cellLayer].contains(zPositionHandler) {
+                cell.layer.zPosition = CGFloat(zIndex)
+            }
+
+            if [ZPositionHandler.both, .layoutAttribute].contains(zPositionHandler) {
+                cellAttributes.zIndex = zIndex
+            }
             attributesArray.append((page: Int(pageIndex), attributes: cellAttributes))
         }
         attributesCache = attributesArray

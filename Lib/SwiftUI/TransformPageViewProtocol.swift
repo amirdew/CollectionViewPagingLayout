@@ -32,6 +32,12 @@ public extension TransformPageViewProtocol {
         self.builder.modifierData.zPositionProvider = zPosition
         return self
     }
+
+    func collectionView<T>(_ key: WritableKeyPath<UICollectionView, T>, _ value: T) -> Self {
+        let property = CollectionViewProperty(keyPath: key, value: value)
+        self.builder.modifierData.collectionViewProperties?.append(property)
+        return self
+    }
 }
 
 
