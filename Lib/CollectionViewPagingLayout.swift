@@ -261,7 +261,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         } else {
             CATransaction.begin()
             CATransaction.setCompletionBlock { [weak self] in
-                self?.invalidateLayout()
+                self?.invalidateLayoutWithPerformBatchUpdates()
                 completion?()
             }
             collectionView?.setContentOffset(contentOffset, animated: animated)
@@ -277,16 +277,17 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     private func setContentOffset(with animator: ViewAnimator, offset: CGPoint, completion: (() -> Void)? = nil) {
         guard let start = collectionView?.contentOffset else { return }
         let x = offset.x - start.x
-        let y = offset.x - start.x
+        let y = offset.y - start.y
         let originalIsUserInteractionEnabled = collectionView?.isUserInteractionEnabled ?? true
         collectionView?.isUserInteractionEnabled = false
-        animator.animate { [weak self] (progress) in
+        animator.animate { [weak self] progress, finished in
             guard let collectionView = self?.collectionView else { return }
-            collectionView.contentOffset = CGPoint(x: start.x + x * CGFloat(progress), y: start.y + y * CGFloat(progress))
-            if progress == 1.0 {
+            collectionView.contentOffset = CGPoint(x: start.x + x * CGFloat(progress),
+                                                   y: start.y + y * CGFloat(progress))
+            if finished {
                 self?.collectionView?.isUserInteractionEnabled = originalIsUserInteractionEnabled
                 self?.collectionView?.delegate?.scrollViewDidEndScrollingAnimation?(collectionView)
-                self?.invalidateLayout()
+                self?.invalidateLayoutWithPerformBatchUpdates()
                 completion?()
             }
         }

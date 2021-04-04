@@ -34,6 +34,14 @@ struct DevicesView: View {
             ZStack {
                 roundedRectangle(color: device.color, progress: progress)
                 deviceView(device: device, progress: progress)
+                HStack {
+                    Image(systemName: "chevron.right")
+                }
+                .foregroundColor(.white)
+                .font(.system(size: 30))
+                .transformEffect(.init(translationX: -300 * (progress - 1), y: 0))
+                .padding(.top, 400)
+                .opacity(1 - Double(abs(progress - 1)))
             }
         }
         .animator(DefaultViewAnimator(0.9, curve: .parametric))
@@ -53,10 +61,7 @@ struct DevicesView: View {
         }
         .frame(maxHeight: .infinity)
         .foregroundColor(.white)
-        .transformEffect(
-            .init(translationX: 375 * progress, y: 0)
-        )
-        .blur(radius: abs(progress) * 20)
+        .transformEffect(.init(translationX: 400 * progress, y: 0))
     }
 
     private func roundedRectangle(color: Color, progress: CGFloat) -> some View {

@@ -9,7 +9,11 @@ import QuartzCore
 
 /// Simple protocol to define an animator
 public protocol ViewAnimator {
-    func animate(animations: @escaping (Double) -> Void)
+    /// Animate
+    /// - Parameter animations: Closure to animate
+    /// - parameter progress: the animation progress, between 0.0 - 1.0
+    /// - parameter finished: animation finished state, set to true at the end
+    func animate(animations: @escaping (_ progress: Double, _ finished: Bool) -> Void)
 }
 
 /// Default implementation for `ViewAnimator`
@@ -20,26 +24,29 @@ public class DefaultViewAnimator: ViewAnimator {
 
     private var displayLink: CADisplayLink?
     private var start: CFTimeInterval!
-    private var animationsClosure: ((Double) -> Void)?
+    private var animationsClosure: ((Double, Bool) -> Void)?
 
     public init(_ duration: TimeInterval, curve: Curve) {
         self.duration = duration
         self.curve = curve
     }
 
-    public func animate(animations: @escaping (Double) -> Void) {
+    public func animate(animations: @escaping (Double, Bool) -> Void) {
+        if !Thread.isMainThread {
+            fatalError("only from main thread")
+        }
         #if targetEnvironment(simulator)
         let duration = Double(animationDragCoefficient()) * duration
         #endif
         guard duration > 0 else {
-            animations(1.0)
+            animations(1.0, true)
             return
         }
         invalidateDisplayLink()
         start = CACurrentMediaTime()
         animationsClosure = animations
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
-        displayLink.add(to: .main, forMode: .common)
+        displayLink.add(to: .current, forMode: .common)
         self.displayLink = displayLink
     }
 
@@ -48,10 +55,11 @@ public class DefaultViewAnimator: ViewAnimator {
         let delta = CACurrentMediaTime() - start
         let progress = curve.fromLinear(progress: delta / duration)
 
-        if progress == 1.0 {
+        animationsClosure?(progress, false)
+        if delta / duration > 1 {
+            animationsClosure?(progress, true)
             invalidateDisplayLink()
         }
-        animationsClosure?(progress)
     }
 
     private func invalidateDisplayLink() {
@@ -73,8 +81,11 @@ public extension DefaultViewAnimator {
             case .parametric:
                 result = ((p * p) / (2.0 * ((p * p) - p) + 1.0))
             case .easeInOut:
-                if p < 0.5 { return 2 * p * p }
-                result = (-2 * p * p) + (4 * p) - 1
+                if p < 0.5 {
+                    result = 2 * p * p
+                } else {
+                    result = (-2 * p * p) + (4 * p) - 1
+                }
             case .easeIn:
                 result = -p * (p - 2)
             case .easeOut:
