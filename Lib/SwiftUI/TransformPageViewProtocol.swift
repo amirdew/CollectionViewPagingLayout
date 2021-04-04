@@ -33,6 +33,16 @@ public extension TransformPageViewProtocol {
         return self
     }
 
+    func animator(_ animator: ViewAnimator) -> Self {
+        self.builder.modifierData.animator = animator
+        return self
+    }
+
+    func scrollToSelectedPage(_ goToSelectedPage: Bool) -> Self {
+        self.builder.modifierData.goToSelectedPage = goToSelectedPage
+        return self
+    }
+
     func collectionView<T>(_ key: WritableKeyPath<UICollectionView, T>, _ value: T) -> Self {
         let property = CollectionViewProperty(keyPath: key, value: value)
         self.builder.modifierData.collectionViewProperties?.append(property)

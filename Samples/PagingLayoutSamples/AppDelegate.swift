@@ -48,3 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // delegate for invalidating or not
 // enable paging
 // vertical horizontal
+// delegate for snapshot to rerender stuff

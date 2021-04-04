@@ -90,8 +90,9 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         collectionView.registerClass(PagingCollectionViewCell<ValueType, ID, PageContent>.self)
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        layout.configureTapOnCollectionView(goToSelectedPage: true)
+        layout.configureTapOnCollectionView(goToSelectedPage: modifierData?.goToSelectedPage ?? true)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
+        layout.defaultAnimator = modifierData?.animator
         collectionView.delegate = self
         collectionView[keyPath: \.showsHorizontalScrollIndicator] = false
         modifierData?.collectionViewProperties?.forEach { property in

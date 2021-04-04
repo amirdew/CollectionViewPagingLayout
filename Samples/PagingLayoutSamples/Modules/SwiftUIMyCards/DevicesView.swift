@@ -27,130 +27,82 @@ struct DevicesView: View {
     ]
 
     private let scaleFactor: CGFloat = 130
+    private let circleSize: CGFloat = 80
 
     var body: some View {
         TransformPageView(devices, id: \.name) { device, progress in
             ZStack {
                 roundedRectangle(color: device.color, progress: progress)
-                VStack {
-                    Image(systemName: device.iconName)
-                        .font(.system(size: 160))
-                    Text(device.name)
-                        .font(.system(size: 40))
-                        .padding(.top, 10)
-                    Spacer()
-                        .frame(maxHeight: 200)
-                }
-                .frame(maxHeight: .infinity)
-                .foregroundColor(.white)
-                .transformEffect(
-                    .init(translationX: 375 * progress, y: 0)
-                )
-                .blur(radius: abs(progress) * 20)
+                deviceView(device: device, progress: progress)
             }
         }
+        .animator(DefaultViewAnimator(0.9, curve: .parametric))
+        .zPosition(zPosition)
         .collectionView(\.showsHorizontalScrollIndicator, false)
-        .zPosition { progress -> Int in
-//            if progress > -1.5 && progress < -1 {
-//                return 3
-//            }
-//
-//            if progress >= 2 || progress < -1 {
-//                return -10
-//            }
-//            if progress <= 1, progress >= 0 {
-//                if progress < 0.5 {
-//                    return 1
-//                }
-//                return 4
-//            }
-//
-//            return 2
-
-            if progress < -1 { return 3 }
-            if progress < 0 { return 2 }
-            if progress < 0.5 { return 1 }
-            if progress <= 1 { return 4 }
-            if progress < 2 { return 2 }
-            return -1
-            //          -1   0  0.5  1   2
-            //        3    2   1   4   2   -1
-        }
     }
 
-    func roundedRectangle(color: Color, progress: CGFloat) -> some View {
+    private func deviceView(device: Device, progress: CGFloat) -> some View {
+        VStack {
+            Image(systemName: device.iconName)
+                .font(.system(size: 160))
+            Text(device.name)
+                .font(.system(size: 40))
+                .padding(.top, 10)
+            Spacer()
+                .frame(maxHeight: 200)
+        }
+        .frame(maxHeight: .infinity)
+        .foregroundColor(.white)
+        .transformEffect(
+            .init(translationX: 375 * progress, y: 0)
+        )
+        .blur(radius: abs(progress) * 20)
+    }
+
+    private func roundedRectangle(color: Color, progress: CGFloat) -> some View {
         let scale = getScale(progress)
-        return RoundedRectangle(cornerRadius: 80 * ((0.2 * scaleFactor) / scale))
+        return RoundedRectangle(cornerRadius: circleSize * ((0.2 * scaleFactor) / scale))
             .fill()
-            .frame(width: 80, height: 80)
-            .scaleEffect(scale, anchor: getAnchor(progress))
-            .transformEffect(
-                .init(
-                    translationX: getTranslateX(progress: progress),
-                    y: 0
-                )
-            )
+            .frame(width: circleSize, height: circleSize)
+            .scaleEffect(scale, anchor: scaleAnchor(progress))
+            .transformEffect(.init(translationX: translationX(progress), y: 0))
             .padding(.top, 400)
             .foregroundColor(color)
-            .opacity(getOpacity(progress))
+            .opacity((1.25 - max(1, abs(Double(progress)))) / 0.25)
     }
 
-    func getOpacity(_ progress: CGFloat) -> Double {
-//        if progress < -0.99 {
-//            let p = 1 + max(progress, -1)
-//            return Double(p) / 0.01
-//        }
-        if 1 <= progress, progress <= 1.5 {
-            if progress < 1.25 {
-                return Double((1.25 - progress) / 0.25)
-            }
-            return 0
-        }
+    private func translationX(_ progress: CGFloat) -> CGFloat {
+        guard progress >= 1 || progress < -0.5 else { return 0 }
+        return -2 * (progress + (progress > 0 ? -1 : 1)) * circleSize
+    }
+
+    private func zPosition(_ progress: CGFloat) -> Int {
+        if progress < -1 { return 3 }
+        if progress < 0 { return 2 }
+        if progress < 0.5 { return 1 }
+        if progress <= 1 { return 4 }
+        if progress < 1.5 { return 2 }
+        return -1
+    }
+
+    private func getScale(_ progress: CGFloat) -> CGFloat {
+        var scale: CGFloat = progress > 1 ? progress - 1 : 1 - progress
         if progress <= -1 {
-            let progress = max(progress, -1.25)
-            return Double((1.25 + progress) / 0.25)
-        }
-        return 1
-    }
-
-    func getTranslateX(progress: CGFloat) -> CGFloat {
-        if -1 < progress, progress < -0.5 {
-            return (1 + progress) * 2 * -80
-        } else if 1 <= progress, progress < 1.5 {
-            return (1 + progress - 2) * 2 * -80
-        }
-        return 0
-    }
-
-    func getScale(_ progress: CGFloat) -> CGFloat {
-        if -1 <= progress, progress < -0.5 {
-            return (1 + max(0, 1 + progress) * scaleFactor)
-        } else if 1 <= progress, progress < 1.5 {
-            return (1 + max(0, 1 + progress - 2) * scaleFactor)
+            scale = -progress - 1
+        } else if progress < -0.5 {
+            scale = progress + 1
         } else if progress <= 0.5 {
-            if progress <= -1 {
-                return 1 + (min(1.5, -progress) - 1) * scaleFactor
-            }
-            return scaleFactor
-        } else if 0.5 < progress, progress < 1 {
-            return (1 + max(0, 1 - progress) * scaleFactor)
+            scale = scaleFactor
         }
-        return 1
+        return 1 + scale * scaleFactor
     }
 
-    func getAnchor(_ progress: CGFloat) -> UnitPoint {
-        if progress <= -0.5 {
-            if progress <= -1 {
-                return .leading
-            }
-            return .trailing
-        } else if progress < 0.5 {
-            return .center
-        } else if 1 <= progress, progress < 1.5 {
-            return .trailing
-        } else {
-            return .leading
-        }
+    private func scaleAnchor(_ progress: CGFloat) -> UnitPoint {
+        if progress <= -1 { return .leading }
+        if progress <= -0.5 { return .trailing }
+        if progress < 0.5 { return .center }
+        if progress < 1 { return .leading }
+        return .trailing
     }
 }
 

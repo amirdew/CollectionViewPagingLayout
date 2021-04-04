@@ -45,6 +45,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
 
     /// See `ZPositionHandler` for details
     public var zPositionHandler: ZPositionHandler = .both
+
+    /// The animator for setting `contentOffset`
+    ///
+    /// See `ViewAnimator` for details
+    public var defaultAnimator: ViewAnimator?
     
     public weak var delegate: CollectionViewPagingLayoutDelegate?
     
@@ -86,16 +91,29 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Public functions
     
-    public func setCurrentPage(_ page: Int, animated: Bool = true, completion: (() -> Void)? = nil) {
-        safelySetCurrentPage(page, animated: animated, completion: completion)
+    public func setCurrentPage(_ page: Int,
+                               animated: Bool = true,
+                               animator: ViewAnimator? = nil,
+                               completion: (() -> Void)? = nil) {
+        safelySetCurrentPage(page, animated: animated, animator: animator, completion: completion)
+    }
+
+    public func setCurrentPage(_ page: Int,
+                               animated: Bool = true,
+                               completion: (() -> Void)? = nil) {
+        safelySetCurrentPage(page, animated: animated, animator: defaultAnimator, completion: completion)
     }
     
-    public func goToNextPage(animated: Bool = true, completion: (() -> Void)? = nil) {
-        setCurrentPage(currentPage + 1, animated: animated, completion: completion)
+    public func goToNextPage(animated: Bool = true,
+                             animator: ViewAnimator? = nil,
+                             completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage + 1, animated: animated, animator: animator, completion: completion)
     }
     
-    public func goToPreviousPage(animated: Bool = true, completion: (() -> Void)? = nil) {
-        setCurrentPage(currentPage - 1, animated: animated, completion: completion)
+    public func goToPreviousPage(animated: Bool = true,
+                                 animator: ViewAnimator? = nil,
+                                 completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage - 1, animated: animated, animator: animator, completion: completion)
     }
     
     public func configureTapOnCollectionView(goToSelectedPage: Bool = false) {
@@ -230,7 +248,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
     }
     
-    private func safelySetCurrentPage(_ page: Int, animated: Bool, completion: (() -> Void)? = nil) {
+    private func safelySetCurrentPage(_ page: Int, animated: Bool, animator: ViewAnimator?, completion: (() -> Void)? = nil) {
         let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
         let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
         let maxPossibleOffset = contentSize - pageSize
@@ -238,19 +256,39 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] in
-            self?.invalidateLayout()
-            completion?()
+        if animated, let animator = animator {
+            setContentOffset(with: animator, offset: contentOffset, completion: completion)
+        } else {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { [weak self] in
+                self?.invalidateLayout()
+                completion?()
+            }
+            collectionView?.setContentOffset(contentOffset, animated: animated)
+            CATransaction.commit()
         }
-        collectionView?.setContentOffset(contentOffset, animated: animated)
-        CATransaction.commit()
         
         // this is necessary when we want to set the current page without animation
-        if !animated, page != currentPage, let collectionView = collectionView {
-            collectionView.performBatchUpdates({
-                collectionView.collectionViewLayout.invalidateLayout()
-            })
+        if !animated, page != currentPage {
+            invalidateLayoutWithPerformBatchUpdates()
+        }
+    }
+
+    private func setContentOffset(with animator: ViewAnimator, offset: CGPoint, completion: (() -> Void)? = nil) {
+        guard let start = collectionView?.contentOffset else { return }
+        let x = offset.x - start.x
+        let y = offset.x - start.x
+        let originalIsUserInteractionEnabled = collectionView?.isUserInteractionEnabled ?? true
+        collectionView?.isUserInteractionEnabled = false
+        animator.animate { [weak self] (progress) in
+            guard let collectionView = self?.collectionView else { return }
+            collectionView.contentOffset = CGPoint(x: start.x + x * CGFloat(progress), y: start.y + y * CGFloat(progress))
+            if progress == 1.0 {
+                self?.collectionView?.isUserInteractionEnabled = originalIsUserInteractionEnabled
+                self?.collectionView?.delegate?.scrollViewDidEndScrollingAnimation?(collectionView)
+                self?.invalidateLayout()
+                completion?()
+            }
         }
     }
     
