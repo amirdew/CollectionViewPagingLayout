@@ -44,7 +44,7 @@ struct DevicesView: View {
                 .opacity(1 - Double(abs(progress - 1)))
             }
         }
-        .animator(DefaultViewAnimator(0.9, curve: .parametric))
+        .animator(DefaultViewAnimator(0.7, curve: .parametric))
         .zPosition(zPosition)
         .collectionView(\.showsHorizontalScrollIndicator, false)
     }
