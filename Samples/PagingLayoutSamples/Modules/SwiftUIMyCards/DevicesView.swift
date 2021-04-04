@@ -26,69 +26,59 @@ struct DevicesView: View {
         Device(name: "HomePod", iconName: "homepod", color: .purple)
     ]
 
-//    var body1: some View {
-//        TransformPageView(devices, id: \.name) { device, progress in
-//            ZStack {
-//                Circle()
-//                    .fill()
-//                    .padding()
-//                    .foregroundColor(device.color)
-//
-//                VStack {
-//                    Image(systemName: device.iconName)
-//                        .font(.system(size: 130))
-//                    Text(device.name)
-//                        .font(.system(size: 40))
-//                }
-//                .foregroundColor(.white)
-//                .transformEffect(
-//                    .init(translationX: 600 * progress, y: 0)
-//                )
-//            }
-//            .scaleEffect(1 - abs(progress - CGFloat(Int(progress))))
-//            .opacity(1 - abs(Double(progress)))
-//        }
-//    }
+    private let scaleFactor: CGFloat = 130
 
     var body: some View {
         TransformPageView(devices, id: \.name) { device, progress in
             ZStack {
-                getCircle(color: device.color, progress: progress)
-
+                roundedRectangle(color: device.color, progress: progress)
                 VStack {
                     Image(systemName: device.iconName)
-                        .font(.system(size: 130))
+                        .font(.system(size: 160))
                     Text(device.name)
                         .font(.system(size: 40))
+                        .padding(.top, 10)
                     Spacer()
+                        .frame(maxHeight: 200)
                 }
-                .frame(height: 600)
+                .frame(maxHeight: .infinity)
                 .foregroundColor(.white)
                 .transformEffect(
                     .init(translationX: 375 * progress, y: 0)
                 )
+                .blur(radius: abs(progress) * 20)
             }
         }
         .collectionView(\.showsHorizontalScrollIndicator, false)
         .zPosition { progress -> Int in
-            if progress >= 2 || progress < -1 {
-                return -10
-            }
+//            if progress > -1.5 && progress < -1 {
+//                return 3
+//            }
+//
+//            if progress >= 2 || progress < -1 {
+//                return -10
+//            }
+//            if progress <= 1, progress >= 0 {
+//                if progress < 0.5 {
+//                    return 1
+//                }
+//                return 4
+//            }
+//
+//            return 2
 
-            if progress <= 1, progress >= 0 {
-                if progress < 0.5 {
-                    return 0
-                }
-                return 2
-            }
-
-            return 1
+            if progress < -1 { return 3 }
+            if progress < 0 { return 2 }
+            if progress < 0.5 { return 1 }
+            if progress <= 1 { return 4 }
+            if progress < 2 { return 2 }
+            return -1
+            //          -1   0  0.5  1   2
+            //        3    2   1   4   2   -1
         }
     }
 
-    let scaleFactor: CGFloat = 130
-
-    func getCircle(color: Color, progress: CGFloat) -> some View {
+    func roundedRectangle(color: Color, progress: CGFloat) -> some View {
         let scale = getScale(progress)
         return RoundedRectangle(cornerRadius: 80 * ((0.2 * scaleFactor) / scale))
             .fill()
@@ -116,6 +106,10 @@ struct DevicesView: View {
             }
             return 0
         }
+        if progress <= -1 {
+            let progress = max(progress, -1.25)
+            return Double((1.25 + progress) / 0.25)
+        }
         return 1
     }
 
@@ -134,6 +128,9 @@ struct DevicesView: View {
         } else if 1 <= progress, progress < 1.5 {
             return (1 + max(0, 1 + progress - 2) * scaleFactor)
         } else if progress <= 0.5 {
+            if progress <= -1 {
+                return 1 + (min(1.5, -progress) - 1) * scaleFactor
+            }
             return scaleFactor
         } else if 0.5 < progress, progress < 1 {
             return (1 + max(0, 1 - progress) * scaleFactor)
@@ -143,6 +140,9 @@ struct DevicesView: View {
 
     func getAnchor(_ progress: CGFloat) -> UnitPoint {
         if progress <= -0.5 {
+            if progress <= -1 {
+                return .leading
+            }
             return .trailing
         } else if progress < 0.5 {
             return .center
