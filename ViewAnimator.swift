@@ -19,15 +19,23 @@ public protocol ViewAnimator {
 /// Default implementation for `ViewAnimator`
 public class DefaultViewAnimator: ViewAnimator {
 
-    private let duration: TimeInterval
+    private let animationDuration: TimeInterval
     private let curve: Curve
 
     private var displayLink: CADisplayLink?
     private var start: CFTimeInterval!
     private var animationsClosure: ((Double, Bool) -> Void)?
 
+    private var duration: TimeInterval {
+        #if targetEnvironment(simulator)
+        return Double(animationDragCoefficient()) * animationDuration
+        #else
+        return animationDuration
+        #endif
+    }
+
     public init(_ duration: TimeInterval, curve: Curve) {
-        self.duration = duration
+        self.animationDuration = duration
         self.curve = curve
     }
 
@@ -35,9 +43,6 @@ public class DefaultViewAnimator: ViewAnimator {
         if !Thread.isMainThread {
             fatalError("only from main thread")
         }
-        #if targetEnvironment(simulator)
-        let duration = Double(animationDragCoefficient()) * duration
-        #endif
         guard duration > 0 else {
             animations(1.0, true)
             return
