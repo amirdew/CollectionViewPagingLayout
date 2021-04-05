@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol QuantityControllerViewDelegate: class {
+protocol QuantityControllerViewDelegate: AnyObject {
     func onIncreaseButtonTouched(view: QuantityControllerView)
     func onDecreaseButtonTouched(view: QuantityControllerView)
 }

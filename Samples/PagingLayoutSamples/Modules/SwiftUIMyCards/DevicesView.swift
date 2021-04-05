@@ -29,10 +29,12 @@ struct DevicesView: View {
     private let scaleFactor: CGFloat = 130
     private let circleSize: CGFloat = 80
 
+    @State private var currentDeviceName: String?
+
     var body: some View {
-        TransformPageView(devices, id: \.name) { device, progress in
+        TransformPageView(devices, id: \.name, selection: $currentDeviceName) { device, progress in
             ZStack {
-                roundedRectangle(color: device.color, progress: progress)
+                roundedRectangle(device: device, progress: progress)
                 deviceView(device: device, progress: progress)
                 HStack {
                     Image(systemName: "chevron.right")
@@ -45,6 +47,10 @@ struct DevicesView: View {
             }
         }
         .animator(DefaultViewAnimator(0.7, curve: .parametric))
+        .scrollToSelectedPage(false)
+        .onTapPage { name in
+            currentDeviceName = currentDeviceName == devices.last?.name ? devices.first?.name : name
+        }
         .zPosition(zPosition)
         .collectionView(\.showsHorizontalScrollIndicator, false)
     }
@@ -64,7 +70,7 @@ struct DevicesView: View {
         .transformEffect(.init(translationX: 400 * progress, y: 0))
     }
 
-    private func roundedRectangle(color: Color, progress: CGFloat) -> some View {
+    private func roundedRectangle(device: Device, progress: CGFloat) -> some View {
         let scale = getScale(progress)
         return RoundedRectangle(cornerRadius: circleSize * ((0.2 * scaleFactor) / scale))
             .fill()
@@ -72,7 +78,7 @@ struct DevicesView: View {
             .scaleEffect(scale, anchor: scaleAnchor(progress))
             .transformEffect(.init(translationX: translationX(progress), y: 0))
             .padding(.top, 400)
-            .foregroundColor(color)
+            .foregroundColor(device.color)
             .opacity((1.25 - max(1, abs(Double(progress)))) / 0.25)
     }
 

@@ -11,11 +11,9 @@ import UIKit
 
 public protocol TransformableView {
     
-    /// The view for detecting tap gesture
-    /// when you call `CollectionViewPagingLayout.configureTapOnCollectionView()`
-    /// a tap gesture will be added to the CollectionView and when the user tap on it
-    /// it checks if the tap location was in this view frame it will trigger
-    /// `CollectionViewPagingLayoutDelegate.collectionViewPagingLayout(_ layout:, didSelectItemAt indexPath:)`
+    /// The view for detecting gestures
+    ///
+    /// If you want to handle it manually return `nil`
     var selectableView: UIView? { get }
     
     /// Sends a float value based on the position of the view (cell)
@@ -47,6 +45,19 @@ public extension TransformableView where Self: UICollectionViewCell {
     /// Default `selectableView` for `UICollectionViewCell` is the first subview of
     /// `contentView` or the content view itself if there is no subview
     var selectableView: UIView? {
-        contentView.subviews.first
+        contentView.subviews.first ?? contentView
+    }
+}
+
+
+public extension UICollectionViewCell {
+    /// This method transfers the event to `selectableView`
+    /// this is necessary since cells are on top of each other and they fill the whole collectionView frame
+    /// Without this, only the first visible cell is selectable
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if let view = (self as? TransformableView)?.selectableView {
+            return view.hitTest(convert(point, to: view), with: event)
+        }
+        return super.hitTest(point, with: event)
     }
 }

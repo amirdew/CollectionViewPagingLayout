@@ -23,7 +23,6 @@ public struct TransformPageView<ValueType, ID: Hashable, PageContent: View>: UIV
         _ data: [ValueType],
         id: KeyPath<ValueType, ID>,
         selection: Binding<ID?>? = nil,
-        changePageOnSelect: Bool = false,
         @ViewBuilder viewBuilder: @escaping (ValueType, CGFloat) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection, idKeyPath: id)

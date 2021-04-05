@@ -33,6 +33,15 @@ public extension TransformPageViewProtocol {
         return self
     }
 
+    func onTapPage(_ onTapPage: @escaping (ID) -> Void) -> Self {
+
+        self.builder.modifierData.onTapPage = { index in
+            guard index < builder.data.count else { return }
+            onTapPage(builder.data[index][keyPath: builder.idKeyPath])
+        }
+        return self
+    }
+
     func animator(_ animator: ViewAnimator) -> Self {
         self.builder.modifierData.animator = animator
         return self

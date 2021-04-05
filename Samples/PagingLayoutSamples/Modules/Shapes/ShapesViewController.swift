@@ -113,11 +113,11 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 10
         collectionView.collectionViewLayout = layout
-        layout.configureTapOnCollectionView(goToSelectedPage: true)
         layout.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.clipsToBounds = false
         collectionView.backgroundColor = .clear
+        collectionView.delegate = self
     }
     
     private func configureLayoutTypeCollectionView() {
@@ -127,7 +127,6 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         let layout = CollectionViewPagingLayout()
         layout.numberOfVisibleItems = 10
         layoutTypeCollectionView.collectionViewLayout = layout
-        layout.configureTapOnCollectionView(goToSelectedPage: true)
         layoutTypeCollectionView.showsHorizontalScrollIndicator = false
         layoutTypeCollectionView.clipsToBounds = false
         layoutTypeCollectionView.backgroundColor = .clear
@@ -241,6 +240,10 @@ extension ShapesViewController: UICollectionViewDelegate {
             return
         }
         updateSelectedLayout()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row)
     }
 }
 

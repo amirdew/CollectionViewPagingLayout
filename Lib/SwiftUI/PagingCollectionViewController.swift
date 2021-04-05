@@ -36,7 +36,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
 
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layout.invalidateLayoutWithPerformBatchUpdates()
+        layout.invalidateLayoutInBatchUpdate()
     }
 
 
@@ -56,10 +56,6 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         onCurrentPageChanged?(currentPage)
     }
 
-    public func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath) {
-        onCurrentPageChanged(layout: layout, currentPage: indexPath.row)
-    }
-
 
     // MARK: Internal functions
 
@@ -73,7 +69,17 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
                 view?.isUserInteractionEnabled = true
             }
         } else {
-            layout.invalidateLayoutWithPerformBatchUpdates()
+            layout.invalidateLayoutInBatchUpdate()
+        }
+    }
+
+    // MARK: UICollectionViewDelegate
+
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        modifierData?.onTapPage?(indexPath.row)
+
+        if modifierData?.goToSelectedPage ?? true {
+            (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row)
         }
     }
 
@@ -90,7 +96,6 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         collectionView.registerClass(PagingCollectionViewCell<ValueType, ID, PageContent>.self)
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        layout.configureTapOnCollectionView(goToSelectedPage: modifierData?.goToSelectedPage ?? true)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
         layout.defaultAnimator = modifierData?.animator
         collectionView.delegate = self

@@ -19,6 +19,7 @@ struct PagingCollectionViewModifierData {
     var animator: ViewAnimator?
     var goToSelectedPage: Bool?
     var collectionViewProperties: [CollectionViewPropertyProtocol]?
+    var onTapPage: ((Int) -> Void)?
 }
 
 @available(iOS 13.0, *)

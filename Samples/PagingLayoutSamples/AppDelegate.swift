@@ -36,16 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
         navigationController.setViewControllers([mainVC], animated: false)
-        window!.rootViewController = UIHostingController(rootView: DevicesView().ignoresSafeArea())
+        window!.rootViewController = navigationController//UIHostingController(rootView: DevicesView().ignoresSafeArea())
         window!.makeKeyAndVisible()
         return true
     }
 }
 
-// animation duration
-// add observer for bounds
-// use responder to fix handling touches
+// add observer for bounds so invalidate layout won't be necessary
 // delegate for invalidating or not
-// enable paging
-// vertical horizontal
 // delegate for snapshot to rerender stuff
+// vertical horizontal
+// fix icon on mac
+// add swifui to layout designer
