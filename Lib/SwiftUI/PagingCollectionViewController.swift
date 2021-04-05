@@ -86,7 +86,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
             collectionViewLayout: layout
         )
         layout.delegate = self
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = modifierData?.isPagingEnabled ?? true
         collectionView.registerClass(PagingCollectionViewCell<ValueType, ID, PageContent>.self)
         collectionView.dataSource = self
         view.addSubview(collectionView)

@@ -43,6 +43,11 @@ public extension TransformPageViewProtocol {
         return self
     }
 
+    func pagingEnabled(_ isPagingEnabled: Bool) -> Self {
+        self.builder.modifierData.isPagingEnabled = isPagingEnabled
+        return self
+    }
+
     func collectionView<T>(_ key: WritableKeyPath<UICollectionView, T>, _ value: T) -> Self {
         let property = CollectionViewProperty(keyPath: key, value: value)
         self.builder.modifierData.collectionViewProperties?.append(property)

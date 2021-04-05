@@ -14,6 +14,7 @@ struct PagingCollectionViewModifierData {
     var stackOptions: StackTransformViewOptions?
     var snapshotOptions: SnapshotTransformViewOptions?
     var numberOfVisibleItems: Int?
+    var isPagingEnabled: Bool?
     var zPositionProvider: ((CGFloat) -> Int)?
     var animator: ViewAnimator?
     var goToSelectedPage: Bool?
