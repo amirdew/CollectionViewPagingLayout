@@ -34,11 +34,6 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         setupCollectionView()
     }
 
-    public override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        layout.invalidateLayoutInBatchUpdate()
-    }
-
 
     // MARK: Public functions
 

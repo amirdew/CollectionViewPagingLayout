@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// add observer for bounds so invalidate layout won't be necessary
 // delegate for invalidating or not
 // delegate for snapshot to rerender stuff
 // vertical horizontal

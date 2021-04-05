@@ -27,11 +27,6 @@ class FruitsViewController: UIViewController, NibBased, ViewModelBased {
         configureViews()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
     // MARK: Event listener
     
     @IBAction private func onBackTouched() {

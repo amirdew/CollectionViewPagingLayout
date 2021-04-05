@@ -62,7 +62,6 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         }
         
         updateSelectedLayout()
-        invalidateLayouts()
     }
     
     

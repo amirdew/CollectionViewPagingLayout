@@ -78,9 +78,10 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     private var currentPageCache: Int?
     private var attributesCache: [(page: Int, attributes: UICollectionViewLayoutAttributes)]?
-    private var scrollToSelectedCell: Bool = false
-    
-    
+    private var boundsObservation: NSKeyValueObservation?
+    private var lastBounds: CGRect?
+
+
     // MARK: Public functions
     
     public func setCurrentPage(_ page: Int,
@@ -113,7 +114,6 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     /// this fixes the zIndex issue more: https://stackoverflow.com/questions/12659301/uicollectionview-setlayoutanimated-not-preserving-zindex
     public func invalidateLayoutInBatchUpdate(invalidateOffset: Bool = true) {
         DispatchQueue.main.async { [weak self] in
-
             if invalidateOffset {
                 let original = self?.collectionView?.contentOffset ?? .zero
                 self?.collectionView?.contentOffset = .init(x: original.x + 1, y: original.y + 1)
@@ -198,6 +198,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             attributesArray.append((page: Int(pageIndex), attributes: cellAttributes))
         }
         attributesCache = attributesArray
+        addBoundsObserverIfNeeded()
         return attributesArray.map(\.attributes)
     }
     
@@ -287,6 +288,18 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
                 self?.invalidateLayoutInBatchUpdate()
                 completion?()
             }
+        }
+    }
+}
+
+
+extension CollectionViewPagingLayout {
+    private func addBoundsObserverIfNeeded() {
+        guard boundsObservation == nil else { return }
+        boundsObservation = collectionView?.observe(\.bounds, options: [.old, .new, .initial, .prior]) { [weak self] collectionView, _ in
+            guard collectionView.bounds.size != self?.lastBounds?.size else { return }
+            self?.lastBounds = collectionView.bounds
+            self?.invalidateLayoutInBatchUpdate()
         }
     }
 }
