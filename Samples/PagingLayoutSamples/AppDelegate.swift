@@ -44,6 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // delegate for invalidating or not
 // delegate for snapshot to rerender stuff
-// vertical horizontal
 // fix icon on mac
 // add swifui to layout designer

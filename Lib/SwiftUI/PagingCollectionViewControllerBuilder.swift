@@ -20,6 +20,7 @@ struct PagingCollectionViewModifierData {
     var goToSelectedPage: Bool?
     var collectionViewProperties: [CollectionViewPropertyProtocol]?
     var onTapPage: ((Int) -> Void)?
+    var scrollDirection: UICollectionView.ScrollDirection?
 }
 
 @available(iOS 13.0, *)

@@ -92,6 +92,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         collectionView.dataSource = self
         view.addSubview(collectionView)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
+        layout.scrollDirection = modifierData?.scrollDirection ?? layout.scrollDirection
         layout.defaultAnimator = modifierData?.animator
         collectionView.delegate = self
         collectionView[keyPath: \.showsHorizontalScrollIndicator] = false
