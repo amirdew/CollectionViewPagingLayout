@@ -35,6 +35,8 @@
 		298DBC342441C98E00341D8E /* StackTransformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC1A2441C98E00341D8E /* StackTransformView.swift */; };
 		298DBC352441C98E00341D8E /* StackTransformViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC1B2441C98E00341D8E /* StackTransformViewOptions.swift */; };
 		298DBC382441C98E00341D8E /* TransformableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC232441C98E00341D8E /* TransformableView.swift */; };
+		29DF4686261DF863007E0FA4 /* ViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4684261DF863007E0FA4 /* ViewAnimator.swift */; };
+		29DF4687261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		298DBC1A2441C98E00341D8E /* StackTransformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTransformView.swift; sourceTree = "<group>"; };
 		298DBC1B2441C98E00341D8E /* StackTransformViewOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTransformViewOptions.swift; sourceTree = "<group>"; };
 		298DBC232441C98E00341D8E /* TransformableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformableView.swift; sourceTree = "<group>"; };
+		29DF4684261DF863007E0FA4 /* ViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAnimator.swift; sourceTree = "<group>"; };
+		29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewPagingLayout.ZPositionHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +133,10 @@
 				298DBC142441C98E00341D8E /* CollectionViewPagingLayout.swift */,
 				298DBC232441C98E00341D8E /* TransformableView.swift */,
 				298DBC092441C98E00341D8E /* TransformCurve.swift */,
+				29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */,
+				29DF4684261DF863007E0FA4 /* ViewAnimator.swift */,
 				298DBC0A2441C98E00341D8E /* Scale */,
 				298DBC032441C98E00341D8E /* Snapshot */,
-				298DBC152441C98E00341D8E /* Sources */,
 				298DBC192441C98E00341D8E /* Stack */,
 				291EC0DA2610B32500C65A34 /* SwiftUI */,
 				298DBC0F2441C98E00341D8E /* Utilities */,
@@ -171,37 +176,6 @@
 				298DBC132441C98E00341D8E /* UIView+Utilities.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		298DBC152441C98E00341D8E /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				298DBC162441C98E00341D8E /* Tests */,
-				298DBC182441C98E00341D8E /* Stack */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		298DBC162441C98E00341D8E /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				298DBC172441C98E00341D8E /* LibTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		298DBC172441C98E00341D8E /* LibTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LibTests;
-			sourceTree = "<group>";
-		};
-		298DBC182441C98E00341D8E /* Stack */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Stack;
 			sourceTree = "<group>";
 		};
 		298DBC192441C98E00341D8E /* Stack */ = {
@@ -323,12 +297,14 @@
 				298DBC292441C98E00341D8E /* SnapshotTransformViewOptions.swift in Sources */,
 				298DBC342441C98E00341D8E /* StackTransformView.swift in Sources */,
 				298DBC352441C98E00341D8E /* StackTransformViewOptions.swift in Sources */,
+				29DF4687261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift in Sources */,
 				298DBC242441C98E00341D8E /* BlurEffectView.swift in Sources */,
 				298DBC302441C98E00341D8E /* Multipliable.swift in Sources */,
 				291EC0E92610B32500C65A34 /* PagingCollectionViewController.swift in Sources */,
 				298DBC382441C98E00341D8E /* TransformableView.swift in Sources */,
 				291EC0E82610B32500C65A34 /* TransformPageView.swift in Sources */,
 				298DBC312441C98E00341D8E /* CGFloat+Interpolate.swift in Sources */,
+				29DF4686261DF863007E0FA4 /* ViewAnimator.swift in Sources */,
 				298DBC2C2441C98E00341D8E /* ScaleTransformView.swift in Sources */,
 				298DBC2F2441C98E00341D8E /* CGFloat+Range.swift in Sources */,
 				291EC0E72610B32500C65A34 /* PagingCollectionViewCell.swift in Sources */,

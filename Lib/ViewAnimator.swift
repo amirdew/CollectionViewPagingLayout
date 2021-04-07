@@ -106,6 +106,6 @@ public extension DefaultViewAnimator {
 @_silgen_name("UIAnimationDragCoefficient") func UIAnimationDragCoefficient() -> Float
 
 private func animationDragCoefficient() -> Float {
-    return UIAnimationDragCoefficient()
+    UIAnimationDragCoefficient()
 }
 #endif

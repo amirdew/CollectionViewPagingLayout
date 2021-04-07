@@ -35,7 +35,7 @@ struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
     let value: T
 
     func getKey<T>() -> WritableKeyPath<UICollectionView, T>? {
-        return keyPath as? WritableKeyPath<UICollectionView, T>
+        keyPath as? WritableKeyPath<UICollectionView, T>
     }
 
     func getValue<T>() -> T? {
