@@ -135,15 +135,6 @@ struct LayoutDesignerCodePreviewViewModel {
                 view.addSubview(collectionView)
             }
             
-            override func viewDidLayoutSubviews() {
-                super.viewDidLayoutSubviews()
-                DispatchQueue.main.async { [weak self] in
-                    self?.collectionView?.performBatchUpdates({ [weak self] in
-                        self?.collectionView?.collectionViewLayout.invalidateLayout()
-                    })
-                }
-            }
-            
             func collectionView(
                 _ collectionView: UICollectionView,
                 numberOfItemsInSection section: Int

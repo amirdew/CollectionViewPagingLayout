@@ -42,6 +42,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// delegate for invalidating or not
-// delegate for snapshot to rerender stuff
 // add swifui to layout designer
+// update intro on layout designer
