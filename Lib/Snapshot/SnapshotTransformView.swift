@@ -16,7 +16,7 @@ public protocol SnapshotTransformView: TransformableView {
     /// The view to apply the effect on
     var targetView: UIView { get }
     
-    /// The identifier for snapshot, it won't make a new snapshot if
+    /// A unique identifier for the snapshot, a new snapshot won't be made if
     /// there is a cashed snapshot with the same identifier
     var identifier: String { get }
     
@@ -25,6 +25,9 @@ public protocol SnapshotTransformView: TransformableView {
     
     /// the main function for applying transforms on the snapshot
     func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat)
+
+    /// Check if the snapshot can be reused
+    func canReuse(snapshot: SnapshotContainerView) -> Bool
 }
 
 
@@ -37,7 +40,7 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
     }
     
     /// Default `identifier` for `UICollectionViewCell` is it's index
-    /// if you have the same content with different indexes (like infinite list)
+    /// if you have the same content with different indexes (like an infinite list)
     /// you should override this and provide a content-based identifier
     var identifier: String {
         var collectionView: UICollectionView?
@@ -50,6 +53,11 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
             superview = superview?.superview
         }
         return "\(collectionView?.indexPath(for: self) ?? IndexPath())"
+    }
+
+    /// Default implementation only compares the size of snapshot with the view
+    func canReuse(snapshot: SnapshotContainerView) -> Bool {
+        snapshot.snapshotSize == targetView.bounds.size
     }
 }
 
@@ -75,7 +83,7 @@ public extension SnapshotTransformView {
     // MARK: Public functions
     
     func getSnapshot() -> SnapshotContainerView? {
-        findSnapshot() ?? makeSnapshot()
+        return findSnapshot() ?? makeSnapshot()
     }
     
     func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat) {
@@ -92,16 +100,29 @@ public extension SnapshotTransformView {
     
     
     // MARK: Private functions
-    
+
+    private func hideOtherSnapshots() {
+        targetView.superview?.subviews.filter { $0 is SnapshotContainerView }.forEach {
+            guard let snapshot = $0 as? SnapshotContainerView else { return }
+            if snapshot.identifier != identifier {
+            	snapshot.alpha = 0
+            }
+        }
+    }
+
     private func findSnapshot() -> SnapshotContainerView? {
-        let snapshot = targetView.superview?.subviews.first(where: { $0 is SnapshotContainerView }) as? SnapshotContainerView
-        if let snapshot = snapshot,
-            (snapshot.identifier != identifier ||
-                snapshot.snapshotSize != targetView.bounds.size ||
-                snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio) {
+        hideOtherSnapshots()
+        
+        let snapshot = targetView.superview?.subviews.first { ($0 as? SnapshotContainerView)?.identifier == identifier } as? SnapshotContainerView
+        if let snapshot = snapshot, snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio {
             snapshot.removeFromSuperview()
             return nil
         }
+        if let snapshot = snapshot, !canReuse(snapshot: snapshot) {
+            snapshot.removeFromSuperview()
+            return nil
+        }
+        snapshot?.alpha = 1
         return snapshot
     }
     
