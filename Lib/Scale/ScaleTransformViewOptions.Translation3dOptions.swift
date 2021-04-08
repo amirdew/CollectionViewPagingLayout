@@ -11,7 +11,7 @@ import UIKit
 public extension ScaleTransformViewOptions {
     
     struct Translation3dOptions {
-        
+
         // MARK: Properties
         
         /// The translates(x,y,z) ratios
@@ -39,5 +39,5 @@ public extension ScaleTransformViewOptions {
             self.maxTranslateRatios = maxTranslateRatios
         }
     }
-    
+
 }

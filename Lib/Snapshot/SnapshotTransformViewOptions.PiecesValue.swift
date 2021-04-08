@@ -11,7 +11,7 @@ import UIKit
 public extension SnapshotTransformViewOptions {
     
     enum PiecesValue<Type: MultipliableToCGFloat & MultipliableToSelf & SummableToCGFloat & SummableToSelf> {
-        
+
         // MARK: Cases
         
         case columnBased(Type, reversed: Bool = false)

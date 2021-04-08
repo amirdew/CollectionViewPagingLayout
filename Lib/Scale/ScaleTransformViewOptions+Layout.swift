@@ -5,8 +5,11 @@
 //  Created by Amir on 28/03/2021.
 //
 
+import UIKit
+import Foundation
+
 public extension ScaleTransformViewOptions {
-    enum Layout {
+    enum Layout: String, CaseIterable {
         case invertedCylinder
         case cylinder
         case coverFlow

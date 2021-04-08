@@ -48,3 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // update intro on layout designer or remove it
 // fix bad blur performance on mac
 // segment controls
+// selecting shape sometimes does't work

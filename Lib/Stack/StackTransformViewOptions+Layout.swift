@@ -5,8 +5,11 @@
 //  Created by Amir on 28/03/2021.
 //
 
+import UIKit
+import Foundation
+
 public extension StackTransformViewOptions {
-    enum Layout {
+    enum Layout: String, CaseIterable {
         case transparent
         case perspective
         case rotary
