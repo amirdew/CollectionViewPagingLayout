@@ -69,6 +69,22 @@ extension PagingCollectionViewCell: TransformableView,
                                     StackTransformView,
                                     SnapshotTransformView {
 
+    var scalableView: UIView {
+        hostingController?.view ?? contentView
+    }
+
+    var cardView: UIView {
+        hostingController?.view ?? contentView
+    }
+
+    var targetView: UIView {
+        hostingController?.view ?? contentView
+    }
+
+    var selectableView: UIView? {
+        scalableView
+    }
+
     var scaleOptions: ScaleTransformViewOptions {
         parent?.modifierData?.scaleOptions ?? .init()
     }
