@@ -123,11 +123,15 @@ struct LayoutDesignerCodePreviewViewModel {
             }
             
             func setup() {
-                // Adjust the card view frame you can use Autolayout too
-                let cardFrame = CGRect(x: 80,
-                                       y: 100,
-                                       width: frame.width - 160,
-                                       height: frame.height - 200)
+
+                // Adjust the card view frame
+                // you can use Auto-layout too
+                let cardFrame = CGRect(
+         		   x: 80,
+         		   y: 100,
+         		   width: frame.width - 160,
+         		   height: frame.height - 200
+                )
                 card = UIView(frame: cardFrame)
                 card.backgroundColor = .gray
                 contentView.addSubview(card)
@@ -146,13 +150,22 @@ struct LayoutDesignerCodePreviewViewModel {
             }
             
             private func setupCollectionView() {
+                let layout = CollectionViewPagingLayout()
+
                 collectionView = UICollectionView(
                     frame: view.frame,
-                    collectionViewLayout: CollectionViewPagingLayout()
+                    collectionViewLayout: layout
                 )
+
                 collectionView.isPagingEnabled = true
-                collectionView.register(MyCell.self, forCellWithReuseIdentifier: "cell")
+
+                collectionView.register(
+        			MyCell.self,
+            		forCellWithReuseIdentifier: "cell"
+                )
+
                 collectionView.dataSource = self
+
                 view.addSubview(collectionView)
             }
             
@@ -165,7 +178,8 @@ struct LayoutDesignerCodePreviewViewModel {
             
             func collectionView(
                 _ collectionView: UICollectionView,
-                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                cellForItemAt indexPath: IndexPath
+            ) -> UICollectionViewCell {
                 collectionView.dequeueReusableCell(
                     withReuseIdentifier: "cell",
                     for: indexPath
