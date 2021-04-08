@@ -39,6 +39,9 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         configureViews()
         setOptionsList()
         registerKeyboardNotifications()
+
+        view.backgroundColor = .clear
+        codeContainerView.backgroundColor = codeContainerView.backgroundColor?.withAlphaComponent(0.6)
     }
     
     override func viewWillAppear(_ animated: Bool) {

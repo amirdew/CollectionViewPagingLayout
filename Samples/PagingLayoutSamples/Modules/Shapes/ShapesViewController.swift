@@ -20,7 +20,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     
     private struct Constants {
         
-        static let infiniteNumberOfItems = 100_000
+        static let infiniteNumberOfItems = 10_000
     }
     
     
@@ -62,6 +62,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         }
         
         updateSelectedLayout()
+        getPagingLayout(layoutTypeCollectionView)?.invalidateLayoutInBatchUpdate()
     }
     
     
@@ -133,9 +134,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
     }
     
     private func updateSelectedLayout() {
-        guard let layout = layoutTypeCollectionView?.collectionViewLayout as? CollectionViewPagingLayout else {
-            return
-        }
+        guard let layout = getPagingLayout(layoutTypeCollectionView) else { return }
         let index = layout.currentPage % viewModel.layoutTypeViewModels.count
         self.viewModel.selectedLayout = self.viewModel.layoutTypeViewModels[index]
         delegate?.shapesViewController(self, onSelectedLayoutChange: viewModel.selectedLayout.layout)
@@ -165,8 +164,8 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         })
     }
     
-    private func getPagingLayout(_ collectionView: UICollectionView) -> CollectionViewPagingLayout? {
-        collectionView.collectionViewLayout as? CollectionViewPagingLayout
+    private func getPagingLayout(_ collectionView: UICollectionView?) -> CollectionViewPagingLayout? {
+        collectionView?.collectionViewLayout as? CollectionViewPagingLayout
     }
     
 }

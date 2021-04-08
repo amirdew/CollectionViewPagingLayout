@@ -18,8 +18,29 @@ struct LayoutDesignerCodePreviewViewModel {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SampleProject")
     }
     
-    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: .sundellsColors(withFont: Font(size: 12))))
-    
+    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: Theme(
+        font: Font(size: 14),
+        plainTextColor: Color(
+            red: 1,
+            green: 1,
+            blue: 1,
+            alpha: 1
+        ),
+        tokenColors: [
+            .keyword: Color(red: 1.00, green: 0.40, blue: 0.56, alpha: 1.00),
+            .string: Color(red: 0.98, green: 0.39, blue: 0.12, alpha: 1),
+            .type: Color(red: 0.57, green: 0.59, blue: 1.00, alpha: 1.00),
+            .call: Color(red: 0.2, green: 0.56, blue: 0.9, alpha: 1),
+            .number: Color(red: 0.97, green: 0.47, blue: 0.37, alpha: 1.00),
+            .comment: Color(red: 0.34, green: 0.72, blue: 0.80, alpha: 1.00),
+            .property: Color(red: 0.13, green: 0.67, blue: 0.62, alpha: 1),
+            .dotAccess: Color(red: 0.57, green: 0.7, blue: 0, alpha: 1),
+            .preprocessing: Color(red: 0.71, green: 0.54, blue: 0, alpha: 1)
+        ],
+        backgroundColor: .clear
+    )
+    ))
+
     
     // MARK: Public functions
     

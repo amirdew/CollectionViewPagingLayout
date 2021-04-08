@@ -36,7 +36,7 @@ class LayoutDesignerOptionsTableView: UITableView {
         backgroundColor = .clear
         separatorStyle = .none
         allowsSelection = false
-        sectionHeaderHeight = 30
+        sectionHeaderHeight = 40
     }
     
 }

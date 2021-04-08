@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
+        window?.backgroundColor = .clear
         navigationController = UINavigationController()
+        navigationController.view.backgroundColor = .clear
         navigationController.isNavigationBarHidden = true
         let mainVC = UIDevice.current.userInterfaceIdiom != .phone ?
             LayoutDesignerViewController.instantiate(viewModel: LayoutDesignerViewModel()) :
@@ -43,4 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // add swifui to layout designer
-// update intro on layout designer
+// update intro on layout designer or remove it
+// fix bad blur performance on mac
+// segment controls
