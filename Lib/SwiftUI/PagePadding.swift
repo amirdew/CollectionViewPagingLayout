@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @available(iOS 13.0, *)
 /// Provides paddings around the page
