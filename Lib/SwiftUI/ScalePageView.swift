@@ -23,7 +23,6 @@ public struct ScalePageView<ValueType, ID: Hashable, PageContent: View>: UIViewC
         _ data: [ValueType],
         id: KeyPath<ValueType, ID>,
         selection: Binding<ID?>? = nil,
-        changePageOnSelect: Bool = false,
         @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection, idKeyPath: id)

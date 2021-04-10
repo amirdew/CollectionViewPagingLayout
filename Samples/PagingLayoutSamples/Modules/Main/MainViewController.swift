@@ -22,12 +22,8 @@ class MainViewController: UIViewController, NibBased {
     // MARK: Event listeners
     
     @IBAction private func stackButtonTouched() {
-//        navigationController?.pushViewController(
-//            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)),
-//            animated: true
-//        )
         navigationController?.pushViewController(
-            UIHostingController(rootView: DevicesView()),
+            ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)),
             animated: true
         )
     }

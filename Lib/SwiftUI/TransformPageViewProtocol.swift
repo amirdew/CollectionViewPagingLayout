@@ -42,6 +42,32 @@ public extension TransformPageViewProtocol {
         return self
     }
 
+    func pagePadding(top: PagePadding.Padding? = nil,
+                     left: PagePadding.Padding? = nil,
+                     bottom: PagePadding.Padding? = nil,
+                     right: PagePadding.Padding? = nil) -> Self {
+        let current = self.builder.modifierData.pagePadding
+        self.builder.modifierData.pagePadding = .init(
+            top: top ?? current?.top,
+            left: left ?? current?.left,
+            bottom: bottom ?? current?.bottom,
+            right: right ?? current?.right
+        )
+        return self
+    }
+
+    func pagePadding(vertical: PagePadding.Padding? = nil,
+                     horizontal: PagePadding.Padding? = nil) -> Self {
+        let current = self.builder.modifierData.pagePadding
+        self.builder.modifierData.pagePadding = .init(
+            top: vertical ?? current?.top,
+            left: horizontal ?? current?.left,
+            bottom: vertical ?? current?.bottom,
+            right: horizontal ?? current?.right
+        )
+        return self
+    }
+
     func animator(_ animator: ViewAnimator) -> Self {
         self.builder.modifierData.animator = animator
         return self
@@ -64,7 +90,7 @@ public extension TransformPageViewProtocol {
 
     func collectionView<T>(_ key: WritableKeyPath<UICollectionView, T>, _ value: T) -> Self {
         let property = CollectionViewProperty(keyPath: key, value: value)
-        self.builder.modifierData.collectionViewProperties?.append(property)
+        self.builder.modifierData.collectionViewProperties.append(property)
         return self
     }
 }

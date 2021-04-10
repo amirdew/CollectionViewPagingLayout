@@ -31,6 +31,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
         setupCollectionView()
     }
 
@@ -87,22 +88,41 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
             collectionViewLayout: layout
         )
         layout.delegate = self
+        collectionView.backgroundColor = .clear
         collectionView.isPagingEnabled = modifierData?.isPagingEnabled ?? true
         collectionView.registerClass(PagingCollectionViewCell<ValueType, ID, PageContent>.self)
         collectionView.dataSource = self
-        view.addSubview(collectionView)
+        view.fill(with: collectionView)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
         layout.scrollDirection = modifierData?.scrollDirection ?? layout.scrollDirection
         layout.defaultAnimator = modifierData?.animator
         collectionView.delegate = self
-        collectionView[keyPath: \.showsHorizontalScrollIndicator] = false
-        modifierData?.collectionViewProperties?.forEach { property in
+
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        modifierData?.collectionViewProperties.forEach { property in
             if let keyPath: WritableKeyPath<UICollectionView, Bool> = property.getKey(),
                let value: Bool = property.getValue() {
                 collectionView[keyPath: keyPath] = value
             }
             if let keyPath: WritableKeyPath<UICollectionView, UIView> = property.getKey(),
                let value: UIView = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+            if let keyPath: WritableKeyPath<UICollectionView, UIScrollView.ContentInsetAdjustmentBehavior> = property.getKey(),
+               let value: UIScrollView.ContentInsetAdjustmentBehavior = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+            if let keyPath: WritableKeyPath<UICollectionView, UIEdgeInsets> = property.getKey(),
+               let value: UIEdgeInsets = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+            if let keyPath: WritableKeyPath<UICollectionView, CGFloat> = property.getKey(),
+               let value: CGFloat = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
+            if let keyPath: WritableKeyPath<UICollectionView, CGSize> = property.getKey(),
+               let value: CGSize = property.getValue() {
                 collectionView[keyPath: keyPath] = value
             }
         }

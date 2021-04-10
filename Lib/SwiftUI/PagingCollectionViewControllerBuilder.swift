@@ -9,41 +9,6 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct PagingCollectionViewModifierData {
-    var scaleOptions: ScaleTransformViewOptions?
-    var stackOptions: StackTransformViewOptions?
-    var snapshotOptions: SnapshotTransformViewOptions?
-    var numberOfVisibleItems: Int?
-    var isPagingEnabled: Bool?
-    var zPositionProvider: ((CGFloat) -> Int)?
-    var animator: ViewAnimator?
-    var goToSelectedPage: Bool?
-    var collectionViewProperties: [CollectionViewPropertyProtocol]?
-    var onTapPage: ((Int) -> Void)?
-    var scrollDirection: UICollectionView.ScrollDirection?
-}
-
-@available(iOS 13.0, *)
-protocol CollectionViewPropertyProtocol {
-    func getKey<T>() -> WritableKeyPath<UICollectionView, T>?
-    func getValue<T>() -> T?
-}
-
-@available(iOS 13.0, *)
-struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
-    let keyPath: WritableKeyPath<UICollectionView, T>
-    let value: T
-
-    func getKey<T>() -> WritableKeyPath<UICollectionView, T>? {
-        keyPath as? WritableKeyPath<UICollectionView, T>
-    }
-
-    func getValue<T>() -> T? {
-        value as? T
-    }
-}
-
-@available(iOS 13.0, *)
 public class PagingCollectionViewControllerBuilder<ValueType, ID: Hashable, PageContent: View> {
 
     public typealias ViewController = PagingCollectionViewController<ValueType, ID, PageContent>

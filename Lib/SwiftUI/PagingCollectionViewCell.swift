@@ -20,7 +20,8 @@ class PagingCollectionViewCell<ValueType, ID: Hashable, Content: View>: UICollec
     private var viewBuilder: ((ValueType, CGFloat) -> Content)?
     private var value: ValueType!
     private weak var parent: Parent?
-
+    private var parentBoundsObserver: NSKeyValueObservation?
+    private var parentSize: CGSize?
 
     // MARK: Public functions
 
@@ -38,10 +39,11 @@ class PagingCollectionViewCell<ValueType, ID: Hashable, Content: View>: UICollec
             parent.addChild(viewController)
             contentView.addSubview(viewController.view)
             viewController.view.translatesAutoresizingMaskIntoConstraints = false
-            contentView.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor).isActive = true
-            contentView.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor).isActive = true
-            contentView.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-            contentView.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
+
+            parentBoundsObserver = parent.view
+                .observe(\.bounds, options: [.initial, .new, .old, .prior]) { [weak self] _, _ in
+                    self?.updatePagePaddings()
+                }
 
             viewController.didMove(toParent: parent)
             viewController.view.layoutIfNeeded()
@@ -59,6 +61,45 @@ class PagingCollectionViewCell<ValueType, ID: Hashable, Content: View>: UICollec
         hostingController?.rootView = view
         hostingController?.view.layoutIfNeeded()
         return view
+    }
+
+    private func updatePagePaddings() {
+        guard let parent = parent,
+              let viewController = hostingController,
+              parent.view.bounds.size != parentSize
+        else { return }
+
+        parentSize = parent.view.bounds.size
+
+        func constraint<T>(_ first: NSLayoutAnchor<T>,
+                           _ second: NSLayoutAnchor<T>,
+                           _ paddingKeyPath: KeyPath<PagePadding, PagePadding.Padding?>,
+                           _ inside: Bool) {
+            let padding = parent.modifierData?.pagePadding?[keyPath: paddingKeyPath] ?? .absolute(0)
+            let constant: CGFloat
+            switch padding {
+            case .fractionalWidth(let fraction):
+                constant = parent.view.bounds.size.width * fraction
+            case .fractionalHeight(let fraction):
+                constant = parent.view.bounds.size.height * fraction
+            case .absolute(let absolute):
+                constant = absolute
+            }
+            let identifier = "pagePaddingConstraint_\(inside)_\(T.self)"
+            if let constraint = contentView.constraints.first(where: { $0.identifier == identifier }) ??
+                viewController.view.constraints.first(where: { $0.identifier == identifier }) {
+                constraint.constant = constant * (inside ? 1 : -1)
+            } else {
+                let constraint = first.constraint(equalTo: second, constant: constant * (inside ? 1 : -1))
+                constraint.identifier = identifier
+                constraint.isActive = true
+            }
+        }
+
+        constraint(contentView.leadingAnchor, viewController.view.leadingAnchor, \.left, false)
+        constraint(contentView.trailingAnchor, viewController.view.trailingAnchor, \.right, true)
+        constraint(contentView.topAnchor, viewController.view.topAnchor, \.top, false)
+        constraint(contentView.bottomAnchor, viewController.view.bottomAnchor, \.bottom, true)
     }
 }
 
