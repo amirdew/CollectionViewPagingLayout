@@ -15,6 +15,8 @@
 		291EC0E82610B32500C65A34 /* TransformPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E02610B32500C65A34 /* TransformPageView.swift */; };
 		291EC0E92610B32500C65A34 /* PagingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E12610B32500C65A34 /* PagingCollectionViewController.swift */; };
 		291EC0EA2610B32500C65A34 /* SnapshotPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E22610B32500C65A34 /* SnapshotPageView.swift */; };
+		2967EBA226230A320035540A /* PagePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967EBA126230A320035540A /* PagePadding.swift */; };
+		2967EBA526230A570035540A /* PagingCollectionViewModifierData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967EBA426230A570035540A /* PagingCollectionViewModifierData.swift */; };
 		298DBBFB2441C94900341D8E /* CollectionViewPagingLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 298DBBF92441C94900341D8E /* CollectionViewPagingLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		298DBC242441C98E00341D8E /* BlurEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC022441C98E00341D8E /* BlurEffectView.swift */; };
 		298DBC252441C98E00341D8E /* SnapshotTransformViewOptions.PiecesValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC042441C98E00341D8E /* SnapshotTransformViewOptions.PiecesValue.swift */; };
@@ -48,6 +50,8 @@
 		291EC0E02610B32500C65A34 /* TransformPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformPageView.swift; sourceTree = "<group>"; };
 		291EC0E12610B32500C65A34 /* PagingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewController.swift; sourceTree = "<group>"; };
 		291EC0E22610B32500C65A34 /* SnapshotPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotPageView.swift; sourceTree = "<group>"; };
+		2967EBA126230A320035540A /* PagePadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagePadding.swift; sourceTree = "<group>"; };
+		2967EBA426230A570035540A /* PagingCollectionViewModifierData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewModifierData.swift; sourceTree = "<group>"; };
 		298DBBF62441C94900341D8E /* CollectionViewPagingLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionViewPagingLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298DBBF92441C94900341D8E /* CollectionViewPagingLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewPagingLayout.h; sourceTree = "<group>"; };
 		298DBBFA2441C94900341D8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,9 +92,11 @@
 		291EC0DA2610B32500C65A34 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				2967EBA126230A320035540A /* PagePadding.swift */,
 				291EC0DB2610B32500C65A34 /* PagingCollectionViewControllerBuilder.swift */,
 				291EC0DC2610B32500C65A34 /* StackPageView.swift */,
 				291EC0DD2610B32500C65A34 /* ScalePageView.swift */,
+				2967EBA426230A570035540A /* PagingCollectionViewModifierData.swift */,
 				291EC0DE2610B32500C65A34 /* TransformPageViewProtocol.swift */,
 				291EC0DF2610B32500C65A34 /* PagingCollectionViewCell.swift */,
 				291EC0E02610B32500C65A34 /* TransformPageView.swift */,
@@ -290,6 +296,7 @@
 			files = (
 				291EC0E52610B32500C65A34 /* ScalePageView.swift in Sources */,
 				291EC0E62610B32500C65A34 /* TransformPageViewProtocol.swift in Sources */,
+				2967EBA226230A320035540A /* PagePadding.swift in Sources */,
 				298DBC2D2441C98E00341D8E /* ScaleTransformViewOptions.Rotation3dOptions.swift in Sources */,
 				298DBC262441C98E00341D8E /* SnapshotTransformView.swift in Sources */,
 				291EC0EA2610B32500C65A34 /* SnapshotPageView.swift in Sources */,
@@ -309,6 +316,7 @@
 				298DBC2F2441C98E00341D8E /* CGFloat+Range.swift in Sources */,
 				291EC0E72610B32500C65A34 /* PagingCollectionViewCell.swift in Sources */,
 				298DBC2A2441C98E00341D8E /* TransformCurve.swift in Sources */,
+				2967EBA526230A570035540A /* PagingCollectionViewModifierData.swift in Sources */,
 				298DBC2B2441C98E00341D8E /* ScaleTransformViewOptions.swift in Sources */,
 				298DBC282441C98E00341D8E /* SnapshotContainerView.swift in Sources */,
 				291EC0E42610B32500C65A34 /* StackPageView.swift in Sources */,

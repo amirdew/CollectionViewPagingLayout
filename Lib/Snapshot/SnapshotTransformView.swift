@@ -83,7 +83,7 @@ public extension SnapshotTransformView {
     // MARK: Public functions
     
     func getSnapshot() -> SnapshotContainerView? {
-        return findSnapshot() ?? makeSnapshot()
+        findSnapshot() ?? makeSnapshot()
     }
     
     func applySnapshotTransform(snapshot: SnapshotContainerView, progress: CGFloat) {
