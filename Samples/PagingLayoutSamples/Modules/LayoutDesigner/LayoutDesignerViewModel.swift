@@ -24,13 +24,6 @@ class LayoutDesignerViewModel {
     var shapesViewModel: ShapesViewModel {
         ShapesViewModel(layouts: layouts, showBackButton: false, showPageControl: true)
     }
-    var shouldShowIntro: Bool {
-        if let introShown = UserDefaults.standard.value(forKey: "IntroShown") as? Bool, introShown {
-            return false
-        }
-        UserDefaults.standard.setValue(true, forKey: "IntroShown")
-        return true
-    }
     
     
     private(set) var optionViewModels: [LayoutDesignerOptionSectionViewModel] = []

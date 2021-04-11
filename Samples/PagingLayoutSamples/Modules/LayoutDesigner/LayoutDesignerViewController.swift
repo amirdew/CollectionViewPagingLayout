@@ -44,13 +44,6 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         codeContainerView.backgroundColor = codeContainerView.backgroundColor?.withAlphaComponent(0.6)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if viewModel.shouldShowIntro {
-            showIntroViewController(viewModel: viewModel.getIntroViewModel())
-        }
-    }
-    
     
     // MARK: Event listeners
     
