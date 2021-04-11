@@ -50,7 +50,7 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     
     @IBAction private func saveButtonTouched() {
         guard let exportURL = viewModel.sampleProjectTempURL else { return }
-        viewModel.generateSampleProject()
+        viewModel.generateSampleProject(type: selectedCodeType())
         let controller = UIDocumentPickerViewController(forExporting: [exportURL])
         controller.delegate = self
         present(controller, animated: true)
@@ -99,22 +99,23 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     }
     
     private func refreshViews() {
-        var type = LayoutDesignerCodePreviewViewModel.CodeType.swiftui
-        if codeModeSegmentedControl.selectedSegmentIndex == 0 {
-            type = .uikit
-        }
-        if codeModeSegmentedControl.selectedSegmentIndex == 2 {
-            type = .options
-        }
-
-        codeTextView.attributedText = viewModel?.getHighlightedText(type: type)
+        codeTextView.attributedText = viewModel?.getHighlightedText(type: selectedCodeType())
         codeTextView.contentInset = .init(top: 40 + view.safeAreaInsets.top,
                                           left: 0,
                                           bottom: 200 + view.safeAreaInsets.bottom,
                                           right: 0)
         codeTextView.contentOffset = .init(x: 0, y: -codeTextView.contentInset.top)
     }
-    
+
+    private func selectedCodeType() -> LayoutDesignerCodePreviewViewModel.CodeType {
+        if codeModeSegmentedControl.selectedSegmentIndex == 0 {
+            return .uikit
+        }
+        if codeModeSegmentedControl.selectedSegmentIndex == 2 {
+            return .options
+        }
+        return .swiftui
+    }
     
 }
 

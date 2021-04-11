@@ -44,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+// make docs for swifui
+// make samples for swift (devices view)
 // add swifui to layout designer
 // update intro on layout designer or remove it
 // fix bad blur performance on mac

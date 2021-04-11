@@ -57,7 +57,7 @@ struct LayoutDesignerCodePreviewViewModel {
         highlighter.highlight(getCode(type: type))
     }
     
-    func generateSampleProject() {
+    func generateSampleProject(type: CodeType) {
         removeSampleProject()
         guard let sampleProjectTempURL = sampleProjectTempURL,
               let bundlePath = Bundle.main.url(forResource: "SampleProject", withExtension: "bundle"),
@@ -69,8 +69,23 @@ struct LayoutDesignerCodePreviewViewModel {
         let baseProjectPath = sampleProjectTempURL.appendingPathComponent("PagingLayout")
         let viewControllerPath = baseProjectPath.appendingPathComponent("ViewController.swift")
         try? FileManager.default.removeItem(at: viewControllerPath)
+
+        var type = type
         
-        let code = getCode(type: .uikit)
+        if type == .options {
+            type = .swiftui
+        }
+        var code = getCode(type: type)
+        if type == .swiftui {
+            code.append("""
+
+
+            func ViewController() -> UIViewController {
+                UIHostingController(rootView: ContentView())
+            }
+            """)
+        }
+
         try? code.write(to: viewControllerPath, atomically: true, encoding: .utf8)
         
         try? FileManager.default.moveItem(at: sampleProjectTempURL.appendingPathComponent("PagingLayout.xcodeproj_sample"),

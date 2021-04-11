@@ -1,5 +1,5 @@
 PODS:
-  - CollectionViewPagingLayout (0.4.1)
+  - CollectionViewPagingLayout (1.0.0)
   - Splash (0.13.0)
   - SwiftLint (0.41.0)
 
@@ -24,10 +24,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/amirdew/Splash.git
 
 SPEC CHECKSUMS:
-  CollectionViewPagingLayout: 840a55d01c112c9cc5b46a01093f342870cdb93a
+  CollectionViewPagingLayout: 8eb0ccd1103738e258031e9288402bdef72f137d
   Splash: 5ec9a07c4bbf047ddd659bfc11d35331d31004f7
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
 PODFILE CHECKSUM: ba360cc7c61c7efa5897648fc2987642be2e493e
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0
