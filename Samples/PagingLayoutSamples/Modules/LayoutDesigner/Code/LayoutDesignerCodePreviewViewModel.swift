@@ -26,15 +26,18 @@ struct LayoutDesignerCodePreviewViewModel {
     var sampleProjectTempURL: URL? {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SampleProject")
     }
+
+    static private var fontSize: Double {
+        #if targetEnvironment(macCatalyst)
+        return 13
+        #else
+        return 1_024 * 10 / 1_024
+        #endif
+    }
     
     private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: Theme(
-        font: Font(size: 14),
-        plainTextColor: Color(
-            red: 1,
-            green: 1,
-            blue: 1,
-            alpha: 1
-        ),
+        font: Font(size: Self.fontSize),
+        plainTextColor: .white,
         tokenColors: [
             .keyword: Color(red: 1.00, green: 0.40, blue: 0.56, alpha: 1.00),
             .string: Color(red: 0.98, green: 0.39, blue: 0.12, alpha: 1),
