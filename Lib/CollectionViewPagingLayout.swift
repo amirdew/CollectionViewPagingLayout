@@ -3,7 +3,7 @@
 //  CollectionViewPagingLayout
 //
 //  Created by Amir Khorsandi on 12/23/19.
-//  Copyright © 2019 Amir Khorsandi. All rights reserved.
+//  Copyright1 © 2019 Amir Khorsandi. All rights reserved.
 //
 
 import UIKit
