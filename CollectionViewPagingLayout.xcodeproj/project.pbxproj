@@ -251,11 +251,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298DBBFE2441C94900341D8E /* Build configuration list for PBXNativeTarget "CollectionViewPagingLayout" */;
 			buildPhases = (
+				2967003224420B4100A1F508 /* Swiftlint */,
 				298DBBF12441C94900341D8E /* Headers */,
 				298DBBF22441C94900341D8E /* Sources */,
 				298DBBF32441C94900341D8E /* Frameworks */,
 				298DBBF42441C94900341D8E /* Resources */,
-				2967003224420B4100A1F508 /* Swiftlint */,
 			);
 			buildRules = (
 			);
