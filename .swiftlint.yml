@@ -40,6 +40,7 @@ excluded:
   - PagingLayoutSamples/SampleProject.bundle/SampleProject
   - Samples/Pods
   - Samples/PagingLayoutSamples/SampleProject.bundle/SampleProject
+  - CollectionViewPagingLayoutTests
 
 # adjusting rules
 
@@ -60,12 +61,6 @@ file_header:
                     \/\/  Copyright © \d{4} Amir Khorsandi. All rights reserved\.
                     \/\/
                    
-type_name:
-  min_length: 3
-  max_length:
-    warning: 50
-    error: 65
-  excluded: id # excluded via string
 reporter: "xcode"
 
 cyclomatic_complexity:

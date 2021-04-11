@@ -2,7 +2,8 @@
 //  ViewAnimator.swift
 //  CollectionViewPagingLayout
 //
-//  Created by Amir on 04/04/2021.
+//  Created by Amir on 04/04/2021
+//  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
 import QuartzCore

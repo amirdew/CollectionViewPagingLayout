@@ -15,6 +15,8 @@
 		291EC0E82610B32500C65A34 /* TransformPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E02610B32500C65A34 /* TransformPageView.swift */; };
 		291EC0E92610B32500C65A34 /* PagingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E12610B32500C65A34 /* PagingCollectionViewController.swift */; };
 		291EC0EA2610B32500C65A34 /* SnapshotPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC0E22610B32500C65A34 /* SnapshotPageView.swift */; };
+		291FDEC6262327FD00AD1C14 /* CollectionViewPagingLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FDEC5262327FD00AD1C14 /* CollectionViewPagingLayoutTests.swift */; };
+		291FDEC8262327FD00AD1C14 /* CollectionViewPagingLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298DBBF62441C94900341D8E /* CollectionViewPagingLayout.framework */; };
 		2967EBA226230A320035540A /* PagePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967EBA126230A320035540A /* PagePadding.swift */; };
 		2967EBA526230A570035540A /* PagingCollectionViewModifierData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2967EBA426230A570035540A /* PagingCollectionViewModifierData.swift */; };
 		298DBBFB2441C94900341D8E /* CollectionViewPagingLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 298DBBF92441C94900341D8E /* CollectionViewPagingLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,9 +39,22 @@
 		298DBC342441C98E00341D8E /* StackTransformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC1A2441C98E00341D8E /* StackTransformView.swift */; };
 		298DBC352441C98E00341D8E /* StackTransformViewOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC1B2441C98E00341D8E /* StackTransformViewOptions.swift */; };
 		298DBC382441C98E00341D8E /* TransformableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DBC232441C98E00341D8E /* TransformableView.swift */; };
+		29CD47C626235E6F00376CC8 /* SnapshotTransformViewOptions+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CD47C526235E6F00376CC8 /* SnapshotTransformViewOptions+Layout.swift */; };
+		29CD47CA26235E7800376CC8 /* StackTransformViewOptions+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CD47C926235E7800376CC8 /* StackTransformViewOptions+Layout.swift */; };
+		29CD47CE26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CD47CD26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift */; };
 		29DF4686261DF863007E0FA4 /* ViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4684261DF863007E0FA4 /* ViewAnimator.swift */; };
 		29DF4687261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		291FDEC9262327FD00AD1C14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 298DBBED2441C94900341D8E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 298DBBF52441C94900341D8E;
+			remoteInfo = CollectionViewPagingLayout;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		291EC0DB2610B32500C65A34 /* PagingCollectionViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewControllerBuilder.swift; sourceTree = "<group>"; };
@@ -50,6 +65,9 @@
 		291EC0E02610B32500C65A34 /* TransformPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformPageView.swift; sourceTree = "<group>"; };
 		291EC0E12610B32500C65A34 /* PagingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewController.swift; sourceTree = "<group>"; };
 		291EC0E22610B32500C65A34 /* SnapshotPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotPageView.swift; sourceTree = "<group>"; };
+		291FDEC3262327FD00AD1C14 /* CollectionViewPagingLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionViewPagingLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		291FDEC5262327FD00AD1C14 /* CollectionViewPagingLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPagingLayoutTests.swift; sourceTree = "<group>"; };
+		291FDEC7262327FD00AD1C14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2967EBA126230A320035540A /* PagePadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagePadding.swift; sourceTree = "<group>"; };
 		2967EBA426230A570035540A /* PagingCollectionViewModifierData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewModifierData.swift; sourceTree = "<group>"; };
 		298DBBF62441C94900341D8E /* CollectionViewPagingLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionViewPagingLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,11 +92,22 @@
 		298DBC1A2441C98E00341D8E /* StackTransformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTransformView.swift; sourceTree = "<group>"; };
 		298DBC1B2441C98E00341D8E /* StackTransformViewOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTransformViewOptions.swift; sourceTree = "<group>"; };
 		298DBC232441C98E00341D8E /* TransformableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformableView.swift; sourceTree = "<group>"; };
+		29CD47C526235E6F00376CC8 /* SnapshotTransformViewOptions+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotTransformViewOptions+Layout.swift"; sourceTree = "<group>"; };
+		29CD47C926235E7800376CC8 /* StackTransformViewOptions+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StackTransformViewOptions+Layout.swift"; sourceTree = "<group>"; };
+		29CD47CD26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScaleTransformViewOptions+Layout.swift"; sourceTree = "<group>"; };
 		29DF4684261DF863007E0FA4 /* ViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAnimator.swift; sourceTree = "<group>"; };
 		29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewPagingLayout.ZPositionHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		291FDEC0262327FD00AD1C14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291FDEC8262327FD00AD1C14 /* CollectionViewPagingLayout.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		298DBBF32441C94900341D8E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,10 +135,20 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		291FDEC4262327FD00AD1C14 /* CollectionViewPagingLayoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				291FDEC5262327FD00AD1C14 /* CollectionViewPagingLayoutTests.swift */,
+				291FDEC7262327FD00AD1C14 /* Info.plist */,
+			);
+			path = CollectionViewPagingLayoutTests;
+			sourceTree = "<group>";
+		};
 		298DBBEC2441C94900341D8E = {
 			isa = PBXGroup;
 			children = (
 				298DBBF82441C94900341D8E /* CollectionViewPagingLayout */,
+				291FDEC4262327FD00AD1C14 /* CollectionViewPagingLayoutTests */,
 				298DBBF72441C94900341D8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				298DBBF62441C94900341D8E /* CollectionViewPagingLayout.framework */,
+				291FDEC3262327FD00AD1C14 /* CollectionViewPagingLayoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +198,7 @@
 				298DBC062441C98E00341D8E /* SnapshotTransformViewOptions.PiecePosition.swift */,
 				298DBC072441C98E00341D8E /* SnapshotContainerView.swift */,
 				298DBC082441C98E00341D8E /* SnapshotTransformViewOptions.swift */,
+				29CD47C526235E6F00376CC8 /* SnapshotTransformViewOptions+Layout.swift */,
 			);
 			path = Snapshot;
 			sourceTree = "<group>";
@@ -169,6 +210,7 @@
 				298DBC0C2441C98E00341D8E /* ScaleTransformView.swift */,
 				298DBC0D2441C98E00341D8E /* ScaleTransformViewOptions.Rotation3dOptions.swift */,
 				298DBC0E2441C98E00341D8E /* ScaleTransformViewOptions.Translation3dOptions.swift */,
+				29CD47CD26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift */,
 			);
 			path = Scale;
 			sourceTree = "<group>";
@@ -189,6 +231,7 @@
 			children = (
 				298DBC1A2441C98E00341D8E /* StackTransformView.swift */,
 				298DBC1B2441C98E00341D8E /* StackTransformViewOptions.swift */,
+				29CD47C926235E7800376CC8 /* StackTransformViewOptions+Layout.swift */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -207,15 +250,33 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		291FDEC2262327FD00AD1C14 /* CollectionViewPagingLayoutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291FDECD262327FD00AD1C14 /* Build configuration list for PBXNativeTarget "CollectionViewPagingLayoutTests" */;
+			buildPhases = (
+				291FDEBF262327FD00AD1C14 /* Sources */,
+				291FDEC0262327FD00AD1C14 /* Frameworks */,
+				291FDEC1262327FD00AD1C14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				291FDECA262327FD00AD1C14 /* PBXTargetDependency */,
+			);
+			name = CollectionViewPagingLayoutTests;
+			productName = CollectionViewPagingLayoutTests;
+			productReference = 291FDEC3262327FD00AD1C14 /* CollectionViewPagingLayoutTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		298DBBF52441C94900341D8E /* CollectionViewPagingLayout */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298DBBFE2441C94900341D8E /* Build configuration list for PBXNativeTarget "CollectionViewPagingLayout" */;
 			buildPhases = (
+				2967003224420B4100A1F508 /* Swiftlint */,
 				298DBBF12441C94900341D8E /* Headers */,
 				298DBBF22441C94900341D8E /* Sources */,
 				298DBBF32441C94900341D8E /* Frameworks */,
 				298DBBF42441C94900341D8E /* Resources */,
-				2967003224420B4100A1F508 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -232,9 +293,13 @@
 		298DBBED2441C94900341D8E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = Amir;
 				TargetAttributes = {
+					291FDEC2262327FD00AD1C14 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					298DBBF52441C94900341D8E = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -254,11 +319,19 @@
 			projectRoot = "";
 			targets = (
 				298DBBF52441C94900341D8E /* CollectionViewPagingLayout */,
+				291FDEC2262327FD00AD1C14 /* CollectionViewPagingLayoutTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		291FDEC1262327FD00AD1C14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		298DBBF42441C94900341D8E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,12 +363,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		291FDEBF262327FD00AD1C14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291FDEC6262327FD00AD1C14 /* CollectionViewPagingLayoutTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		298DBBF22441C94900341D8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CD47C626235E6F00376CC8 /* SnapshotTransformViewOptions+Layout.swift in Sources */,
 				291EC0E52610B32500C65A34 /* ScalePageView.swift in Sources */,
 				291EC0E62610B32500C65A34 /* TransformPageViewProtocol.swift in Sources */,
+				29CD47CA26235E7800376CC8 /* StackTransformViewOptions+Layout.swift in Sources */,
 				2967EBA226230A320035540A /* PagePadding.swift in Sources */,
 				298DBC2D2441C98E00341D8E /* ScaleTransformViewOptions.Rotation3dOptions.swift in Sources */,
 				298DBC262441C98E00341D8E /* SnapshotTransformView.swift in Sources */,
@@ -315,6 +398,7 @@
 				298DBC2C2441C98E00341D8E /* ScaleTransformView.swift in Sources */,
 				298DBC2F2441C98E00341D8E /* CGFloat+Range.swift in Sources */,
 				291EC0E72610B32500C65A34 /* PagingCollectionViewCell.swift in Sources */,
+				29CD47CE26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift in Sources */,
 				298DBC2A2441C98E00341D8E /* TransformCurve.swift in Sources */,
 				2967EBA526230A570035540A /* PagingCollectionViewModifierData.swift in Sources */,
 				298DBC2B2441C98E00341D8E /* ScaleTransformViewOptions.swift in Sources */,
@@ -330,7 +414,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		291FDECA262327FD00AD1C14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 298DBBF52441C94900341D8E /* CollectionViewPagingLayout */;
+			targetProxy = 291FDEC9262327FD00AD1C14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		291FDECB262327FD00AD1C14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = CollectionViewPagingLayoutTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.amir.CollectionViewPagingLayoutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		291FDECC262327FD00AD1C14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4J5W7CJ2ZV;
+				INFOPLIST_FILE = CollectionViewPagingLayoutTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.amir.CollectionViewPagingLayoutTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		298DBBFC2441C94900341D8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -504,6 +634,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		291FDECD262327FD00AD1C14 /* Build configuration list for PBXNativeTarget "CollectionViewPagingLayoutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291FDECB262327FD00AD1C14 /* Debug */,
+				291FDECC262327FD00AD1C14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		298DBBF02441C94900341D8E /* Build configuration list for PBXProject "CollectionViewPagingLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

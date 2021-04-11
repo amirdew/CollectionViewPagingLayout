@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
         navigationController.setViewControllers([mainVC], animated: false)
-        window!.rootViewController = navigationController//UIHostingController(rootView: DevicesView().ignoresSafeArea())
+        window!.rootViewController = navigationController
+        // UIHostingController(rootView: DevicesView().ignoresSafeArea())
         window!.makeKeyAndVisible()
         return true
     }

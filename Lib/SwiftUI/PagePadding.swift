@@ -3,6 +3,7 @@
 //  CollectionViewPagingLayout
 //
 //  Created by Amir Khorsandi on 10/04/2021.
+//  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
 import Foundation
