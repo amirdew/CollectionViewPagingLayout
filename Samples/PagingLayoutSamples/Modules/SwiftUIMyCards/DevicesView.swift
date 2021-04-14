@@ -57,6 +57,7 @@ struct DevicesView: View {
         }
         .zPosition(zPosition)
         .collectionView(\.showsHorizontalScrollIndicator, false)
+        .ignoresSafeArea()
     }
 
     private func deviceView(device: Device, progress: CGFloat) -> some View {
