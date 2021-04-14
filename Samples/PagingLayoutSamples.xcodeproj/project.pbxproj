@@ -45,6 +45,7 @@
 		29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */; };
 		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
 		29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */; };
+		29DD1E18262597EF00846F7B /* WeatherTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E17262597EF00846F7B /* WeatherTabView.swift */; };
 		29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */; };
 		29FF296424A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */; };
 		55923226155A0B6E5A55C691 /* Pods_PagingLayoutSamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */; };
@@ -156,6 +157,7 @@
 		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		29DD1E17262597EF00846F7B /* WeatherTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.swift; sourceTree = "<group>"; };
 		29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewController.swift; sourceTree = "<group>"; };
 		29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewModel.swift; sourceTree = "<group>"; };
 		444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.release.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,12 +265,13 @@
 			path = Options;
 			sourceTree = "<group>";
 		};
-		29834F2925C5976300896343 /* SwiftUIMyCards */ = {
+		29834F2925C5976300896343 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
 				29834F2A25C5977300896343 /* DevicesView.swift */,
+				29DD1E17262597EF00846F7B /* WeatherTabView.swift */,
 			);
-			path = SwiftUIMyCards;
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		29A2D3CB24B73870005A0F6B /* Intro */ = {
@@ -325,6 +328,17 @@
 				29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */,
 			);
 			path = ShapeCell;
+			sourceTree = "<group>";
+		};
+		29DD1E21262753B900846F7B /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				29D9F94123F7F92000656A67 /* Shapes */,
+				AB500A4823B13B9D0056BE37 /* Fruits */,
+				AB1BBA8B23C935BF004E5C3B /* Cards */,
+				ABC242C123B681F800DBD4D6 /* Gallery */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		29FF296024A631DC00C83DF9 /* Code */ = {
@@ -445,13 +459,10 @@
 		AB500A5223B152170056BE37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				29834F2925C5976300896343 /* SwiftUIMyCards */,
+				29DD1E21262753B900846F7B /* UIKit */,
+				29834F2925C5976300896343 /* SwiftUI */,
 				292489AE2461A96600A316B0 /* LayoutDesigner */,
 				AB7C1E0423B4E292006441DE /* Main */,
-				29D9F94123F7F92000656A67 /* Shapes */,
-				AB500A4823B13B9D0056BE37 /* Fruits */,
-				AB1BBA8B23C935BF004E5C3B /* Cards */,
-				ABC242C123B681F800DBD4D6 /* Gallery */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -775,6 +786,7 @@
 				29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */,
 				29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
+				29DD1E18262597EF00846F7B /* WeatherTabView.swift in Sources */,
 				29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */,
 				29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
