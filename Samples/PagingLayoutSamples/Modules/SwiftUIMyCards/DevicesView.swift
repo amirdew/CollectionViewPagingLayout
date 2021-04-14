@@ -9,10 +9,14 @@
 import SwiftUI
 import CollectionViewPagingLayout
 
-struct Device {
+struct Device: Identifiable {
     let name: String
     let iconName: String
     let color: Color
+
+    var id: String {
+        name
+    }
 }
 
 struct DevicesView: View {
@@ -32,7 +36,7 @@ struct DevicesView: View {
     @State private var currentDeviceName: String?
 
     var body: some View {
-        TransformPageView(devices, id: \.name, selection: $currentDeviceName) { device, progress in
+        TransformPageView(devices, selection: $currentDeviceName) { device, progress in
             ZStack {
                 roundedRectangle(device: device, progress: progress)
                 deviceView(device: device, progress: progress)

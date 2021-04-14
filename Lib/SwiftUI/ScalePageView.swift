@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct ScalePageView<ValueType, ID: Hashable, PageContent: View>: UIViewControllerRepresentable, TransformPageViewProtocol {
+public struct ScalePageView<ValueType: Identifiable, PageContent: View>: UIViewControllerRepresentable, TransformPageViewProtocol {
 
     // MARK: Properties
 
@@ -21,11 +21,10 @@ public struct ScalePageView<ValueType, ID: Hashable, PageContent: View>: UIViewC
 
     public init(
         _ data: [ValueType],
-        id: KeyPath<ValueType, ID>,
-        selection: Binding<ID?>? = nil,
+        selection: Binding<ValueType.ID?>? = nil,
         @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
     ) {
-        builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection, idKeyPath: id)
+        builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
         builder.modifierData.scaleOptions = .init()
     }
 }

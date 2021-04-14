@@ -11,11 +11,10 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public protocol TransformPageViewProtocol {
-    associatedtype ValueType
-    associatedtype ID: Hashable
+    associatedtype ValueType: Identifiable
     associatedtype PageContent: View
 
-    typealias Builder = PagingCollectionViewControllerBuilder<ValueType, ID, PageContent>
+    typealias Builder = PagingCollectionViewControllerBuilder<ValueType, PageContent>
     
     var builder: Builder { get }
 }
@@ -33,11 +32,11 @@ public extension TransformPageViewProtocol {
         return self
     }
 
-    func onTapPage(_ onTapPage: @escaping (ID) -> Void) -> Self {
+    func onTapPage(_ onTapPage: @escaping (ValueType.ID) -> Void) -> Self {
 
         self.builder.modifierData.onTapPage = { index in
             guard index < builder.data.count else { return }
-            onTapPage(builder.data[index][keyPath: builder.idKeyPath])
+            onTapPage(builder.data[index].id)
         }
         return self
     }

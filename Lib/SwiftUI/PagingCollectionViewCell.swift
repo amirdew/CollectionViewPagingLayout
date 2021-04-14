@@ -10,9 +10,9 @@ import UIKit
 import SwiftUI
 
 @available(iOS 13.0, *)
-class PagingCollectionViewCell<ValueType, ID: Hashable, Content: View>: UICollectionViewCell {
+class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollectionViewCell {
 
-    typealias Parent = PagingCollectionViewController<ValueType, ID, Content>
+    typealias Parent = PagingCollectionViewController<ValueType, Content>
 
     // MARK: Properties
 

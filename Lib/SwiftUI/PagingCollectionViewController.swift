@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 @available(iOS 13.0, *)
-public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent: View>: UIViewController,
+public class PagingCollectionViewController<ValueType: Identifiable, PageContent: View>: UIViewController,
     UICollectionViewDataSource,
     CollectionViewPagingLayoutDelegate,
     UICollectionViewDelegate,
@@ -43,7 +43,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PagingCollectionViewCell<ValueType, ID, PageContent> = collectionView.dequeueReusableCellClass(for: indexPath)
+        let cell: PagingCollectionViewCell<ValueType, PageContent> = collectionView.dequeueReusableCellClass(for: indexPath)
         cell.update(value: list[indexPath.row], parent: self)
         return cell
     }
@@ -90,7 +90,7 @@ public class PagingCollectionViewController<ValueType, ID: Hashable, PageContent
         layout.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.isPagingEnabled = modifierData?.isPagingEnabled ?? true
-        collectionView.registerClass(PagingCollectionViewCell<ValueType, ID, PageContent>.self)
+        collectionView.registerClass(PagingCollectionViewCell<ValueType, PageContent>.self)
         collectionView.dataSource = self
         view.fill(with: collectionView)
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
