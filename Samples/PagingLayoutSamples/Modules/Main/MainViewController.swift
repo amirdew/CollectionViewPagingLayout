@@ -61,7 +61,7 @@ class MainViewController: UIViewController, NibBased {
     }
 
     @IBAction private func devicesButtonTouched() {
-        push(makeViewController(DevicesView(), backButtonColor: .white))
+        push(makeViewController(DevicesView(), backButtonColor: .white, statusBarStyle: .lightContent))
     }
 
     @IBAction private func transportButtonTouched() {
@@ -69,7 +69,7 @@ class MainViewController: UIViewController, NibBased {
     }
 
     @IBAction private func weatherButtonTouched() {
-        // TODO:
+        push(makeViewController(WeatherTabView(), backButtonColor: .gray, statusBarStyle: .darkContent))
     }
 
     @IBAction private func onFrameworkChanged() {
@@ -100,9 +100,11 @@ class MainViewController: UIViewController, NibBased {
         navigationController?.popViewController(animated: true)
     }
 
-    private func makeViewController<T: View>(_ view: T, backButtonColor: UIColor?) -> UIViewController {
+    private func makeViewController<T: View>(_ view: T,
+                                             backButtonColor: UIColor?,
+                                             statusBarStyle: UIStatusBarStyle?) -> UIViewController {
         let viewController = MainHostingViewController()
-        viewController.statusBarStyle = .lightContent
+        viewController.statusBarStyle = statusBarStyle
         viewController.view.fill(with: UIHostingController(rootView: view).view)
         if let backButtonColor = backButtonColor {
             let backButton = UIButton(type: .custom)

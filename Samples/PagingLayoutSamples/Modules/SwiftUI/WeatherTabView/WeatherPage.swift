@@ -1,34 +1,18 @@
 //
-//  WeatherTabView.swift
+//  WeatherPage.swift
 //  PagingLayoutSamples
 //
-//  Created by Amir Khorsandi on 13/04/2021.
+//  Created by Amir Khorsandi on 14/04/2021.
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-import SwiftUI
-import CollectionViewPagingLayout
-
-struct WeatherTabView: View {
-
-    @State var currentPage: WeatherPage.ID?
-
-    var body: some View {
-        ZStack {
-            TabView()
-            TransformPageView(WeatherPage.allCases, selection: $currentPage) { page, progress in
-
-            }
-            .animator(DefaultViewAnimator(0.7, curve: .parametric))
-        }
-    }
-}
+import Foundation
 
 enum WeatherPage: String, CaseIterable, Identifiable {
     case sun
     case bolt
-    case moon
     case tornado
+    case moon
     case snow
 
     var id: String {
@@ -48,6 +32,10 @@ enum WeatherPage: String, CaseIterable, Identifiable {
         case .snow:
             return "snow"
         }
+    }
+
+    var name: String {
+        rawValue.prefix(1).capitalized + rawValue.dropFirst()
     }
 
 }

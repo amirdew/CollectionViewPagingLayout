@@ -46,6 +46,11 @@
 		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
 		29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */; };
 		29DD1E18262597EF00846F7B /* WeatherTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E17262597EF00846F7B /* WeatherTabView.swift */; };
+		29DD1E2B26275E1D00846F7B /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */; };
+		29DD1E2F2627702C00846F7B /* WeatherTabView.Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */; };
+		29DD1E342627708B00846F7B /* WeatherPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E332627708B00846F7B /* WeatherPage.swift */; };
+		29DD1E3A2627774400846F7B /* WeatherTabView.TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */; };
+		29DD1E422627788200846F7B /* WeatherTabView.Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E412627788200846F7B /* WeatherTabView.Constant.swift */; };
 		29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */; };
 		29FF296424A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */; };
 		55923226155A0B6E5A55C691 /* Pods_PagingLayoutSamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */; };
@@ -158,6 +163,11 @@
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCells.swift; sourceTree = "<group>"; };
 		29DD1E17262597EF00846F7B /* WeatherTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.swift; sourceTree = "<group>"; };
+		29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.Overlay.swift; sourceTree = "<group>"; };
+		29DD1E332627708B00846F7B /* WeatherPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPage.swift; sourceTree = "<group>"; };
+		29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.TabView.swift; sourceTree = "<group>"; };
+		29DD1E412627788200846F7B /* WeatherTabView.Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.Constant.swift; sourceTree = "<group>"; };
 		29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewController.swift; sourceTree = "<group>"; };
 		29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewModel.swift; sourceTree = "<group>"; };
 		444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.release.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,8 +278,8 @@
 		29834F2925C5976300896343 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				29DD1E322627707A00846F7B /* WeatherTabView */,
 				29834F2A25C5977300896343 /* DevicesView.swift */,
-				29DD1E17262597EF00846F7B /* WeatherTabView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -339,6 +349,18 @@
 				ABC242C123B681F800DBD4D6 /* Gallery */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		29DD1E322627707A00846F7B /* WeatherTabView */ = {
+			isa = PBXGroup;
+			children = (
+				29DD1E17262597EF00846F7B /* WeatherTabView.swift */,
+				29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */,
+				29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */,
+				29DD1E412627788200846F7B /* WeatherTabView.Constant.swift */,
+				29DD1E332627708B00846F7B /* WeatherPage.swift */,
+			);
+			path = WeatherTabView;
 			sourceTree = "<group>";
 		};
 		29FF296024A631DC00C83DF9 /* Code */ = {
@@ -479,6 +501,7 @@
 				29B5A72724A8D8F700C9843E /* TransformCurve+Name.swift */,
 				29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */,
 				29B5A72924A8D94300C9843E /* Values+Pair.swift */,
+				29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -745,6 +768,7 @@
 				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
+				29DD1E2F2627702C00846F7B /* WeatherTabView.Overlay.swift in Sources */,
 				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
 				29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */,
 				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
@@ -769,6 +793,7 @@
 				ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */,
 				AB7C1E0623B4E2B2006441DE /* MainViewController.swift in Sources */,
 				AB500A5D23B1547C0056BE37 /* FruitCellViewModel.swift in Sources */,
+				29DD1E422627788200846F7B /* WeatherTabView.Constant.swift in Sources */,
 				29D9F94E23F7FDA600656A67 /* LayoutTypeCellViewModel.swift in Sources */,
 				29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */,
 				ABA0DA0123F93CA3004A9C18 /* ShapeLayout.swift in Sources */,
@@ -791,9 +816,12 @@
 				29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
+				29DD1E342627708B00846F7B /* WeatherPage.swift in Sources */,
 				29BEC4D52476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift in Sources */,
+				29DD1E2B26275E1D00846F7B /* VisualEffectView.swift in Sources */,
 				292489B02461A97900A316B0 /* LayoutDesignerViewController.swift in Sources */,
 				29D9F95923F874E900656A67 /* GradientView.swift in Sources */,
+				29DD1E3A2627774400846F7B /* WeatherTabView.TabView.swift in Sources */,
 				29FF296424A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift in Sources */,
 				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
 				292489C52461FE2700A316B0 /* Catalyst.swift in Sources */,
