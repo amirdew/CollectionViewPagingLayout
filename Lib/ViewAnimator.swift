@@ -14,8 +14,16 @@ public protocol ViewAnimator {
     /// - Parameter animations: Closure to animate
     /// - parameter progress: the animation progress, between 0.0 - 1.0
     /// - parameter finished: animation finished state, set to true at the end
-    func animate(animations: @escaping (_ progress: Double, _ finished: Bool) -> Void)
+    @discardableResult func animate(animations: @escaping (_ progress: Double, _ finished: Bool) -> Void) -> ViewAnimatorCancelable?
 }
+
+
+public protocol ViewAnimatorCancelable {
+
+    /// Cancel the animation with changing progress
+    func cancel()
+}
+
 
 /// Default implementation for `ViewAnimator`
 public class DefaultViewAnimator: ViewAnimator {
@@ -40,13 +48,13 @@ public class DefaultViewAnimator: ViewAnimator {
         self.curve = curve
     }
 
-    public func animate(animations: @escaping (Double, Bool) -> Void) {
+    public func animate(animations: @escaping (Double, Bool) -> Void) -> ViewAnimatorCancelable? {
         if !Thread.isMainThread {
             fatalError("only from main thread")
         }
         guard duration > 0 else {
             animations(1.0, true)
-            return
+            return nil
         }
         invalidateDisplayLink()
         start = CACurrentMediaTime()
@@ -54,6 +62,9 @@ public class DefaultViewAnimator: ViewAnimator {
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.add(to: .current, forMode: .common)
         self.displayLink = displayLink
+        return Cancelable { [weak self] in
+            self?.invalidateDisplayLink()
+        }
     }
 
     @objc private func update() {
@@ -100,6 +111,16 @@ public extension DefaultViewAnimator {
             return min(max(result, 0), 1)
         }
 
+    }
+}
+
+extension DefaultViewAnimator {
+    private struct Cancelable: ViewAnimatorCancelable {
+        var onCancel: () -> Void
+
+        func cancel() {
+            onCancel()
+        }
     }
 }
 

@@ -42,6 +42,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     ///
     /// See `ViewAnimator` for details
     public var defaultAnimator: ViewAnimator?
+
+    public private(set) var isAnimating: Bool = false
     
     public weak var delegate: CollectionViewPagingLayoutDelegate?
     
@@ -80,6 +82,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     private var attributesCache: [(page: Int, attributes: UICollectionViewLayoutAttributes)]?
     private var boundsObservation: NSKeyValueObservation?
     private var lastBounds: CGRect?
+    private var currentViewAnimatorCancelable: ViewAnimatorCancelable?
+    private var originalIsUserInteractionEnabled: Bool?
 
 
     // MARK: Public functions
@@ -227,7 +231,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
                 currentPage = Int(round(offset / pageSize))
             }
         }
-        if currentPage != self.currentPage {
+        if currentPage != self.currentPage, !isAnimating {
             self.currentPage = currentPage
         }
     }
@@ -247,6 +251,13 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     }
     
     private func safelySetCurrentPage(_ page: Int, animated: Bool, animator: ViewAnimator?, completion: (() -> Void)? = nil) {
+        if isAnimating {
+            currentViewAnimatorCancelable?.cancel()
+            isAnimating = false
+            if let isEnabled = originalIsUserInteractionEnabled {
+            	collectionView?.isUserInteractionEnabled = isEnabled
+            }
+        }
         let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
         let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
         let maxPossibleOffset = contentSize - pageSize
@@ -254,11 +265,17 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
+
+        if animated {
+            isAnimating = true
+        }
+
         if animated, let animator = animator {
             setContentOffset(with: animator, offset: contentOffset, completion: completion)
         } else {
             CATransaction.begin()
             CATransaction.setCompletionBlock { [weak self] in
+                self?.isAnimating = false
                 self?.invalidateLayoutInBatchUpdate()
                 completion?()
             }
@@ -276,14 +293,17 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         guard let start = collectionView?.contentOffset else { return }
         let x = offset.x - start.x
         let y = offset.y - start.y
-        let originalIsUserInteractionEnabled = collectionView?.isUserInteractionEnabled ?? true
+        originalIsUserInteractionEnabled = collectionView?.isUserInteractionEnabled ?? true
         collectionView?.isUserInteractionEnabled = false
-        animator.animate { [weak self] progress, finished in
+        currentViewAnimatorCancelable = animator.animate { [weak self] progress, finished in
             guard let collectionView = self?.collectionView else { return }
             collectionView.contentOffset = CGPoint(x: start.x + x * CGFloat(progress),
                                                    y: start.y + y * CGFloat(progress))
             if finished {
-                self?.collectionView?.isUserInteractionEnabled = originalIsUserInteractionEnabled
+                self?.currentViewAnimatorCancelable = nil
+                self?.isAnimating = false
+                self?.collectionView?.isUserInteractionEnabled = self?.originalIsUserInteractionEnabled ?? true
+                self?.originalIsUserInteractionEnabled = nil
                 self?.collectionView?.delegate?.scrollViewDidEndScrollingAnimation?(collectionView)
                 self?.invalidateLayoutInBatchUpdate()
                 completion?()
