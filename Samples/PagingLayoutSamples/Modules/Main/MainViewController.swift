@@ -24,6 +24,10 @@ class MainViewController: UIViewController, NibBased {
     @IBOutlet private weak var swiftUICustomBuildsContainer: UIView!
     @IBOutlet private weak var uiKitCustomBuildsContainer: UIView!
 
+    private var isSwiftUI: Bool {
+        frameworkSegmentedControl.selectedSegmentIndex == 0
+    }
+
 
     // MARK: ViewController
 
@@ -31,21 +35,40 @@ class MainViewController: UIViewController, NibBased {
         super.viewDidLoad()
         configureFrameworkSegmentedControl()
         updateViewsBasedOnSelectedFramework()
+        swiftUICustomBuildsContainer.setNeedsLayout()
     }
 
     
     // MARK: Event listeners
     
     @IBAction private func stackButtonTouched() {
-        push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)))
+        if isSwiftUI {
+            push(makeViewController(ShapesListView(layoutGroup: .stack),
+                                    backButtonColor: .gray,
+                                    statusBarStyle: .darkContent))
+        } else {
+            push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .stack)))
+        }
     }
     
     @IBAction private func scaleButtonTouched() {
-        push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .scale)))
+        if isSwiftUI {
+            push(makeViewController(ShapesListView(layoutGroup: .scale),
+                                    backButtonColor: .gray,
+                                    statusBarStyle: .darkContent))
+        } else {
+            push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .scale)))
+        }
     }
     
     @IBAction private func snapshotButtonTouched() {
-        push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .snapshot)))
+        if isSwiftUI {
+            push(makeViewController(ShapesListView(layoutGroup: .snapshot),
+                                    backButtonColor: .gray,
+                                    statusBarStyle: .darkContent))
+        } else {
+            push(ShapesViewController.instantiate(viewModel: ShapesViewModel(layouts: .snapshot)))
+        }
     }
     
     @IBAction private func fruitsButtonTouched() {
@@ -84,7 +107,6 @@ class MainViewController: UIViewController, NibBased {
     }
 
     private func updateViewsBasedOnSelectedFramework() {
-        let isSwiftUI = frameworkSegmentedControl.selectedSegmentIndex == 0
         transformTitleLabel.text = isSwiftUI ? "PageView" : "Transforms"
         transformSubtitles.forEach { $0.text = transformTitleLabel.text }
 
@@ -139,7 +161,7 @@ class MainViewControllerScrollView: UIScrollView {
         if let mainVC = superview?.next as? MainViewController {
             let point = convert(point, to: mainVC.view)
             if mainVC.frameworkSegmentedControl.frame.contains(point) {
-            	return mainVC.frameworkSegmentedControl.hitTest(point, with: event)
+                return mainVC.frameworkSegmentedControl.hitTest(point, with: event)
             }
         }
         return super.hitTest(point, with: event)

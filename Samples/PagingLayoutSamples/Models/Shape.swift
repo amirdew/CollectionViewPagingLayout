@@ -6,7 +6,11 @@
 //  Copyright © 2020 Amir Khorsandi. All rights reserved.
 //
 
-struct Shape {
+struct Shape: Identifiable {
     let name: String
     let iconName: String
+
+    var id: String {
+        name
+    }
 }

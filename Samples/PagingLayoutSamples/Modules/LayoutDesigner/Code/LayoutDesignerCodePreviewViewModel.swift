@@ -141,7 +141,13 @@ struct LayoutDesignerCodePreviewViewModel {
         struct ContentView: View {
 
             // Replace with your data
-            let items = Array(0..<10)
+            struct Item: Identifiable {
+                let id: UUID = .init()
+                let number: Int
+            }
+            let items = Array(0..<10).map {
+                Item(number: $0)
+            }
 
             // Use the options to customize the layout
             \(code.replacingOccurrences(of: "scaleOptions", with: "options")
@@ -150,11 +156,11 @@ struct LayoutDesignerCodePreviewViewModel {
                 .replacingOccurrences(of: "\n", with: "\n    "))
 
             var body: some View {
-                \(viewName)(items, id: \\.self) { num in
+                \(viewName)(items) { item in
                     // Build your view here
                     ZStack {
                         Rectangle().fill(Color.orange)
-                        Text("\\(num)")
+                        Text("\\(item.number)")
                     }
                 }
                 .options(options)

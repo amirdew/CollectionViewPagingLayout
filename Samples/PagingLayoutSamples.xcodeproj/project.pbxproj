@@ -15,6 +15,8 @@
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
 		2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */; };
 		294BA3C324A77A73008D0569 /* LayoutDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */; };
+		29519ACC262B5DE400D8A4A3 /* ShapesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */; };
+		29519ACE262B646E00D8A4A3 /* ShapesListView.ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */; };
 		296EF99A2628B13000B72439 /* WeatherTabView.PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296EF9992628B13000B72439 /* WeatherTabView.PageView.swift */; };
 		2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */; };
 		2977657E2474531D00835DBD /* LayoutDesignerOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */; };
@@ -132,6 +134,8 @@
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utilities.swift"; sourceTree = "<group>"; };
 		294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerViewModel.swift; sourceTree = "<group>"; };
+		29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesListView.swift; sourceTree = "<group>"; };
+		29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesListView.ShapeView.swift; sourceTree = "<group>"; };
 		296EF9992628B13000B72439 /* WeatherTabView.PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.PageView.swift; sourceTree = "<group>"; };
 		2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCell.swift; sourceTree = "<group>"; };
 		2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerOptionCell.xib; sourceTree = "<group>"; };
@@ -266,6 +270,15 @@
 			path = AppKitGlue;
 			sourceTree = "<group>";
 		};
+		29519ACA262B5DD400D8A4A3 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */,
+				29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		2977657A247452BC00835DBD /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +291,7 @@
 		29834F2925C5976300896343 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				29519ACA262B5DD400D8A4A3 /* Shapes */,
 				29DD1E322627707A00846F7B /* WeatherTabView */,
 				29834F2A25C5977300896343 /* DevicesView.swift */,
 			);
@@ -779,6 +793,7 @@
 				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */,
+				29519ACE262B646E00D8A4A3 /* ShapesListView.ShapeView.swift in Sources */,
 				2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */,
 				29B5A72A24A8D94300C9843E /* Values+Pair.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
@@ -805,6 +820,7 @@
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
 				29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */,
 				29834F2B25C5977300896343 /* DevicesView.swift in Sources */,
+				29519ACC262B5DE400D8A4A3 /* ShapesListView.swift in Sources */,
 				29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
