@@ -14,6 +14,8 @@ struct PagingCollectionViewModifierData {
     var scaleOptions: ScaleTransformViewOptions?
     var stackOptions: StackTransformViewOptions?
     var snapshotOptions: SnapshotTransformViewOptions?
+    var snapshotIdentifier: ((Int, UIView?) -> String)?
+    var canReuseSnapshot: ((SnapshotContainerView, UIView?) -> Bool)?
     var numberOfVisibleItems: Int?
     var isPagingEnabled: Bool?
     var zPositionProvider: ((CGFloat) -> Int)?

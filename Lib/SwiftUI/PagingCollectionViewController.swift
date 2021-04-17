@@ -44,7 +44,7 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PagingCollectionViewCell<ValueType, PageContent> = collectionView.dequeueReusableCellClass(for: indexPath)
-        cell.update(value: list[indexPath.row], parent: self)
+        cell.update(value: list[indexPath.row], index: indexPath, parent: self)
         return cell
     }
 

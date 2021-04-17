@@ -37,3 +37,28 @@ public extension SnapshotPageView {
         return self
     }
 }
+
+@available(iOS 13.0, *)
+public extension SnapshotPageView {
+    /// A unique identifier for the snapshot, a new snapshot won't be made if
+    /// there is a cashed snapshot with the same identifier
+    /// - Parameter index: The index of item
+    /// - Parameter view: The `UIView` converted from `PageContent`
+    /// - Returns: Self
+    func snapshotIdentifier(_ snapshotIdentifier: @escaping (_ index: Int,_ view: UIView?) -> String) -> Self {
+        builder.modifierData.snapshotIdentifier = snapshotIdentifier
+        return self
+    }
+}
+
+@available(iOS 13.0, *)
+public extension SnapshotPageView {
+    /// Check if the snapshot can be reused
+    /// - Parameter snapshotContainer: The container for snapshot pieces, see `SnapshotContainerView`
+    /// - Parameter view: The `UIView` converted from `PageContent`
+    /// - Returns: Self
+    func canReuseSnapshot(_ canReuseSnapshot: @escaping (_ snapshotContainer: SnapshotContainerView,_ view: UIView?) -> Bool) -> Self {
+        builder.modifierData.canReuseSnapshot = canReuseSnapshot
+        return self
+    }
+}

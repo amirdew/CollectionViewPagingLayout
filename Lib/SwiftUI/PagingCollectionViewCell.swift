@@ -19,16 +19,18 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
     private weak var hostingController: UIHostingController<Content>?
     private var viewBuilder: ((ValueType, CGFloat) -> Content)?
     private var value: ValueType!
+    private var index: IndexPath!
     private weak var parent: Parent?
     private var parentBoundsObserver: NSKeyValueObservation?
     private var parentSize: CGSize?
 
     // MARK: Public functions
 
-    func update(value: ValueType, parent: Parent) {
+    func update(value: ValueType, index: IndexPath, parent: Parent) {
         self.parent = parent
         self.viewBuilder = parent.pageViewBuilder
         self.value = value
+        self.index = index
         if hostingController != nil {
             updateView()
         } else {
@@ -153,5 +155,30 @@ extension PagingCollectionViewCell: TransformableView,
 
     func zPosition(progress: CGFloat) -> Int {
         parent?.modifierData?.zPositionProvider?(progress) ?? Int(-abs(round(progress)))
+    }
+
+    var snapshotIdentifier: String {
+        if let snapshotIdentifier = parent?.modifierData?.snapshotIdentifier {
+            return snapshotIdentifier(index.item, hostingController?.view)
+        }
+
+        var identifier = String(describing: value.id)
+
+        if let scrollView = targetView as? UIScrollView {
+            identifier.append("\(scrollView.contentOffset)")
+        }
+
+        if let scrollView = targetView.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView {
+            identifier.append("\(scrollView.contentOffset)")
+        }
+
+        return identifier
+    }
+
+    func canReuse(snapshot: SnapshotContainerView) -> Bool {
+        if let canReuse = parent?.modifierData?.canReuseSnapshot {
+            return canReuse(snapshot, hostingController?.view)
+        }
+        return snapshot.snapshotSize == targetView.bounds.size
     }
 }
