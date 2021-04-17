@@ -18,7 +18,7 @@ public protocol SnapshotTransformView: TransformableView {
     
     /// A unique identifier for the snapshot, a new snapshot won't be made if
     /// there is a cashed snapshot with the same identifier
-    var identifier: String { get }
+    var snapshotIdentifier: String { get }
     
     /// the function for getting the cached snapshot or make a new one and cache it
     func getSnapshot() -> SnapshotContainerView?
@@ -42,7 +42,7 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
     /// Default `identifier` for `UICollectionViewCell` is it's index
     /// if you have the same content with different indexes (like an infinite list)
     /// you should override this and provide a content-based identifier
-    var identifier: String {
+    var snapshotIdentifier: String {
         var collectionView: UICollectionView?
         var superview = self.superview
         while superview != nil {
@@ -52,7 +52,17 @@ public extension SnapshotTransformView where Self: UICollectionViewCell {
             }
             superview = superview?.superview
         }
-        return "\(collectionView?.indexPath(for: self) ?? IndexPath())"
+        var identifier = "\(collectionView?.indexPath(for: self) ?? IndexPath())"
+
+        if let scrollView = targetView as? UIScrollView {
+            identifier.append("\(scrollView.contentOffset)")
+        }
+
+        if let scrollView = targetView.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView {
+            identifier.append("\(scrollView.contentOffset)")
+        }
+        
+        return identifier
     }
 
     /// Default implementation only compares the size of snapshot with the view
@@ -104,7 +114,7 @@ public extension SnapshotTransformView {
     private func hideOtherSnapshots() {
         targetView.superview?.subviews.filter { $0 is SnapshotContainerView }.forEach {
             guard let snapshot = $0 as? SnapshotContainerView else { return }
-            if snapshot.identifier != identifier {
+            if snapshot.identifier != snapshotIdentifier {
             	snapshot.alpha = 0
             }
         }
@@ -113,7 +123,10 @@ public extension SnapshotTransformView {
     private func findSnapshot() -> SnapshotContainerView? {
         hideOtherSnapshots()
         
-        let snapshot = targetView.superview?.subviews.first { ($0 as? SnapshotContainerView)?.identifier == identifier } as? SnapshotContainerView
+        let snapshot = targetView.superview?.subviews.first {
+            ($0 as? SnapshotContainerView)?.identifier == snapshotIdentifier
+        } as? SnapshotContainerView
+
         if let snapshot = snapshot, snapshot.pieceSizeRatio != snapshotOptions.pieceSizeRatio {
             snapshot.removeFromSuperview()
             return nil
@@ -127,10 +140,16 @@ public extension SnapshotTransformView {
     }
     
     private func makeSnapshot() -> SnapshotContainerView? {
-        guard let view = SnapshotContainerView(targetView: targetView, pieceSizeRatio: snapshotOptions.pieceSizeRatio, identifier: identifier) else {
-            return nil
-        }
-        targetView.superview?.subviews.first(where: { $0 is SnapshotContainerView })?.removeFromSuperview()
+        targetView.superview?.subviews.first {
+            ($0 as? SnapshotContainerView)?.identifier == snapshotIdentifier
+        }?.removeFromSuperview()
+
+
+        guard let view = SnapshotContainerView(targetView: targetView,
+                                               pieceSizeRatio: snapshotOptions.pieceSizeRatio,
+                                               identifier: snapshotIdentifier)
+        else { return nil }
+
         targetView.superview?.insertSubview(view, aboveSubview: targetView)
         targetView.equalSize(to: view)
         targetView.center(to: view)
