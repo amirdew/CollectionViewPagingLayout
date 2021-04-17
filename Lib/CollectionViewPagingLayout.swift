@@ -139,7 +139,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
         return true
     }
-    
+
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let currentScrollOffset = self.currentScrollOffset
         let numberOfItems = self.numberOfItems
@@ -187,8 +187,12 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             
             if cell == nil || cell is TransformableView {
                 cellAttributes.frame = visibleRect
+                if cell == nil {
+                    cellAttributes.alpha = 0
+                }
             } else {
-                cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0), size: visibleRect.size)
+                cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0),
+                                              size: visibleRect.size)
             }
 
             // In some cases attribute.zIndex doesn't work so this is the work-around
