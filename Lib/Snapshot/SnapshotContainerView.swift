@@ -17,7 +17,7 @@ public class SnapshotContainerView: UIView {
     public let snapshotSize: CGSize
     public let pieceSizeRatio: CGSize
     
-    private let targetView: UIView
+    private weak var targetView: UIView?
     
     
     // MARK: Lifecycle
