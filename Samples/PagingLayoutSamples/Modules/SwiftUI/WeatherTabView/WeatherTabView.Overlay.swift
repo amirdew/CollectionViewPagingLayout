@@ -15,8 +15,8 @@ extension WeatherTabView {
                 LinearGradient(
                     gradient: Gradient(
                         colors: [
-                            Constant.backgroundColor,
-                            Constant.backgroundColor.opacity(0)
+                            Color("Background"),
+                            Color("Background").opacity(0)
                         ]
                     ),
                     startPoint: .top,
@@ -26,6 +26,18 @@ extension WeatherTabView {
                 .padding(.top, 50)
 
                 Spacer()
+
+                LinearGradient(
+                    gradient: Gradient(
+                        colors: [
+                            Color("Background").opacity(0),
+                            Color("Background")
+                        ]
+                    ),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(maxWidth: .infinity, maxHeight: 40)
             }
         }
     }

@@ -6,60 +6,37 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-// swiftlint:disable line_length
-
 import SwiftUI
 import CollectionViewPagingLayout
 
 struct WeatherTabView: View {
 
-    @State var currentPage: WeatherPage.ID?
-
+    @State private var currentPage: WeatherPage.ID?
 
     var body: some View {
         ZStack {
-            Constant.backgroundColor.ignoresSafeArea()
+            Color("Background").ignoresSafeArea()
 
             SnapshotPageView(WeatherPage.allCases, selection: $currentPage) { page in
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Image("WikipediaLogo")
-                            .opacity(0.34)
-                        Text(page.name)
-                            .font(.system(size: 62, weight: .bold, design: .serif))
-                        Text(
-                            """
-                            A tornado is a violently rotating column of air that is in contact with both the surface of the Earth and a cumulonimbus cloud or, in rare cases, the base of a cumulus cloud.
-
-                            The windstorm is often referred to as a twister, whirlwind or cyclone,[1] although the word cyclone is used in meteorology to name a weather system with a low-pressure area in the center around which, from an observer looking down toward the surface of the earth, winds blow counterclockwise in the Northern Hemisphere and clockwise in the Southern.
-                            """
-                        )
-                        .font(.system(size: 16, weight: .regular, design: .default))
-                        .foregroundColor(.gray)
-                        [WeatherPage.sun, .tornado, .snow].contains(page) ? Image("cherryImage") : Image("appleImage")
-                        Text(
-                            """
-                            A tornado is a violently rotating column of air that is in contact with both the surface of the Earth and a cumulonimbus cloud or, in rare cases, the base of a cumulus cloud.
-
-                            The windstorm is often referred to as a twister, whirlwind or cyclone,[1] although the word cyclone is used in meteorology to name a weather system with a low-pressure area in the center around which, from an observer looking down toward the surface of the earth, winds blow counterclockwise in the Northern Hemisphere and clockwise in the Southern.
-                            """
-                        )
-                        .font(.system(size: 16, weight: .regular, design: .default))
-                        .foregroundColor(.gray)
-                        Image("appleImage")
-                    }
-                    .padding(.horizontal, 34)
-                    .padding(.top, 20)
+                ScrollView(showsIndicators: false) {
+                    PageView(page: page)
                 }
             }
-            //.numberOfVisibleItems(3)
             .animator(DefaultViewAnimator(0.7, curve: .parametric))
-            .options(.layout(.lines))
+            .options(options)
             .padding(.top, 50)
-            .padding(.bottom, 12)
+            .overlay(Overlay())
 
             TabView(selection: $currentPage)
         }
-        .overlay(Overlay())
     }
+
+    private var options = SnapshotTransformViewOptions(
+        pieceSizeRatio: .init(width: 0.2, height: 1),
+        piecesAlphaRatio: .static(0),
+        piecesTranslationRatio: .columnOddEven(CGPoint(x: 0, y: 0.1), CGPoint(x: 0, y: -0.1)),
+        piecesScaleRatio: .columnOddEven(.init(width: 1, height: 0), .init(width: 0, height: 0)),
+        containerScaleRatio: 0,
+        containerTranslationRatio: .init(x: 1, y: 0)
+    )
 }
