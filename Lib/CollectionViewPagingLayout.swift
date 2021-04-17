@@ -38,6 +38,9 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     /// See `ZPositionHandler` for details
     public var zPositionHandler: ZPositionHandler = .both
 
+    /// Set `alpha` to zero when the cell is not loaded yet by collection view
+    public var transparentAttributeWhenCellNotLoaded: Bool = true
+
     /// The animator for setting `contentOffset`
     ///
     /// See `ViewAnimator` for details
@@ -187,7 +190,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             
             if cell == nil || cell is TransformableView {
                 cellAttributes.frame = visibleRect
-                if cell == nil {
+                if cell == nil, transparentAttributeWhenCellNotLoaded {
                     cellAttributes.alpha = 0
                 }
             } else {
