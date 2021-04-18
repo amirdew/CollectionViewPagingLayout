@@ -45,7 +45,7 @@ public extension SnapshotPageView {
     /// - Parameter index: The index of item
     /// - Parameter view: The `UIView` converted from `PageContent`
     /// - Returns: Self
-    func snapshotIdentifier(_ snapshotIdentifier: @escaping (_ index: Int,_ view: UIView?) -> String) -> Self {
+    func snapshotIdentifier(_ snapshotIdentifier: @escaping (_ index: Int, _ view: UIView?) -> String) -> Self {
         builder.modifierData.snapshotIdentifier = snapshotIdentifier
         return self
     }
@@ -57,7 +57,7 @@ public extension SnapshotPageView {
     /// - Parameter snapshotContainer: The container for snapshot pieces, see `SnapshotContainerView`
     /// - Parameter view: The `UIView` converted from `PageContent`
     /// - Returns: Self
-    func canReuseSnapshot(_ canReuseSnapshot: @escaping (_ snapshotContainer: SnapshotContainerView,_ view: UIView?) -> Bool) -> Self {
+    func canReuseSnapshot(_ canReuseSnapshot: @escaping (_ snapshotContainer: SnapshotContainerView, _ view: UIView?) -> Bool) -> Self {
         builder.modifierData.canReuseSnapshot = canReuseSnapshot
         return self
     }

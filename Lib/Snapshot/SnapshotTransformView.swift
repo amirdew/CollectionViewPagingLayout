@@ -142,8 +142,8 @@ public extension SnapshotTransformView {
     private func makeSnapshot() -> SnapshotContainerView? {
         targetView.superview?.subviews.first {
             ($0 as? SnapshotContainerView)?.identifier == snapshotIdentifier
-        }?.removeFromSuperview()
-
+        }?
+        .removeFromSuperview()
 
         guard let view = SnapshotContainerView(targetView: targetView,
                                                pieceSizeRatio: snapshotOptions.pieceSizeRatio,
