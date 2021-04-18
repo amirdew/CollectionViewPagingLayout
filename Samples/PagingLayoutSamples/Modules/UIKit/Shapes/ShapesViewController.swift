@@ -111,7 +111,7 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.isPagingEnabled = true
         collectionView.dataSource = self
         let layout = CollectionViewPagingLayout()
-        layout.numberOfVisibleItems = 10
+        layout.transparentAttributeWhenCellNotLoaded = false
         collectionView.collectionViewLayout = layout
         layout.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
