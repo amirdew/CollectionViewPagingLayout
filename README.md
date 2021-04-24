@@ -12,13 +12,14 @@
 
 
 ## Custom implementations
+<div align="left">
 
-    
 [<img align="left" width="120" src="https://amir.app/git/flowlayout_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Fruits)
-    
+
 [<img align="left" width="120" src="https://amir.app/git/gallery_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Gallery)
-    
+
 [<img width="120" src="https://amir.app/git/cards_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Cards) 
+</div>
 
 ### SnapshotTransformView
 
