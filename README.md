@@ -7,7 +7,7 @@
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 ## Layout Designer
-<img width="600" src="https://amir.app/git/layout_designer_preview.gif"></img>            
+[<img width="600" src="https://amir.app/git/layout_designer_preview.gif">](https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12)   
 <a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>    
 
 
