@@ -11,6 +11,14 @@
 <a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>    
 
 
+## Custom implementations
+
+<p float="left">
+<img width="100" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="100" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="100" src="https://amir.app/git/cards_preview.gif"></img>
+</p>
+
 ### SnapshotTransformView
 
 <p float="left">
@@ -47,17 +55,9 @@
 <img width="100" src="https://amir.app/git/shapes_preview/stack_vortex.gif"></img>
 </p>
 
-## Custom implementations
-
-<p float="left">
-<img width="100" src="https://amir.app/git/flowlayout_preview.gif"></img>
-<img width="100" src="https://amir.app/git/gallery_preview.gif"></img>
-<img width="100" src="https://amir.app/git/cards_preview.gif"></img>
-</p>
-
 
 ## About
-This is a simple but powerful framework that lets you make complex layouts for your `UICollectionView`.        
+A simple but powerful framework that lets you make complex layouts for your `UICollectionView`.        
 The implementation is quite simple. Just a custom `UICollectionViewLayout` that gives you the ability to apply transforms to the cells.       
 No UICollectionView inheritance or anything like that.         
 For more details, see [How to use](https://github.com/amirdew/CollectionViewPagingLayout#how-to-use)       
