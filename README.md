@@ -14,9 +14,9 @@
 ## Custom implementations
 
 <p float="left">
-<img width="100" src="https://amir.app/git/flowlayout_preview.gif"></img>
-<img width="100" src="https://amir.app/git/gallery_preview.gif"></img>
-<img width="100" src="https://amir.app/git/cards_preview.gif"></img>
+<img width="120" src="https://amir.app/git/flowlayout_preview.gif"></img>
+<img width="120" src="https://amir.app/git/gallery_preview.gif"></img>
+<img width="120" src="https://amir.app/git/cards_preview.gif"></img>
 </p>
 
 ### SnapshotTransformView
