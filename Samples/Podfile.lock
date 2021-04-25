@@ -24,7 +24,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/amirdew/Splash.git
 
 SPEC CHECKSUMS:
-  CollectionViewPagingLayout: 8eb0ccd1103738e258031e9288402bdef72f137d
+  CollectionViewPagingLayout: 3d6aa471bb35a58afaee12704290d0f70db74f2e
   Splash: 5ec9a07c4bbf047ddd659bfc11d35331d31004f7
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
