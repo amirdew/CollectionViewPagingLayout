@@ -18,6 +18,9 @@ public protocol TransformableView {
     
     /// Sends a float value based on the position of the view (cell)
     /// if the view is in the center of CollectionView it sends 0
+    /// the value could be negative or positive and that represents the distance to the center of your CollectionView.
+    /// for instance `1` means the distance between the center of the cell and the center of your CollectionView
+    /// is equal to your CollectionView width.
     ///
     /// - Parameter progress: the interpolated progress for the cell view
     func transform(progress: CGFloat)
