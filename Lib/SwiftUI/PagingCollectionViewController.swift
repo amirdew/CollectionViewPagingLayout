@@ -108,6 +108,10 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
                let value: UIView = property.getValue() {
                 collectionView[keyPath: keyPath] = value
             }
+            if let keyPath: WritableKeyPath<UICollectionView, UIColor> = property.getKey(),
+               let value: UIColor = property.getValue() {
+                collectionView[keyPath: keyPath] = value
+            }
             if let keyPath: WritableKeyPath<UICollectionView, UIScrollView.ContentInsetAdjustmentBehavior> = property.getKey(),
                let value: UIScrollView.ContentInsetAdjustmentBehavior = property.getValue() {
                 collectionView[keyPath: keyPath] = value
