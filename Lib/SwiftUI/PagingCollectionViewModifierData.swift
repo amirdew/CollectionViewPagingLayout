@@ -17,7 +17,6 @@ struct PagingCollectionViewModifierData {
     var snapshotIdentifier: ((Int, UIView?) -> String)?
     var canReuseSnapshot: ((SnapshotContainerView, UIView?) -> Bool)?
     var numberOfVisibleItems: Int?
-    var isPagingEnabled: Bool?
     var zPositionProvider: ((CGFloat) -> Int)?
     var animator: ViewAnimator?
     var goToSelectedPage: Bool?

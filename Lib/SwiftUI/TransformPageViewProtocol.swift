@@ -77,11 +77,6 @@ public extension TransformPageViewProtocol {
         return self
     }
 
-    func pagingEnabled(_ isPagingEnabled: Bool) -> Self {
-        self.builder.modifierData.isPagingEnabled = isPagingEnabled
-        return self
-    }
-
     func scrollDirection(_ direction: UICollectionView.ScrollDirection) -> Self {
         self.builder.modifierData.scrollDirection = direction
         return self

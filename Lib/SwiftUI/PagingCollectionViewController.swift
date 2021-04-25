@@ -89,7 +89,6 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         )
         layout.delegate = self
         collectionView.backgroundColor = .clear
-        collectionView.isPagingEnabled = modifierData?.isPagingEnabled ?? true
         collectionView.registerClass(PagingCollectionViewCell<ValueType, PageContent>.self)
         collectionView.dataSource = self
         view.fill(with: collectionView)
