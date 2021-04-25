@@ -5,7 +5,8 @@ Pod::Spec.new do |s|
   s.summary          = "A simple but highly customizable layout for UICollectionView and SwiftUI."
  
   s.description      = <<-DESC
-                        A simple but highly customizable layout for UICollectionView and SwiftUI.
+  A simple but highly customizable UICollectionViewLayout for UICollectionView.
+  Simple SwiftUI views that let you make page-view effects.
                        DESC
 
   s.homepage         = "https://github.com/amirdew/CollectionViewPagingLayout"
@@ -16,6 +17,7 @@ Pod::Spec.new do |s|
   s.swift_versions = ["5.4"]
   s.ios.deployment_target = "9.0"
 
+  s.weak_frameworks = 'SwiftUI'
   s.source_files = "Lib/**/*.swift"
 
 end
