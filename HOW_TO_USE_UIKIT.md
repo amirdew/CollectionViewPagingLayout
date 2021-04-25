@@ -224,7 +224,7 @@ class MyCell: UICollectionViewCell {
 `MyCell` implementing a [scale effect](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_UIKIT.md#prepared-transformable-protocols):
 
 ```swift
-extension CardCollectionViewCell: ScaleTransformView {
+extension MyCell: ScaleTransformView {
     var scaleOptions: ScaleTransformViewOptions {
         .layout(.linear)
     }
@@ -234,7 +234,7 @@ extension CardCollectionViewCell: ScaleTransformView {
 `MyCell` implementing a [custom effect]((https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_UIKIT.md#make-custom-effects)):
 
 ```swift
-extension CardCollectionViewCell: TransformableView {
+extension MyCell: TransformableView {
     func transform(progress: CGFloat) {
         let alpha = 1 - abs(progress)
         contentView.alpha = alpha
