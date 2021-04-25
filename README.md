@@ -13,7 +13,7 @@
 <a href="https://apps.apple.com/nl/app/layout-designer/id1507238011?l=en&mt=12"> <img width="100" src="http://amir.app/git/app_store.png"></img> </a>    
 
 
-### Custom implementations, UIKit: `TransformableView`, SwiftUI: `TransformPageView`
+#### Custom implementations, UIKit: `TransformableView`, SwiftUI: `TransformPageView`
 Click on image to see the code
 
 <p float="left">
@@ -23,7 +23,7 @@ Click on image to see the code
 [<img width="120" src="https://amir.app/git/cards_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Cards)
 <p />
 
-### UIKit: `SnapshotTransformView`, SwiftUI: `SnapshotPageView`
+#### UIKit: `SnapshotTransformView`, SwiftUI: `SnapshotPageView`
 
 
 <p float="left">
@@ -39,7 +39,7 @@ Click on image to see the code
 </p>
 
          
-### UIKit: `ScaleTransformView`, SwiftUI: `ScalePageView`
+#### UIKit: `ScaleTransformView`, SwiftUI: `ScalePageView`
 <p float="left">
 
 [<img width="100" src="https://amir.app/git/shapes_preview/scale_invertedcylinder.gif"></img>](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Lib/Scale/ScaleTransformViewOptions%2BLayout.swift#L14)
@@ -140,11 +140,11 @@ Continue for [`SiwftUI`](https://github.com/amirdew/CollectionViewPagingLayout/b
 
 
 ## Limitations
--  **Specify the number of visible cells:**    
-You need to specify the number of visible cells.       
+-  **Specify the number of visible items:**    
+You need to specify the number of visible items.       
 Since this layout gives you the flexibility to show the next and previous cells,        
 By default, it loads all of the cells in the collectionview's frame, which means iOS keeps all of them in the memory.      
-Based on your design, you can specify the number of cells that you need to show.     
+Based on your design, you can specify the number of items that you need to show.     
 
 - **It doesn't support RTL layouts:**   
 however, you can achieve a similar result by tweaking options, for instance try `StackTransformViewOptions.Layout.reverse`
