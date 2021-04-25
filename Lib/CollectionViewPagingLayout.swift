@@ -8,43 +8,55 @@
 
 import UIKit
 
-public protocol CollectionViewPagingLayoutDelegate: class {
+public protocol CollectionViewPagingLayoutDelegate: AnyObject {
     
     /// Calls when the current page changes
     ///
     /// - Parameter layout: a reference to the layout class
     /// - Parameter currentPage: the new current page index
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int)
-    
-    /// Calls when the user taps on the `TransformableView.selectableView`
-    /// to enable this functionality you need to call `configureTapOnCollectionView()` after setting the layout
-    ///
-    /// - Parameter layout: a reference to the layout class
-    /// - Parameter indexPath: IndexPath for the selected cell
-    func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath)
 }
 
 
 public extension CollectionViewPagingLayoutDelegate {
     func onCurrentPageChanged(layout: CollectionViewPagingLayout, currentPage: Int) {}
-    func collectionViewPagingLayout(_ layout: CollectionViewPagingLayout, didSelectItemAt indexPath: IndexPath) {}
 }
 
 
 public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     // MARK: Properties
-    
+
+    /// Number of visible items at the same time
+    ///
+    /// nil = no limit
     public var numberOfVisibleItems: Int?
-    
+
+    /// Constants that indicate the direction of scrolling for the layout.
     public var scrollDirection: UICollectionView.ScrollDirection = .horizontal
+
+    /// See `ZPositionHandler` for details
+    public var zPositionHandler: ZPositionHandler = .both
+
+    /// Set `alpha` to zero when the cell is not loaded yet by collection view
+    public var transparentAttributeWhenCellNotLoaded: Bool = true
+
+    /// The animator for setting `contentOffset`
+    ///
+    /// See `ViewAnimator` for details
+    public var defaultAnimator: ViewAnimator?
+
+    public private(set) var isAnimating: Bool = false
     
     public weak var delegate: CollectionViewPagingLayoutDelegate?
     
     override public var collectionViewContentSize: CGSize {
         getContentSize()
     }
-    
+
+    /// Current page index
+    ///
+    /// Use `setCurrentPage` to change it
     public private(set) var currentPage: Int = 0 {
         didSet {
             delegate?.onCurrentPageChanged(layout: self, currentPage: currentPage)
@@ -71,26 +83,54 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     
     private var currentPageCache: Int?
     private var attributesCache: [(page: Int, attributes: UICollectionViewLayoutAttributes)]?
-    private var scrollToSelectedCell: Bool = false
-    
-    
+    private var boundsObservation: NSKeyValueObservation?
+    private var lastBounds: CGRect?
+    private var currentViewAnimatorCancelable: ViewAnimatorCancelable?
+    private var originalIsUserInteractionEnabled: Bool?
+
+
     // MARK: Public functions
     
-    public func setCurrentPage(_ page: Int, animated: Bool = true) {
-        safelySetCurrentPage(page, animated: animated)
+    public func setCurrentPage(_ page: Int,
+                               animated: Bool = true,
+                               animator: ViewAnimator? = nil,
+                               completion: (() -> Void)? = nil) {
+        safelySetCurrentPage(page, animated: animated, animator: animator, completion: completion)
+    }
+
+    public func setCurrentPage(_ page: Int,
+                               animated: Bool = true,
+                               completion: (() -> Void)? = nil) {
+        safelySetCurrentPage(page, animated: animated, animator: defaultAnimator, completion: completion)
     }
     
-    public func goToNextPage(animated: Bool = true) {
-        setCurrentPage(currentPage + 1, animated: animated)
+    public func goToNextPage(animated: Bool = true,
+                             animator: ViewAnimator? = nil,
+                             completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage + 1, animated: animated, animator: animator, completion: completion)
     }
     
-    public func goToPreviousPage(animated: Bool = true) {
-        setCurrentPage(currentPage - 1, animated: animated)
+    public func goToPreviousPage(animated: Bool = true,
+                                 animator: ViewAnimator? = nil,
+                                 completion: (() -> Void)? = nil) {
+        setCurrentPage(currentPage - 1, animated: animated, animator: animator, completion: completion)
     }
-    
-    public func configureTapOnCollectionView(goToSelectedPage: Bool = false) {
-        self.scrollToSelectedCell = goToSelectedPage
-        addTapGestureToCollectionView()
+
+    /// Calls `invalidateLayout` wrapped in `performBatchUpdates`
+    /// - Parameter invalidateOffset: change offset and revert it immediately
+    /// this fixes the zIndex issue more: https://stackoverflow.com/questions/12659301/uicollectionview-setlayoutanimated-not-preserving-zindex
+    public func invalidateLayoutInBatchUpdate(invalidateOffset: Bool = true) {
+        DispatchQueue.main.async { [weak self] in
+            if invalidateOffset {
+                let original = self?.collectionView?.contentOffset ?? .zero
+                self?.collectionView?.contentOffset = .init(x: original.x + 1, y: original.y + 1)
+                self?.collectionView?.contentOffset = original
+            }
+
+            self?.collectionView?.performBatchUpdates({ [weak self] in
+                self?.invalidateLayout()
+            })
+        }
     }
     
     
@@ -102,7 +142,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
         return true
     }
-    
+
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let currentScrollOffset = self.currentScrollOffset
         let numberOfItems = self.numberOfItems
@@ -150,14 +190,26 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             
             if cell == nil || cell is TransformableView {
                 cellAttributes.frame = visibleRect
+                if cell == nil, transparentAttributeWhenCellNotLoaded {
+                    cellAttributes.alpha = 0
+                }
             } else {
-                cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0), size: visibleRect.size)
+                cellAttributes.frame = CGRect(origin: CGPoint(x: pageIndex * visibleRect.width, y: 0),
+                                              size: visibleRect.size)
             }
-            
-            cellAttributes.zIndex = zIndex
+
+            // In some cases attribute.zIndex doesn't work so this is the work-around
+            if let cell = cell, [ZPositionHandler.both, .cellLayer].contains(zPositionHandler) {
+                cell.layer.zPosition = CGFloat(zIndex)
+            }
+
+            if [ZPositionHandler.both, .layoutAttribute].contains(zPositionHandler) {
+                cellAttributes.zIndex = zIndex
+            }
             attributesArray.append((page: Int(pageIndex), attributes: cellAttributes))
         }
         attributesCache = attributesArray
+        addBoundsObserverIfNeeded()
         return attributesArray.map(\.attributes)
     }
     
@@ -186,7 +238,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
                 currentPage = Int(round(offset / pageSize))
             }
         }
-        if currentPage != self.currentPage {
+        if currentPage != self.currentPage, !isAnimating {
             self.currentPage = currentPage
         }
     }
@@ -205,7 +257,14 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         }
     }
     
-    private func safelySetCurrentPage(_ page: Int, animated: Bool) {
+    private func safelySetCurrentPage(_ page: Int, animated: Bool, animator: ViewAnimator?, completion: (() -> Void)? = nil) {
+        if isAnimating {
+            currentViewAnimatorCancelable?.cancel()
+            isAnimating = false
+            if let isEnabled = originalIsUserInteractionEnabled {
+            	collectionView?.isUserInteractionEnabled = isEnabled
+            }
+        }
         let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
         let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
         let maxPossibleOffset = contentSize - pageSize
@@ -213,52 +272,61 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, maxPossibleOffset)
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] in
-            self?.invalidateLayout()
+
+        if animated {
+            isAnimating = true
         }
-        collectionView?.setContentOffset(contentOffset, animated: animated)
-        CATransaction.commit()
+
+        if animated, let animator = animator {
+            setContentOffset(with: animator, offset: contentOffset, completion: completion)
+        } else {
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { [weak self] in
+                self?.isAnimating = false
+                self?.invalidateLayoutInBatchUpdate()
+                completion?()
+            }
+            collectionView?.setContentOffset(contentOffset, animated: animated)
+            CATransaction.commit()
+        }
         
         // this is necessary when we want to set the current page without animation
-        if !animated, page != currentPage, let collectionView = collectionView {
-            collectionView.performBatchUpdates({
-                collectionView.collectionViewLayout.invalidateLayout()
-            })
+        if !animated, page != currentPage {
+            invalidateLayoutInBatchUpdate()
         }
     }
-    
-    private func addTapGestureToCollectionView() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(tapOnCollectionView(gesture:)))
-        collectionView?.addGestureRecognizer(gesture)
+
+    private func setContentOffset(with animator: ViewAnimator, offset: CGPoint, completion: (() -> Void)? = nil) {
+        guard let start = collectionView?.contentOffset else { return }
+        let x = offset.x - start.x
+        let y = offset.y - start.y
+        originalIsUserInteractionEnabled = collectionView?.isUserInteractionEnabled ?? true
+        collectionView?.isUserInteractionEnabled = false
+        currentViewAnimatorCancelable = animator.animate { [weak self] progress, finished in
+            guard let collectionView = self?.collectionView else { return }
+            collectionView.contentOffset = CGPoint(x: start.x + x * CGFloat(progress),
+                                                   y: start.y + y * CGFloat(progress))
+            if finished {
+                self?.currentViewAnimatorCancelable = nil
+                self?.isAnimating = false
+                self?.collectionView?.isUserInteractionEnabled = self?.originalIsUserInteractionEnabled ?? true
+                self?.originalIsUserInteractionEnabled = nil
+                self?.collectionView?.delegate?.scrollViewDidEndScrollingAnimation?(collectionView)
+                self?.invalidateLayoutInBatchUpdate()
+                completion?()
+            }
+        }
     }
-    
-    @objc private func tapOnCollectionView(gesture: UITapGestureRecognizer) {
-        var items = collectionView?.visibleCells.compactMap { cell -> (cell: UICollectionViewCell, rect: CGRect, attributes: UICollectionViewLayoutAttributes, page: Int)? in
-            guard let indexPath = collectionView?.indexPath(for: cell),
-                let view = cell as? TransformableView,
-                let selectableView = view.selectableView,
-                let attributesAndPage = attributesCache?.first(where: { $0.attributes.indexPath == indexPath }) else {
-                    return nil
-            }
-            let rect = selectableView.superview?.convert(selectableView.frame, to: collectionView) ?? .zero
-            return (cell: cell, rect: rect, attributes: attributesAndPage.attributes, page: attributesAndPage.page)
-        } ?? []
-        
-        items.sort { $0.attributes.zIndex > $1.attributes.zIndex }
-        
-        let location = gesture.location(in: gesture.view)
-        var findSelected = false
-        for item in items {
-            if !findSelected, item.rect.contains(location) {
-                delegate?.collectionViewPagingLayout(self, didSelectItemAt: item.attributes.indexPath)
-                item.cell.isSelected = true
-                findSelected = true
-                if scrollToSelectedCell {
-                    setCurrentPage(item.page, animated: true)
-                }
-            }
-            item.cell.isSelected = false
+}
+
+
+extension CollectionViewPagingLayout {
+    private func addBoundsObserverIfNeeded() {
+        guard boundsObservation == nil else { return }
+        boundsObservation = collectionView?.observe(\.bounds, options: [.old, .new, .initial, .prior]) { [weak self] collectionView, _ in
+            guard collectionView.bounds.size != self?.lastBounds?.size else { return }
+            self?.lastBounds = collectionView.bounds
+            self?.invalidateLayoutInBatchUpdate()
         }
     }
 }

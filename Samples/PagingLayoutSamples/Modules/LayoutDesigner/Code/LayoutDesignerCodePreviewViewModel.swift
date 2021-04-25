@@ -10,37 +10,85 @@ import Foundation
 import Splash
 
 struct LayoutDesignerCodePreviewViewModel {
- 
+
+    // MARK: Constant
+
+    enum CodeType {
+        case uikit
+        case swiftui
+        case options
+    }
+
+
     // MARK: Properties
     
     let code: String
     var sampleProjectTempURL: URL? {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SampleProject")
     }
+
+    static private var fontSize: Double {
+        #if targetEnvironment(macCatalyst)
+        return 13
+        #else
+        return 1_024 * 10 / 1_024
+        #endif
+    }
     
-    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: .sundellsColors(withFont: Font(size: 12))))
-    
+    private let highlighter = SyntaxHighlighter(format: AttributedStringOutputFormat(theme: Theme(
+        font: Font(size: Self.fontSize),
+        plainTextColor: .white,
+        tokenColors: [
+            .keyword: Color(red: 1.00, green: 0.40, blue: 0.56, alpha: 1.00),
+            .string: Color(red: 0.98, green: 0.39, blue: 0.12, alpha: 1),
+            .type: Color(red: 0.57, green: 0.59, blue: 1.00, alpha: 1.00),
+            .call: Color(red: 0.2, green: 0.56, blue: 0.9, alpha: 1),
+            .number: Color(red: 0.97, green: 0.47, blue: 0.37, alpha: 1.00),
+            .comment: Color(red: 0.34, green: 0.72, blue: 0.80, alpha: 1.00),
+            .property: Color(red: 0.13, green: 0.67, blue: 0.62, alpha: 1),
+            .dotAccess: Color(red: 0.57, green: 0.7, blue: 0, alpha: 1),
+            .preprocessing: Color(red: 0.71, green: 0.54, blue: 0, alpha: 1)
+        ],
+        backgroundColor: .clear
+    )
+    ))
+
     
     // MARK: Public functions
     
-    func getHighlightedText(addViewControllerInCode includeVC: Bool) -> NSAttributedString {
-        highlighter.highlight(getCode(includeViewController: includeVC))
+    func getHighlightedText(type: CodeType) -> NSAttributedString {
+        highlighter.highlight(getCode(type: type))
     }
     
-    func generateSampleProject() {
+    func generateSampleProject(type: CodeType) {
         removeSampleProject()
         guard let sampleProjectTempURL = sampleProjectTempURL,
-            let bundlePath = Bundle.main.url(forResource: "SampleProject", withExtension: "bundle"),
-            let sampleProjectURL = Bundle(url: bundlePath)?.url(forResource: "SampleProject", withExtension: nil) else {
-                return
+              let bundlePath = Bundle.main.url(forResource: "SampleProject", withExtension: "bundle"),
+              let sampleProjectURL = Bundle(url: bundlePath)?.url(forResource: "SampleProject", withExtension: nil) else {
+            return
         }
         try? FileManager.default.copyItem(at: sampleProjectURL, to: sampleProjectTempURL)
         
         let baseProjectPath = sampleProjectTempURL.appendingPathComponent("PagingLayout")
         let viewControllerPath = baseProjectPath.appendingPathComponent("ViewController.swift")
         try? FileManager.default.removeItem(at: viewControllerPath)
+
+        var type = type
         
-        let code = getCode(includeViewController: true)
+        if type == .options {
+            type = .swiftui
+        }
+        var code = getCode(type: type)
+        if type == .swiftui {
+            code.append("""
+
+
+            func ViewController() -> UIViewController {
+                UIHostingController(rootView: ContentView())
+            }
+            """)
+        }
+
         try? code.write(to: viewControllerPath, atomically: true, encoding: .utf8)
         
         try? FileManager.default.moveItem(at: sampleProjectTempURL.appendingPathComponent("PagingLayout.xcodeproj_sample"),
@@ -67,11 +115,69 @@ struct LayoutDesignerCodePreviewViewModel {
     
     
     // MARK: Private functions
-    
-    private func getCode(includeViewController: Bool) -> String {
-        if !includeViewController {
+
+    private func getCode(type: CodeType) -> String {
+        switch type {
+        case .swiftui:
+            return getSwiftUICode()
+        case .uikit:
+            return getUIKitCode()
+        case .options:
             return code
         }
+    }
+
+    private func getSwiftUICode() -> String {
+        let viewProtocols = ["ScaleTransformView", "StackTransformView", "SnapshotTransformView"]
+        let viewProtocolName = viewProtocols.first { code.contains($0) } ?? ""
+        let viewName = viewProtocolName.replacingOccurrences(of: "Transform", with: "Page")
+        return """
+        import SwiftUI
+
+        // Make sure you added this dependency to your project
+        // More info at https://bit.ly/CVPagingLayout
+        import CollectionViewPagingLayout
+
+        struct ContentView: View {
+
+            // Replace with your data
+            struct Item: Identifiable {
+                let id: UUID = .init()
+                let number: Int
+            }
+            let items = Array(0..<10).map {
+                Item(number: $0)
+            }
+
+            // Use the options to customize the layout
+            \(code.replacingOccurrences(of: "scaleOptions", with: "options")
+                .replacingOccurrences(of: "stackOptions", with: "options")
+                .replacingOccurrences(of: "snapshotOptions", with: "options")
+                .replacingOccurrences(of: "\n", with: "\n    "))
+
+            var body: some View {
+                \(viewName)(items) { item in
+                    // Build your view here
+                    ZStack {
+                        Rectangle().fill(Color.orange)
+                        Text("\\(item.number)")
+                    }
+                }
+                .options(options)
+                // The padding around each page
+                // you can use `.fractionalWidth` and
+                // `.fractionalHeight` too
+                .pagePadding(
+                    vertical: .absolute(100),
+                    horizontal: .absolute(80)
+                )
+            }
+
+        }
+        """
+    }
+
+    private func getUIKitCode() -> String {
         let viewProtocols = ["ScaleTransformView", "StackTransformView", "SnapshotTransformView"]
         let viewProtocolName = viewProtocols.first { code.contains($0) } ?? ""
         
@@ -102,13 +208,17 @@ struct LayoutDesignerCodePreviewViewModel {
             }
             
             func setup() {
-                // Adjust the card view frame you can use Autolayout too
-                let cardFrame = CGRect(x: 80,
-                                       y: 100,
-                                       width: frame.width - 160,
-                                       height: frame.height - 200)
+
+                // Adjust the card view frame
+                // you can use Auto-layout too
+                let cardFrame = CGRect(
+         		   x: 80,
+         		   y: 100,
+         		   width: frame.width - 160,
+         		   height: frame.height - 200
+                )
                 card = UIView(frame: cardFrame)
-                card.backgroundColor = .gray
+                card.backgroundColor = .systemOrange
                 contentView.addSubview(card)
             }
         }
@@ -125,23 +235,23 @@ struct LayoutDesignerCodePreviewViewModel {
             }
             
             private func setupCollectionView() {
+                let layout = CollectionViewPagingLayout()
+
                 collectionView = UICollectionView(
                     frame: view.frame,
-                    collectionViewLayout: CollectionViewPagingLayout()
+                    collectionViewLayout: layout
                 )
+
                 collectionView.isPagingEnabled = true
-                collectionView.register(MyCell.self, forCellWithReuseIdentifier: "cell")
+
+                collectionView.register(
+        			MyCell.self,
+            		forCellWithReuseIdentifier: "cell"
+                )
+
                 collectionView.dataSource = self
+
                 view.addSubview(collectionView)
-            }
-            
-            override func viewDidLayoutSubviews() {
-                super.viewDidLayoutSubviews()
-                DispatchQueue.main.async { [weak self] in
-                    self?.collectionView?.performBatchUpdates({ [weak self] in
-                        self?.collectionView?.collectionViewLayout.invalidateLayout()
-                    })
-                }
             }
             
             func collectionView(
@@ -153,7 +263,8 @@ struct LayoutDesignerCodePreviewViewModel {
             
             func collectionView(
                 _ collectionView: UICollectionView,
-                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+                cellForItemAt indexPath: IndexPath
+            ) -> UICollectionViewCell {
                 collectionView.dequeueReusableCell(
                     withReuseIdentifier: "cell",
                     for: indexPath

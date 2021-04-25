@@ -39,13 +39,9 @@ class LayoutDesignerViewController: UIViewController, ViewModelBased, NibBased {
         configureViews()
         setOptionsList()
         registerKeyboardNotifications()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if viewModel.shouldShowIntro {
-            showIntroViewController(viewModel: viewModel.getIntroViewModel())
-        }
+
+        view.backgroundColor = .clear
+        codeContainerView.backgroundColor = codeContainerView.backgroundColor?.withAlphaComponent(0.6)
     }
     
     

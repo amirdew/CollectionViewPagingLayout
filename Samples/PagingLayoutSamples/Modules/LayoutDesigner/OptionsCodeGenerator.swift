@@ -15,11 +15,49 @@ class OptionsCodeGenerator {
     
     func generateCode<T>(options: T) -> String {
         if let options = options as? ScaleTransformViewOptions {
-            return generateCode(options: options)
+
+            let code = generateCode(options: options)
+            let layoutOptions = ScaleTransformViewOptions.Layout.allCases
+                .map { (options: ScaleTransformViewOptions.layout($0), layout: $0) }
+                .first { generateCode(options: $0.options) == code }
+            if let layoutOptions = layoutOptions {
+                return """
+                       var scaleOptions: ScaleTransformViewOptions {
+                           .layout(.\(layoutOptions.layout.rawValue))
+                       }
+                       """
+            }
+            return code
+
         } else if let options = options as? StackTransformViewOptions {
-            return generateCode(options: options)
+            
+            let code = generateCode(options: options)
+            let layoutOptions = StackTransformViewOptions.Layout.allCases
+                .map { (options: StackTransformViewOptions.layout($0), layout: $0) }
+                .first { generateCode(options: $0.options) == code }
+            if let layoutOptions = layoutOptions {
+                return """
+                       var stackOptions: StackTransformViewOptions {
+                           .layout(.\(layoutOptions.layout.rawValue))
+                       }
+                       """
+            }
+            return code
+
         } else if let options = options as? SnapshotTransformViewOptions {
-            return generateCode(options: options)
+
+            let code = generateCode(options: options)
+            let layoutOptions = SnapshotTransformViewOptions.Layout.allCases
+                .map { (options: SnapshotTransformViewOptions.layout($0), layout: $0) }
+                .first { generateCode(options: $0.options) == code }
+            if let layoutOptions = layoutOptions {
+                return """
+                       var snapshotOptions: SnapshotTransformViewOptions {
+                           .layout(.\(layoutOptions.layout.rawValue))
+                       }
+                       """
+            }
+            return code
         }
         return ""
     }

@@ -10,7 +10,7 @@ import UIKit
 
 public extension SnapshotTransformViewOptions {
     
-    class PiecePosition {
+    struct PiecePosition {
         
         // MARK: Properties
         

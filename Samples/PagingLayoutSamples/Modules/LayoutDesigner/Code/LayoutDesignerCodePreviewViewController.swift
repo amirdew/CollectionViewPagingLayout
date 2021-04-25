@@ -50,7 +50,7 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
     
     @IBAction private func saveButtonTouched() {
         guard let exportURL = viewModel.sampleProjectTempURL else { return }
-        viewModel.generateSampleProject()
+        viewModel.generateSampleProject(type: selectedCodeType())
         let controller = UIDocumentPickerViewController(forExporting: [exportURL])
         controller.delegate = self
         present(controller, animated: true)
@@ -88,22 +88,34 @@ class LayoutDesignerCodePreviewViewController: UIViewController, NibBased, ViewM
         codeModeSegmentedControl.setTitleTextAttributes(
             [.foregroundColor: UIColor.black.withAlphaComponent(0.6), .font: UIFont.systemFont(ofSize: 12)],
             for: .selected)
-        codeModeSegmentedControl.selectedSegmentIndex = 0
+        codeModeSegmentedControl.selectedSegmentIndex = 1
+        codeModeSegmentedControl.tintColor = UIColor.white.withAlphaComponent(0.4)
     }
     
     private func configureTextView() {
         codeTextView.backgroundColor = .clear
         codeTextView.isEditable = false
+        codeTextView.tintColor = .gray
     }
     
     private func refreshViews() {
-        codeTextView.attributedText = viewModel?.getHighlightedText(
-            addViewControllerInCode: codeModeSegmentedControl.selectedSegmentIndex == 0
-        )
-        codeTextView.contentInset = .init(top: 40 + view.safeAreaInsets.top, left: 0, bottom: 200 + view.safeAreaInsets.bottom, right: 0)
+        codeTextView.attributedText = viewModel?.getHighlightedText(type: selectedCodeType())
+        codeTextView.contentInset = .init(top: 40 + view.safeAreaInsets.top,
+                                          left: 0,
+                                          bottom: 200 + view.safeAreaInsets.bottom,
+                                          right: 0)
         codeTextView.contentOffset = .init(x: 0, y: -codeTextView.contentInset.top)
     }
-    
+
+    private func selectedCodeType() -> LayoutDesignerCodePreviewViewModel.CodeType {
+        if codeModeSegmentedControl.selectedSegmentIndex == 0 {
+            return .uikit
+        }
+        if codeModeSegmentedControl.selectedSegmentIndex == 2 {
+            return .options
+        }
+        return .swiftui
+    }
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,12 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
+        window?.backgroundColor = .clear
         navigationController = UINavigationController()
+        navigationController.view.backgroundColor = .clear
         navigationController.isNavigationBarHidden = true
         let mainVC = UIDevice.current.userInterfaceIdiom != .phone ?
             LayoutDesignerViewController.instantiate(viewModel: LayoutDesignerViewModel()) :
             MainViewController.instantiate()
-        
+
         #if targetEnvironment(macCatalyst)
         if let titlebar = window?.windowScene?.titlebar {
             titlebar.titleVisibility = .hidden
@@ -36,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         navigationController.setViewControllers([mainVC], animated: false)
         window!.rootViewController = navigationController
+        // UIHostingController(rootView: DevicesView().ignoresSafeArea())
         window!.makeKeyAndVisible()
         return true
     }

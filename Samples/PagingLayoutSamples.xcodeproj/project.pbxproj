@@ -15,9 +15,13 @@
 		2925CDDF23D4D21F00243F5F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925CDDE23D4D21F00243F5F /* Card.swift */; };
 		2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */; };
 		294BA3C324A77A73008D0569 /* LayoutDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */; };
+		29519ACC262B5DE400D8A4A3 /* ShapesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */; };
+		29519ACE262B646E00D8A4A3 /* ShapesListView.ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */; };
+		296EF99A2628B13000B72439 /* WeatherTabView.PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296EF9992628B13000B72439 /* WeatherTabView.PageView.swift */; };
 		2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */; };
 		2977657E2474531D00835DBD /* LayoutDesignerOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */; };
 		29776580247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */; };
+		29834F2B25C5977300896343 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29834F2A25C5977300896343 /* DevicesView.swift */; };
 		2993722324A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */; };
 		29A2D3AA24B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */; };
 		29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */; };
@@ -44,6 +48,11 @@
 		29D9F95323F8685C00656A67 /* BaseShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */; };
 		29D9F95923F874E900656A67 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95823F874E900656A67 /* GradientView.swift */; };
 		29D9F95B23F88A6900656A67 /* ShapeCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */; };
+		29DD1E18262597EF00846F7B /* WeatherTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E17262597EF00846F7B /* WeatherTabView.swift */; };
+		29DD1E2B26275E1D00846F7B /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */; };
+		29DD1E2F2627702C00846F7B /* WeatherTabView.Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */; };
+		29DD1E342627708B00846F7B /* WeatherPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E332627708B00846F7B /* WeatherPage.swift */; };
+		29DD1E3A2627774400846F7B /* WeatherTabView.TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */; };
 		29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */; };
 		29FF296424A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */; };
 		55923226155A0B6E5A55C691 /* Pods_PagingLayoutSamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A489BA28D16931A0BE34BD0B /* Pods_PagingLayoutSamples.framework */; };
@@ -125,9 +134,13 @@
 		2925CDDE23D4D21F00243F5F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2949CB262476EA8C000CC073 /* UITableView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utilities.swift"; sourceTree = "<group>"; };
 		294BA3C224A77A73008D0569 /* LayoutDesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerViewModel.swift; sourceTree = "<group>"; };
+		29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesListView.swift; sourceTree = "<group>"; };
+		29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesListView.ShapeView.swift; sourceTree = "<group>"; };
+		296EF9992628B13000B72439 /* WeatherTabView.PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.PageView.swift; sourceTree = "<group>"; };
 		2977657B2474531200835DBD /* LayoutDesignerOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCell.swift; sourceTree = "<group>"; };
 		2977657D2474531D00835DBD /* LayoutDesignerOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerOptionCell.xib; sourceTree = "<group>"; };
 		2977657F247454BC00835DBD /* LayoutDesignerOptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerOptionCellViewModel.swift; sourceTree = "<group>"; };
+		29834F2A25C5977300896343 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
 		2993722224A79A9C0026D52F /* ShapeLayout+ScaleOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeLayout+ScaleOptions.swift"; sourceTree = "<group>"; };
 		29A2D3A924B72895005A0F6B /* LayoutDesignerCodePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LayoutDesignerCodePreviewViewController.xib; sourceTree = "<group>"; };
 		29A2D3CC24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerIntroViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +167,11 @@
 		29D9F95223F8685C00656A67 /* BaseShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		29D9F95823F874E900656A67 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCells.swift; sourceTree = "<group>"; };
+		29DD1E17262597EF00846F7B /* WeatherTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.swift; sourceTree = "<group>"; };
+		29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.Overlay.swift; sourceTree = "<group>"; };
+		29DD1E332627708B00846F7B /* WeatherPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPage.swift; sourceTree = "<group>"; };
+		29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTabView.TabView.swift; sourceTree = "<group>"; };
 		29FF296124A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewController.swift; sourceTree = "<group>"; };
 		29FF296324A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDesignerCodePreviewViewModel.swift; sourceTree = "<group>"; };
 		444EC9E8B3BA262F3697984F /* Pods-PagingLayoutSamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingLayoutSamples.release.xcconfig"; path = "Target Support Files/Pods-PagingLayoutSamples/Pods-PagingLayoutSamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +270,15 @@
 			path = AppKitGlue;
 			sourceTree = "<group>";
 		};
+		29519ACA262B5DD400D8A4A3 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				29519ACB262B5DE400D8A4A3 /* ShapesListView.swift */,
+				29519ACD262B646E00D8A4A3 /* ShapesListView.ShapeView.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		2977657A247452BC00835DBD /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +286,16 @@
 				29BEC4D42476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift */,
 			);
 			path = Options;
+			sourceTree = "<group>";
+		};
+		29834F2925C5976300896343 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				29519ACA262B5DD400D8A4A3 /* Shapes */,
+				29DD1E322627707A00846F7B /* WeatherTabView */,
+				29834F2A25C5977300896343 /* DevicesView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		29A2D3CB24B73870005A0F6B /* Intro */ = {
@@ -315,6 +352,29 @@
 				29D9F95A23F88A6900656A67 /* ShapeCollectionViewCells.swift */,
 			);
 			path = ShapeCell;
+			sourceTree = "<group>";
+		};
+		29DD1E21262753B900846F7B /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				29D9F94123F7F92000656A67 /* Shapes */,
+				AB500A4823B13B9D0056BE37 /* Fruits */,
+				AB1BBA8B23C935BF004E5C3B /* Cards */,
+				ABC242C123B681F800DBD4D6 /* Gallery */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		29DD1E322627707A00846F7B /* WeatherTabView */ = {
+			isa = PBXGroup;
+			children = (
+				29DD1E17262597EF00846F7B /* WeatherTabView.swift */,
+				29DD1E392627774400846F7B /* WeatherTabView.TabView.swift */,
+				29DD1E2E2627702C00846F7B /* WeatherTabView.Overlay.swift */,
+				296EF9992628B13000B72439 /* WeatherTabView.PageView.swift */,
+				29DD1E332627708B00846F7B /* WeatherPage.swift */,
+			);
+			path = WeatherTabView;
 			sourceTree = "<group>";
 		};
 		29FF296024A631DC00C83DF9 /* Code */ = {
@@ -435,12 +495,10 @@
 		AB500A5223B152170056BE37 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				29DD1E21262753B900846F7B /* UIKit */,
+				29834F2925C5976300896343 /* SwiftUI */,
 				292489AE2461A96600A316B0 /* LayoutDesigner */,
 				AB7C1E0423B4E292006441DE /* Main */,
-				29D9F94123F7F92000656A67 /* Shapes */,
-				AB500A4823B13B9D0056BE37 /* Fruits */,
-				AB1BBA8B23C935BF004E5C3B /* Cards */,
-				ABC242C123B681F800DBD4D6 /* Gallery */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -457,6 +515,7 @@
 				29B5A72724A8D8F700C9843E /* TransformCurve+Name.swift */,
 				29B5A72B24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift */,
 				29B5A72924A8D94300C9843E /* Values+Pair.swift */,
+				29DD1E2A26275E1D00846F7B /* VisualEffectView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -723,6 +782,7 @@
 				2925CDDF23D4D21F00243F5F /* Card.swift in Sources */,
 				29D9F95023F806C400656A67 /* Optional+Let.swift in Sources */,
 				ABA1A72C23B42240006A46A3 /* PriceTagView.swift in Sources */,
+				29DD1E2F2627702C00846F7B /* WeatherTabView.Overlay.swift in Sources */,
 				ABA0DA0C23F98C78004A9C18 /* ShapeCardViewModel.swift in Sources */,
 				29A2D3CD24B738CC005A0F6B /* LayoutDesignerIntroViewController.swift in Sources */,
 				ABA0DA0E23F98ECD004A9C18 /* UICollectionViewCell+Utilities.swift in Sources */,
@@ -733,6 +793,7 @@
 				AB1BBA9B23CA5179004E5C3B /* CardCellViewModel.swift in Sources */,
 				AB500A5023B151780056BE37 /* FruitsViewModel.swift in Sources */,
 				2977657C2474531200835DBD /* LayoutDesignerOptionCell.swift in Sources */,
+				29519ACE262B646E00D8A4A3 /* ShapesListView.ShapeView.swift in Sources */,
 				2949CB272476EA8C000CC073 /* UITableView+Utilities.swift in Sources */,
 				29B5A72A24A8D94300C9843E /* Values+Pair.swift in Sources */,
 				AB500A4A23B13BBD0056BE37 /* FruitsViewController.swift in Sources */,
@@ -742,6 +803,7 @@
 				29B5A72824A8D8F700C9843E /* TransformCurve+Name.swift in Sources */,
 				AB500A4E23B13C5D0056BE37 /* NibBased.swift in Sources */,
 				ABC242C723B6823600DBD4D6 /* GalleryViewModel.swift in Sources */,
+				296EF99A2628B13000B72439 /* WeatherTabView.PageView.swift in Sources */,
 				AB1BBA9E23CA7BD9004E5C3B /* CardsViewController.swift in Sources */,
 				ABA0DA0323F93CDB004A9C18 /* Shape.swift in Sources */,
 				ABC242CA23B682DD00DBD4D6 /* PhotoCellViewModel.swift in Sources */,
@@ -757,19 +819,25 @@
 				ABA0DA0823F98B65004A9C18 /* ShapeCardView.swift in Sources */,
 				ABC242CC23B6831400DBD4D6 /* Photo.swift in Sources */,
 				29B5A72424A8CC4B00C9843E /* CGFloat+String.swift in Sources */,
+				29834F2B25C5977300896343 /* DevicesView.swift in Sources */,
+				29519ACC262B5DE400D8A4A3 /* ShapesListView.swift in Sources */,
 				29FF296224A6321100C83DF9 /* LayoutDesignerCodePreviewViewController.swift in Sources */,
 				29D9F94323F7F98800656A67 /* ShapesViewController.swift in Sources */,
 				AB500A5823B154210056BE37 /* Fruit.swift in Sources */,
 				29B5A72C24A8DD7100C9843E /* UIBlurEffect.Style+Name.swift in Sources */,
 				29B5A72624A8D8B300C9843E /* OptionsCodeGenerator.swift in Sources */,
 				29D9F94523F7F99400656A67 /* ShapesViewModel.swift in Sources */,
+				29DD1E18262597EF00846F7B /* WeatherTabView.swift in Sources */,
 				29B5A72024A7B02900C9843E /* ShapeLayout+StackOptions.swift in Sources */,
 				29A2D3D124B738E5005A0F6B /* LayoutDesignerIntroViewModel.swift in Sources */,
 				AB500A5B23B154640056BE37 /* FruitsCollectionViewCell.swift in Sources */,
 				ABA1A73123B422B2006A46A3 /* QuantityControllerView.swift in Sources */,
+				29DD1E342627708B00846F7B /* WeatherPage.swift in Sources */,
 				29BEC4D52476DD9D004BA505 /* LayoutDesignerOptionsTableView.swift in Sources */,
+				29DD1E2B26275E1D00846F7B /* VisualEffectView.swift in Sources */,
 				292489B02461A97900A316B0 /* LayoutDesignerViewController.swift in Sources */,
 				29D9F95923F874E900656A67 /* GradientView.swift in Sources */,
+				29DD1E3A2627774400846F7B /* WeatherTabView.TabView.swift in Sources */,
 				29FF296424A6321B00C83DF9 /* LayoutDesignerCodePreviewViewModel.swift in Sources */,
 				AB500A5523B152500056BE37 /* ViewModelBased.swift in Sources */,
 				292489C52461FE2700A316B0 /* Catalyst.swift in Sources */,
@@ -975,6 +1043,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 121;
@@ -1002,6 +1071,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PagingLayoutSamples/Paging Layout.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 121;

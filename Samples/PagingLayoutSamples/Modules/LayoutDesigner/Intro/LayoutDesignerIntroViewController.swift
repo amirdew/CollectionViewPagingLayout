@@ -34,15 +34,6 @@ class LayoutDesignerIntroViewController: UIViewController {
         open()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.performBatchUpdates({ [weak self] in
-                self?.collectionView?.collectionViewLayout.invalidateLayout()
-            })
-        }
-    }
-    
     
     // MARK: Private functions
     
