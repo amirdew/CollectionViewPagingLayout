@@ -33,7 +33,6 @@ public extension TransformPageViewProtocol {
     }
 
     func onTapPage(_ onTapPage: @escaping (ValueType.ID) -> Void) -> Self {
-
         self.builder.modifierData.onTapPage = { index in
             guard index < builder.data.count else { return }
             onTapPage(builder.data[index].id)
@@ -53,6 +52,10 @@ public extension TransformPageViewProtocol {
             right: right ?? current?.right
         )
         return self
+    }
+
+    func pagePadding(_ padding: PagePadding.Padding? = nil) -> Self {
+        return pagePadding(vertical: padding, horizontal: padding)
     }
 
     func pagePadding(vertical: PagePadding.Padding? = nil,
