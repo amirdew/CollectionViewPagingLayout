@@ -44,11 +44,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-// make docs for swifui
-// make samples for swift (devices view)
-// add swifui to layout designer
-// update intro on layout designer or remove it
-// fix bad blur performance on mac
-// segment controls
-// selecting shape sometimes does't work
