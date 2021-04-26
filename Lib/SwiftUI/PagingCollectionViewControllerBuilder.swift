@@ -6,7 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && canImport(Combine)
 import SwiftUI
 
 @available(iOS 13.0, *)
