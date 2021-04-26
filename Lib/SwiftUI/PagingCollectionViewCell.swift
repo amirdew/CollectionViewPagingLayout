@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import UIKit
 import SwiftUI
 
@@ -182,3 +183,4 @@ extension PagingCollectionViewCell: TransformableView,
         return snapshot.snapshotSize == targetView.bounds.size
     }
 }
+#endif

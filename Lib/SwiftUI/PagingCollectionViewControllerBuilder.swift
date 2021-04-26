@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 @available(iOS 13.0, *)
@@ -69,3 +70,4 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
         viewController.update(list: data, currentIndex: selectedIndex)
     }
 }
+#endif

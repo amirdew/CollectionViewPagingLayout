@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import Foundation
 import UIKit
 
@@ -45,3 +46,4 @@ struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
         value as? T
     }
 }
+#endif

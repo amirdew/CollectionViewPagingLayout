@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import Foundation
 import SwiftUI
 
@@ -55,7 +56,7 @@ public extension TransformPageViewProtocol {
     }
 
     func pagePadding(_ padding: PagePadding.Padding? = nil) -> Self {
-        return pagePadding(vertical: padding, horizontal: padding)
+        pagePadding(vertical: padding, horizontal: padding)
     }
 
     func pagePadding(vertical: PagePadding.Padding? = nil,
@@ -103,3 +104,4 @@ public extension TransformPageViewProtocol where Self: UIViewControllerRepresent
         builder.update(viewController: uiViewController)
     }
 }
+#endif

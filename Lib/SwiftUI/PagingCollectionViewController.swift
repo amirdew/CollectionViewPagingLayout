@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import UIKit
 import SwiftUI
 
@@ -154,3 +155,4 @@ private extension UICollectionViewCell {
         String(describing: self)
     }
 }
+#endif

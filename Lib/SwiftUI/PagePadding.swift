@@ -6,6 +6,7 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import Foundation
 import UIKit
 
@@ -29,3 +30,4 @@ public struct PagePadding {
         case fractionalWidth(CGFloat)
     }
 }
+#endif
