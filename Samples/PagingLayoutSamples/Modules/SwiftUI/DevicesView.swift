@@ -6,6 +6,8 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
+// Design by Cuberto https://dribbble.com/shots/12580831-Principle-Tutorial-Onboarding-Flow-Animation
+
 import SwiftUI
 import CollectionViewPagingLayout
 
