@@ -21,6 +21,8 @@ Click on image to see the code
 [<img width="120" src="https://amir.app/git/flowlayout_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Fruits)
 [<img width="120" src="https://amir.app/git/gallery_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Gallery)
 [<img width="120" src="https://amir.app/git/cards_preview.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/UIKit/Cards)
+[<img width="120" src="https://amir.app/git/devices.gif">](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Samples/PagingLayoutSamples/Modules/SwiftUI/DevicesView.swift)
+[<img width="120" src="https://amir.app/git/weather.gif">](https://github.com/amirdew/CollectionViewPagingLayout/tree/master/Samples/PagingLayoutSamples/Modules/SwiftUI/WeatherTabView)
 <p />
 
 #### UIKit: `SnapshotTransformView`, SwiftUI: `SnapshotPageView`
