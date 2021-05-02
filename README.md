@@ -136,7 +136,7 @@ or you can build it yourself from the source.
 Yes, the macOS app is open-source too!. 
 
 
-Continue for [`SiwftUI`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_SWIFTUI.md) or [`UIKit`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_UIKIT.md)
+Continue for [`SwiftUI`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_SWIFTUI.md) or [`UIKit`](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/HOW_TO_USE_UIKIT.md)
 
 
 ## Limitations
