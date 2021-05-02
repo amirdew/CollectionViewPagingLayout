@@ -151,6 +151,10 @@ Based on your design, you can specify the number of items that you need to show.
 - **It doesn't support RTL layouts:**   
 however, you can achieve a similar result by tweaking options, for instance try `StackTransformViewOptions.Layout.reverse`
 
+## Credit
+
+- [DevicesView](https://github.com/amirdew/CollectionViewPagingLayout/blob/master/Samples/PagingLayoutSamples/Modules/SwiftUI/DevicesView.swift) inspired by this [Cuberto's post](https://dribbble.com/shots/12580831-Principle-Tutorial-Onboarding-Flow-Animation)
+
 ## License
 
 CollectionViewPagingLayout is available under the MIT license. See LICENSE file for more info.
