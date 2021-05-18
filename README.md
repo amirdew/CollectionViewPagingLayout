@@ -1,4 +1,4 @@
-# CollectionViewPagingLayout
+# CollectionViewPagingLayout - PagingView for SwiftUI
 
 [![License](https://img.shields.io/cocoapods/l/CollectionViewPagingLayout.svg?style=flat)](http://cocoapods.org/pods/CollectionViewPagingLayout)
 ![platforms](https://img.shields.io/badge/platforms-iOS-333333.svg)
