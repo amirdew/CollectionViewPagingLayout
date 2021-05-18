@@ -87,6 +87,7 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     private var lastBounds: CGRect?
     private var currentViewAnimatorCancelable: ViewAnimatorCancelable?
     private var originalIsUserInteractionEnabled: Bool?
+    private var contentOffsetObservation: NSKeyValueObservation?
 
 
     // MARK: Public functions
@@ -119,12 +120,14 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     /// Calls `invalidateLayout` wrapped in `performBatchUpdates`
     /// - Parameter invalidateOffset: change offset and revert it immediately
     /// this fixes the zIndex issue more: https://stackoverflow.com/questions/12659301/uicollectionview-setlayoutanimated-not-preserving-zindex
-    public func invalidateLayoutInBatchUpdate(invalidateOffset: Bool = true) {
+    public func invalidateLayoutInBatchUpdate(invalidateOffset: Bool = false) {
         DispatchQueue.main.async { [weak self] in
-            if invalidateOffset {
-                let original = self?.collectionView?.contentOffset ?? .zero
-                self?.collectionView?.contentOffset = .init(x: original.x + 1, y: original.y + 1)
-                self?.collectionView?.contentOffset = original
+            if invalidateOffset,
+               let collectionView = self?.collectionView,
+               self?.isAnimating == false {
+                let original = collectionView.contentOffset
+                collectionView.contentOffset = .init(x: original.x + 1, y: original.y + 1)
+                collectionView.contentOffset = original
             }
 
             self?.collectionView?.performBatchUpdates({ [weak self] in
@@ -268,9 +271,9 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         let pageSize = scrollDirection == .horizontal ? visibleRect.width : visibleRect.height
         let contentSize = scrollDirection == .horizontal ? collectionViewContentSize.width : collectionViewContentSize.height
         let maxPossibleOffset = contentSize - pageSize
-        var offset = pageSize * CGFloat(page)
+        var offset = Double(pageSize) * Double(page)
         offset = max(0, offset)
-        offset = min(offset, maxPossibleOffset)
+        offset = min(offset, Double(maxPossibleOffset))
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
 
         if animated {
@@ -280,14 +283,18 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         if animated, let animator = animator {
             setContentOffset(with: animator, offset: contentOffset, completion: completion)
         } else {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock { [weak self] in
-                self?.isAnimating = false
-                self?.invalidateLayoutInBatchUpdate()
-                completion?()
+            contentOffsetObservation = collectionView?.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
+                if self?.collectionView?.contentOffset == contentOffset {
+                    self?.contentOffsetObservation = nil
+                    DispatchQueue.main.async { [weak self] in
+                        self?.invalidateLayoutInBatchUpdate()
+                        self?.collectionView?.setContentOffset(contentOffset, animated: false)
+                        self?.isAnimating = false
+                        completion?()
+                    }
+                }
             }
             collectionView?.setContentOffset(contentOffset, animated: animated)
-            CATransaction.commit()
         }
         
         // this is necessary when we want to set the current page without animation
@@ -326,7 +333,7 @@ extension CollectionViewPagingLayout {
         boundsObservation = collectionView?.observe(\.bounds, options: [.old, .new, .initial, .prior]) { [weak self] collectionView, _ in
             guard collectionView.bounds.size != self?.lastBounds?.size else { return }
             self?.lastBounds = collectionView.bounds
-            self?.invalidateLayoutInBatchUpdate()
+            self?.invalidateLayoutInBatchUpdate(invalidateOffset: true)
         }
     }
 }
