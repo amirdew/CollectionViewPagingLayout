@@ -55,10 +55,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
         viewController.pageViewBuilder = pageViewBuilder
         viewController.modifierData = modifierData
         viewController.update(list: data, currentIndex: nil)
-        viewController.onCurrentPageChanged = { [data, selection] in
-            guard $0 < data.count else { return }
-            selection?.wrappedValue = data[$0].id
-        }
+        setupOnCurrentPageChanged(viewController)
         return viewController
     }
 
@@ -68,6 +65,17 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
         }?.offset
         viewController.modifierData = modifierData
         viewController.update(list: data, currentIndex: selectedIndex)
+        setupOnCurrentPageChanged(viewController)
+    }
+
+
+    // MARK: Private functions
+
+    private func setupOnCurrentPageChanged(_ viewController: ViewController) {
+        viewController.onCurrentPageChanged = { [data, selection] in
+            guard $0 < data.count else { return }
+            selection?.wrappedValue = data[$0].id
+        }
     }
 }
 #endif
