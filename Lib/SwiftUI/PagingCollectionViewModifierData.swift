@@ -25,6 +25,7 @@ struct PagingCollectionViewModifierData {
     var onTapPage: ((Int) -> Void)?
     var scrollDirection: UICollectionView.ScrollDirection?
     var pagePadding: PagePadding?
+    var transparentAttributeWhenCellNotLoaded: Bool?
 }
 
 @available(iOS 13.0, *)

@@ -86,6 +86,11 @@ public extension TransformPageViewProtocol {
         return self
     }
 
+    func hideCellWhenNotLoaded(_ value: Bool) -> Self {
+        self.builder.modifierData.transparentAttributeWhenCellNotLoaded = value
+        return self
+    }
+
     func collectionView<T>(_ key: WritableKeyPath<UICollectionView, T>, _ value: T) -> Self {
         let property = CollectionViewProperty(keyPath: key, value: value)
         self.builder.modifierData.collectionViewProperties.append(property)

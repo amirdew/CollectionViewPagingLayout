@@ -81,6 +81,7 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         collectionView.dataSource = self
         layout.numberOfVisibleItems = 7
         layout.scrollDirection = .vertical
+        layout.transparentAttributeWhenCellNotLoaded = true
         collectionView.collectionViewLayout = layout
         collectionView.showsVerticalScrollIndicator = false
         collectionView.clipsToBounds = false

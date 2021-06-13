@@ -57,13 +57,12 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
     // MARK: Internal functions
 
     func update(list: [ValueType], currentIndex: Int?) {
-        if needsToReloadData(list: list) {
-            collectionView.performBatchUpdates({
-                collectionView.reloadData()
-                layout.invalidateLayoutInBatchUpdate()
-            })
-        }
+        let oldIds = self.list.map(\.id)
         self.list = list
+        if list.map(\.id) != oldIds {
+            collectionView?.reloadData()
+            layout.invalidateLayoutInBatchUpdate(invalidateOffset: true)
+        }
         let index = currentIndex ?? layout.currentPage
         if index < list.count {
             guard index != layout.currentPage else { return }
@@ -88,11 +87,7 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
 
     // MARK: Private functions
-
-    private func needsToReloadData(list: [ValueType]) -> Bool {
-        self.list.map(\.id) != list.map(\.id)
-    }
-
+    
     private func setupCollectionView() {
         collectionView = UICollectionView(
             frame: view.frame,
@@ -106,6 +101,7 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         layout.numberOfVisibleItems = modifierData?.numberOfVisibleItems
         layout.scrollDirection = modifierData?.scrollDirection ?? layout.scrollDirection
         layout.defaultAnimator = modifierData?.animator
+        layout.transparentAttributeWhenCellNotLoaded = modifierData?.transparentAttributeWhenCellNotLoaded ?? layout.transparentAttributeWhenCellNotLoaded
         collectionView.delegate = self
 
         collectionView.showsHorizontalScrollIndicator = false
