@@ -57,6 +57,12 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
     // MARK: Internal functions
 
     func update(list: [ValueType], currentIndex: Int?) {
+        if needsToReloadData(list: list) {
+            collectionView.performBatchUpdates({
+                collectionView.reloadData()
+                layout.invalidateLayoutInBatchUpdate()
+            })
+        }
         self.list = list
         let index = currentIndex ?? layout.currentPage
         if index < list.count {
@@ -82,7 +88,11 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
 
     // MARK: Private functions
-    
+
+    private func needsToReloadData(list: [ValueType]) -> Bool {
+        self.list.map(\.id) != list.map(\.id)
+    }
+
     private func setupCollectionView() {
         collectionView = UICollectionView(
             frame: view.frame,
