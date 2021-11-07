@@ -57,9 +57,16 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
     // MARK: Internal functions
 
     func update(list: [ValueType], currentIndex: Int?) {
-        let oldIds = self.list.map(\.id)
+        var needsUpdate = false
+        
+        if let self = self as? PagingCollectionViewControllerEquatableList {
+            needsUpdate = !self.isListSame(as: list)
+        } else {
+            let oldIds = self.list.map(\.id)
+            needsUpdate = list.map(\.id) != oldIds
+        }
         self.list = list
-        if list.map(\.id) != oldIds {
+        if needsUpdate {
             collectionView?.reloadData()
             layout.invalidateLayoutInBatchUpdate(invalidateOffset: true)
         }
@@ -142,6 +149,16 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
 }
 
+private protocol PagingCollectionViewControllerEquatableList {
+    func isListSame<T>(as list: [T]) -> Bool
+}
+
+@available(iOS 13.0, *)
+extension PagingCollectionViewController: PagingCollectionViewControllerEquatableList where ValueType: Equatable {
+    func isListSame<T>(as list: [T]) -> Bool {
+        self.list == (list as? [ValueType])
+    }
+}
 
 @available(iOS 13.0, *)
 private extension UICollectionView {
