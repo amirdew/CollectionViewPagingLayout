@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "CollectionViewPagingLayout"
-  s.version = "1.0.2"
+  s.version = "1.0.3"
   s.summary = "A simple but highly customizable layout for UICollectionView and SwiftUI."
 
   s.description = <<-DESC
