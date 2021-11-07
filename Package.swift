@@ -15,7 +15,6 @@ let package = Package(
     targets: [
         .target(
             name: "CollectionViewPagingLayout",
-            path: "Lib",
-            exclude: ["Samples"])
+            path: "Lib")
     ]
 )
