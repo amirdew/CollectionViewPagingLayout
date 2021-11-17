@@ -46,8 +46,10 @@ class CardsViewController: UIViewController, NibBased, ViewModelBased {
         super.viewDidLayoutSubviews()
         layout.invalidateLayoutInBatchUpdate()
         if !didScrollCollectionViewToMiddle {
-            layout.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
             didScrollCollectionViewToMiddle = true
+            collectionView?.performBatchUpdates({ [weak self] in
+                self?.layout.setCurrentPage(Constants.infiniteNumberOfItems / 2, animated: false)
+            })
         }
     }
     
