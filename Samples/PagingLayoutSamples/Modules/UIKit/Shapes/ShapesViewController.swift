@@ -54,11 +54,13 @@ class ShapesViewController: UIViewController, NibBased, ViewModelBased {
         super.viewDidLayoutSubviews()
         
         if !didScrollCollectionViewToMiddle {
-            getPagingLayout(layoutTypeCollectionView)?.setCurrentPage(
-                Constants.infiniteNumberOfItems / 2,
-                animated: false
-            )
             didScrollCollectionViewToMiddle = true
+            collectionView?.performBatchUpdates({ [weak self] in
+                self?.getPagingLayout(layoutTypeCollectionView)?.setCurrentPage(
+                    Constants.infiniteNumberOfItems / 2,
+                    animated: false
+                )
+            })
         }
         
         updateSelectedLayout()
@@ -240,7 +242,11 @@ extension ShapesViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row)
+        (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row) { [weak self] in
+                DispatchQueue.main.async {
+                    self?.updateSelectedLayout()
+                }
+        }
     }
 }
 
