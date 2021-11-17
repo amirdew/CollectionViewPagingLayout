@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "CollectionViewPagingLayout",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v10)
     ],
     products: [
         .library(
