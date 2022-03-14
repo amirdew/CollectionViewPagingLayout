@@ -73,7 +73,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
 
     private func setupOnCurrentPageChanged(_ viewController: ViewController) {
         viewController.onCurrentPageChanged = { [data, selection] in
-            guard $0 < data.count else { return }
+            guard $0 >= 0 && $0 < data.count else { return }
             selection?.wrappedValue = data[$0].id
         }
     }
