@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
 public class BlurEffectView: UIVisualEffectView {
     
     // MARK: Parameters

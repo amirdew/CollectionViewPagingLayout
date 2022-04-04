@@ -1,18 +1,7 @@
-//
-//  PagingCollectionViewCell.swift
-//  CollectionViewPagingLayout
-//
-//  Created by Amir on 20/03/2021.
-//  Copyright © 2021 Amir Khorsandi. All rights reserved.
-//
-
-#if canImport(SwiftUI) && canImport(Combine)
-import UIKit
 import SwiftUI
+import UIKit
 
-@available(iOS 13.0, *)
 class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollectionViewCell {
-
     typealias Parent = PagingCollectionViewController<ValueType, Content>
 
     // MARK: Properties
@@ -29,7 +18,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
 
     func update(value: ValueType, index: IndexPath, parent: Parent) {
         self.parent = parent
-        self.viewBuilder = parent.pageViewBuilder
+        viewBuilder = parent.pageViewBuilder
         self.value = value
         self.index = index
         if hostingController != nil {
@@ -52,7 +41,6 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
             viewController.view.layoutIfNeeded()
         }
     }
-
 
     // MARK: Private functions
 
@@ -77,7 +65,8 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
         func constraint<T>(_ first: NSLayoutAnchor<T>,
                            _ second: NSLayoutAnchor<T>,
                            _ paddingKeyPath: KeyPath<PagePadding, PagePadding.Padding?>,
-                           _ inside: Bool) {
+                           _ inside: Bool)
+        {
             let padding = parent.modifierData?.pagePadding?[keyPath: paddingKeyPath] ?? .absolute(0)
             let constant: CGFloat
             switch padding {
@@ -90,7 +79,8 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
             }
             let identifier = "pagePaddingConstraint_\(inside)_\(T.self)"
             if let constraint = contentView.constraints.first(where: { $0.identifier == identifier }) ??
-                viewController.view.constraints.first(where: { $0.identifier == identifier }) {
+                viewController.view.constraints.first(where: { $0.identifier == identifier })
+            {
                 constraint.constant = constant * (inside ? 1 : -1)
             } else {
                 let constraint = first.constraint(equalTo: second, constant: constant * (inside ? 1 : -1))
@@ -106,13 +96,11 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
     }
 }
 
-
-@available(iOS 13.0, *)
 extension PagingCollectionViewCell: TransformableView,
-                                    ScaleTransformView,
-                                    StackTransformView,
-                                    SnapshotTransformView {
-
+    ScaleTransformView,
+    StackTransformView,
+    SnapshotTransformView
+{
     var scalableView: UIView {
         hostingController?.view ?? contentView
     }
@@ -132,9 +120,11 @@ extension PagingCollectionViewCell: TransformableView,
     var scaleOptions: ScaleTransformViewOptions {
         parent?.modifierData?.scaleOptions ?? .init()
     }
+
     var stackOptions: StackTransformViewOptions {
         parent?.modifierData?.stackOptions ?? .init()
     }
+
     var snapshotOptions: SnapshotTransformViewOptions {
         parent?.modifierData?.snapshotOptions ?? .init()
     }
@@ -183,4 +173,3 @@ extension PagingCollectionViewCell: TransformableView,
         return snapshot.snapshotSize == targetView.bounds.size
     }
 }
-#endif

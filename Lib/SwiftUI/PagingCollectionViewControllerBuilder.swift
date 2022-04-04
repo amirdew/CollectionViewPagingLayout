@@ -6,10 +6,8 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import SwiftUI
 
-@available(iOS 13.0, *)
 public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, PageContent: View> {
 
     public typealias ViewController = PagingCollectionViewController<ValueType, PageContent>
@@ -78,4 +76,3 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
         }
     }
 }
-#endif

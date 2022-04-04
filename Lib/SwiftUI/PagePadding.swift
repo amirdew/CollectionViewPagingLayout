@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 /// Provides paddings around the page
 public struct PagePadding {
 
@@ -30,4 +28,3 @@ public struct PagePadding {
         case fractionalWidth(CGFloat)
     }
 }
-#endif

@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 struct PagingCollectionViewModifierData {
     var scaleOptions: ScaleTransformViewOptions?
     var stackOptions: StackTransformViewOptions?
@@ -28,13 +26,11 @@ struct PagingCollectionViewModifierData {
     var transparentAttributeWhenCellNotLoaded: Bool?
 }
 
-@available(iOS 13.0, *)
 protocol CollectionViewPropertyProtocol {
     func getKey<T>() -> WritableKeyPath<UICollectionView, T>?
     func getValue<T>() -> T?
 }
 
-@available(iOS 13.0, *)
 struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
     let keyPath: WritableKeyPath<UICollectionView, T>
     let value: T
@@ -47,4 +43,3 @@ struct CollectionViewProperty<T>: CollectionViewPropertyProtocol {
         value as? T
     }
 }
-#endif

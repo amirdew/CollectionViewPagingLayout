@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 public protocol TransformPageViewProtocol {
     associatedtype ValueType: Identifiable
     associatedtype PageContent: View
@@ -21,7 +19,6 @@ public protocol TransformPageViewProtocol {
 }
 
 
-@available(iOS 13.0, *)
 public extension TransformPageViewProtocol {
     func numberOfVisibleItems(_ count: Int) -> Self {
         self.builder.modifierData.numberOfVisibleItems = count
@@ -99,7 +96,6 @@ public extension TransformPageViewProtocol {
 }
 
 
-@available(iOS 13.0, *)
 public extension TransformPageViewProtocol where Self: UIViewControllerRepresentable {
      func makeUIViewController(context: UIViewControllerRepresentableContext<Self>) -> Builder.ViewController {
         builder.make()
@@ -109,4 +105,3 @@ public extension TransformPageViewProtocol where Self: UIViewControllerRepresent
         builder.update(viewController: uiViewController)
     }
 }
-#endif

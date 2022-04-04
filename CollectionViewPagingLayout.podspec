@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "CollectionViewPagingLayout"
-  s.version = "1.0.3"
+  s.version = "1.1.0"
   s.summary = "A simple but highly customizable layout for UICollectionView and SwiftUI."
 
   s.description = <<-DESC
@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/amirdew/CollectionViewPagingLayout.git", :tag => "#{s.version}" }
   s.source_files = ["Lib/**/*.swift"]
 
-  s.swift_versions = ["5.4"]
+  s.swift_versions = ["5.5"]
 
-  s.ios.deployment_target = "10.0"
+  s.ios.deployment_target = "13.0"
 
   s.frameworks = "UIKit"
   s.weak_frameworks = "SwiftUI", "Combine"

@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import UIKit
 import SwiftUI
 
-@available(iOS 13.0, *)
 public class PagingCollectionViewController<ValueType: Identifiable, PageContent: View>: UIViewController,
     UICollectionViewDataSource,
     CollectionViewPagingLayoutDelegate,
@@ -153,14 +151,12 @@ private protocol PagingCollectionViewControllerEquatableList {
     func isListSame<T>(as list: [T]) -> Bool
 }
 
-@available(iOS 13.0, *)
 extension PagingCollectionViewController: PagingCollectionViewControllerEquatableList where ValueType: Equatable {
     func isListSame<T>(as list: [T]) -> Bool {
         self.list == (list as? [ValueType])
     }
 }
 
-@available(iOS 13.0, *)
 private extension UICollectionView {
     func registerClass<T: UICollectionViewCell>(_ cellType: T.Type, reuseIdentifier: String = T.reuseIdentifier) {
         register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
@@ -172,10 +168,8 @@ private extension UICollectionView {
 }
 
 
-@available(iOS 13.0, *)
 private extension UICollectionViewCell {
     static var reuseIdentifier: String {
         String(describing: self)
     }
 }
-#endif

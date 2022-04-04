@@ -187,8 +187,7 @@ public extension StackTransformView {
         
         cardView.transform = cardView.transform.rotated(by: angle)
     }
-    
-    @available(iOS 10.0, *)
+
     private func applyBlurEffect(progress: CGFloat) {
         guard stackOptions.maxBlurEffectRadius > 0, stackOptions.blurEffectEnabled else {
             stackBlurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
