@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct SnapshotPageView<ValueType: Identifiable, PageContent: View>: UIViewControllerRepresentable, TransformPageViewProtocol {
 
     // MARK: Properties
@@ -31,7 +29,6 @@ public struct SnapshotPageView<ValueType: Identifiable, PageContent: View>: UIVi
 }
 
 
-@available(iOS 13.0, *)
 public extension SnapshotPageView {
     func options(_ options: SnapshotTransformViewOptions) -> Self {
         builder.modifierData.snapshotOptions = options
@@ -39,7 +36,6 @@ public extension SnapshotPageView {
     }
 }
 
-@available(iOS 13.0, *)
 public extension SnapshotPageView {
     /// A unique identifier for the snapshot, a new snapshot won't be made if
     /// there is a cashed snapshot with the same identifier
@@ -52,7 +48,6 @@ public extension SnapshotPageView {
     }
 }
 
-@available(iOS 13.0, *)
 public extension SnapshotPageView {
     /// Check if the snapshot can be reused
     /// - Parameter snapshotContainer: The container for snapshot pieces, see `SnapshotContainerView`
@@ -63,4 +58,3 @@ public extension SnapshotPageView {
         return self
     }
 }
-#endif

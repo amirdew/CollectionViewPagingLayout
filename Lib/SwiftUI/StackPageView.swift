@@ -6,11 +6,9 @@
 //  Copyright © 2021 Amir Khorsandi. All rights reserved.
 //
 
-#if canImport(SwiftUI) && canImport(Combine)
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct StackPageView<ValueType: Identifiable, PageContent: View>: UIViewControllerRepresentable, TransformPageViewProtocol {
 
     // MARK: Properties
@@ -31,11 +29,9 @@ public struct StackPageView<ValueType: Identifiable, PageContent: View>: UIViewC
 }
 
 
-@available(iOS 13.0, *)
 public extension StackPageView {
     func options(_ options: StackTransformViewOptions) -> Self {
         builder.modifierData.stackOptions = options
         return self
     }
 }
-#endif
