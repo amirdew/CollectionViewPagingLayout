@@ -155,8 +155,7 @@ public extension ScaleTransformView {
         }
         scalableView.layer.transform = transform
     }
-    
-    @available(iOS 10.0, *)
+
     private func applyBlurEffect(progress: CGFloat) {
         guard scaleOptions.blurEffectRadiusRatio > 0, scaleOptions.blurEffectEnabled else {
             scaleBlurViewHost.subviews.first(where: { $0 is BlurEffectView })?.removeFromSuperview()
