@@ -32,12 +32,14 @@ These protocols are highly customizable, you can make tons of different effects 
 Here is a simple example for `ScaleTransformView` which gives you a simple paging with scaling effect:
 ```swift
 extension YourCell: ScaleTransformView {
-    var scaleOptions = ScaleTransformViewOptions(
-        minScale: 0.6,
-        scaleRatio: 0.4,
-        translationRatio: CGPoint(x: 0.66, y: 0.2),
-        maxTranslationRatio: CGPoint(x: 2, y: 0),
-    )
+    var scaleOptions: ScaleTransformViewOptions { 
+        ScaleTransformViewOptions(
+            minScale: 0.6,
+            scaleRatio: 0.4,
+            translationRatio: CGPoint(x: 0.66, y: 0.2),
+            maxTranslationRatio: CGPoint(x: 2, y: 0)
+            )
+    }
 }
 ```
 There is an "options" property for each of these protocols where you can customize the effect, check the struct to find out what each parameter does.          
