@@ -12,12 +12,22 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = { "Amir Khorsandi" => "khorsandi@me.com" }
   s.source = { :git => "https://github.com/amirdew/CollectionViewPagingLayout.git", :tag => "#{s.version}" }
-  s.source_files = ["Lib/**/*.swift"]
-
+  
+  s.ios.deployment_target = '12.0'
   s.swift_versions = ["5.5"]
-
-  s.ios.deployment_target = "13.0"
-
-  s.frameworks = "UIKit"
-  s.weak_frameworks = "SwiftUI", "Combine"
+  s.default_subspecs = 'UIKit'
+  
+  s.subspec "UIKit" do |ss|
+    ss.source_files = ["Lib/**/*.swift"]
+    ss.exclude_files = ["Lib/SwiftUI"]
+    ss.frameworks = "UIKit"
+  end
+  
+  s.subspec "Full" do |ss|
+    ss.ios.deployment_target = '13.0'
+    ss.source_files = ["Lib/**/*.swift"]
+    #ss.frameworks = "UIKit" # If only SwiftUI, UIKit is unnecessary
+    ss.weak_frameworks = "SwiftUI", "Combine"
+  end
+  
 end
