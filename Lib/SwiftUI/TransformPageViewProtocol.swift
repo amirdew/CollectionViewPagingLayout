@@ -43,11 +43,43 @@ public extension TransformPageViewProtocol {
                      bottom: PagePadding.Padding? = nil,
                      right: PagePadding.Padding? = nil) -> Self {
         let current = self.builder.modifierData.pagePadding
+        var topPadding: PagePadding.Padding? = {
+            if let top = top {
+                return top
+            } else {
+                return current?.top
+            }
+        }()
+        
+        var leftPadding: PagePadding.Padding? = {
+            if let left = left {
+                return left
+            } else {
+                return current?.left
+            }
+        }()
+        
+        var bottomPadding: PagePadding.Padding? = {
+            if let bottom = bottom {
+                return bottom
+            } else {
+                return current?.bottom
+            }
+        }()
+        
+        var rightPadding: PagePadding.Padding? = {
+            if let right = right {
+                return right
+            } else {
+                return current?.right
+            }
+        }()
+        
         self.builder.modifierData.pagePadding = .init(
-            top: top ?? current?.top,
-            left: left ?? current?.left,
-            bottom: bottom ?? current?.bottom,
-            right: right ?? current?.right
+            top: topPadding,
+            left: leftPadding,
+            bottom: bottomPadding,
+            right: rightPadding
         )
         return self
     }
@@ -59,11 +91,44 @@ public extension TransformPageViewProtocol {
     func pagePadding(vertical: PagePadding.Padding? = nil,
                      horizontal: PagePadding.Padding? = nil) -> Self {
         let current = self.builder.modifierData.pagePadding
+        
+        var topPadding: PagePadding.Padding? = {
+            if let top = vertical {
+                return top
+            } else {
+                return current?.top
+            }
+        }()
+        
+        var leftPadding: PagePadding.Padding? = {
+            if let left = horizontal {
+                return left
+            } else {
+                return current?.left
+            }
+        }()
+        
+        var bottomPadding: PagePadding.Padding? = {
+            if let bottom = vertical {
+                return bottom
+            } else {
+                return current?.bottom
+            }
+        }()
+        
+        var rightPadding: PagePadding.Padding? = {
+            if let right = horizontal {
+                return right
+            } else {
+                return current?.right
+            }
+        }()
+        
         self.builder.modifierData.pagePadding = .init(
-            top: vertical ?? current?.top,
-            left: horizontal ?? current?.left,
-            bottom: vertical ?? current?.bottom,
-            right: horizontal ?? current?.right
+            top: topPadding,
+            left: leftPadding,
+            bottom: bottomPadding,
+            right: rightPadding
         )
         return self
     }
