@@ -102,6 +102,29 @@ public extension ScaleTransformViewOptions {
                                      maxTranslateRatios: (0.05, 0, -0.86))
             )
         case .coverFlow:
+                let defaultAngle: Double = .pi / 1.65
+                let minAngle: Double = -.pi / 3
+                let maxAngle: Double = .pi / 3
+                let rotation3d = Rotation3dOptions(
+                    angle: defaultAngle,
+                    minAngle: minAngle,
+                    maxAngle: maxAngle,
+                    x: 0,
+                    y: -1,
+                    z: 0,
+                    m34: -0.000_5
+                )
+                
+                
+                let translateRatios: (CGFloat, CGFloat, CGFloat) = (0.1, 0, -0.7)
+                let minTranslateRatios: (CGFloat, CGFloat, CGFloat) = (-0.1, 0, -3)
+                let maxTranslateRatios: (CGFloat, CGFloat, CGFloat) = (0.1, 0, 0)
+                let translation3d = Translation3dOptions(
+                    translateRatios: translateRatios,
+                    minTranslateRatios: minTranslateRatios,
+                    maxTranslateRatios: maxTranslateRatios
+                )
+                
             return Self(
                 minScale: 0.7,
                 maxScale: 0.7,
@@ -110,8 +133,8 @@ public extension ScaleTransformViewOptions {
                 minTranslationRatio: .zero,
                 maxTranslationRatio: .zero,
                 shadowEnabled: true,
-                rotation3d: .init(angle: .pi / 1.65, minAngle: -.pi / 3, maxAngle: .pi / 3, x: 0, y: -1, z: 0, m34: -0.000_5),
-                translation3d: .init(translateRatios: (0.1, 0, -0.7), minTranslateRatios: (-0.1, 0, -3), maxTranslateRatios: (0.1, 0, 0))
+                rotation3d: rotation3d,
+                translation3d: translation3d
             )
         }
     }
