@@ -43,7 +43,7 @@ public extension TransformPageViewProtocol {
                      bottom: PagePadding.Padding? = nil,
                      right: PagePadding.Padding? = nil) -> Self {
         let current = self.builder.modifierData.pagePadding
-        var topPadding: PagePadding.Padding? = {
+        let topPadding: PagePadding.Padding? = {
             if let top = top {
                 return top
             } else {
@@ -51,7 +51,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var leftPadding: PagePadding.Padding? = {
+        let leftPadding: PagePadding.Padding? = {
             if let left = left {
                 return left
             } else {
@@ -59,7 +59,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var bottomPadding: PagePadding.Padding? = {
+        let bottomPadding: PagePadding.Padding? = {
             if let bottom = bottom {
                 return bottom
             } else {
@@ -67,7 +67,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var rightPadding: PagePadding.Padding? = {
+        let rightPadding: PagePadding.Padding? = {
             if let right = right {
                 return right
             } else {
@@ -92,7 +92,7 @@ public extension TransformPageViewProtocol {
                      horizontal: PagePadding.Padding? = nil) -> Self {
         let current = self.builder.modifierData.pagePadding
         
-        var topPadding: PagePadding.Padding? = {
+        let topPadding: PagePadding.Padding? = {
             if let top = vertical {
                 return top
             } else {
@@ -100,7 +100,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var leftPadding: PagePadding.Padding? = {
+        let leftPadding: PagePadding.Padding? = {
             if let left = horizontal {
                 return left
             } else {
@@ -108,7 +108,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var bottomPadding: PagePadding.Padding? = {
+        let bottomPadding: PagePadding.Padding? = {
             if let bottom = vertical {
                 return bottom
             } else {
@@ -116,7 +116,7 @@ public extension TransformPageViewProtocol {
             }
         }()
         
-        var rightPadding: PagePadding.Padding? = {
+        let rightPadding: PagePadding.Padding? = {
             if let right = horizontal {
                 return right
             } else {

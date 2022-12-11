@@ -38,7 +38,8 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
     /// See `ZPositionHandler` for details
     public var zPositionHandler: ZPositionHandler = .both
 
-    /// Set `alpha` to zero when the cell is not loaded yet by collection view, enabling this prevents showing a cell before applying transforms but may cause flashing when you reload the data
+    /// Set `alpha` to zero when the cell is not loaded yet by collection view, enabling this prevents showing a cell before applying
+    /// transforms but may cause flashing when you reload the data
     public var transparentAttributeWhenCellNotLoaded: Bool = false
 
     /// The animator for setting `contentOffset`

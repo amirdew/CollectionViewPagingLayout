@@ -1,3 +1,11 @@
+//
+//  PagingCollectionViewCell.swift
+//  CollectionViewPagingLayout
+//
+//  Created by Amir on 28/03/2021.
+//  Copyright © 2021 Amir Khorsandi. All rights reserved.
+//
+
 import SwiftUI
 import UIKit
 
@@ -65,8 +73,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
         func constraint<T>(_ first: NSLayoutAnchor<T>,
                            _ second: NSLayoutAnchor<T>,
                            _ paddingKeyPath: KeyPath<PagePadding, PagePadding.Padding?>,
-                           _ inside: Bool)
-        {
+                           _ inside: Bool) {
             let padding = parent.modifierData?.pagePadding?[keyPath: paddingKeyPath] ?? .absolute(0)
             let constant: CGFloat
             switch padding {
@@ -79,8 +86,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
             }
             let identifier = "pagePaddingConstraint_\(inside)_\(T.self)"
             if let constraint = contentView.constraints.first(where: { $0.identifier == identifier }) ??
-                viewController.view.constraints.first(where: { $0.identifier == identifier })
-            {
+                viewController.view.constraints.first(where: { $0.identifier == identifier }) {
                 constraint.constant = constant * (inside ? 1 : -1)
             } else {
                 let constraint = first.constraint(equalTo: second, constant: constant * (inside ? 1 : -1))
@@ -99,8 +105,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
 extension PagingCollectionViewCell: TransformableView,
     ScaleTransformView,
     StackTransformView,
-    SnapshotTransformView
-{
+    SnapshotTransformView {
     var scalableView: UIView {
         hostingController?.view ?? contentView
     }
