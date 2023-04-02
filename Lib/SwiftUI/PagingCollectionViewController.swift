@@ -56,16 +56,28 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
     func update(list: [ValueType], currentIndex: Int?) {
         var needsUpdate = false
+        var needsUpdateList: [Int]?
         
         if let self = self as? PagingCollectionViewControllerEquatableList {
             needsUpdate = !self.isListSame(as: list)
+            if needsUpdate {
+                needsUpdateList = self.listDiff(as: list)
+            }
         } else {
             let oldIds = self.list.map(\.id)
-            needsUpdate = list.map(\.id) != oldIds
+            let newIds = list.map(\.id)
+            needsUpdate = newIds != oldIds
+            if needsUpdate {
+                needsUpdateList = newIds.listDiffIndex(otherList: oldIds)
+            }
         }
         self.list = list
         if needsUpdate {
-            collectionView?.reloadData()
+            if let needsUpdateList = needsUpdateList, needsUpdateList.count > 0 {
+                collectionView?.reloadItems(at: needsUpdateList.map({ IndexPath(item: $0, section: 0) }))
+            } else {
+                collectionView?.reloadData()
+            }
             layout.invalidateLayoutInBatchUpdate(invalidateOffset: true)
         }
         let index = currentIndex ?? layout.currentPage
@@ -149,11 +161,17 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
 private protocol PagingCollectionViewControllerEquatableList {
     func isListSame<T>(as list: [T]) -> Bool
+    func listDiff<T>(as list: [T]) -> [Int]?
 }
 
 extension PagingCollectionViewController: PagingCollectionViewControllerEquatableList where ValueType: Equatable {
     func isListSame<T>(as list: [T]) -> Bool {
         self.list == (list as? [ValueType])
+    }
+    
+    func listDiff<T>(as list: [T]) -> [Int]? {
+        guard let list = list as? [ValueType] else { return nil }
+        return self.list.listDiffIndex(otherList: list)
     }
 }
 
@@ -171,5 +189,20 @@ private extension UICollectionView {
 private extension UICollectionViewCell {
     static var reuseIdentifier: String {
         String(describing: self)
+    }
+}
+
+private extension Array where Element: Equatable {
+    func listDiffIndex<T: Equatable>(otherList: [T]) -> [Int]? {
+        if self.count != otherList.count {
+            return nil
+        }
+        var diff: [Int] = []
+        for index in 0..<self.count {
+            if let obj = otherList[index] as? Element, self[index] != obj {
+                diff.append(index)
+            }
+        }
+        return diff
     }
 }
